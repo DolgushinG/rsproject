@@ -32,10 +32,19 @@
 
       <div class="container" data-aos="fade-up">
         <div class="row gx-0">
-
           <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <h1 data-aos="fade-up">Найти рутсеттера</h1>
             <div class="content">
+              <div class="text-center text-lg-start">
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Выбрать город</option>
+                <option value="1">Санкт-Петербург</option>
+                <option value="2">Москва</option>
+                <option value="3">Воронеж</option>
+              </select>
+              </div>
+              <div class="text-center text-lg-start">
+                <div class="container">
                 <input type="checkbox" class="btn-check" id="btn-check-outlined1" autocomplete="off">
                 <label class="btn btn-outline-primary" for="btn-check-outlined1">Трудность</label><br>
                 <input type="checkbox" class="btn-check" id="btn-check-outlined2" autocomplete="off">
@@ -46,6 +55,8 @@
                 <label class="btn btn-outline-primary" for="btn-check-outlined4">Подготовка соревнований</label><br>
                 <input type="checkbox" class="btn-check" id="btn-check-outlined5" autocomplete="off">
                 <label class="btn btn-outline-primary" for="btn-check-outlined5">Главные подготовщики</label><br>
+              </div>
+              </div>
             </div>
             <div class="text-center text-lg-start">
                 <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
