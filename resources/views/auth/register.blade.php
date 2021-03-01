@@ -113,6 +113,8 @@
                                 </div>
                             </div>
                              <br> <!-- fieldsets -->
+                             {{-- <form action="{{ route('postRegister') }}" method="POST" id="registerForm"> --}}
+                                @csrf
                             <fieldset>
                                 <div class="form-card">
                                     <div class="row">
@@ -124,7 +126,7 @@
                                         </div>
                                     </div>
                                     <label class="fieldlabels">Email:*</label> 
-                                    <input type="email" name="email" placeholder="Email Id"/> 
+                                    <input type="email" name="email" placeholder="Email"/> 
                                     <label class="fieldlabels">Username:  *</label>
                                     <input type="text" name="uname" placeholder="UserName"/>
                                     <label class="fieldlabels">Password:*</label> 
@@ -169,7 +171,9 @@
                                         <label class="fieldlabels">Upload Signature  Photo:</label>
                                         <input type="file" name="pic" accept="image/*">
                                      </div> 
-                                <input type="button" name="next" class="next action-button" value="Submit" /> 
+                                     <button type="submit" name="next" value="Submit" class="next action-button" id="registerButton"><span id="regLoader" style="display: none"><i class="fa fa-spinner fa-pulse"></i><span class="sr-only">Loading...</span>&nbsp;</span>
+                                        Register</button>
+                                <input type="button" name="next" class="next action-button" value="Submit"/> 
                                 <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                             </fieldset>
                             <fieldset>
