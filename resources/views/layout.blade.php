@@ -19,12 +19,15 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
+  
   <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
   <link href="{{ asset('vendor/aos/aos.css')}}" rel="stylesheet">
   <link href="{{ asset('vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{ asset('vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
   <link href="{{ asset('vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.3/js.cookie.min.js"></script>
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('css/style.css')}}" rel="stylesheet">
@@ -51,6 +54,7 @@
 
 
 <script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/register.js') }}"></script>
 </body>
 <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 </html>

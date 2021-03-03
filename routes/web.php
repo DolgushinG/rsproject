@@ -17,7 +17,10 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'indexAbout'])->name('about');
+Route::get('/blog', [App\Http\Controllers\HomeController::class, 'indexBlog'])->name('blog');
+Route::get('/contact', [App\Http\Controllers\HomeController::class, 'indexContact'])->name('contact');
 Route::get('/result', [App\Http\Controllers\HomeController::class, 'result'])->name('result');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'indexCategory'])->name('register');
