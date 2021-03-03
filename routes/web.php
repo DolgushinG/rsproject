@@ -23,3 +23,4 @@ Route::get('/result', [App\Http\Controllers\HomeController::class, 'result'])->n
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'indexCategory'])->name('register');
