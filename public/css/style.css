@@ -36,7 +36,6 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 section {
   padding: 60px 0;
-  overflow: hidden;
 }
 
 .section-header {
@@ -426,6 +425,7 @@ section {
   height: 100vh;
   background: url(../img/hero-bg.png) top center no-repeat;
   background-size: cover;
+  margin-bottom: 5rem;
 }
 
 .hero h1 {
@@ -2249,7 +2249,7 @@ section {
 }
 
 .footer .footer-top {
-  background: white url(../img/footer-bg.png) no-repeat right top;
+  background: white url(../storage/images/footer-bg.png) no-repeat right top;
   background-size: contain;
   border-top: 1px solid #e1ecff;
   border-bottom: 1px solid #e1ecff;
@@ -2391,7 +2391,6 @@ p {
 #msform {
   text-align: center;
   position: relative;
-  margin-top: 20px
 }
 
 #msform fieldset {

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\UserAndCategories;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,23 +51,19 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        dd($data);
+        // dd($data);
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'salary' => ['required', 'integer'],
-            'exp_level' => ['required', 'string'],
-            'description' => ['required', 'string'],
-            'skills' => ['required', 'string'],
-            'educational_requirements' => ['required', 'string'],
-            'experience_requirements' => ['required', 'string'],
-            'additional_requirements' => ['required', 'string'],
-            'apply_instruction' => ['required'],
-            'city_name' => ['required', 'string', 'min:8', 'confirmed'],
-            'gender' => ['required'],
-            'photo' => ['image'],
-            'company' => ['required', 'string'],
-            'active_status' => ['required', 'integer'],
+            // 'salary' => ['required', 'integer'],
+            // 'exp_level' => ['required', 'string'],
+            // 'description' => ['required', 'string'],
+            // 'educational_requirements' => ['required', 'string'],
+            // 'experience_requirements' => ['required', 'string'],
+            // 'additional_requirements' => ['required', 'string'],
+            // 'city_name' => ['required', 'string', 'min:8', 'confirmed'],
+            // 'gender' => ['required'],
+            // 'company' => ['required', 'string'],
         ]);
     }
 
@@ -77,13 +74,27 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {
-        dd($data);
-        return User::create([
+    {   
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'salary' => intval($data['salary']),
+            'exp_level' => $data['exp_level'],
+            'description' => $data['description'],
+            'educational_requirements' => $data['educational_requirements'],
+            'experience_requirements' => $data['experience_requirements'],
+            'city_name' => $data['city_name'],
+            'gender' => $data['gender'],
+            'company' => $data['company']
         ]);
+        foreach($data['categories'] as $id => $x){
+            $userAndCategory = new UserAndCategories;
+            $userAndCategory->user_id = $user->id;
+            $userAndCategory->category_id = $id;
+            $userAndCategory->save();
+        }
+        return $user;
     }
 
     public function indexCategory(){

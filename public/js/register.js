@@ -68,7 +68,6 @@ $(document).ready(function(){
     $(".progress-bar")
     .css("width",percent+"%")
     }
-    
-    w
+
     
     });
