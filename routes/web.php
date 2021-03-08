@@ -24,3 +24,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'indexCategory'])->name('register');
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
