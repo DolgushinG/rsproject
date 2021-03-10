@@ -4,7 +4,7 @@
      <!-- Page Banner Section Start -->
      <div class="page-banner-section section">
         <div class="banner-image">
-            <img src="assets/images/about/bg-top-about-us.jpg" alt="">
+            <img src="{{asset('storage/images/about/bg-top-about-us.jpg')}}" alt="">
         </div>
     </div>
     <!-- Page Banner Section End -->
@@ -116,7 +116,7 @@
                     <!-- Single Personal Skill Start -->
                     <div class="single-personal-skill">
                         <div class="skill-icon">
-                            <img src="assets/images/icons/about1.png" alt="">
+                            <img src="{{asset('storage/images/icons/about1.png')}}" alt="">
                         </div>
                         <div class="personal-skill-content">
                             <h4 class="title">Knowledge</h4>
@@ -130,7 +130,7 @@
                     <!-- Single Personal Skill Start -->
                     <div class="single-personal-skill">
                         <div class="skill-icon">
-                            <img src="assets/images/icons/about2.png" alt="">
+                            <img src="{{asset('storage/images/icons/about2.png')}}" alt="">
                         </div>
                         <div class="personal-skill-content">
                             <h4 class="title">Integrity</h4>
@@ -144,7 +144,7 @@
                     <!-- Single Personal Skill Start -->
                     <div class="single-personal-skill">
                         <div class="skill-icon">
-                            <img src="assets/images/icons/about3.png" alt="">
+                            <img src="{{asset('storage/images/icons/about3.png')}}" alt="">
                         </div>
                         <div class="personal-skill-content">
                             <h4 class="title">Adaptability</h4>
@@ -158,7 +158,7 @@
                     <!-- Single Personal Skill Start -->
                     <div class="single-personal-skill">
                         <div class="skill-icon">
-                            <img src="assets/images/icons/about4.png" alt="">
+                            <img src="{{asset('storage/images/icons/about4.png')}}" alt="">
                         </div>
                         <div class="personal-skill-content">
                             <h4 class="title">Innovation</h4>
@@ -172,7 +172,7 @@
                     <!-- Single Personal Skill Start -->
                     <div class="single-personal-skill">
                         <div class="skill-icon">
-                            <img src="assets/images/icons/about5.png" alt="">
+                            <img src="{{asset('storage/images/icons/about5.png')}}" alt="">
                         </div>
                         <div class="personal-skill-content">
                             <h4 class="title">The Passion</h4>
@@ -186,7 +186,7 @@
                     <!-- Single Personal Skill Start -->
                     <div class="single-personal-skill">
                         <div class="skill-icon">
-                            <img src="assets/images/icons/about6.png" alt="">
+                            <img src="{{asset('storage/images/icons/about6.png')}}" alt="">
                         </div>
                         <div class="personal-skill-content">
                             <h4 class="title">Excellence</h4>
@@ -218,7 +218,7 @@
                     <!-- Single Company History Start -->
                     <div class="single-company-history">
                         <div class="item-avatar">
-                            <img src="assets/images/testimonial/testimonial-1.png" alt="">
+                            <img src="{{asset('storage/images/testimonial/testimonial-1.jpg')}}" alt="">
                         </div>
                         <div class="item-meta">
                             <div class="name">May 24, 2009</div>
@@ -234,7 +234,7 @@
                     <!-- Single Company History Start -->
                     <div class="single-company-history">
                         <div class="item-avatar">
-                            <img src="assets/images/testimonial/testimonial-2.png" alt="">
+                            <img src="{{asset('storage/images/testimonial/testimonial-2.jpg')}}" alt="">
                         </div>
                         <div class="item-meta">
                             <div class="name">Jan 30, 2010</div>
@@ -250,7 +250,7 @@
                     <!-- Single Company History Start -->
                     <div class="single-company-history">
                         <div class="item-avatar">
-                            <img src="assets/images/testimonial/testimonial-1.png" alt="">
+                            <img src="{{asset('storage/images/testimonial/testimonial-1.jpg')}}" alt="">
                         </div>
                         <div class="item-meta">
                             <div class="name">May 24, 2009</div>
@@ -266,7 +266,7 @@
                     <!-- Single Company History Start -->
                     <div class="single-company-history">
                         <div class="item-avatar">
-                            <img src="assets/images/testimonial/testimonial-2.png" alt="">
+                            <img src="{{asset('storage/images/testimonial/testimonial-2.jpg')}}" alt="">
                         </div>
                         <div class="item-meta">
                             <div class="name">Jan 30, 2010</div>
@@ -282,7 +282,7 @@
                     <!-- Single Company History Start -->
                     <div class="single-company-history">
                         <div class="item-avatar">
-                            <img src="assets/images/testimonial/testimonial-1.png" alt="">
+                            <img src="{{asset('storage/images/testimonial/testimonial-1.jpg')}}" alt="">
                         </div>
                         <div class="item-meta">
                             <div class="name">May 24, 2009</div>
@@ -298,7 +298,7 @@
                     <!-- Single Company History Start -->
                     <div class="single-company-history">
                         <div class="item-avatar">
-                            <img src="assets/images/testimonial/testimonial-2.png" alt="">
+                            <img src="{{asset('storage/images/testimonial/testimonial-2.jpg')}}" alt="">
                         </div>
                         <div class="item-meta">
                             <div class="name">Jan 30, 2010</div>
@@ -314,7 +314,7 @@
                     <!-- Single Company History Start -->
                     <div class="single-company-history">
                         <div class="item-avatar">
-                            <img src="assets/images/testimonial/testimonial-1.png" alt="">
+                            <img src="{{asset('storage/images/testimonial/testimonial-1.jpg')}}" alt="">
                         </div>
                         <div class="item-meta">
                             <div class="name">May 24, 2009</div>
@@ -379,7 +379,7 @@
                     <!-- Single Team Start -->
                     <div class="single-team team-style-two">
                         <div class="team-image">
-                            <img src="assets/images/team/ab-team1.jpg" alt="">
+                            <img src="{{asset('storage/images/team/ab-team1.jpg')}}" alt="">
                         </div>
                         <div class="team-content">
                             <h4 class="team-title">
@@ -405,7 +405,7 @@
                     <!-- Single Team Start -->
                     <div class="single-team team-style-two">
                         <div class="team-image">
-                            <img src="assets/images/team/ab-team2.jpg" alt="">
+                            <img src="{{asset('storage/images/team/ab-team2.jpg')}}" alt="">
                         </div>
                         <div class="team-content">
                             <h4 class="team-title">
@@ -431,7 +431,7 @@
                     <!-- Single Team Start -->
                     <div class="single-team team-style-two">
                         <div class="team-image">
-                            <img src="assets/images/team/ab-team3.jpg" alt="">
+                            <img src="{{asset('storage/images/team/ab-team3.jpg')}}" alt="">
                         </div>
                         <div class="team-content">
                             <h4 class="team-title">
@@ -457,7 +457,7 @@
                     <!-- Single Team Start -->
                     <div class="single-team team-style-two">
                         <div class="team-image">
-                            <img src="assets/images/team/team4.jpg" alt="">
+                            <img src="{{asset('storage/images/team/team4.jpg')}}" alt="">
                         </div>
                         <div class="team-content">
                             <h4 class="team-title">
@@ -483,7 +483,7 @@
                     <!-- Single Team Start -->
                     <div class="single-team team-style-two">
                         <div class="team-image">
-                            <img src="assets/images/team/ab-team2.jpg" alt="">
+                            <img src="{{asset('storage/images/team/ab-team2.jpg')}}" alt="">
                         </div>
                         <div class="team-content">
                             <h4 class="team-title">
@@ -509,7 +509,7 @@
                     <!-- Single Team Start -->
                     <div class="single-team team-style-two">
                         <div class="team-image">
-                            <img src="assets/images/team/ab-team1.jpg" alt="">
+                            <img src="{{asset('storage/images/team/ab-team1.jpg')}}" alt="">
                         </div>
                         <div class="team-content">
                             <h4 class="team-title">
@@ -535,7 +535,7 @@
                     <!-- Single Team Start -->
                     <div class="single-team team-style-two">
                         <div class="team-image">
-                            <img src="assets/images/team/ab-team3.jpg" alt="">
+                            <img src="{{asset('storage/images/team/ab-team3.jpg')}}" alt="">
                         </div>
                         <div class="team-content">
                             <h4 class="team-title">
@@ -561,7 +561,7 @@
                     <!-- Single Team Start -->
                     <div class="single-team team-style-two">
                         <div class="team-image">
-                            <img src="assets/images/team/ab-team5.jpg" alt="">
+                            <img src="{{asset('storage/images/team/ab-team5.jpg')}}" alt="">
                         </div>
                         <div class="team-content">
                             <h4 class="team-title">

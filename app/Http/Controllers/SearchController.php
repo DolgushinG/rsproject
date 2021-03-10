@@ -16,11 +16,14 @@ class SearchController extends Controller
             $cityCount[$city->city_name] = User::where('city_name', '=', $city->city_name)->count();
         }
         $categories = Category::all();
-        return view('search.index', compact(['categories','cityList','cityCount']));
+        $userCount = User::All()->count();
+       
+        return view('search.index', compact(['categories','cityList','cityCount','userCount']));
     }
 
     public function getResultSearch(Request $request)
     {
+        
         if ($request->categories != null) {
             $users = UserAndCategories::whereIn('category_id',$request->categories)->distinct()->get('user_id');
             $usersResult = [];
@@ -32,11 +35,12 @@ class SearchController extends Controller
             } else {
                 $users = User::whereIn('id', $usersResult)->get();
             }
+        } else if ($request->categories === null && $request->city_name === null) {
+            $users = User::all();
         } else {
             $users = User::where('city_name','=',$request->city_name)->get();
         }
        
-        
         return view('search.resultList', compact('users'));
     }
 }

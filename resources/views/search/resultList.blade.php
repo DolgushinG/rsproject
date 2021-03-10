@@ -6,7 +6,7 @@
     <div class="container" data-aos="fade-up">
         <div id="content" class="row gy-4">
          @foreach ($users as $user)
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+            <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
               <div class="member">
                 <div class="member-img">
                   <img src="{{ asset('storage/images/herors.jpeg')}}" class="img-fluid" alt="">
@@ -18,7 +18,7 @@
                   </div>
                 </div>
                 <div class="member-info">
-                  <h4>{{$user->name}}</h4>
+                  <a href="{{route('profileDetails', $user->id)}}"><h4>{{$user->name}}</h4></a>
                   <span>{{$user->experience_requirements}}</span>
                   <p>{{$user->description}}</p>
                 </div>

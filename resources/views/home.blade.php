@@ -6,20 +6,20 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">We offer modern solutions for growing your business</h1>
-          <h2 data-aos="fade-up" data-aos-delay="400">We are team of talented designers making websites with Bootstrap</h2>
+        <div class="col-lg-6 d-flex flex-column justify-content-center" style="background-color: #ffffffeb;
+        border-radius: 16px;">
+          <h1 data-aos="fade-up">Здесь место для поиска подготовщика</h1>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-              <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                <span>Get Started</span>
+              <a href="{{route('routesetters')}}" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                <span>Найти подготовщика</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
             </div>
           </div>
         </div>
         <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-          <img src="{{asset('storage/images//hero-img.png')}}" class="img-fluid" alt="">
+          <img src="{{asset('storage/images/logo/logo.png')}}" class="img-fluid" alt="">
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
 
   <main id="main">
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    {{-- <section id="about" class="about">
 
       <div class="container" data-aos="fade-up">
         <div class="row gx-0">
@@ -73,7 +73,7 @@
         </div>
       </div>
 
-    </section><!-- End About Section -->
+    </section><!-- End About Section --> --}}
 
     <!-- ======= Values Section ======= -->
     <section id="values" class="values">
@@ -117,56 +117,7 @@
 
     </section><!-- End Values Section -->
 
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="bi bi-emoji-smile"></i>
-              <div>
-                <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Happy Clients</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="bi bi-journal-richtext" style="color: #ee6c20;"></i>
-              <div>
-                <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Projects</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="bi bi-headset" style="color: #15be56;"></i>
-              <div>
-                <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Hours Of Support</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="bi bi-people" style="color: #bb0852;"></i>
-              <div>
-                <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Hard Workers</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Counts Section -->
+  
 
     <!-- ======= Features Section ======= -->
     <section id="features" class="features">
