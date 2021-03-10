@@ -104,7 +104,9 @@
                                     <option value="female">Жен</option>
                                 </select> 
                                 <label class="fieldlabels">Место работы</label>
-                                <input type="text" name="company" placeholder="скалодром"/>
+                                <input type="text" name="company" placeholder="скалодром">
+                                <label class="fieldlabels">Контакты для связи </label>
+                                <input type="text" name="contact" placeholder="Telegram, email, или ссылка на соц сеть.">
                             <input type="button" class="next action-button" value="Next" />
                             <input type="button" name="previous" class="previous action-button-previous"
                                 value="Previous"/>
@@ -119,8 +121,6 @@
                                         <h2 class="steps">Step 3 - 4</h2>
                                     </div>
                                 </div> <label class="fieldlabels">Upload Your Photo:</label>
-                                <input type="file" name="pic" accept="image/*">
-                                <label class="fieldlabels">Upload Signature Photo:</label>
                                 <input type="file" name="pic" accept="image/*">
                             </div>
                             <button type="submit" name="next" value="Submit">

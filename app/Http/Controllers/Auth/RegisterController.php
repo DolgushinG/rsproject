@@ -84,9 +84,12 @@ class RegisterController extends Controller
             'description' => $data['description'],
             'educational_requirements' => $data['educational_requirements'],
             'experience_requirements' => $data['experience_requirements'],
+            'additional_requirements' => $data['additional_requirements'],
             'city_name' => $data['city_name'],
             'gender' => $data['gender'],
-            'company' => $data['company']
+            'company' => $data['company'],
+            'contact' => $data['contact'],
+
         ]);
         foreach($data['categories'] as $id => $x){
             $userAndCategory = new UserAndCategories;

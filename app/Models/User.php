@@ -25,9 +25,11 @@ class User extends Authenticatable
         'description',
         'educational_requirements',
         'experience_requirements',
+        'additional_requirements',
         'gender',
         'company',
         'city_name',
+        'contact',
     ];
 
     /**
