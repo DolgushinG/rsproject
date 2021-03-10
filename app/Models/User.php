@@ -49,8 +49,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function category () {
-
-        return $this->belongsTo('App\Models\UserAndCategories');
+    public function categories()
+    {
+        return $this->hasMany('App\Models\UserAndCategories');
     }
 }

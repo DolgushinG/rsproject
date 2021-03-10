@@ -1,6 +1,8 @@
 @extends('layout')
 
 @section('content')
+<link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
  <!-- ======= Hero Section ======= -->
  <section id="register" class="register">
     <div class="container">
@@ -94,7 +96,7 @@
                                 <label class="fieldlabels">Опыт подготовки Национальных соревнований</label>
                                 <textarea type="text" name="additional_requirements" placeholder="Я крутил там"></textarea>
                                 <label class="fieldlabels">Ваш город</label>
-                                <input type="text" name="city_name" placeholder="salary"/>
+                                <input type="text" id="city" name="city_name" placeholder="salary"/>
                                 <label class="fieldlabels">Ваш пол</label>
                                 <select name="gender" class="form-select" aria-label="Default select example">
                                     <option selected>Выбрать</option>
@@ -158,4 +160,6 @@
         </div>
     </div>
 </section> 
+
+<script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
 @endsection

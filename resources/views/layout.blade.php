@@ -40,9 +40,10 @@
 
 @yield('content')
 
-@include('layouts.footer')
+
 {{-- @include('layouts.modal') --}}
 </div>
+@include('layouts.footer')
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 <!-- Vendor JS Files -->
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
@@ -57,5 +58,6 @@
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/register.js') }}"></script>
 </body>
+
 <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 </html>
