@@ -28,8 +28,5 @@ class HomeController extends Controller
     {
         return view('blog.index');
     }
-    public function result()
-    {
-        return view('resultPage');
-    }
+    
 }

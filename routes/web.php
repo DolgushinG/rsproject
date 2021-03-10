@@ -19,7 +19,8 @@ Route::get('/', function () {
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'indexAbout'])->name('about');
 Route::get('/blog', [App\Http\Controllers\HomeController::class, 'indexBlog'])->name('blog');
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'indexContact'])->name('contact');
-Route::get('/result', [App\Http\Controllers\HomeController::class, 'result'])->name('result');
+Route::get('/routesetters', [App\Http\Controllers\SearchController::class, 'index'])->name('routesetters');
+Route::post('/getresultsearch', [App\Http\Controllers\SearchController::class, 'getResultSearch'])->name('getresultsearch');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
