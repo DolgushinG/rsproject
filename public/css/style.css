@@ -1370,8 +1370,7 @@ section {
 # Team
 --------------------------------------------------------------*/
 .team {
-  background: #fff;
-  padding: 60px 0;
+  padding: 0px 0;
 }
 
 .team .member {
@@ -2662,39 +2661,138 @@ margin-right: auto;
 
 }
 /* table */
+div.table-title {
+  display: block;
+ margin: auto;
+ max-width: 600px;
+ padding:5px;
+ width: 100%;
+}
 
-.scroll-table-body {
-	height: 200px;
-	overflow-x: auto;
-	margin-top: 0px;
-	margin-bottom: 20px;
-	border-bottom: 1px solid #eee;
+.table-title h3 {
+  color: #fafafa;
+  font-size: 30px;
+  font-weight: 400;
+  font-style:normal;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  text-transform:uppercase;
 }
-.scroll-table table {
-	width:100%;
-	table-layout: fixed;
-	border: none;
+
+
+/*** Table Styles **/
+
+.table-fill {
+ background: white;
+ border-radius:3px;
+ border-collapse: collapse;
+ height: 320px;
+ margin: auto;
+ max-width: 600px;
+ padding:5px;
+ width: 100%;
+ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+ animation: float 5s infinite;
 }
-.scroll-table thead th {
-	font-weight: bold;
-	text-align: left;
-	border: none;
-	padding: 10px 15px;
-	background: #d8d8d8;
-	font-size: 14px;
-	border-left: 1px solid #ddd;
-	border-right: 1px solid #ddd;
+
+th {
+ color:#D5DDE5;
+ background:#292f4a;
+ border-bottom:4px solid #9ea7af;
+ border-right: 1px solid #343a45;
+ font-size:23px;
+ font-weight: 100;
+ padding:24px;
+ text-align:left;
+ text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+ vertical-align:middle;
 }
-.scroll-table tbody td {
-	text-align: left;
-	border-left: 1px solid #ddd;
-	border-right: 1px solid #ddd;
-	padding: 10px 15px;
-	font-size: 14px;
-	vertical-align: top;
+
+th:first-child {
+ border-top-left-radius:3px;
 }
-.scroll-table tbody tr:nth-child(even){
-	background: #f3f3f3;
+
+th:last-child {
+ border-top-right-radius:3px;
+ border-right:none;
+}
+ 
+tr {
+ border-top: 1px solid #C1C3D1;
+ border-bottom-: 1px solid #C1C3D1;
+ color:#666B85;
+ font-size:16px;
+ font-weight:normal;
+ text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+tr:hover td {
+ background:#4E5066;
+ color:#FFFFFF;
+ border-top: 1px solid #22262e;
+}
+
+tr:first-child {
+ border-top:none;
+}
+
+tr:last-child {
+ border-bottom:none;
+}
+
+tr:nth-child(odd) td {
+ background:#EBEBEB;
+}
+
+tr:nth-child(odd):hover td {
+ background:#4E5066;
+}
+
+tr:last-child td:first-child {
+ border-bottom-left-radius:3px;
+}
+
+tr:last-child td:last-child {
+ border-bottom-right-radius:3px;
+}
+
+td {
+ background:#FFFFFF;
+ padding:20px;
+ text-align:left;
+ vertical-align:middle;
+ font-weight:300;
+ font-size:18px;
+ text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+ border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+ border-right: 0px;
+}
+
+th.text-left {
+ text-align: left;
+}
+
+th.text-center {
+ text-align: center;
+}
+
+th.text-right {
+ text-align: right;
+}
+
+td.text-left {
+ text-align: left;
+}
+
+td.text-center {
+ text-align: center;
+}
+
+td.text-right {
+ text-align: right;
 }
  
 /* Стили для скролла */
@@ -2712,7 +2810,7 @@ margin-right: auto;
    #PAGE WRAPPER
    ========================================================================== */
    .page-wrapper {
-    min-height: 100vh;
+    min-height: 65vh;
   }
   /* ==========================================================================
    #WRAPPER
