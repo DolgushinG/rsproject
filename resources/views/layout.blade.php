@@ -14,6 +14,14 @@
   <!-- Favicons -->
   <link href="imgages/favicon.png" rel="icon">
   <link href="imgages/apple-touch-icon.png" rel="apple-touch-icon">
+ <!-- Icons font CSS-->
+ <link href="{{asset('vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
+ <link href="{{asset('vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
+ <!-- Font special for pages-->
+
+ <!-- Vendor CSS-->
+ <link href="{{asset('vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
+ <link href="{{asset('vendor/datepicker/daterangepicker.css')}}" rel="stylesheet" media="all">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -53,7 +61,15 @@
 <script src="{{ asset('vendor/purecounter/purecounter.js') }}"></script>
 <script src="{{ asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
 <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
-
+<!-- Vendor JS-->
+<script src="{{asset('vendor/select2/select2.min.js')}}"></script>
+<script src="{{asset('vendor/jquery-validate/jquery.validate.min.js')}}"></script>
+<script src="{{asset('vendor/bootstrap-wizard/bootstrap.min.js')}}"></script>
+<script src="{{asset('vendor/bootstrap-wizard/jquery.bootstrap.wizard.min.js')}}"></script>
+<script src="{{asset('vendor/datepicker/moment.min.js')}}"></script>
+<script src="{{asset('vendor/datepicker/daterangepicker.js')}}"></script>
+<!-- Main JS-->
+<script src="{{asset('js/global.js')}}"></script>
 
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/register.js') }}"></script>

@@ -1,15 +1,74 @@
-@extends('layout') @section('content')
+@extends('layout') 
+@section('content')
 <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
 <!-- ======= Team Section ======= -->
 <section id="team" class="team">
   <div class="container" data-aos="fade-up">
-    <div class="row justify-content-center">
-      <header class="section-header">
-        <h1>Подготовщики</h1>
-        <p>Поиск по городам и области накрутки и опыта</p>
-      </header>
-      
+      <div class="page-wrapper bg-img-1 p-t-165 p-b-100">
+        <div class="wrapper wrapper--w720">
+            <div class="card card-3">
+                <div class="card-body">
+                    <ul class="tab-list">
+                        <li class="tab-list__item active">
+                            <a class="tab-list__link" href="#tab1" data-toggle="tab">Поиск</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab1">
+                          <form action="{{ route('getresultsearch') }}" method="POST" id="searchForm">
+                            @csrf
+                                <div class="input-group">
+                                    <label class="label">Город</label>
+                                    <input class="input--style-1 search-slt" type="text" id="city" name="city_name" placeholder="Введите город" required="required">
+                                    <i class="zmdi zmdi-pin input-group-symbol"></i>
+                                </div>
+                                @foreach ($categories as $category)
+                                <div class="checkbox-row">
+                                    <label class="checkbox-container m-r-45">{{ $category->category_name }}
+                                        <input type="checkbox" id="categories" name="categories[{{ $category->id }}]"
+                                        value="{{ $category->id }}" unchecked >
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                @endforeach
+                                <button class="btn-submit searchUser" type="button">search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        {{-- <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+          <div class="scroll-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Город</th>
+                  <th>Подготовщиков</th>
+                </tr>
+              </thead>
+            </table>
+            <div class="scroll-table-body">
+              <table>
+                <tbody>
+                  @foreach ($cityList as
+                  $city)
+                  <tr>
+                    <td>
+                      {{ $city->city_name }}
+                    </td>
+                    <td>
+                      {{ $cityCount[$city->city_name]}}
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div> --}}
+    </div>
+      {{-- 
       <section class="search-sec">
         <div class="container">
           <form action="{{ route('getresultsearch') }}" method="POST" id="searchForm">
@@ -67,7 +126,7 @@
             </div>
           </form>
         </div>
-      </section>
+      </section> --}}
         <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts">
       <div class="container" data-aos="fade-up">
