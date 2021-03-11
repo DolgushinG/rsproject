@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <ul class="tab-list">
                         <li class="tab-list__item active">
-                            <a class="tab-list__link" href="#tab1" data-toggle="tab">Поиск</a>
+                            <a class="tab-list__link" href="#tab1" data-toggle="tab">Поиск подготовщиков</a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -68,65 +68,6 @@
           </div>
         </div> --}}
     </div>
-      {{-- 
-      <section class="search-sec">
-        <div class="container">
-          <form action="{{ route('getresultsearch') }}" method="POST" id="searchForm">
-            @csrf
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="row">
-                  <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                    <input type="text" id="city" name="city_name" class="form-control search-slt" placeholder="Введите город">
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                    @foreach ($categories as $category)
-                    <label class="check">
-                      <input type="checkbox" id="categories" name="categories[{{ $category->id }}]"
-                        value="{{ $category->id }}" unchecked />
-                      <span>{{ $category->category_name }}</span></label>
-                    @endforeach
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                    <button type="button" class="btn btn-danger wrn-btn searchUser">
-                      Search
-                    </button>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                    <div class="scroll-table">
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>Город</th>
-                            <th>Подготовщиков</th>
-                          </tr>
-                        </thead>
-                      </table>
-                      <div class="scroll-table-body">
-                        <table>
-                          <tbody>
-                            @foreach ($cityList as
-                            $city)
-                            <tr>
-                              <td>
-                                {{ $city->city_name }}
-                              </td>
-                              <td>
-                                {{ $cityCount[$city->city_name]}}
-                              </td>
-                            </tr>
-                            @endforeach
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </section> --}}
         <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts">
       <div class="container" data-aos="fade-up">
@@ -182,6 +123,7 @@
       </div>
     </div>
   </div>
+  
 </section>
 <script type="text/javascript" src="{{ asset('js/search.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
