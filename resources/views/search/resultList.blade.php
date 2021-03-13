@@ -19,8 +19,8 @@
                 </div>
                 <div class="member-info">
                   <a href="{{route('profileDetails', $user->id)}}"><h4>{{$user->name}}</h4></a>
-                  <span>{{$user->experience_requirements}}</span>
-                  <p>{{$user->description}}</p>
+                  <span>{{$user->description}}</span>
+                  <p> @lang('somewords.'.$user->exp_level)</p>
                 </div>
               </div>
             </div>

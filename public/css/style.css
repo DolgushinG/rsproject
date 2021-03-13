@@ -1288,7 +1288,7 @@ section {
   margin: 40px 30px;
   box-shadow: 0px 0 20px rgba(1, 41, 112, 0.1);
   background: #fff;
-  min-height: 320px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -1305,8 +1305,8 @@ section {
 }
 
 .testimonials .testimonial-item .testimonial-img {
-  width: 90px;
-  border-radius: 50%;
+  width: 108px;
+  border-radius: 20%;
   border: 4px solid #fff;
   margin: 0 auto;
 }
@@ -1370,6 +1370,7 @@ section {
 # Team
 --------------------------------------------------------------*/
 .team {
+  background: url(/storage/images/footer-bg.png) no-repeat bottom;
   padding: 0px 0;
 }
 
@@ -2684,7 +2685,7 @@ div.table-title {
 
 .table-fill {
  background: white;
- border-radius:3px;
+ border-radius:16px;
  border-collapse: collapse;
  height: 320px;
  margin: auto;
@@ -2698,8 +2699,6 @@ div.table-title {
 th {
  color:#D5DDE5;
  background:#292f4a;
- border-bottom:4px solid #9ea7af;
- border-right: 1px solid #343a45;
  font-size:23px;
  font-weight: 100;
  padding:24px;
@@ -2719,7 +2718,7 @@ th:last-child {
  
 tr {
  border-top: 1px solid #C1C3D1;
- border-bottom-: 1px solid #C1C3D1;
+ border-bottom: 1px solid #C1C3D1;
  color:#666B85;
  font-size:16px;
  font-weight:normal;
@@ -2810,7 +2809,7 @@ td.text-right {
    #PAGE WRAPPER
    ========================================================================== */
    .page-wrapper {
-    min-height: 65vh;
+    min-height: 35vh;
   }
   /* ==========================================================================
    #WRAPPER
@@ -2870,8 +2869,8 @@ td.text-right {
 
 .tab-list__link {
   display: block;
-  font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
-  font-weight: 500;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 51;
   font-size: 24px;
   color: #999;
   padding: 0 20px;
@@ -2992,6 +2991,7 @@ td.text-right {
     line-height: 50px;
     font-family: inherit;
     background: #00ad5f;
+    border: green;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;

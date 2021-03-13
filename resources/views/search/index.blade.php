@@ -1,5 +1,5 @@
-@extends('layout') 
-@section('content')
+
+
 <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
 <!-- ======= Team Section ======= -->
@@ -125,4 +125,3 @@
 </section>
 <script type="text/javascript" src="{{ asset('js/search.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
-@endsection
