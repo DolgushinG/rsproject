@@ -2803,13 +2803,13 @@ textarea.form-control-lg {
     transform: scale(.85) translateY(-.5rem) translateX(.15rem)
 }
 
-.input-group {
+/* .input-group {
     position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
     width: 100%
-}
+} */
 
 .input-group>.form-control,
 .input-group>.form-select {

@@ -25,9 +25,12 @@ class User extends Authenticatable
         'description',
         'educational_requirements',
         'experience_requirements',
+        'additional_requirements',
         'gender',
         'company',
         'city_name',
+        'contact',
+        'photo'
     ];
 
     /**
@@ -49,4 +52,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function categories()
+    {
+        return $this->hasMany('App\Models\UserAndCategories');
+    }
 }

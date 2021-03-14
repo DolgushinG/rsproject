@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -53,14 +53,14 @@ class RegisterController extends Controller
     {
         // dd($data);
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            // 'name' => ['required', 'string', 'max:255'],
+            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             // 'salary' => ['required', 'integer'],
             // 'exp_level' => ['required', 'string'],
             // 'description' => ['required', 'string'],
             // 'educational_requirements' => ['required', 'string'],
-            // 'experience_requirements' => ['required', 'string'],
-            // 'additional_requirements' => ['required', 'string'],
+            // 'experience_requirements' => ['required', 'int'],
+            // 'additional_requirements' => ['required', 'int'],
             // 'city_name' => ['required', 'string', 'min:8', 'confirmed'],
             // 'gender' => ['required'],
             // 'company' => ['required', 'string'],
@@ -75,6 +75,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {   
+        dd($data);
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -84,10 +85,13 @@ class RegisterController extends Controller
             'description' => $data['description'],
             'educational_requirements' => $data['educational_requirements'],
             'experience_requirements' => $data['experience_requirements'],
+            'additional_requirements' => $data['additional_requirements'],
             'city_name' => $data['city_name'],
             'gender' => $data['gender'],
-            'company' => $data['company']
+            'company' => $data['company'],
+            'contact' => $data['contact'],
         ]);
+        
         foreach($data['categories'] as $id => $x){
             $userAndCategory = new UserAndCategories;
             $userAndCategory->user_id = $user->id;

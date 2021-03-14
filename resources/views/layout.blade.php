@@ -12,8 +12,16 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="imgages/favicon.png" rel="icon">
-  <link href="imgages/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="{{asset('images/favicon.png')}}" rel="icon">
+  <link href="{{asset('images/apple-touch-icon.png')}}" rel="apple-touch-icon">
+ <!-- Icons font CSS-->
+ <link href="{{asset('vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
+ <link href="{{asset('vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
+ <!-- Font special for pages-->
+
+ <!-- Vendor CSS-->
+ <link href="{{asset('vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
+ <link href="{{asset('vendor/datepicker/daterangepicker.css')}}" rel="stylesheet" media="all">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -40,9 +48,10 @@
 
 @yield('content')
 
-@include('layouts.footer')
+
 {{-- @include('layouts.modal') --}}
 </div>
+@include('layouts.footer')
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 <!-- Vendor JS Files -->
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
@@ -52,10 +61,19 @@
 <script src="{{ asset('vendor/purecounter/purecounter.js') }}"></script>
 <script src="{{ asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
 <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
-
+<!-- Vendor JS-->
+<script src="{{asset('vendor/select2/select2.min.js')}}"></script>
+<script src="{{asset('vendor/jquery-validate/jquery.validate.min.js')}}"></script>
+<script src="{{asset('vendor/bootstrap-wizard/bootstrap.min.js')}}"></script>
+<script src="{{asset('vendor/bootstrap-wizard/jquery.bootstrap.wizard.min.js')}}"></script>
+<script src="{{asset('vendor/datepicker/moment.min.js')}}"></script>
+<script src="{{asset('vendor/datepicker/daterangepicker.js')}}"></script>
+<!-- Main JS-->
+<script src="{{asset('js/global.js')}}"></script>
 
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/register.js') }}"></script>
 </body>
+
 <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 </html>

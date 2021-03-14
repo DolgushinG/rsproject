@@ -4,17 +4,13 @@
 
       <a href="{{route('home')}}" class="logo d-flex align-items-center">
         <img src="{{asset('storage/images/logo.png')}}" alt="">
-        <span>FlexStart</span>
+        <span>Routesetters</span>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active " href="{{route('home')}}">Home</a></li>
-          <li><a class="nav-link scrollto" href="{{route('about')}}">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team"></a></li>
-          <li><a href="{{route('blog')}}">Blog</a></li>
+          <li><a class="nav-link scrollto active " href="{{route('home')}}">Главная</a></li>
+          <li><a href="{{route('blog')}}">Статьи</a></li>
           
           <li><a class="nav-link scrollto" href="{{route('contact')}}">Связаться с нами</a></li>
             <!-- Authentication Links -->
