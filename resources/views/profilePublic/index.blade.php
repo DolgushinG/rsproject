@@ -44,8 +44,19 @@
               <div class="portfolio-info">
                 <h3>Опыт подготовки</h3>
                 <ul>
-                  <li><strong>Подготовка национальных стартов</strong>: <br>{{$user->additional_requirements}}</li>
-                  <li><strong>Подготовка международных стартов</strong>: <br>{{$user->experience_requirements}}</li>
+                  <li><strong>Подготовка национальных стартов</strong>: <br>
+                    <div class="card-body">
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: {{12/$user->additional_requirements}}%" aria-valuenow="{{$user->additional_requirements}}" aria-valuemin="0" aria-valuemax="5"></div>
+                      </div>
+                    </div>
+                    </li>
+                  <li><strong>Подготовка международных стартов</strong>: <br>
+                    <div class="card-body">
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: {{12/$user->experience_requirements}}%" aria-valuenow="{{$user->experience_requirements}}" aria-valuemin="0" aria-valuemax="5"></div>
+                      </div>
+                    </div></li>
                   <li><strong>Об опыте</strong>: <br>{{$user->description}}</li>
                   <li><strong>Контакты для связи</strong>: <br>{{$user->contact}}</li>
                   <li><strong>Место работы (скалодром)</strong>: <br>{{$user->company}}</li>

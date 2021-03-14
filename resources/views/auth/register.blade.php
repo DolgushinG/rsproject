@@ -18,7 +18,6 @@
                         <ul id="progressbar">
                             <li class="active" id="account"><strong>Account</strong></li>
                             <li id="personal"><strong>Personal</strong></li>
-                            <li id="payment"><strong>Image</strong></li>
                             <li id="confirm"><strong>Finish</strong></li>
                         </ul>
                         <div class="progress">
@@ -82,7 +81,7 @@
                                     <option value="middle">Средний уровень(от 1 года)</option>
                                     <option value="senior">Опытный(Главный подготовщик ~ от 2 лет)</option>
                                     </select> 
-                                <label class="fieldlabels">Кратко опишите ваш опыт</label>
+                                <label class="fieldlabels">О себе </label>
                                 <textarea type="text" name="description" placeholder="Я крутил там"></textarea>
                                 <label class="fieldlabels">Курсы подготовщика </label>
                                 <select name="educational_requirements" class="form-select" aria-label="Default select example">
@@ -92,9 +91,23 @@
                                     </select> 
                                 </div>
                                 <label class="fieldlabels">Опыт подготовки междунарожных соревнований</label>
-                                <textarea type="text" name="experience_requirements" placeholder="Я крутил там"></textarea>
+                                <input type="range" min="0" max="5" step="1" value="1" id="foo" name="experience_requirements">
                                 <label class="fieldlabels">Опыт подготовки Национальных соревнований</label>
-                                <textarea type="text" name="additional_requirements" placeholder="Я крутил там"></textarea>
+                                <input type="range" min="0" max="5" step="1" value="1" id="foo" name="additional_requirements">
+                                <input type="button" name="next" class="next action-button" value="Next"/>
+                                <input type="button" name="previous" class="previous action-button-previous"
+                                value="Previous"/>
+                            </fieldset>
+                            <fieldset> 
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Последний шаг</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Шаг 2 - 3</h2>
+                                    </div>
+                                </div> 
                                 <label class="fieldlabels">Ваш город</label>
                                 <input type="text" id="city" name="city_name" placeholder="salary"/>
                                 <label class="fieldlabels">Ваш пол</label>
@@ -107,53 +120,15 @@
                                 <input type="text" name="company" placeholder="скалодром">
                                 <label class="fieldlabels">Контакты для связи </label>
                                 <input type="text" name="contact" placeholder="Telegram, email, или ссылка на соц сеть.">
-                            <input type="button" class="next action-button" value="Next" />
-                            <input type="button" name="previous" class="previous action-button-previous"
-                                value="Previous"/>
-                            </fieldset>
-                            <fieldset> 
-                            <div class="form-card">
-                                <div class="row">
-                                    <div class="col-7">
-                                        <h2 class="fs-title">Image Upload:</h2>
-                                    </div>
-                                    <div class="col-5">
-                                        <h2 class="steps">Step 3 - 4</h2>
-                                    </div>
-                                </div> <label class="fieldlabels">Upload Your Photo:</label>
-                                <input type="file" name="pic" accept="image/*">
                             </div>
                             <button type="submit" name="next" value="Submit">
                                 <span id="regLoader" style="display: none"><i
                                         class="fa fa-spinner fa-pulse"></i><span
                                         class="sr-only">Loading...</span>&nbsp;</span>
-                                Register</button>
+                                регистрация</button>
                             <input type="button" name="previous" class="previous action-button-previous"
-                                value="Назад"/>
+                                value="Назад">
                             </fieldset>
-                        
-                        <fieldset>
-                            <div class="form-card">
-                                <div class="row">
-                                    <div class="col-7">
-                                        <h2 class="fs-title">Finish:</h2>
-                                    </div>
-                                    <div class="col-5">
-                                        <h2 class="steps">Step 4 - 4</h2>
-                                    </div>
-                                </div> <br><br>
-                                <h2 class="purple-text text-center"><strong>SUCCESS!</strong></h2> <br>
-                                <div class="row justify-content-center">
-                                    <div class="col-3"> <img src="{{asset('storage/images/GwStPmg.png')}}" class="fit-image">
-                                    </div>
-                                </div> <br><br>
-                                <div class="row justify-content-center">
-                                    <div class="col-7 text-center">
-                                        <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
                     </form>
                 </div>
             </div>

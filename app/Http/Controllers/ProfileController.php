@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\ImageRequest;
 
 class ProfileController extends Controller
 {
@@ -13,7 +14,7 @@ class ProfileController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
 
@@ -21,10 +22,19 @@ class ProfileController extends Controller
         return view('profile.index');
     }
 
-    public function indexPublic($id,Request $request) {
+    public function saveAvatar(ImageRequest $ImageRequest)
+    {
+        $id = Auth()->user()->id;
         $user = User::find($id);
-        return view('profilePublic.index', compact('user'));
-    }
+        if ($ImageRequest->hasFile('avatar')) {
+            $file = $ImageRequest->file('avatar');
+            $imageName = time() . '.' . $ImageRequest->file('avatar')->getClientOriginalExtension();
+            $file->storeAs('images/users/' , $imageName, 'public');
+            $user->photo = 'images/users/'.$imageName;
+        }
+        $user->save();
 
+        return redirect()->route('profile')->with('success', 'Изменения сохранены');
+    }
 
 }

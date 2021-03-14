@@ -4,7 +4,7 @@
 
       <a href="{{route('home')}}" class="logo d-flex align-items-center">
         <img src="{{asset('storage/images/logo.png')}}" alt="">
-        <span>FlexStart</span>
+        <span>Routesetters</span>
       </a>
 
       <nav id="navbar" class="navbar">

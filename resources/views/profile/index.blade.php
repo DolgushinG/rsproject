@@ -10,11 +10,16 @@
                 </div>
                 <div class="row">
                       <div class="col-sm-3"><!--left col-->
-                  <div class="text-center">
-                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-                    <h6>Upload a different photo...</h6>
-                    <input type="file" class="text-center center-block file-upload">
-                  </div><br>
+                        <form method="POST" action="{{route('saveAvatar')}}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="text-center">
+                                <img src="{{asset('storage/'.Auth::user()->photo) }}" class="avatar img-circle img-thumbnail" alt="avatar">
+                                <h6>Upload a different photo...</h6>
+                                <input type="file" id="avatar" name="avatar" class="text-center center-block file-upload">
+                              </div>
+                              <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                        </form>
+                  <br>
                       <div class="panel panel-default">
                         <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
                         <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
