@@ -90,10 +90,12 @@
                                     <option value="no">нет</option>
                                     </select> 
                                 </div>
-                                <label class="fieldlabels">Опыт подготовки междунарожных соревнований</label>
-                                <input type="range" min="0" max="5" step="1" value="1" id="foo" name="experience_requirements">
+                                <label class="fieldlabels">Опыт подготовки местных соревнований</label>
+                                <input type="range" min="0" max="5" step="1" value="1" id="foo" name="exp_local">
                                 <label class="fieldlabels">Опыт подготовки Национальных соревнований</label>
-                                <input type="range" min="0" max="5" step="1" value="1" id="foo" name="additional_requirements">
+                                <input type="range" min="0" max="5" step="1" value="1" id="foo" name="exp_national">
+                                <label class="fieldlabels">Опыт подготовки междунарожных соревнований</label>
+                                <input type="range" min="0" max="5" step="1" value="1" id="foo" name="exp_international">
                                 <input type="button" name="next" class="next action-button" value="Next"/>
                                 <input type="button" name="previous" class="previous action-button-previous"
                                 value="Previous"/>

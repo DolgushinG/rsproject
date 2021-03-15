@@ -44,17 +44,24 @@
               <div class="portfolio-info">
                 <h3>Опыт подготовки</h3>
                 <ul>
+                  <li><strong>Подготовка местны стартов(фестивалей)</strong>: <br>
+                    <div class="card-body">
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: {{12/$user->exp_local}}%" aria-valuenow="{{$user->additional_requirements}}" aria-valuemin="0" aria-valuemax="5"></div>
+                      </div>
+                    </div>
+                    </li>
                   <li><strong>Подготовка национальных стартов</strong>: <br>
                     <div class="card-body">
                       <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: {{12/$user->additional_requirements}}%" aria-valuenow="{{$user->additional_requirements}}" aria-valuemin="0" aria-valuemax="5"></div>
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: {{12/$user->exp_national}}%" aria-valuenow="{{$user->additional_requirements}}" aria-valuemin="0" aria-valuemax="5"></div>
                       </div>
                     </div>
                     </li>
                   <li><strong>Подготовка международных стартов</strong>: <br>
                     <div class="card-body">
                       <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: {{12/$user->experience_requirements}}%" aria-valuenow="{{$user->experience_requirements}}" aria-valuemin="0" aria-valuemax="5"></div>
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: {{12/$user->exp_international}}%" aria-valuenow="{{$user->experience_requirements}}" aria-valuemin="0" aria-valuemax="5"></div>
                       </div>
                     </div></li>
                   <li><strong>Об опыте</strong>: <br>{{$user->description}}</li>

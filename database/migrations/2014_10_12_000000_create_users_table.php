@@ -28,8 +28,9 @@ class CreateUsersTable extends Migration
             $table->text('skills')->nullable();
             $table->text('responsibilities')->nullable();
             $table->text('educational_requirements')->nullable();
-            $table->integer('experience_requirements')->default(0)->nullable();
-            $table->integer('additional_requirements')->default(0)->nullable();
+            $table->integer('exp_local')->default(0)->nullable();
+            $table->integer('exp_national')->default(0)->nullable();
+            $table->integer('exp_international')->default(0)->nullable();
             $table->text('apply_instruction')->nullable();
             $table->string('city_name')->nullable();
             $table->tinyInteger('experience_required_years')->default(0)->nullable(); //In Years
