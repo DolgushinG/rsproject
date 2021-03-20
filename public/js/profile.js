@@ -1,25 +1,40 @@
 getProfile('General');
+$('#general').addClass('active');
 $(document).on('click', '#general', function () {
+    deactivateAllTabs();
+    $('#general').addClass('active');
     getProfile('General');
 });
 $(document).on('click', '#changePassword', function () {
+    deactivateAllTabs();
+    $('#changePassword').addClass('active');
     getProfile('ChangePassword');
 });
 $(document).on('click', '#info', function () {
+    deactivateAllTabs();
+    $('#info').addClass('active');
     getProfile('Info');
 });
 $(document).on('click', '#socialLinks', function () {
+    deactivateAllTabs();
+    $('#socialLinks').addClass('active');
     getProfile('SocialLinks');
 });
 $(document).on('click', '#connections', function () {
+    deactivateAllTabs();
+    $('#connections').addClass('active');
     getProfile('Connections');
 });
 $(document).on('click', '#notifications', function () {
+    deactivateAllTabs();
+    $('#notifications').addClass('active');
     getProfile('Notifications');
 });
-
-function getProfile($tabcontent){
-        $tab = $tabcontent;
+function deactivateAllTabs(){
+    $('#general, #changePassword, #info, #socialLinks, #connections, #notifications').removeClass('active');
+ }
+function getProfile(tab){
+    console.log(tab);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -27,13 +42,35 @@ function getProfile($tabcontent){
         });
            $.ajax({
                type: 'GET',
-               url: 'getProfile'+$tab,
+               url: 'getProfile'+tab,
                success: function(data) {
                    $('#tabContent').html(data);
                },
            });
 }
-
+// $(document).ready(function() {
+//     $.ajaxSetup({
+//         headers: {
+//                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//                 }
+//             });
+//     $(document).on('click','#saveChangesPassword', function(e) {
+//      let data = $("#changesForm").serialize();
+//      console.log(data);
+//      e.preventDefault();
+//         $.ajax({
+//             type: 'POST',
+//             url: 'editChagesPassword',
+//             data: data,
+//             success: function(data) {
+//                 $('#tabContent').html(data);
+//             },
+//             error: function(data) {
+//                 console.log("error");
+//             }
+//         });
+//     });
+// });
 // if(Cookies.get("_hidemode") === "Enabled"){
 //     let id = $('.comment').val();
 //     $('#commentField_'+id).slideUp();

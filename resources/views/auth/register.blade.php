@@ -80,7 +80,7 @@
                                     <option value="beginner">Начинающий (до 1 года)</option>
                                     <option value="middle">Средний уровень(от 1 года)</option>
                                     <option value="senior">Опытный(Главный подготовщик ~ от 2 лет)</option>
-                                    </select> 
+                                </select> 
                                 <label class="fieldlabels">О себе </label>
                                 <textarea type="text" name="description" placeholder="Я крутил там"></textarea>
                                 <label class="fieldlabels">Курсы подготовщика </label>

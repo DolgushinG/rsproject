@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\ImageRequest;
+use App\Models\Category;
+use App\Models\UserAndCategories;
 
 class ProfileController extends Controller
 {
@@ -16,29 +18,28 @@ class ProfileController extends Controller
     {
         $this->middleware('auth');
     }
-
-
     public function index() {
         return view('profile.index');
     }
     public function getTabContentGeneral() {
-
-        return view('profile.general');
-    }
-    public function getTabContentConnections() {
-        return view('profile.connections');
-    }
-    public function getTabContentChangePassword() {
-        return view('profile.changePassword');
+        $user = User::find(Auth()->user()->id);
+        return view('profile.general', compact('user'));
     }
     public function getTabContentInfo() {
-        return view('profile.info');
+        $categoriesAll = Category::all();
+        $user = User::find(Auth()->user()->id);
+        $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');
+        $categories = Category::whereIn('id', $userAndCategories)->get();
+        $notCategories = Category::whereNotIn('id', $userAndCategories)->get();
+        return view('profile.info', compact('user','categories','notCategories'));
     }
     public function getTabContentNotifications() {
-        return view('profile.notifications');
+        $user = User::find(Auth()->user()->id);
+        return view('profile.notifications', compact('user'));
     }
     public function getTabContentSocialLinks() {
-        return view('profile.socialLinks');
+        $user = User::find(Auth()->user()->id);
+        return view('profile.socialLinks', compact('user'));
     }
     
 

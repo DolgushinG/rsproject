@@ -25,8 +25,10 @@ Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])
 Route::get('/profile/{id}', [App\Http\Controllers\PublicProfileController::class, 'indexPublic'])->name('profileDetails');
 Route::post('/profile/save', [App\Http\Controllers\ProfileController::class, 'saveAvatar'])->name('saveAvatar');
 Route::get('getProfileGeneral', [App\Http\Controllers\ProfileController::class, 'getTabContentGeneral'])->name('getProfileGeneral');
-Route::get('getProfileChangePassword', [App\Http\Controllers\ProfileController::class, 'getTabContentChangePassword'])->name('getProfileChangePassword');
+Route::post('editChagesGeneral', [App\Http\Controllers\ProfileController::class, 'editTabContentGeneral'])->name('editChagesGeneral');
 Route::get('getProfileInfo', [App\Http\Controllers\ProfileController::class, 'getTabContentInfo'])->name('getProfileInfo');
-Route::get('getProfileSocialLinks', [App\Http\Controllers\ProfileController::class, 'getTabContentSocialLinks'])->name('getProfileSocialLinks');
-Route::get('getProfileConnections', [App\Http\Controllers\ProfileController::class, 'getTabContentConnections'])->name('getProfileConnections');
+Route::post('editChagesInfo', [App\Http\Controllers\ProfileController::class, 'editTabContentInfo'])->name('editChagesInfo');
 Route::get('getProfileNotifications', [App\Http\Controllers\ProfileController::class, 'getTabContentNotifications'])->name('getProfileNotifications');
+Route::post('editChagesNotifications', [App\Http\Controllers\ProfileController::class, 'editChagesNotifications'])->name('editChagesNotifications');
+Route::get('getProfileSocialLinks', [App\Http\Controllers\ProfileController::class, 'getTabContentSocialLinks'])->name('getTabContentSocialLinks');
+Route::post('editChagesSocialLinks', [App\Http\Controllers\ProfileController::class, 'getTabContentSocialLinks'])->name('editChagesSocialLinks');

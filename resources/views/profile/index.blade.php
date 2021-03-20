@@ -14,10 +14,6 @@
             </div>
           </div>
         </div>
-        <div class="text-right mt-3">
-          <button id="BtnContent" type="button" class="btn btn-primary">Save changes</button>&nbsp;
-          <button type="button" class="btn btn-default">Cancel</button>
-        </div>
     </div>
 </section>
 <script type="text/javascript" src="{{ asset('js/profile.js') }}"></script>

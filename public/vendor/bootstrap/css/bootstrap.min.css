@@ -7706,6 +7706,10 @@ fieldset:disabled .btn {
     margin-left: auto !important
 }
 
+.ml-4,.mx-4 {
+    margin-left: 1.5rem!important
+}
+
 .p-0 {
     padding: 0 !important
 }
