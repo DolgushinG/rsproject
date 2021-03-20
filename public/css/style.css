@@ -3203,7 +3203,7 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
   padding-left: 0;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .col-md {
       -ms-flex-preferred-size:0;
       flex-basis: 0;
@@ -3450,7 +3450,7 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
   .offset-md-11 {
       margin-left: 91.666667%
   }
-}
+} */
 
 .align-items-center {
   -ms-flex-align: center!important;
