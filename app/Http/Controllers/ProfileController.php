@@ -25,6 +25,22 @@ class ProfileController extends Controller
         $user = User::find(Auth()->user()->id);
         return view('profile.general', compact('user'));
     }
+    public function editTabContentGeneral(Request $request) {
+        $id = Auth()->user()->id;
+        $user = User::find($id);
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $imageName = time() . '.' . $request->file('photo')->getClientOriginalExtension();
+            $file->storeAs('images/users/' , $imageName, 'public');
+            $user->photo = 'images/users/'.$imageName;
+        }
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->city_name = $request->city_name;
+        $user->save();
+        return view('profile.index');
+    }
+
     public function getTabContentInfo() {
         $categoriesAll = Category::all();
         $user = User::find(Auth()->user()->id);
@@ -33,9 +49,20 @@ class ProfileController extends Controller
         $notCategories = Category::whereNotIn('id', $userAndCategories)->get();
         return view('profile.info', compact('user','categories','notCategories'));
     }
+    public function editChagesInfo(Request $request) {
+        dd($request);
+        return view('profile.info', compact('user','categories','notCategories'));
+    }
+
     public function getTabContentNotifications() {
         $user = User::find(Auth()->user()->id);
         return view('profile.notifications', compact('user'));
+    }
+    public function editChagesNotifications(Request $request) {
+        $user = User::find(Auth()->user()->id);
+        $user->active_status = intval($request->active);
+        $user->save();
+        return view('profile.index');
     }
     public function getTabContentSocialLinks() {
         $user = User::find(Auth()->user()->id);

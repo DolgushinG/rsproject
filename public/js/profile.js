@@ -5,11 +5,6 @@ $(document).on('click', '#general', function () {
     $('#general').addClass('active');
     getProfile('General');
 });
-$(document).on('click', '#changePassword', function () {
-    deactivateAllTabs();
-    $('#changePassword').addClass('active');
-    getProfile('ChangePassword');
-});
 $(document).on('click', '#info', function () {
     deactivateAllTabs();
     $('#info').addClass('active');
@@ -31,7 +26,7 @@ $(document).on('click', '#notifications', function () {
     getProfile('Notifications');
 });
 function deactivateAllTabs(){
-    $('#general, #changePassword, #info, #socialLinks, #connections, #notifications').removeClass('active');
+    $('#general, #info, #socialLinks, #connections, #notifications').removeClass('active');
  }
 function getProfile(tab){
     console.log(tab);
@@ -48,29 +43,69 @@ function getProfile(tab){
                },
            });
 }
-// $(document).ready(function() {
-//     $.ajaxSetup({
-//         headers: {
-//                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//                 }
-//             });
-//     $(document).on('click','#saveChangesPassword', function(e) {
-//      let data = $("#changesForm").serialize();
-//      console.log(data);
-//      e.preventDefault();
-//         $.ajax({
-//             type: 'POST',
-//             url: 'editChagesPassword',
-//             data: data,
-//             success: function(data) {
-//                 $('#tabContent').html(data);
-//             },
-//             error: function(data) {
-//                 console.log("error");
-//             }
-//         });
-//     });
-// });
+$('#upload').on('click', function() {
+        var file_data = $('#sortpicture').prop('files')[0];
+        var form_data = new FormData();
+        form_data.append('file', file_data);
+        alert(form_data);
+        $.ajax({
+            url: 'editChagesGeneral',
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function(php_script_response){
+                alert(php_script_response);
+            }
+         });
+    });
+    
+$(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+    $(document).on('click','#saveChangesNotifications', function(e) {
+     var data = $("#notificationsForm").serialize();
+     e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'editChagesNotifications',
+            data: data,
+            success: function(data) {
+                $('#tabContent').html(data);
+            },
+            error: function(data) {
+                console.log("error");
+            }
+        });
+    });
+});
+$(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+    $(document).on('click','#saveChangesInfo', function(e) {
+     var data = $("#infoForm").serialize();
+     e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'editChagesInfo',
+            data: data,
+            success: function(data) {
+                $('#tabContent').html(data);
+            },
+            error: function(data) {
+                console.log("error");
+            }
+        });
+    });
+});
 // if(Cookies.get("_hidemode") === "Enabled"){
 //     let id = $('.comment').val();
 //     $('#commentField_'+id).slideUp();

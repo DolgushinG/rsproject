@@ -79,7 +79,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'salary' => intval($data['salary']),
+            'salary_hour' => intval($data['salary_hour']),
+            'salary_route' => intval($data['salary_route']),
             'exp_level' => $data['exp_level'],
             'description' => $data['description'],
             'educational_requirements' => $data['educational_requirements'],
@@ -89,7 +90,8 @@ class RegisterController extends Controller
             'city_name' => $data['city_name'],
             'gender' => $data['gender'],
             'company' => $data['company'],
-            'contact' => $data['contact'],
+            'telegram' => $data['telegram'],
+            'instagram' => $data['instagram']
         ]);
         
         foreach($data['categories'] as $id => $x){

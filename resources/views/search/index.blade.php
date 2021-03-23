@@ -30,7 +30,7 @@
                                     <div class="checkbox-row">
                                         <label class="checkbox-container m-r-45">{{ $category->category_name }}
                                             <input type="checkbox" id="categories" name="categories[{{ $category->id }}]"
-                                            value="{{ $category->id }}" unchecked >
+                                            value="{{ $category->id }}" unchecked>
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>

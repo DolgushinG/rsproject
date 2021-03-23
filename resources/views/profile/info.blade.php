@@ -1,10 +1,10 @@
-<form action="{{ route('editChagesInfo') }}" method="POST" id="infoForm">
+<form action="{{ route('editChagesInfo') }}" id="infoForm">
   @csrf
 <div class="tab-pane fade active show" id="account-info">
     <div class="card-body pb-2">
       <div class="form-group">
         <label class="form-label">Краткое резюме о себе или о своем опыте</label>
-        <textarea class="form-control" rows="2" placeholder="Я давно уже работаю подготовщик .... ">{{$user->description}}</textarea>
+        <textarea class="form-control" rows="2" name="description" placeholder="Я давно уже работаю подготовщик .... ">{{$user->description}}</textarea>
       </div>
       <div class="form-group">
       <label class="fieldlabels">Ваш опыт</label>
@@ -69,19 +69,19 @@
     <div class="card-body pb-2">
         <div class="form-group">
           <label class="form-label">Оплата за час</label>
-          <input type="text" name="salary" class="form-control" value="{{$user->salary}}">
+          <input type="text" name="salaryHour" class="form-control" value="{{$user->salary_hour}}">
         </div>
         <div class="form-group">
           <label class="form-label">Оплата за трассу</label>
-          <input type="text" name="salary" class="form-control" value="{{$user->salary}}">
+          <input type="text" name="salaryRoute" class="form-control" value="{{$user->salary_route}}">
         </div>
       <div class="form-group">
         <label class="form-label">Скалодром(на котором работаете постоянно)</label>
-        <input type="text" class="form-control" value="{{$user->company}}">
+        <input type="text" class="form-control" name="company" value="{{$user->company}}">
       </div>
     </div>
   </div>
-  <div class="text-right mt-3">
+  <div class="text-right mt-4 ml-4 mb-4">
     <button id="saveChangesInfo" type="button" class="btn btn-primary">Save changes</button>
   </div>
 </form>

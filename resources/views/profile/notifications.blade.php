@@ -3,19 +3,20 @@
 <div class="tab-pane fade active show" id="account-notifications">
     <div class="card-body pb-2">
       <div class="form-group">
-        <label class="switcher">
-          <input type="checkbox" class="switcher-input" checked>
-          <span class="switcher-indicator">
-            <span class="switcher-yes"></span>
-            <span class="switcher-no"></span>
-          </span>
-          <span class="switcher-label">Скрыть мое резюме </span>
-        </label>
+          <div class="checkbox">
+            @if(!$user->active_status)
+            <input class="custom-checkbox" type="checkbox" id="color-1" name="active" unchecked value="1">
+            @else 
+            <input class="custom-checkbox" type="checkbox" id="color-1" name="active" checked value="0">
+            @endif
+            <label for="color-1">Скрыть мое резюме</label>
+          </div>
       </div>
+      
     </div>
     </div>
   </div>
-  <div class="text-right mt-3">
+  <div class="text-right mt-4 ml-4 mb-4">
     <button id="saveChangesNotifications" type="button" class="btn btn-primary">Save changes</button>
   </div>
 </form>

@@ -117,7 +117,8 @@ class UserController extends Controller
         $show->id('id');
         $show->name('name');
         $show->email('email');
-        $show->slary('slary');
+        $show->slary('salary_hour');
+        $show->slary('salary_route');
         $show->exp_level('exp_level');
         $show->description('description');
         $show->skills('skills');
@@ -149,7 +150,8 @@ class UserController extends Controller
         $form->text('id', 'id');
         $form->text('name', 'name');
         $form->text('email', 'email');
-        $form->text('slary', 'slary');
+        $form->text('salary_hour', 'salary_hour');
+        $form->text('salary_route', 'salary_route');
         $form->text('exp_level', 'exp_level');
         $form->text('description', 'description');
         $form->text('skills', 'skills');

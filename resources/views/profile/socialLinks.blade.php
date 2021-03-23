@@ -13,7 +13,7 @@
       </div>
     </div>
   </div>
-  <div class="text-right mt-3">
+  <div class="text-right mt-4 ml-4 mb-4">
     <button id="saveChangesSocialLinks" type="button" class="btn btn-primary">Save changes</button>
   </div>
 </form>

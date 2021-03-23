@@ -20,7 +20,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'salary',
+        'salary_hour',
+        'salary_route',
         'exp_level',
         'description',
         'educational_requirements',
@@ -30,7 +31,8 @@ class User extends Authenticatable
         'gender',
         'company',
         'city_name',
-        'contact',
+        'telegram',
+        'instagram',
         'photo'
     ];
 

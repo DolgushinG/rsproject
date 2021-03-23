@@ -16,15 +16,15 @@ class SearchController extends Controller
             foreach ($users as $user) {
                 $usersResult[] = $user->user_id;
             }
-            if($request->city_name != null){
-                $users = User::where('city_name','=',$request->city_name)->whereIn('id', $usersResult)->get();
+            if ($request->city_name != null) {
+                $users = User::where('city_name','=',$request->city_name)->where('active_status', '=','0')->whereIn('id', $usersResult)->get();
             } else {
-                $users = User::whereIn('id', $usersResult)->get();
+                $users = User::whereIn('id', $usersResult)->where('active_status', '=','0')->get();
             }
         } else if ($request->categories === null && $request->city_name === null) {
-            $users = User::all();
+            $users = User::where('active_status', '=','0')->get();
         } else {
-            $users = User::where('city_name','=',$request->city_name)->get();
+            $users = User::where('city_name','=',$request->city_name)->where('active_status', '=','0')->get();
             
         }
 
