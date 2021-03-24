@@ -1,4 +1,3 @@
-getProfile('General');
 $('#general').addClass('active');
 $(document).on('click', '#general', function () {
     deactivateAllTabs();
@@ -106,6 +105,29 @@ $(document).ready(function() {
         });
     });
 });
+$(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+    $(document).on('click','#saveChangesSocialLinks', function(e) {
+     var data = $("#socialLinksForm").serialize();
+     e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'editChagesSocialLinks',
+            data: data,
+            success: function(data) {
+                $('#tabContent').html(data);
+            },
+            error: function(data) {
+                console.log("error");
+            }
+        });
+    });
+});
+
 // if(Cookies.get("_hidemode") === "Enabled"){
 //     let id = $('.comment').val();
 //     $('#commentField_'+id).slideUp();

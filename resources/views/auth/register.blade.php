@@ -113,22 +113,16 @@
                                     </div>
                                 </div> 
                                 <label class="fieldlabels">Ваш город</label>
-                                <input type="text" id="city" name="city_name" placeholder="salary"/>
-                                <label class="fieldlabels">Ваш пол</label>
-                                <select name="gender" class="fieldlabels form-select" aria-label="Default select example">
-                                    <option selected>Выбрать</option>
-                                    <option value="male">Муж</option>
-                                    <option value="female">Жен</option>
-                                </select> 
-                                <label class="fieldlabels">Место работы</label>
-                                <input type="text" name="company" placeholder="скалодром">
+                                <input type="text" id="city" name="city_name" placeholder=""/>
+                                <label class="fieldlabels">Место работы (скалодром)</label>
+                                <input type="text" name="company" placeholder="">
                                 <div class="col-7">
                                     <h2 class="fs-title">Как с вами связаться?(не обязательные поля)</h2>
                                 </div>
                                 <label class="fieldlabels">Telegram</label>
-                                <input type="text" name="telegram" placeholder="@example">
+                                <input type="text" name="telegram" placeholder="Имя в телеграмме, после @">
                                 <label class="fieldlabels">Instagram </label>
-                                <input type="text" name="instagram" placeholder="https://instagram.com/example">
+                                <input type="text" name="instagram" placeholder="Имя после https://instagram.com/">
                                 <label class="fieldlabels">Если нет telegram и instagram? запасной контакт для связи</label>
                                 <input type="text" name="contact" placeholder="ссылка на соц.сети или телефон">
                             </div>

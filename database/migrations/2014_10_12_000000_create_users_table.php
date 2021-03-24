@@ -39,7 +39,6 @@ class CreateUsersTable extends Migration
             $table->dateTime('approved_at')->nullable();
             $table->tinyInteger('status')->default(0)->nullable(); //0,pending,1=approved,2=blocked
             $table->tinyInteger('is_premium')->nullable();
-            $table->enum('gender', ['male', 'female'])->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('photo')->nullable();

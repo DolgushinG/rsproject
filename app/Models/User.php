@@ -28,12 +28,12 @@ class User extends Authenticatable
         'exp_local',
         'exp_national',
         'exp_international',
-        'gender',
         'company',
         'city_name',
         'telegram',
         'instagram',
-        'photo'
+        'photo',
+        'contact'
     ];
 
     /**

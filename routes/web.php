@@ -31,4 +31,4 @@ Route::post('editChagesInfo', [App\Http\Controllers\ProfileController::class, 'e
 Route::get('getProfileNotifications', [App\Http\Controllers\ProfileController::class, 'getTabContentNotifications'])->name('getProfileNotifications');
 Route::post('editChagesNotifications', [App\Http\Controllers\ProfileController::class, 'editChagesNotifications'])->name('editChagesNotifications');
 Route::get('getProfileSocialLinks', [App\Http\Controllers\ProfileController::class, 'getTabContentSocialLinks'])->name('getTabContentSocialLinks');
-Route::post('editChagesSocialLinks', [App\Http\Controllers\ProfileController::class, 'getTabContentSocialLinks'])->name('editChagesSocialLinks');
+Route::post('editChagesSocialLinks', [App\Http\Controllers\ProfileController::class, 'editChagesSocialLinks'])->name('editChagesSocialLinks');

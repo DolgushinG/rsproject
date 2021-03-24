@@ -88,12 +88,16 @@ class RegisterController extends Controller
             'exp_national' => $data['exp_national'],
             'exp_international' => $data['exp_international'],
             'city_name' => $data['city_name'],
-            'gender' => $data['gender'],
             'company' => $data['company'],
             'telegram' => $data['telegram'],
-            'instagram' => $data['instagram']
+            'instagram' => $data['instagram'],
+            'contact' => $data['contact']
         ]);
-        
+        // $filename = 'temp-image.jpg';
+        // $tempImage = tempnam(sys_get_temp_dir(), $filename);
+        // copy('https://my-cdn.com/files/image.jpg', $tempImage);
+
+// return response()->download($tempImage, $filename);
         foreach($data['categories'] as $id => $x){
             $userAndCategory = new UserAndCategories;
             $userAndCategory->user_id = $user->id;

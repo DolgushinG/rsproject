@@ -12,7 +12,6 @@
             <label for="color-1">Скрыть мое резюме</label>
           </div>
       </div>
-      
     </div>
     </div>
   </div>
