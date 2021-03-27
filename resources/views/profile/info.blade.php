@@ -1,4 +1,4 @@
-<form action="{{ route('editChagesInfo') }}" id="infoForm">
+<form  id="infoForm">
   @csrf
 <div class="tab-pane fade active show" id="account-info">
     <div class="card-body pb-2">
@@ -83,5 +83,6 @@
   </div>
   <div class="text-right mt-4 ml-4 mb-4">
     <button id="saveChangesInfo" type="button" class="btn btn-primary">Save changes</button>
+    <div id="ajax-alert" class="alert" style="display:none"></div>
   </div>
 </form>

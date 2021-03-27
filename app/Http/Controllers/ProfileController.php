@@ -29,16 +29,20 @@ class ProfileController extends Controller
     public function editTabContentGeneral(Request $request) {
         $id = Auth()->user()->id;
         $user = User::find($id);
-        if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-            $imageName = time() . '.' . $request->file('photo')->getClientOriginalExtension();
+        if ($request->file) {
+            $file = $request->file;
+            $imageName = time() . '.' . $request->file->getClientOriginalExtension();
             $file->storeAs('images/users/' , $imageName, 'public');
             $user->photo = 'images/users/'.$imageName;
         }
         $user->name = $request->name;
-        $user->city_name = $request->city_name;
-        $user->save();
-        return view('profile.index', compact('user'));
+        $user->city_name = $request->city;
+        ;
+        if ($user->save()) {
+            return response()->json(['success' => true, 'message' => 'сохранено'], 200);
+         } else {
+            return response()->json(['success' => false, 'message' => 'ошибка сохранения'], 422);
+         }
     }
 
     public function getTabContentInfo() {
@@ -78,10 +82,15 @@ class ProfileController extends Controller
             } 
         }
         $user->save();
-        $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');
-        $categories = Category::whereIn('id', $userAndCategories)->get();
-        $notCategories = Category::whereNotIn('id', $userAndCategories)->get();
-        return view('profile.info', compact('user','categories','notCategories'));
+        // $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');
+        // $categories = Category::whereIn('id', $userAndCategories)->get();
+        // $notCategories = Category::whereNotIn('id', $userAndCategories)->get();
+        // return view('profile.info', compact('user','categories','notCategories'));
+        if ($user->save()) {
+            return response()->json(['success' => true, 'message' => 'сохранено'], 200);
+        } else {
+            return response()->json(['success' => false, 'message' => 'ошибка сохранения'], 422);
+        }
     }
 
     public function getTabContentNotifications() {
@@ -91,8 +100,11 @@ class ProfileController extends Controller
     public function editChagesNotifications(Request $request) {
         $user = User::find(Auth()->user()->id);
         $user->active_status = intval($request->active);
-        $user->save();
-        return view('profile.notifications', compact('user'));
+        if ($user->save()) {
+            return response()->json(['success' => true, 'message' => 'сохранено'], 200);
+        } else {
+            return response()->json(['success' => false, 'message' => 'ошибка сохранения'], 422);
+        }
     }
     public function getTabContentSocialLinks() {
         $user = User::find(Auth()->user()->id);
@@ -104,8 +116,11 @@ class ProfileController extends Controller
         $user->telegram = $request->telegram;
         $user->instagram = $request->instagram;
         $user->contact = $request->contact;
-        $user->save();
-        return view('profile.socialLinks', compact('user'));
+        if ($user->save()) {
+            return response()->json(['success' => true, 'message' => 'сохранено'], 200);
+        } else {
+            return response()->json(['success' => false, 'message' => 'ошибка сохранения'], 422);
+        }
     }
 
 }

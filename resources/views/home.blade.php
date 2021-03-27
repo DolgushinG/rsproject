@@ -148,12 +148,15 @@
         <div class="swiper-slide">
           <div class="testimonial-item">
             <p>
-              {{$user->description}}
+              <a href="{{route('profileDetails', $user->id)}}"><h4>{{$user->name}}</h4></a>
+             
             </p>
             <div class="profile mt-auto">
-              <img src="{{ asset('storage/images/testimonials/testimonials-1.jpg')}}" class="testimonial-img" alt="">
-              <h3>{{$user->name}}</h3>
+              <img src="storage/{{$user->photo}}" class="testimonial-img" alt="">
             </div>
+            <p>
+              {{$user->description}}
+              </p>
           </div>
         </div><!-- End testimonial item -->
         @endforeach

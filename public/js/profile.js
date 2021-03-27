@@ -42,25 +42,51 @@ function getProfile(tab){
                },
            });
 }
-$('#upload').on('click', function() {
+$(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+    $(document).on('click','#saveChangesGeneral', function(e) {
+        setTimeout(function(){
+            $('.alert-success').addClass('invisible');
+          } , 3000);
         var file_data = $('#sortpicture').prop('files')[0];
+        var email = $('#email').val();
+        var name = $('#name').val();
+        var city = $('#city').val();
         var form_data = new FormData();
-        form_data.append('file', file_data);
-        alert(form_data);
+        if(file_data){
+            form_data.append('file', file_data);
+        }
+        form_data.append('name', name);
+        form_data.append('email', email);
+        form_data.append('city', city);
+        let tab = 'General';
+     e.preventDefault();
         $.ajax({
+            type: 'POST',
             url: 'editChagesGeneral',
-            dataType: 'text',
+            data: form_data,
             cache: false,
             contentType: false,
             processData: false,
-            data: form_data,
-            type: 'post',
-            success: function(php_script_response){
-                alert(php_script_response);
+            success: function(data) {
+                getProfile(tab);
+                var messages = $('.messages');
+                var successHtml = '<div class="alert alert-success">'+
+                '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
+                '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></</strong> '+ data.message +
+                '</div>';
+                $(messages).html(successHtml);
+            },
+            error: function(data) {
             }
-         });
+        });
     });
-    
+});
+
 $(document).ready(function() {
     $.ajaxSetup({
         headers: {
@@ -68,14 +94,24 @@ $(document).ready(function() {
                 }
             });
     $(document).on('click','#saveChangesNotifications', function(e) {
+        setTimeout(function(){
+            $('.alert-success').addClass('invisible');
+          } , 3000);
      var data = $("#notificationsForm").serialize();
      e.preventDefault();
+     let tab = 'Notifications';
         $.ajax({
             type: 'POST',
             url: 'editChagesNotifications',
             data: data,
             success: function(data) {
-                $('#tabContent').html(data);
+                getProfile(tab);
+                var messages = $('.messages');
+                var successHtml = '<div class="alert alert-success">'+
+                '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
+                '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></</strong> '+ data.message +
+                '</div>';
+                $(messages).html(successHtml);
             },
             error: function(data) {
                 console.log("error");
@@ -90,14 +126,24 @@ $(document).ready(function() {
                 }
             });
     $(document).on('click','#saveChangesInfo', function(e) {
+        setTimeout(function(){
+            $('.alert-success').addClass('invisible');
+          } , 3000);
      var data = $("#infoForm").serialize();
      e.preventDefault();
+     let tab = 'Info';
         $.ajax({
             type: 'POST',
             url: 'editChagesInfo',
             data: data,
             success: function(data) {
-                $('#tabContent').html(data);
+                getProfile(tab);
+                var messages = $('.messages');
+                var successHtml = '<div class="alert alert-success">'+
+                '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
+                '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></</strong> '+ data.message +
+                '</div>';
+                $(messages).html(successHtml);
             },
             error: function(data) {
                 console.log("error");
@@ -112,14 +158,25 @@ $(document).ready(function() {
                 }
             });
     $(document).on('click','#saveChangesSocialLinks', function(e) {
+        setTimeout(function(){
+            $('.alert-success').addClass('invisible');
+          } , 3000);
      var data = $("#socialLinksForm").serialize();
      e.preventDefault();
+     let tab = 'SocialLinks';
         $.ajax({
             type: 'POST',
             url: 'editChagesSocialLinks',
             data: data,
             success: function(data) {
-                $('#tabContent').html(data);
+                getProfile(tab);
+                var messages = $('.messages');
+                var successHtml = '<div class="alert alert-success">'+
+                '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
+                '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></</strong> '+ data.message +
+                '</div>';
+                $(messages).html(successHtml);
+                
             },
             error: function(data) {
                 console.log("error");
