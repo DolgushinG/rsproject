@@ -19,7 +19,7 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab1">
-                              <form action="{{ route('getresultsearch') }}" method="POST" id="searchForm">
+                              <form id="searchForm" method="POST">
                                 @csrf
                                     <div class="input-group">
                                         <label class="label">Город</label>

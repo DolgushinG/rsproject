@@ -9,7 +9,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active " href="{{route('home')}}">Главная</a></li>
+          <li><a class="nav-link scrollto active" href="{{route('home')}}">Главная</a></li>
           <li><a href="{{route('blog')}}">Статьи</a></li>
           
           <li><a class="nav-link scrollto" href="{{route('contact')}}">Связаться с нами</a></li>
@@ -42,7 +42,7 @@
             @endguest
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
+      </nav>
+      <!-- .navbar -->
     </div>
   </header><!-- End Header -->

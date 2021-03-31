@@ -17,6 +17,7 @@ Route::get('/about', [App\Http\Controllers\HomeController::class, 'indexAbout'])
 Route::get('/blog', [App\Http\Controllers\HomeController::class, 'indexBlog'])->name('blog');
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'indexContact'])->name('contact');
 Route::post('/getresultsearch', [App\Http\Controllers\SearchController::class, 'getResultSearch'])->name('getresultsearch');
+Route::post('/getresultsearch/paginationSeach', [App\Http\Controllers\SearchController::class, 'paginationSeach'])->name('paginationSeach');
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

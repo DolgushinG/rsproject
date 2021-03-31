@@ -4,7 +4,7 @@
 <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
  <!-- ======= Hero Section ======= -->
- <section id="register" class="register">
+ <section id="register" class="register fadeInDown">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5
@@ -41,7 +41,7 @@
                                 <label class="fieldlabels">Email:*</label>
                                 <input id="email" type="email" name="email" placeholder="Email">
                                 <label class="fieldlabels">Username: *</label>
-                                <input id="name" type="text" name="name" placeholder="UserName" required autocomplete="username">
+                                <input id="name" type="text" name="name" placeholder="Иван Иванов" required autocomplete="username">
                                 <label class="fieldlabels">Password:*</label>
                                 <input id="password" name="password" type="password" required autocomplete="new-password"> 
                                 <label class="fieldlabels">Confirm Password: *</label>

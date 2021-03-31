@@ -41,14 +41,9 @@
   <link href="{{ asset('css/style.css')}}" rel="stylesheet">
 </head>
 <body>
-<div id="main-wrapper">
-
 @include('layouts.nav')
-
-
+<div id="main">
 @yield('content')
-
-
 {{-- @include('layouts.modal') --}}
 </div>
 @include('layouts.footer')
@@ -62,18 +57,18 @@
 <script src="{{ asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
 <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
 <!-- Vendor JS-->
-<script src="{{asset('vendor/select2/select2.min.js')}}"></script>
+{{-- <script src="{{asset('vendor/select2/select2.min.js')}}"></script>
 <script src="{{asset('vendor/jquery-validate/jquery.validate.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap-wizard/bootstrap.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap-wizard/jquery.bootstrap.wizard.min.js')}}"></script>
 <script src="{{asset('vendor/datepicker/moment.min.js')}}"></script>
-<script src="{{asset('vendor/datepicker/daterangepicker.js')}}"></script>
+<script src="{{asset('vendor/datepicker/daterangepicker.js')}}"></script> --}}
 <!-- Main JS-->
-<script src="{{asset('js/global.js')}}"></script>
+{{-- <script src="{{asset('js/global.js')}}"></script> --}}
 
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/register.js') }}"></script>
 </body>
 
-<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+{{-- <script type="text/javascript" src="{{ asset('js/main.js') }}"></script> --}}
 </html>

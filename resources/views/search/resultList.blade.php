@@ -24,5 +24,10 @@
             </div>
             @endforeach
         </div>
+        <div class="row mx-auto mt-5">  
+          <div class="col-lg-12">
+          {!! $users->links() !!}
+          </div>
+         </div>
     </div>
 </section>

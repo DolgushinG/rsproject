@@ -100,6 +100,8 @@ class ProfileController extends Controller
     public function editChagesNotifications(Request $request) {
         $user = User::find(Auth()->user()->id);
         $user->active_status = intval($request->active);
+        $user->other_city = intval($request->otherCity);
+        $user->all_time = intval($request->allTime);
         if ($user->save()) {
             return response()->json(['success' => true, 'message' => 'сохранено'], 200);
         } else {

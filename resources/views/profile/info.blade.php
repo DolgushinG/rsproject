@@ -1,4 +1,4 @@
-<form  id="infoForm">
+<form id="infoForm">
   @csrf
 <div class="tab-pane fade active show" id="account-info">
     <div class="card-body pb-2">
