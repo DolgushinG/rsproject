@@ -18,24 +18,23 @@ class SearchController extends Controller
                 $usersResult[] = $user->user_id;
             }
             if ($request->city_name != null) {
-                $users = User::where('city_name', '=', $request->city_name)->where('active_status', '=', '0')->whereIn('id', $usersResult)->simplePaginate(20);
+                $users = User::where('city_name', '=', $request->city_name)->where('active_status', '=', '0')->whereIn('id', $usersResult);
+                $foundUsers = $users->count();
+                $users = $users->simplePaginate(12);
             } else {
-                $users = User::whereIn('id', $usersResult)->where('active_status', '=', '0')->simplePaginate(20);
+                $users = User::whereIn('id', $usersResult)->where('active_status', '=', '0');
+                $foundUsers = $users->count();
+                $users = $users->simplePaginate(12);
             }
         } else if ($request->categories === null && $request->city_name === null) {
-            $users = User::where('active_status', '=', '0')->simplePaginate(20);
+            $users = User::where('active_status', '=', '0');
+            $foundUsers = $users->count();
+            $users = $users->simplePaginate(12);
         } else {
-            $users = User::where('city_name', '=', $request->city_name)->where('active_status', '=', '0')->simplePaginate(20);
+            $users = User::where('city_name', '=', $request->city_name)->where('active_status', '=', '0');
+            $foundUsers = $users->count();
+            $users = $users->simplePaginate(12);
         }
-        return view('search.resultList', compact('users'));
-    }
-
-    function paginationSearch(Request $request)
-    {
-        dd($request);
-        if ($request->ajax()) {
-            $users = User::where('active_status', '=', '0')->simplePaginate(20);
-            return view('search.resultList', compact('users'))->render();
-        }
+        return view('search.resultList', compact('users','foundUsers'))->render();
     }
 }

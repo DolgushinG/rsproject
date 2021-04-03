@@ -41,7 +41,7 @@
                                 <label class="fieldlabels">Email:*</label>
                                 <input id="email" type="email" name="email" placeholder="Email">
                                 <label class="fieldlabels">Username: *</label>
-                                <input id="name" type="text" name="name" placeholder="Иван Иванов" required autocomplete="username">
+                                <input id="name" type="text" name="name" placeholder="Иван" required autocomplete="username">
                                 <label class="fieldlabels">Password:*</label>
                                 <input id="password" name="password" type="password" required autocomplete="new-password"> 
                                 <label class="fieldlabels">Confirm Password: *</label>
