@@ -21,7 +21,7 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab1">
-                              <form action="{{ route('getresultsearch') }}" method="POST" id="searchForm">
+                              <form method="POST" id="searchForm">
                                 @csrf
                                     <div class="input-group">
                                         <label class="label">Город</label>
@@ -39,7 +39,7 @@
                                     @endforeach
                                     <button id="search" href="#content" class="btn-submit get-started scrollto searchUser" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                                    </svg> search</button>
+                                    </svg>search</button>
                                 </form>
                                 <div class="container" style="margin-top: 1rem;
                                 margin-bottom: -1rem;">
@@ -53,22 +53,35 @@
           </div>
        </div>
       <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-          <table class="table-fill">
-            <thead>
-            <tr>
-            <th class="text-left">Город</th>
-            <th class="text-left">Кол-во подготовщиков</th>
-            </tr>
-            </thead>
-            <tbody class="table-hover">
-              @foreach ($cityList as $city)
-            <tr>
-            <td class="text-left">{{ $city->city_name }}</td>
-            <td class="text-left">{{ $cityCount[$city->city_name]}}</td>
-            </tr>
+        {{-- <table class="table-fill">
+          <thead>
+          <tr>
+          <th class="text-left">Город</th>
+          <th class="text-left">Кол-во подготовщиков</th>
+          </tr>
+          </thead>
+          <tbody class="table-hover">
+            @foreach ($cityList as $city)
+          <tr>
+          <td class="text-left">{{ $city->city_name }}</td>
+          <td class="text-left">{{ $cityCount[$city->city_name]}}</td>
+          </tr>
+          @endforeach
+          </tbody>
+        </table> --}}
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center text-white" style="background-color: #292F4A">
+            Город
+            <span class="align-items-right">Кол-во подготовщиков</span>
+          </li>
+          @foreach ($cityList as $city)
+          <button id="cityTable" value="{{$city->city_name }}" style="border: 0;"><li class="search_city list-group-item d-flex justify-content-between align-items-center table-hover">
+              {{$city->city_name }}
+            <span class="badge badge-primary badge-pill">{{ $cityCount[$city->city_name]}}</span></button>
             @endforeach
-            </tbody>
-          </table>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

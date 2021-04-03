@@ -2196,6 +2196,22 @@ section {
   font-size: 14px;
 }
 
+.badge-pill {
+  padding-right: .6em;
+  padding-left: .6em;
+  border-radius: 10rem
+}
+
+.badge-primary {
+  color: #fff;
+  background-color: #007bff
+}
+
+.badge-primary[href]:focus,.badge-primary[href]:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: #0062cc
+}
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/

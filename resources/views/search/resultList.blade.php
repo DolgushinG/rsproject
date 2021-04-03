@@ -1,6 +1,24 @@
 <header class="section-header">
     <p>Результат поиска</p>
-    <h2>Найдено : {{$foundUsers}}</h2>
+    @if(isset($valueSearch['city']) && isset($valueSearch['categories']))
+    По городу: <h2>{{$valueSearch['city']}}</h2>
+    <input id="city_search" value="{{$valueSearch['city']}}" style="display: none">
+        <h2>Категории</h2>
+    @foreach ($valueSearch['categories'] as $category)
+        <h2>@lang('somewords.'.$category)</h2>
+    @endforeach
+
+    @elseif(isset($valueSearch['city']))
+      По городу: <h2>{{$valueSearch['city']}}</h2>
+      <input id="city_search" value="{{$valueSearch['city']}}" style="display: none">
+
+    @elseif(isset($valueSearch['categories']))
+    <h2>Категории</h2>
+    @foreach ($valueSearch['categories'] as $category)
+        <h2>@lang('somewords.'.$category)</h2>
+    @endforeach
+    @endif
+    <h2>Найдено : {{$foundUsers}} </h2>
 </header>
 
 <section id="team" class="team">
@@ -19,7 +37,7 @@
             {!! $users->links() !!}  
             </div>
            </div>
-         @foreach ($users as $user => $key)
+         @foreach ($users as $user)
             <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
               <div class="member">
                 <div class="member-img">
@@ -27,13 +45,21 @@
                   <div class="social">
                     <a href=""><i class="bi bi-instagram"></i></a>
                     <a href=""><i class="bi bi-telegram"></i></a>
-                    <a href="{{route('profileDetails', $key->id)}}"><i class="bi bi-person-square"></i></a>
+                    <a href="{{route('profileDetails', $user->id)}}"><i class="bi bi-person-square"></i></a>
                   </div>
                 </div>
                 <div class="member-info">
-                  <a href="{{route('profileDetails', $key->id)}}"><h4>{{$key->name}}</h4>
-                  <span>{{$key->description}}</span>
-                  <p> @lang('somewords.'.$key->exp_level)</p></a>
+                  <span>{{$user->city_name}} </span>
+                  <a href="{{route('profileDetails', $user->id)}}"><h4>{{$user->name}}</h4>
+                  @if($user->exp_level == 'senior')
+                  <p> @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Опытный')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
+                  @elseif($user->exp_level == 'middle')
+                  <p> @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Средний уровень')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
+                  @else 
+                  <p> @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Начинающий')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
+                  @endif
+                  <span>Оплата: {{$user->salary_hour}}р / в час</span>
+                  <span>Оплата: {{$user->salary_route}}р / за трассу</span>
                 </div>
               </div>
             </div>
@@ -46,3 +72,11 @@
          </div>
     </div>
 </section>
+<script>
+  $(function () {
+ $('[data-toggle="tooltip"]').tooltip({
+   animation: false,
+   delay: {"show": 100, "hide": 100}
+ })
+})
+</script>

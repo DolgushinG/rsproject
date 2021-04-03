@@ -20,6 +20,31 @@ $(document).ready(function() {
         });
     });
 });
+$(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+    $(document).on('click','#cityTable', function(e) {
+        e.preventDefault();
+        let city_name = $(this).val();
+        $.ajax({
+            type: 'POST',
+            url: 'getresultsearch',
+            data: {
+                city_name:city_name,
+            },
+            success: function(data) {
+                $('#resultList').html(data);
+            },
+            error: function(data) {
+                console.log("error");
+            }
+        });
+    });
+});
+
 
 $(document).ready(function(){
     $.ajaxSetup({
@@ -31,18 +56,17 @@ $(document).ready(function(){
        
        event.preventDefault(); 
        var page = $(this).attr('href').split('page=')[1];
-       
-       getUsers(page);
-       
+       let city_name = $('#city_search').val();
+       getUsers(page, city_name);
     });
    
-    function getUsers(page)
+    function getUsers(page, city_name)
     {
-     var _token = $("input[name=_token]").val();
+        var _token = $("input[name=_token]").val();
      $.ajax({
          url: '/getresultsearch?page=' + page,
          method:"POST",
-         data:{_token:_token, page:page},
+         data:{_token:_token, page:page, city_name:city_name},
          success:function(data)
          {
           $('#resultList').html(data);
@@ -51,21 +75,20 @@ $(document).ready(function(){
     }
    
    });
-   $('ul.pagination').hide();
-   $(function() {
-       $('.scrolling-pagination').jscroll({
-           autoTrigger: true,
-           padding: 0,
-           nextSelector: '.pagination li.active + li a',
-           contentSelector: 'div.scrolling-pagination',
-           callback: function() {
-               $('ul.pagination').remove();
-           }
-       });
-   });
 $(document).ready(function(){
 	$("#search").on("click", function (event) {
-        console.log('searchClick');
+		//отменяем стандартную обработку нажатия по ссылке
+		event.preventDefault();
+		//забираем идентификатор бока с атрибута href
+		var id  = $(this).attr('href'),
+		//узнаем высоту от начала страницы до блока на который ссылается якорь
+			top = $(id).offset().top;
+		//анимируем переход на расстояние - top за 1500 мс
+		$('body,html').animate({scrollTop: top}, 50);
+	});
+});
+$(document).ready(function(){
+	$(".search_city").on("click", function (event) {
 		//отменяем стандартную обработку нажатия по ссылке
 		event.preventDefault();
 		//забираем идентификатор бока с атрибута href
