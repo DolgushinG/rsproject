@@ -1,31 +1,31 @@
 <header class="section-header">
     <p>Результат поиска</p>
     @if(isset($valueSearch['city']) && isset($valueSearch['categories']))
-    По городу: <h2>{{$valueSearch['city']}}</h2>
+    <h2>По городу: </h2> 
+    <h2>{{$valueSearch['city']}}</h2>
     <input id="city_search" value="{{$valueSearch['city']}}" style="display: none">
-        <h2>Категории</h2>
+        <h2>Категории: </h2>
     @foreach ($valueSearch['categories'] as $category)
-        <h2>@lang('somewords.'.$category)</h2>
+        <h2>{{$category->category_name}}</h2>
     @endforeach
-
     @elseif(isset($valueSearch['city']))
-      По городу: <h2>{{$valueSearch['city']}}</h2>
+    <h2>По городу: </h2> 
+    <h2>{{$valueSearch['city']}}</h2>
       <input id="city_search" value="{{$valueSearch['city']}}" style="display: none">
-
     @elseif(isset($valueSearch['categories']))
-    <h2>Категории</h2>
+    <h2>Категории: </h2>
     @foreach ($valueSearch['categories'] as $category)
-        <h2>@lang('somewords.'.$category)</h2>
+        <h2>{{$category->category_name}}</h2>
     @endforeach
     @endif
-    <h2>Найдено : {{$foundUsers}} </h2>
+    <p>Найдено : {{$foundUsers}} подготовщиков</p>
 </header>
 
 <section id="team" class="team">
     <div class="container" data-aos="fade-up">
         <div id="content" class="row gy-4">
           <div class="row mx-auto mt-5">
-            <p>Показано: {{$users->firstItem()}} из {{$users->lastItem()}}</p>  
+            <p>Показано: {{count($users)}} из {{$foundUsers}}</p>  
             <div class="progress" style="padding-left: 0; padding-right: 0; margin-bottom: 2rem;">
               <div class="progress-bar
                                   progress-bar-striped
