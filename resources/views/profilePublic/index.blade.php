@@ -51,6 +51,7 @@
         </div>
         <div class="col-lg-8">
           <div class="portfolio-info">
+           
             <h3>Опыт подготовки</h3>
             <ul>
               <li><strong>Подготовка местных стартов(фестивалей)</strong>: <br>
@@ -95,4 +96,129 @@
       </div>
     </div>
   </section>
+<div class="container">
+<div class="col-md-12">
+    <div class="offer-dedicated-body-left">
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade active show" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
+                <div class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
+                  @include('message.message')
+                  <form id="rating" method="POST">
+                    @csrf
+                  <div class="col-sm-12">
+                        <input class="star star-5" value="5" id="star-b{{$user->id}}" data-id="{{$user->id}}" type="radio" name="star"/>
+                        <label class="star star-5" for="star-b{{$user->id}}"></label>
+                        <input class="star star-4" value="4" id="star-v{{$user->id}}" data-id="{{$user->id}}" type="radio" name="star"/>
+                        <label class="star star-4" for="star-v{{$user->id}}"></label>
+                        <input class="star star-3" value="3" id="star-c{{$user->id}}" data-id="{{$user->id}}" type="radio" name="star"/>
+                        <label class="star star-3" for="star-c{{$user->id}}"></label>
+                        <input class="star star-2" value="2" id="star-x{{$user->id}}" data-id="{{$user->id}}" type="radio" name="star"/>
+                        <label class="star star-2" for="star-x{{$user->id}}"></label>
+                        <input class="star star-1" value="1" id="star-z{{$user->id}}" data-id="{{$user->id}}" type="radio" name="star"/>
+                        <label class="star star-1" for="star-z{{$user->id}}"></label>
+                   </div>
+                    <h4 class="mb-2 pt-1">Оцените подготовщика и напишите отзыв</h4>
+                    <div class="form-group">
+                      <label>Вашe имя</label>
+                      <input name="nameGuest" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label>Ваш email</label>
+                      <input name="emailGuest" class="form-control">
+                    </div>
+                      <div class="form-group">
+                          <label>Ваш отзыв</label>
+                          <textarea name="review" class="form-control"></textarea>
+                      </div>
+                      <input type="hidden" id="userId" style="display:none" name="userId" value="{{$user->id}}">
+                      <div class="form-group">
+                          <button class="btn btn-primary btn-sm" id="submitrating" type="button"> Submit Comment </button>
+                      </div>
+                  </form>
+                </div>
+              </div>
+                <div class="bg-white rounded shadow-sm p-4 mb-4 clearfix graph-star-rating">
+                    <h5 class="mb-0 mb-4">Все оценки и отзывы</h5>
+                    <div class="graph-star-rating-header">
+                        <div class="star-rating">
+                            <a href="#"><i class="icofont-ui-rating active"></i></a>
+                            <a href="#"><i class="icofont-ui-rating active"></i></a>
+                            <a href="#"><i class="icofont-ui-rating active"></i></a>
+                            <a href="#"><i class="icofont-ui-rating active"></i></a>
+                            <a href="#"><i class="icofont-ui-rating"></i></a> <b class="text-black ml-2">334</b>
+                        </div>
+                        <p class="text-black mb-4 mt-2">Rated 3.5 out of 5</p>
+                    </div>
+                    <div class="graph-star-rating-body">
+                        <div class="rating-list">
+                            <div class="rating-list-left text-black">
+                                5 Star
+                            </div>
+                            <div class="rating-list-center">
+                                <div class="progress">
+                                    <div style="width: 56%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
+                                        <span class="sr-only">80% Complete (danger)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rating-list-right text-black">56%</div>
+                        </div>
+                        <div class="rating-list">
+                            <div class="rating-list-left text-black">
+                                4 Star
+                            </div>
+                            <div class="rating-list-center">
+                                <div class="progress">
+                                    <div style="width: 23%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
+                                        <span class="sr-only">80% Complete (danger)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rating-list-right text-black">23%</div>
+                        </div>
+                        <div class="rating-list">
+                            <div class="rating-list-left text-black">
+                                3 Star
+                            </div>
+                            <div class="rating-list-center">
+                                <div class="progress">
+                                    <div style="width: 11%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
+                                        <span class="sr-only">80% Complete (danger)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rating-list-right text-black">11%</div>
+                        </div>
+                        <div class="rating-list">
+                            <div class="rating-list-left text-black">
+                                2 Star
+                            </div>
+                            <div class="rating-list-center">
+                                <div class="progress">
+                                    <div style="width: 2%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
+                                        <span class="sr-only">80% Complete (danger)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rating-list-right text-black">02%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
+                    <a href="#" class="btn btn-outline-primary btn-sm float-right">Негативные отзывы</a>
+                    <a href="#" class="btn btn-outline-primary btn-sm float-right">Позитивные отзывы</a>
+                    <a href="#" class="btn btn-outline-primary btn-sm float-right">Недавно добавленные отзывы</a>
+                    <h5 class="mb-1 mt-4">All Ratings and Reviews</h5>
+                    
+                    <div id="allReview">
+                      @include('profilePublic.comments')
+                    </div>
+                    <a class="text-center w-100 d-block mt-4 font-weight-bold" href="#">See All Reviews</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+  <script type="text/javascript" src="{{ asset('js/publicProfile.js') }}"></script>
 @endsection

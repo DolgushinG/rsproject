@@ -19,7 +19,6 @@ Route::get('/contact', [App\Http\Controllers\HomeController::class, 'indexContac
 Route::post('/getresultsearch', [App\Http\Controllers\SearchController::class, 'getResultSearch'])->name('getresultsearch');
 Route::post('/getresultsearch/paginationSeach', [App\Http\Controllers\SearchController::class, 'paginationSeach'])->name('paginationSeach');
 Auth::routes();
-
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'indexCategory'])->name('register');
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
@@ -35,3 +34,7 @@ Route::get('getProfileNotifications', [App\Http\Controllers\ProfileController::c
 Route::post('editChagesNotifications', [App\Http\Controllers\ProfileController::class, 'editChagesNotifications'])->name('editChagesNotifications');
 Route::get('getProfileSocialLinks', [App\Http\Controllers\ProfileController::class, 'getTabContentSocialLinks'])->name('getTabContentSocialLinks');
 Route::post('editChagesSocialLinks', [App\Http\Controllers\ProfileController::class, 'editChagesSocialLinks'])->name('editChagesSocialLinks');
+
+
+Route::post('profile/rating', [App\Http\Controllers\PublicProfileController::class, 'postRatingAndReview'])->name('rating');
+Route::get('/getrating', [App\Http\Controllers\PublicProfileController::class, 'getRatingAndReview'])->name('getrating');

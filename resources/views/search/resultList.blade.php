@@ -42,12 +42,29 @@
               <div class="member">
                 <div class="member-img">
                   <img src="{{ asset('storage/images/herors.jpeg')}}" class="img-fluid" alt="">
+                  
                   <div class="social">
                     <a href=""><i class="bi bi-instagram"></i></a>
                     <a href=""><i class="bi bi-telegram"></i></a>
                     <a href="{{route('profileDetails', $user->id)}}"><i class="bi bi-person-square"></i></a>
                   </div>
                 </div>
+                <form class="form-horizontal poststars" id="addStar" method="POST">
+                  <div class="form-group required">
+                    <div class="col-sm-12">
+                      <input class="star star-5" value="5" id="star-b{{$user->id}}" data-id="{{$user->id}}" type="radio" name="star"/>
+                      <label class="star star-5" for="star-b{{$user->id}}"></label>
+                      <input class="star star-4" value="4" id="star-v{{$user->id}}" data-id="{{$user->id}}" type="radio" name="star"/>
+                      <label class="star star-4" for="star-v{{$user->id}}"></label>
+                      <input class="star star-3" value="3" id="star-c{{$user->id}}" data-id="{{$user->id}}" type="radio" name="star"/>
+                      <label class="star star-3" for="star-c{{$user->id}}"></label>
+                      <input class="star star-2" value="2" id="star-x{{$user->id}}" data-id="{{$user->id}}" type="radio" name="star"/>
+                      <label class="star star-2" for="star-x{{$user->id}}"></label>
+                      <input class="star star-1" value="1" id="star-z{{$user->id}}" data-id="{{$user->id}}" type="radio" name="star"/>
+                      <label class="star star-1" for="star-z{{$user->id}}"></label>
+                     </div>
+                  </div>
+                </form>
                 <div class="member-info">
                   <span>{{$user->city_name}} </span>
                   <a href="{{route('profileDetails', $user->id)}}"><h4>{{$user->name}}</h4>

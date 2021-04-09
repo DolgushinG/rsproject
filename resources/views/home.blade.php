@@ -52,23 +52,8 @@
             </div>
           </div>
        </div>
+       
       <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-        {{-- <table class="table-fill">
-          <thead>
-          <tr>
-          <th class="text-left">Город</th>
-          <th class="text-left">Кол-во подготовщиков</th>
-          </tr>
-          </thead>
-          <tbody class="table-hover">
-            @foreach ($cityList as $city)
-          <tr>
-          <td class="text-left">{{ $city->city_name }}</td>
-          <td class="text-left">{{ $cityCount[$city->city_name]}}</td>
-          </tr>
-          @endforeach
-          </tbody>
-        </table> --}}
         <ul class="list-group">
           <li class="list-group-item d-flex justify-content-between align-items-center text-white" style="background-color: #292F4A">
             Город
