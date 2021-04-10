@@ -14,7 +14,7 @@
             <div class="wrapper wrapper--w720">
                 <div class="card card-3">
                     <div class="card-body">
-                        <ul class="tab-list">
+                        <ul class="tab-list" style="padding-top: 0px;">
                             <li class="tab-list__item active">
                                 <a class="tab-list__link" href="#tab1" data-toggle="tab">Поиск подготовщиков</a>
                             </li>
@@ -37,9 +37,9 @@
                                         </label>
                                     </div>
                                     @endforeach
-                                    <button id="search" href="#content" class="btn-submit get-started scrollto searchUser" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <button id="search" href="#content" class="btn-submit get-started scrollto searchUser" style="font-size: 18px" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                                    </svg>search</button>
+                                    </svg> поиск</button>
                                 </form>
                                 <div class="container" style="margin-top: 1rem;
                                 margin-bottom: -1rem;">
@@ -60,7 +60,7 @@
             <span class="align-items-right">Кол-во подготовщиков</span>
           </li>
           @foreach ($cityList as $city)
-          <button id="cityTable" value="{{$city->city_name }}" style="border: 0;"><li class="search_city list-group-item d-flex justify-content-between align-items-center table-hover">
+          <button id="cityTable" value="{{$city->city_name}}" style="border: 0;"><li class="search_city list-group-item d-flex justify-content-between align-items-center table-hover">
               {{$city->city_name }}
             <span class="badge badge-primary badge-pill">{{ $cityCount[$city->city_name]}}</span></button>
             @endforeach

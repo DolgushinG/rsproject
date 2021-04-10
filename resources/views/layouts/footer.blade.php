@@ -7,47 +7,41 @@
           <div class="col-lg-5 col-md-12 footer-info">
             <a href="index.html" class="logo d-flex align-items-center">
               <img src="{{asset('storage/images/logo.png')}}" alt="">
-              <span>FlexStart</span>
+              <span>Routesetter</span>
             </a>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+            <p>Идея проекта обьединить всех подготовщиков</p>
             <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="telegram"><i class="bi bi-telegram"></i></a>
               <a href="#" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin bx bxl-linkedin"></i></a>
             </div>
           </div>
 
           <div class="col-lg-2 col-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4>Полезные ссылки</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Главная</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">О нас</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Связаться с нами</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
           </div>
 
           <div class="col-lg-2 col-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>Наши сервисы</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Поиск подготовщиков</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Статьи о подготовке</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Оценка подготовщиков</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-            <h4>Contact Us</h4>
+            <h4>Контакты</h4>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              Санкт-Петербург <br>
+              <strong>Phone:</strong> +7(999)2095596<br>
+              <strong>Email:</strong> info@routesetters.ru<br>
             </p>
 
           </div>
@@ -58,14 +52,10 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Routesetters.ru</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by Dolgushin GV</a>
       </div>
     </div>
   </footer><!-- End Footer -->

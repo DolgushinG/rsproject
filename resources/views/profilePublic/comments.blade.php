@@ -1,3 +1,6 @@
+<div class="col-lg-12 mb-4">
+    {!! $reviews->links() !!}  
+</div>  
 @foreach ($reviews as $review)
 <div class="reviews-members pt-4 pb-4">
     <div class="media">
@@ -15,7 +18,7 @@
                     <label class="star star-{{$i}}" for="star-{{$review->id}}"></label>
                     @endif
                    @endfor
-                </form>
+                    </form>
                 </div>
                 <h6 class="mb-1"><a class="text-black" href="#">{{$review->name_guest}}</a></h6>
                 <p class="text-gray">{{$review->created_at}}</p>

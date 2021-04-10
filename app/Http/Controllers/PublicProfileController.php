@@ -9,25 +9,39 @@ class PublicProfileController extends Controller
 
     public function indexPublic($id,Request $request) {
         $user = User::find($id);
-        $reviews = Rating::where('user_id', '=', $id)->get();
-        return view('profilePublic.index', compact('user','reviews'));
+        $reviews = Rating::where('user_id', '=', $id);
+        $foundReviews = $reviews->count();
+        $reviews = $reviews->simplePaginate(5);
+        return view('profilePublic.index', compact('user','reviews','foundReviews'))->render();
     }
     public function postRatingAndReview(Request $request) {
         $rate = Rating::where('user_id', '=', $request->userId)->where('user_ip', '=', $request->ip())->first();
-        // if($rate === null){
+        if($rate === null){
             $user = User::find($request->userId);
             $rating = new Rating;
+            $ratingForAverage = Rating::where('user_id','=',$request->userId)->get('rating');
+            $averageNum = 0;
+            foreach($ratingForAverage as $num){
+                $averageNum+=$num->rating;
+            }
+            $countReview = $ratingForAverage->count();
+            if($countReview > 0){
+                $user->average_rating = ceil($averageNum/$countReview);
+            } else {
+                $user->average_rating = $averageNum;
+            }
+            
             $rating->rating = $request->star;
             $rating->user_id = $request->userId;
             $rating->review = $request->review;
-            $rating->name_guest= $request->nameGuest;
-            $rating->email_guest= $request->emailGuest;
+            $rating->name_guest = $request->nameGuest;
+            $rating->email_guest = $request->emailGuest;
             $rating->user_ip = $request->ip();
             $user->ratings()->save($rating);
-        // } 
-        // else if ($rate !== null){
-        //     return response()->json(['success' => false, 'message' => 'ошибка сохранения, вы уже сделали отзыв'], 422);
-        // }
+        } 
+        else if ($rate !== null){
+            return response()->json(['success' => false, 'message' => 'ошибка сохранения, вы уже сделали отзыв'], 422);
+        }
         if ($user->save()) {
             return response()->json(['success' => true, 'message' => 'Ваш комментарий опубликован'], 200);
             } else {
@@ -35,9 +49,11 @@ class PublicProfileController extends Controller
         }
     }
     public function getRatingAndReview(Request $request) {
-        $reviews = Rating::where('user_id', '=', $request->userId)->get();
+        $reviews = Rating::where('user_id', '=', $request->userId);
+        $foundReviews = $reviews->count();
+        $reviews = $reviews->simplePaginate(5);
         $user = User::find($request->userId);
-        return view('profilePublic.comments', compact('reviews','user'));
+        return view('profilePublic.comments', compact('reviews','user','foundReviews'))->render();
     }
 }
 

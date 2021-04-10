@@ -50,7 +50,37 @@ function getProfileReviewAndRate(userId){
             },
             success: function(data) {
                 $('#allReview').html(data);
-                
             },
+            error: function(data) {
+            }
         });
 }
+
+$(document).ready(function(){
+    $.ajaxSetup({
+        headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+    $(document).on('click', '[role=\'navigation\'] a', function(event){
+       
+       event.preventDefault(); 
+       var page = $(this).attr('href').split('page=')[1];
+       let userId = $('#userId').val();
+       getProfileReviewAndRate(page, userId);
+    });
+   
+    function getProfileReviewAndRate(page, userId)
+    {
+        var _token = $("input[name=_token]").val();
+     $.ajax({
+         url: '/getrating?page=' + page,
+         method:"GET",
+         data:{_token:_token, page:page, userId:userId},
+         success:function(data)
+         {
+            $('#allReview').html(data);
+         }
+       });
+    }
+   });

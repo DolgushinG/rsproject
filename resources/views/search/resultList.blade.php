@@ -1,24 +1,42 @@
 <header class="section-header">
-    <p>Результат поиска</p>
+  <div class="container mt-2">
+    <p>Фильтр поиска</p>
+  </div>
     @if(isset($valueSearch['city']) && isset($valueSearch['categories']))
-    <h2>По городу: </h2> 
-    <h2>{{$valueSearch['city']}}</h2>
+    <div class="container mt-2">
+    <h2 style="font-size: 22px;">По городу: </h2> 
+    </div>
+    <div class="container">
+    <h2  style="font-size: 22px;">{{$valueSearch['city']}}</h2>
     <input id="city_search" value="{{$valueSearch['city']}}" style="display: none">
-        <h2>Категории: </h2>
+        <h2 style="font-size: 22px;">Категории: </h2>
+    </div>
     @foreach ($valueSearch['categories'] as $category)
+    <div class="container">
         <h2>{{$category->category_name}}</h2>
+    </div>
     @endforeach
     @elseif(isset($valueSearch['city']))
-    <h2>По городу: </h2> 
-    <h2>{{$valueSearch['city']}}</h2>
+    <div class="container">
+    <h2 class="mt-2" style="font-size: 22px;">По городу: </h2> 
+    </div>
+    <div class="container">
+    <h2 style="font-size: 22px;">{{$valueSearch['city']}}</h2>
+    </div>
       <input id="city_search" value="{{$valueSearch['city']}}" style="display: none">
     @elseif(isset($valueSearch['categories']))
-    <h2>Категории: </h2>
+    <div class="container">
+    <h2 style="font-size: 22px;">Категории: </h2>
+    </div>
     @foreach ($valueSearch['categories'] as $category)
-        <h2>{{$category->category_name}}</h2>
+    <div class="container">
+        <h2 style="font-size: 22px;">{{$category->category_name}}</h2>
+    </div>
     @endforeach
     @endif
-    <p>Найдено : {{$foundUsers}} подготовщиков</p>
+    <div class="container mb-2">
+    <p>Результат поиска : {{$foundUsers}}</p>
+    </div>
 </header>
 
 <section id="team" class="team">
@@ -37,7 +55,9 @@
             {!! $users->links() !!}  
             </div>
            </div>
+           
          @foreach ($users as $user)
+         
             <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
               <div class="member">
                 <div class="member-img">
@@ -46,28 +66,29 @@
                   <div class="social">
                     <a href=""><i class="bi bi-instagram"></i></a>
                     <a href=""><i class="bi bi-telegram"></i></a>
-                    <a href="{{route('profileDetails', $user->id)}}"><i class="bi bi-person-square"></i></a>
+                    <a href="{{route('profileDetails', $user->id)}}" target="_blank" data-title="RouteSetter {{$user->name}}"><i class="bi bi-person-square"></i></a>
                   </div>
                 </div>
                 <form class="form-horizontal poststars" id="addStar" method="POST">
                   <div class="form-group required">
                     <div class="col-sm-12">
-                      <input class="star star-5" value="5" id="star-b{{$user->id}}" data-id="{{$user->id}}" type="radio" name="star"/>
-                      <label class="star star-5" for="star-b{{$user->id}}"></label>
-                      <input class="star star-4" value="4" id="star-v{{$user->id}}" data-id="{{$user->id}}" type="radio" name="star"/>
-                      <label class="star star-4" for="star-v{{$user->id}}"></label>
-                      <input class="star star-3" value="3" id="star-c{{$user->id}}" data-id="{{$user->id}}" type="radio" name="star"/>
-                      <label class="star star-3" for="star-c{{$user->id}}"></label>
-                      <input class="star star-2" value="2" id="star-x{{$user->id}}" data-id="{{$user->id}}" type="radio" name="star"/>
-                      <label class="star star-2" for="star-x{{$user->id}}"></label>
-                      <input class="star star-1" value="1" id="star-z{{$user->id}}" data-id="{{$user->id}}" type="radio" name="star"/>
-                      <label class="star star-1" for="star-z{{$user->id}}"></label>
+                      <form action="">
+                      @for($i = 5; $i >= 1; $i--)
+                    @if($i === intval($user->average_rating)) 
+                    <input class="star star-{{$i}}" value="{{$i}}" id="star-{{$user->id+1}}" disabled type="radio" name="star" checked>
+                    <label class="star star-{{$i}}" for="star-{{$user->id+1}}"></label>
+                    @else 
+                    <input class="star star-{{$i}}" value="{{$i}}" id="star-{{$user->id+1}}" disabled type="radio" name="star">
+                    <label class="star star-{{$i}}" for="star-{{$user->id+1}}"></label>
+                    @endif
+                   @endfor
+                    </form>
                      </div>
                   </div>
                 </form>
                 <div class="member-info">
                   <span>{{$user->city_name}} </span>
-                  <a href="{{route('profileDetails', $user->id)}}"><h4>{{$user->name}}</h4>
+                  <a href="{{route('profileDetails', $user->id)}}" target="_blank" data-title="RouteSetter {{$user->name}}"><h4>{{$user->name}}</h4>
                   @if($user->exp_level == 'senior')
                   <p> @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Опытный')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
                   @elseif($user->exp_level == 'middle')

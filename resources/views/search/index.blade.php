@@ -35,7 +35,7 @@
                                         </label>
                                     </div>
                                     @endforeach
-                                    <button class="btn-submit searchUser" type="button">search</button>
+                                    <button class="btn-submit searchUser" type="button"> search</button>
                                 </form>
                             </div>
                         </div>
