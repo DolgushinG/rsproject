@@ -61,7 +61,7 @@
             <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
               <div class="member">
                 <div class="member-img">
-                  <img src="{{ asset('storage/images/herors.jpeg')}}" class="img-fluid" alt="">
+                  <img src="storage/{{$user->photo}}" class="img-fluid" alt="">
                   
                   <div class="social">
                     <a href=""><i class="bi bi-instagram"></i></a>
@@ -69,7 +69,6 @@
                     <a href="{{route('profileDetails', $user->id)}}" target="_blank" data-title="RouteSetter {{$user->name}}"><i class="bi bi-person-square"></i></a>
                   </div>
                 </div>
-                <form class="form-horizontal poststars" id="addStar" method="POST">
                   <div class="form-group required">
                     <div class="col-sm-12">
                       <form action="">
@@ -85,7 +84,6 @@
                     </form>
                      </div>
                   </div>
-                </form>
                 <div class="member-info">
                   <span>{{$user->city_name}} </span>
                   <a href="{{route('profileDetails', $user->id)}}" target="_blank" data-title="RouteSetter {{$user->name}}"><h4>{{$user->name}}</h4>
@@ -110,11 +108,3 @@
          </div>
     </div>
 </section>
-<script>
-  $(function () {
- $('[data-toggle="tooltip"]').tooltip({
-   animation: false,
-   delay: {"show": 100, "hide": 100}
- })
-})
-</script>

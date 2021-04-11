@@ -210,12 +210,4 @@
 </div>
 </div>
   <script type="text/javascript" src="{{ asset('js/publicProfile.js') }}"></script>
-  <script>
-    $(function () {
-   $('[data-toggle="tooltip"]').tooltip({
-     animation: false,
-     delay: {"show": 100, "hide": 100}
-   })
-  })
-  </script>
 @endsection

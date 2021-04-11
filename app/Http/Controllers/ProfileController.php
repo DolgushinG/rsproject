@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 use App\Http\Requests\ImageRequest;
 use App\Models\Category;
 use App\Models\Grade;
@@ -38,7 +39,6 @@ class ProfileController extends Controller
         }
         $user->name = $request->name;
         $user->city_name = $request->city;
-        ;
         if ($user->save()) {
             return response()->json(['success' => true, 'message' => 'сохранено'], 200);
          } else {

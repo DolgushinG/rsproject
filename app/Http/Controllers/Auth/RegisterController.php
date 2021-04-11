@@ -11,6 +11,7 @@ use App\Models\UserAndCategories;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -97,10 +98,9 @@ class RegisterController extends Controller
             'other_city' => 0,
             'all_time' => 0,
             'average_rating' => 0,
-            'photo' => 0,
+            'photo' => 'images/users/defaultAvatar.jpeg',
         ]);
-        
-            
+
         foreach($data['categories'] as $id => $x){
             $userAndCategory = new UserAndCategories;
             $userAndCategory->user_id = $user->id;

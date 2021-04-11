@@ -146,15 +146,24 @@
         <div class="swiper-slide">
           <div class="testimonial-item">
             <p>
-              <a href="{{route('profileDetails', $user->id)}}"><h4>{{$user->name}}</h4></a>
-             
+              <a href="{{route('profileDetails', $user->id)}}"><h2>{{$user->name}}</h2></a>
             </p>
             <div class="profile mt-auto">
               <img src="storage/{{$user->photo}}" class="testimonial-img" alt="">
             </div>
+            @if($user->exp_level == 'senior')
+            <p> @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Опытный')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
+            @elseif($user->exp_level == 'middle')
+            <p> @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Средний уровень')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
+            @else 
+            <p> @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Начинающий')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
+            @endif
             <p>
-              {{$user->description}}
-              </p>
+              Максимальная категория лазания - {{$user->grade}}
+            </p>
+            <p>
+              Город - {{$user->city_name}}
+            </p>
           </div>
         </div><!-- End testimonial item -->
         @endforeach
