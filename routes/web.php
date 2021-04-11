@@ -38,3 +38,6 @@ Route::post('editChagesSocialLinks', [App\Http\Controllers\ProfileController::cl
 
 Route::post('profile/rating', [App\Http\Controllers\PublicProfileController::class, 'postRatingAndReview'])->name('rating');
 Route::get('/getrating', [App\Http\Controllers\PublicProfileController::class, 'getRatingAndReview'])->name('getrating');
+
+
+Route::post('cropimageupload', [App\Http\Controllers\CropImageController::class,'uploadCropImage'])->name('cropimageupload');

@@ -31,19 +31,28 @@ class ProfileController extends Controller
     public function editTabContentGeneral(Request $request) {
         $id = Auth()->user()->id;
         $user = User::find($id);
-        if ($request->file) {
-            $file = $request->file;
-            $imageName = time() . '.' . $request->file->getClientOriginalExtension();
-            $file->storeAs('images/users/' , $imageName, 'public');
-            $user->photo = 'images/users/'.$imageName;
-        }
         $user->name = $request->name;
         $user->city_name = $request->city;
+        // if ($request->file) {
+        //     $folderPath = public_path('storage/images/users/');
+        //     $image_parts = explode(";base64,", $request->image);
+        //     $image_type_aux = explode("image/", $image_parts[0]);
+        //     $image_type = $image_type_aux[1];
+        //     $image_base64 = base64_decode($image_parts[1]);
+        //     $imageName = uniqid() . '.png';
+        //     $imageFullPath = $folderPath.$imageName;
+        //     file_put_contents($imageFullPath, $image_base64);
+        //     $user->photo = $imageFullPath;
+        //     // $file = $request->file;
+        //     // $imageName = time() . '.' . $request->file->getClientOriginalExtension();
+        //     // $file->storeAs('images/users/' , $imageName, 'public');
+        //     // $user->photo = 'images/users/'.$imageName;
+        // }
         if ($user->save()) {
             return response()->json(['success' => true, 'message' => 'сохранено'], 200);
-         } else {
+        } else {
             return response()->json(['success' => false, 'message' => 'ошибка сохранения'], 422);
-         }
+        }
     }
 
     public function getTabContentInfo() {
