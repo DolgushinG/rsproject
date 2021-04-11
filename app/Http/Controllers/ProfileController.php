@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\ImageRequest;
 use App\Models\Category;
+use App\Models\Grade;
 use App\Models\UserAndCategories;
 
 class ProfileController extends Controller
@@ -51,7 +52,8 @@ class ProfileController extends Controller
         $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');
         $categories = Category::whereIn('id', $userAndCategories)->get();
         $notCategories = Category::whereNotIn('id', $userAndCategories)->get();
-        return view('profile.info', compact('user','categories','notCategories'));
+        $grades = Grade::all();
+        return view('profile.info', compact('user','categories','notCategories','grades'));
     }
     public function editChagesInfo(Request $request) {
         $user = User::find(Auth()->user()->id);
@@ -64,6 +66,7 @@ class ProfileController extends Controller
         $user->salary_hour = $request->salaryHour;
         $user->salary_route = $request->salaryRoute;
         $user->company = $request->company;
+        $user->grade = $request->grade;
         // $product->save($request->all());
         $notCategories = Category::whereNotIn('id', $request->categories)->get();
         foreach($notCategories as $notCategory){

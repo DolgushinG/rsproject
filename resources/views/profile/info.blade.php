@@ -37,7 +37,17 @@
             <option selected value="no">нет</option>
             @endif
         </select> 
-        </div>
+        <label class="fieldlabels">Максимальная категория лазания</label>
+        <select name="grade" class="form-select" aria-label="Default select example">
+            <option >Выбрать</option>
+            @foreach ($grades as $grade)
+            @if($grade->grades_name === $user->grade)
+            <option selected value="{{$grade->grades_name}}">{{$grade->grades_name}}</option>
+            @else
+            <option value="{{$grade->grades_name}}">{{$grade->grades_name}}</option>
+            @endif
+            @endforeach
+        </select> 
         <div class="form-group">
           <label class="fieldlabels">Опыт подготовки местных соревнований</label>
           <input type="range" min="0" max="5" step="1" value="{{$user->exp_local}}" id="foo" name="exp_local">

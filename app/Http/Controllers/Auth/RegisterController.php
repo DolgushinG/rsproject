@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Grade;
 use App\Models\UserAndCategories;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -83,6 +84,7 @@ class RegisterController extends Controller
             'salary_route' => intval($data['salary_route']),
             'exp_level' => $data['exp_level'],
             'description' => $data['description'],
+            'grade' => $data['grade'],
             'educational_requirements' => $data['educational_requirements'],
             'exp_local' => $data['exp_local'],
             'exp_national' => $data['exp_national'],
@@ -91,13 +93,14 @@ class RegisterController extends Controller
             'company' => $data['company'],
             'telegram' => $data['telegram'],
             'instagram' => $data['instagram'],
-            'contact' => $data['contact']
+            'contact' => $data['contact'],
+            'other_city' => 0,
+            'all_time' => 0,
+            'average_rating' => 0,
+            'photo' => 0,
         ]);
-        // $filename = 'temp-image.jpg';
-        // $tempImage = tempnam(sys_get_temp_dir(), $filename);
-        // copy('https://my-cdn.com/files/image.jpg', $tempImage);
-
-// return response()->download($tempImage, $filename);
+        
+            
         foreach($data['categories'] as $id => $x){
             $userAndCategory = new UserAndCategories;
             $userAndCategory->user_id = $user->id;
@@ -109,7 +112,8 @@ class RegisterController extends Controller
 
     public function indexCategory(){
         $categories = Category::all();
-        return view('auth.register', compact('categories'));
+        $grades = Grade::all();
+        return view('auth.register', compact('categories','grades'));
     }
 
 }

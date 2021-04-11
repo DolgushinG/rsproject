@@ -11,8 +11,10 @@ class PublicProfileController extends Controller
         $user = User::find($id);
         $reviews = Rating::where('user_id', '=', $id);
         $foundReviews = $reviews->count();
+        views($user)->unique()->record();
         $reviews = $reviews->simplePaginate(5);
-        return view('profilePublic.index', compact('user','reviews','foundReviews'))->render();
+        $userView = views($user)->unique()->count();
+        return view('profilePublic.index', compact('user','reviews','foundReviews','userView'))->render();
     }
     public function postRatingAndReview(Request $request) {
         $rate = Rating::where('user_id', '=', $request->userId)->where('user_ip', '=', $request->ip())->first();
@@ -40,7 +42,7 @@ class PublicProfileController extends Controller
             $user->ratings()->save($rating);
         } 
         else if ($rate !== null){
-            return response()->json(['success' => false, 'message' => 'ошибка сохранения, вы уже сделали отзыв'], 422);
+            return response()->json(['success' => false, 'message' => 'вы уже сделали отзыв'], 422);
         }
         if ($user->save()) {
             return response()->json(['success' => true, 'message' => 'Ваш комментарий опубликован'], 200);

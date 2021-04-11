@@ -32,6 +32,12 @@
           <label for="color-3">В поиске работы на постоянной основе</label>
         </div>
       </div>
+      <div class="form-group">
+        <div class="checkbox">
+          <label for="color-3">Посмотреть как выглядит мой профиль у других людей</label>
+          <a href="profile/{{$user->id}}">мой профиль</a>
+        </div>
+      </div>
     </div>
   </div>
   <div class="text-right mt-4 ml-4 mb-4">

@@ -5,9 +5,13 @@ $(document).ready(function() {
                 }
             });
     $(document).on('click','#submitrating', function(e) {
+        $('#rating').removeClass('visible')
         $('#rating').addClass('invisible')
         setTimeout(function(){
             $('.alert-success').addClass('invisible');
+          } , 3000);
+        setTimeout(function(){
+            $('.alert-danger').addClass('invisible');
           } , 3000);
           setTimeout(function(){
             $('#rating').removeClass('invisible')
@@ -22,6 +26,7 @@ $(document).ready(function() {
             url: 'rating',
             data: data,
             success: function(data) {
+                console.log(data);
                 getProfileReviewAndRate(userId);
                 $("#rating")[0].reset();
                 var messages = $('.messages');
@@ -32,6 +37,12 @@ $(document).ready(function() {
                 $(messages).html(successHtml);
             },
             error: function(data) {
+                var messages = $('.messages');
+                var successHtml = '<div class="alert alert-danger">'+
+                '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
+                '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></</strong> '+ data.responseJSON.message +
+                '</div>';
+                $(messages).html(successHtml);
             }
         });
     });

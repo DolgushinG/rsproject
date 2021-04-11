@@ -1,16 +1,27 @@
 <?php
 
 namespace App\Models;
-
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use willvincent\Rateable\Rateable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Foundation\Auth\Access\Authorizable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
-{
-    use HasFactory, Notifiable,Rateable;
+class User extends Model implements
+    AuthenticatableContract,
+    AuthorizableContract,
+    CanResetPasswordContract,
+    Viewable
+    {
+    use Authenticatable, Authorizable, CanResetPassword, HasFactory, Notifiable, Rateable, InteractsWithViews;
     /**
      * The attributes that are mass assignable.
      *
@@ -33,7 +44,11 @@ class User extends Authenticatable
         'telegram',
         'instagram',
         'photo',
-        'contact'
+        'contact',
+        'other_city',
+        'all_time',
+        'grade',
+        'average_rating',
     ];
 
     /**

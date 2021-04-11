@@ -92,6 +92,13 @@
                                     <option value="no">нет</option>
                                     </select> 
                                 </div>
+                                <label class="fieldlabels">Максимальная категория лазания</label>
+                                <select name="grade" class="form-select" aria-label="Default select example">
+                                    <option selected>Выбрать</option>
+                                    @foreach ($grades as $grade)
+                                    <option value="{{$grade->grades_name}}">{{$grade->grades_name}}</option>
+                                    @endforeach
+                                </select> 
                                 <label class="fieldlabels">Опыт подготовки местных соревнований</label>
                                 <input type="range" min="0" max="5" step="1" value="1" id="foo" name="exp_local">
                                 <label class="fieldlabels">Опыт подготовки Национальных соревнований</label>
