@@ -25,7 +25,7 @@
           <div class="portfolio-details-slider">
             <div class="align-items-center">
               <div class="details-img">
-                <img src="{{asset('storage/images/herors.jpeg')}}" alt="">
+                <img src="/storage/{{$user->photo}}" alt="">
                 <div class="social-details" style="margin-top: 5px">
                   @if($user->telegram)
                   <a href="https://t.me/{{$user->telegram}}" class="btn btn-primary">
