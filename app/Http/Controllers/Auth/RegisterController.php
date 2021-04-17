@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Grade;
 use App\Models\UserAndCategories;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -75,23 +77,30 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {   
-        dd($data);
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'salary' => intval($data['salary']),
+            'salary_hour' => intval($data['salary_hour']),
+            'salary_route' => intval($data['salary_route']),
             'exp_level' => $data['exp_level'],
             'description' => $data['description'],
+            'grade' => $data['grade'],
             'educational_requirements' => $data['educational_requirements'],
-            'experience_requirements' => $data['experience_requirements'],
-            'additional_requirements' => $data['additional_requirements'],
+            'exp_local' => $data['exp_local'],
+            'exp_national' => $data['exp_national'],
+            'exp_international' => $data['exp_international'],
             'city_name' => $data['city_name'],
-            'gender' => $data['gender'],
             'company' => $data['company'],
+            'telegram' => $data['telegram'],
+            'instagram' => $data['instagram'],
             'contact' => $data['contact'],
+            'other_city' => 0,
+            'all_time' => 0,
+            'average_rating' => 0,
+            'photo' => 'images/users/defaultAvatar.jpeg',
         ]);
-        
+
         foreach($data['categories'] as $id => $x){
             $userAndCategory = new UserAndCategories;
             $userAndCategory->user_id = $user->id;
@@ -103,7 +112,8 @@ class RegisterController extends Controller
 
     public function indexCategory(){
         $categories = Category::all();
-        return view('auth.register', compact('categories'));
+        $grades = Grade::all();
+        return view('auth.register', compact('categories','grades'));
     }
 
 }

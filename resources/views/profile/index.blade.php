@@ -1,279 +1,57 @@
 @extends('layout')
 @section('content')
-
- <!-- ======= Hero Section ======= -->
- <section id="profile" class="profile">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5 d-flex flex-column justify-content-center">
-                      <div class="col-sm-10"><h1>User name</h1></div>
-                </div>
-                <div class="row">
-                      <div class="col-sm-3"><!--left col-->
-                        <form method="POST" action="{{route('saveAvatar')}}" enctype="multipart/form-data">
-                            @csrf
-                            <div class="text-center">
-                                <img src="{{asset('storage/'.Auth::user()->photo) }}" class="avatar img-circle img-thumbnail" alt="avatar">
-                                <h6>Upload a different photo...</h6>
-                                <input type="file" id="avatar" name="avatar" class="text-center center-block file-upload">
-                              </div>
-                              <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                        </form>
-                  <br>
-                      <div class="panel panel-default">
-                        <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
-                        <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
-                      </div>
-                      <ul class="list-group">
-                        <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
-                      </ul> 
-                           
-                      <div class="panel panel-default">
-                        <div class="panel-heading">Social Media</div>
-                        <div class="panel-body">
-                            <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+<link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
+<section id="profile" class="profile">
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Выберите область для аватара
+                </h5>
+                <button type="button" class="close" id="modalclose" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="img-container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
                         </div>
-                      </div>
-                      
-                        </div><!--/col-3-->
-                    <div class="col-sm-9">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-                            <li><a data-toggle="tab" href="#messages">Menu 1</a></li>
-                            <li><a data-toggle="tab" href="#settings">Menu 2</a></li>
-                          </ul>
-            
-                          
-                      <div class="tab-content">
-                        <div class="tab-pane active" id="home">
-                            <hr>
-                              <form class="form" action="##" method="post" id="registrationForm">
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                          <label for="first_name"><h4>First name</h4></label>
-                                          <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                        <label for="last_name"><h4>Last name</h4></label>
-                                          <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                                      </div>
-                                  </div>
-                      
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                          <label for="phone"><h4>Phone</h4></label>
-                                          <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                                      </div>
-                                  </div>
-                      
-                                  <div class="form-group">
-                                      <div class="col-xs-6">
-                                         <label for="mobile"><h4>Mobile</h4></label>
-                                          <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                          <label for="email"><h4>Email</h4></label>
-                                          <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                          <label for="email"><h4>Location</h4></label>
-                                          <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                          <label for="password"><h4>Password</h4></label>
-                                          <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                        <label for="password2"><h4>Verify</h4></label>
-                                          <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                       <div class="col-xs-12">
-                                            <br>
-                                              <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                               <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                                        </div>
-                                  </div>
-                              </form>
-                          
-                          <hr>
-                          
-                         </div><!--/tab-pane-->
-                         <div class="tab-pane" id="messages">
-                           
-                           <h2></h2>
-                           
-                           <hr>
-                              <form class="form" action="##" method="post" id="registrationForm">
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                          <label for="first_name"><h4>First name</h4></label>
-                                          <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                        <label for="last_name"><h4>Last name</h4></label>
-                                          <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                                      </div>
-                                  </div>
-                      
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                          <label for="phone"><h4>Phone</h4></label>
-                                          <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                                      </div>
-                                  </div>
-                      
-                                  <div class="form-group">
-                                      <div class="col-xs-6">
-                                         <label for="mobile"><h4>Mobile</h4></label>
-                                          <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                          <label for="email"><h4>Email</h4></label>
-                                          <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                          <label for="email"><h4>Location</h4></label>
-                                          <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                          <label for="password"><h4>Password</h4></label>
-                                          <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                        <label for="password2"><h4>Verify</h4></label>
-                                          <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                       <div class="col-xs-12">
-                                            <br>
-                                              <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                               <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                                        </div>
-                                  </div>
-                              </form>
-                           
-                         </div><!--/tab-pane-->
-                         <div class="tab-pane" id="settings">
-                                
-                               
-                              <hr>
-                              <form class="form" action="##" method="post" id="registrationForm">
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                          <label for="first_name"><h4>First name</h4></label>
-                                          <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                        <label for="last_name"><h4>Last name</h4></label>
-                                          <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                                      </div>
-                                  </div>
-                      
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                          <label for="phone"><h4>Phone</h4></label>
-                                          <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                                      </div>
-                                  </div>
-                      
-                                  <div class="form-group">
-                                      <div class="col-xs-6">
-                                         <label for="mobile"><h4>Mobile</h4></label>
-                                          <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                          <label for="email"><h4>Email</h4></label>
-                                          <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                          <label for="email"><h4>Location</h4></label>
-                                          <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                          <label for="password"><h4>Password</h4></label>
-                                          <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-xs-6">
-                                        <label for="password2"><h4>Verify</h4></label>
-                                          <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                       <div class="col-xs-12">
-                                            <br>
-                                              <button class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                               <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                                        </div>
-                                  </div>
-                              </form>
-                          </div>
-                           
-                          </div><!--/tab-pane-->
-                      </div><!--/tab-content-->
-            
-                    </div><!--/col-9-->
-                </div><!--/row-->
+                        <div class="col-md-4">
+                            <div class="preview"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="modalclose" data-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary" id="crop">Сохранить</button>
+            </div>
         </div>
-      </div>
+    </div>
+</div>
+    <div class="container light-style flex-grow-1 container-p-y">
+        <h4 class="font-weight-bold py-3 mb-4">
+          Личный кабинет
+        </h4> 
+        @include('message.message')
+        <div class="card overflow-hidden" style="background-color: #8080800a">
+          <div class="row no-gutters row-bordered row-border-light">
+           @include('profile.sidebar')
+            <div class="col-md-9">
+              <div id="tabContent" class="tab-content">
+                  @include('profile.general')
+              <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
+              </div>
+              
+            </div>
+          </div>
+        </div>
     </div>
 </section>
-  
+
+<script type="text/javascript" src="{{ asset('js/profile.js') }}"></script>
 @endsection
+

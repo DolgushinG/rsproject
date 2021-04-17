@@ -5,6 +5,9 @@
    * Easy selector helper function
    */
   const select = (el, all = false) => {
+    // if(el === undefined){
+    //   return;
+    // }
     el = el.trim()
     if (all) {
       return [...document.querySelectorAll(el)]
@@ -256,3 +259,9 @@
 
 })();
 
+  $(function () {
+ $('[data-toggle="tooltip"]').tooltip({
+   animation: false,
+   delay: {"show": 100, "hide": 100}
+ })
+})

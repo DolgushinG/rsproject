@@ -19,7 +19,7 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab1">
-                              <form action="{{ route('getresultsearch') }}" method="POST" id="searchForm">
+                              <form id="searchForm" method="POST">
                                 @csrf
                                     <div class="input-group">
                                         <label class="label">Город</label>
@@ -30,12 +30,12 @@
                                     <div class="checkbox-row">
                                         <label class="checkbox-container m-r-45">{{ $category->category_name }}
                                             <input type="checkbox" id="categories" name="categories[{{ $category->id }}]"
-                                            value="{{ $category->id }}" unchecked >
+                                            value="{{ $category->id }}" unchecked>
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     @endforeach
-                                    <button class="btn-submit searchUser" type="button">search</button>
+                                    <button class="btn-submit searchUser" type="button"> search</button>
                                 </form>
                             </div>
                         </div>
@@ -60,7 +60,8 @@
             </tr>
             @endforeach
             </tbody>
-            </table>
+          </table>
+      </div>
     </div>
   </div>
 </div>

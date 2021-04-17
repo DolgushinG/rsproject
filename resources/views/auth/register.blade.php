@@ -4,7 +4,7 @@
 <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
  <!-- ======= Hero Section ======= -->
- <section id="register" class="register">
+ <section id="register" class="register fadeInDown">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5
@@ -41,13 +41,13 @@
                                 <label class="fieldlabels">Email:*</label>
                                 <input id="email" type="email" name="email" placeholder="Email">
                                 <label class="fieldlabels">Username: *</label>
-                                <input id="name" type="text" name="name" placeholder="UserName" required autocomplete="username">
+                                <input id="name" type="text" name="name" placeholder="Иван" required autocomplete="username">
                                 <label class="fieldlabels">Password:*</label>
                                 <input id="password" name="password" type="password" required autocomplete="new-password"> 
                                 <label class="fieldlabels">Confirm Password: *</label>
                                 <input id="password-confirm" type="password" name="password-confirm" placeholder="Confirm Password" required autocomplete="new-password">
                             </div>
-                            <input type="button" name="next" class="next action-button" value="Next"/>
+                            <input type="button" name="next" class="next action-button" value="Дальше"/>
                             </fieldset>
                             <fieldset>
                             <div class="form-card">
@@ -73,14 +73,16 @@
                                     </div>
                                 </div>
                                 <label class="fieldlabels">Оплата за час</label>
-                                <input type="text" name="salary" placeholder="salary"/>
+                                <input type="text" name="salary_hour" placeholder=""/>
+                                <label class="fieldlabels">Оплата за трассу</label>
+                                <input type="text" name="salary_route" placeholder=""/>
                                 <label class="fieldlabels">Ваш опыт</label>
                                 <select name="exp_level" class="form-select" aria-label="Default select example">
                                     <option selected>Выбрать</option>
                                     <option value="beginner">Начинающий (до 1 года)</option>
                                     <option value="middle">Средний уровень(от 1 года)</option>
                                     <option value="senior">Опытный(Главный подготовщик ~ от 2 лет)</option>
-                                    </select> 
+                                </select> 
                                 <label class="fieldlabels">О себе </label>
                                 <textarea type="text" name="description" placeholder="Я крутил там"></textarea>
                                 <label class="fieldlabels">Курсы подготовщика </label>
@@ -90,13 +92,22 @@
                                     <option value="no">нет</option>
                                     </select> 
                                 </div>
-                                <label class="fieldlabels">Опыт подготовки междунарожных соревнований</label>
-                                <input type="range" min="0" max="5" step="1" value="1" id="foo" name="experience_requirements">
+                                <label class="fieldlabels">Максимальная категория лазания</label>
+                                <select name="grade" class="form-select" aria-label="Default select example">
+                                    <option selected>Выбрать</option>
+                                    @foreach ($grades as $grade)
+                                    <option value="{{$grade->grades_name}}">{{$grade->grades_name}}</option>
+                                    @endforeach
+                                </select> 
+                                <label class="fieldlabels">Опыт подготовки местных соревнований</label>
+                                <input type="range" min="0" max="5" step="1" value="1" id="foo" name="exp_local">
                                 <label class="fieldlabels">Опыт подготовки Национальных соревнований</label>
-                                <input type="range" min="0" max="5" step="1" value="1" id="foo" name="additional_requirements">
-                                <input type="button" name="next" class="next action-button" value="Next"/>
+                                <input type="range" min="0" max="5" step="1" value="1" id="foo" name="exp_national">
+                                <label class="fieldlabels">Опыт подготовки междунарожных соревнований</label>
+                                <input type="range" min="0" max="5" step="1" value="1" id="foo" name="exp_international">
+                                <input type="button" name="next" class="next action-button" value="Дальше"/>
                                 <input type="button" name="previous" class="previous action-button-previous"
-                                value="Previous"/>
+                                value="Назад"/>
                             </fieldset>
                             <fieldset> 
                             <div class="form-card">
@@ -109,19 +120,20 @@
                                     </div>
                                 </div> 
                                 <label class="fieldlabels">Ваш город</label>
-                                <input type="text" id="city" name="city_name" placeholder="salary"/>
-                                <label class="fieldlabels">Ваш пол</label>
-                                <select name="gender" class="form-select" aria-label="Default select example">
-                                    <option selected>Выбрать</option>
-                                    <option value="male">Муж</option>
-                                    <option value="female">Жен</option>
-                                </select> 
-                                <label class="fieldlabels">Место работы</label>
-                                <input type="text" name="company" placeholder="скалодром">
-                                <label class="fieldlabels">Контакты для связи </label>
-                                <input type="text" name="contact" placeholder="Telegram, email, или ссылка на соц сеть.">
+                                <input type="text" id="city" name="city_name" placeholder=""/>
+                                <label class="fieldlabels">Место работы (скалодром)</label>
+                                <input type="text" name="company" placeholder="">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Как с вами связаться?(не обязательные поля)</h2>
+                                </div>
+                                <label class="fieldlabels">Telegram</label>
+                                <input type="text" name="telegram" placeholder="Имя в телеграмме, после @">
+                                <label class="fieldlabels">Instagram </label>
+                                <input type="text" name="instagram" placeholder="Имя после https://instagram.com/">
+                                <label class="fieldlabels">Если нет telegram и instagram? запасной контакт для связи</label>
+                                <input type="text" name="contact" placeholder="ссылка на соц.сети или телефон">
                             </div>
-                            <button type="submit" name="next" value="Submit">
+                            <button type="submit" class="action-button" name="next" value="Submit">
                                 <span id="regLoader" style="display: none"><i
                                         class="fa fa-spinner fa-pulse"></i><span
                                         class="sr-only">Loading...</span>&nbsp;</span>
