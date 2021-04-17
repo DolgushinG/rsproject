@@ -2415,6 +2415,14 @@ p {
   text-align: center;
   position: relative;
 }
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -33px;
+  margin-right: 32px;
+  position: relative;
+  z-index: 2;
+}
 
 #msform fieldset {
   background: white;
@@ -2434,19 +2442,24 @@ p {
 #msform fieldset:not(:first-of-type) {
   display: none
 }
+.hide_error{
+  display: none;
+}
+.show_error{
+  display: block;
+}
 
 #msform input,
 #msform textarea {
   padding: 8px 15px 8px 15px;
   border: 1px solid #ccc;
   border-radius: 0px;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
   margin-top: 2px;
   width: 100%;
   box-sizing: border-box;
   font-family: montserrat;
   color: #2C3E50;
-  background-color: #ECEFF1;
   font-size: 16px;
   letter-spacing: 1px
 }

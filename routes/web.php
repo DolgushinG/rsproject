@@ -41,3 +41,4 @@ Route::get('/getrating', [App\Http\Controllers\PublicProfileController::class, '
 
 
 Route::post('cropimageupload', [App\Http\Controllers\CropImageController::class,'uploadCropImage'])->name('cropimageupload');
+Route::post('getEmployees',[App\Http\Controllers\HomeController::class, 'getEmployees'])->name('getEmployees');

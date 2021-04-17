@@ -9,8 +9,8 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="modalLabel">Выберите область для аватара
                 </h5>
-                <button type="button" class="close" id="modalclose" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+                <button type="button" class="btn btn-primary close" id="modalclose" data-dismiss="modal" aria-label="Close">
+                  Закрыть
                 </button>
             </div>
             <div class="modal-body">
