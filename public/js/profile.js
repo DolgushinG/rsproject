@@ -78,6 +78,15 @@ $(document).ready(function () {
                 $(messages).html(successHtml);
             },
             error: function (data) {
+                var errors = data.responseJSON.message;
+                var errorsHtml= '';
+                $.each( errors, function( key, value ) {
+                    errorsHtml += '<div class="alert alert-danger">'+
+                        '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
+                        '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
+                        '</div>';
+                });
+                $('.messages').html(errorsHtml);
             }
         });
     });
@@ -142,7 +151,15 @@ $(document).ready(function () {
                 $(messages).html(successHtml);
             },
             error: function (data) {
-                console.log("error");
+                var errors = data.responseJSON.message;
+                var errorsHtml= '';
+                $.each( errors, function( key, value ) {
+                    errorsHtml += '<div class="alert alert-danger">'+
+                        '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
+                        '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
+                        '</div>';
+                });
+                $('.messages').html(errorsHtml);
             }
         });
     });
@@ -172,10 +189,17 @@ $(document).ready(function () {
                     '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></</strong> ' + data.message +
                     '</div>';
                 $(messages).html(successHtml);
-
             },
             error: function (data) {
-                console.log("error");
+                var errors = data.responseJSON.message;
+                var errorsHtml= '';
+                $.each( errors, function( key, value ) {
+                    errorsHtml += '<div class="alert alert-danger">'+
+                        '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
+                        '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
+                        '</div>';
+                });
+                $('.messages').html(errorsHtml);
             }
         });
     });
@@ -195,6 +219,7 @@ $("body").on("change", ".image", function (e) {
     var url;
     if (files && files.length > 0) {
         file = files[0];
+
         if (URL) {
             done(URL.createObjectURL(file));
         } else if (FileReader) {
@@ -247,6 +272,15 @@ $("#crop").click(function () {
                     var successHtml = '<div class="alert alert-success">' +
                     '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
                     '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></</strong> ' + data.message +
+                    '</div>';
+                    $(messages).html(successHtml);
+                },
+                error: function (data) {
+                    $modal.modal('hide');
+                    var messages = $('.messages');
+                    var successHtml = '<div class="alert alert-danger">'+
+                    '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
+                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></</strong> '+ data.responseJSON.message +
                     '</div>';
                     $(messages).html(successHtml);
                 }

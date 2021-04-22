@@ -53,19 +53,16 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        // dd($data);
         return Validator::make($data, [
-            // 'name' => ['required', 'string', 'max:255'],
-            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            // 'salary' => ['required', 'integer'],
-            // 'exp_level' => ['required', 'string'],
-            // 'description' => ['required', 'string'],
-            // 'educational_requirements' => ['required', 'string'],
-            // 'experience_requirements' => ['required', 'int'],
-            // 'additional_requirements' => ['required', 'int'],
-            // 'city_name' => ['required', 'string', 'min:8', 'confirmed'],
-            // 'gender' => ['required'],
-            // 'company' => ['required', 'string'],
+             'name' => ['required', 'string', 'max:255'],
+             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+             'salary_route' => ['required', 'integer'],
+             'salary_hour' => ['required', 'integer'],
+             'exp_level' => ['required', 'string'],
+             'city_name' => ['required', 'string'],
+             'contact' => ['required', 'string'],
+             'grade' => ['required', 'string'],
+             'password' => ['required', 'string', 'min:5', 'confirmed'],
         ]);
     }
 
@@ -76,7 +73,7 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {   
+    {
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],

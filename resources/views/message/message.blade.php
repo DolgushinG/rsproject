@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-6">
     @if(Session::has('message'))
      <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
   @endif

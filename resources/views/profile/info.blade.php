@@ -14,16 +14,16 @@
             <option selected value="beginner">Начинающий (до 1 года)</option>
             <option value="middle">Средний уровень(от 1 года)</option>
             <option value="senior">Опытный(Главный подготовщик ~ от 2 лет)</option>
-            @elseif ($user->exp_level === 'middle') 
+            @elseif ($user->exp_level === 'middle')
             <option value="beginner">Начинающий (до 1 года)</option>
             <option selected value="middle">Средний уровень(от 1 года)</option>
             <option value="senior">Опытный(Главный подготовщик ~ от 2 лет)</option>
-            @else 
+            @else
             <option value="beginner">Начинающий (до 1 года)</option>
             <option value="middle">Средний уровень(от 1 года)</option>
             <option selected value="senior">Опытный(Главный подготовщик ~ от 2 лет)</option>
             @endif
-        </select> 
+        </select>
       </div>
       <div class="form-group">
       <label class="fieldlabels">Курсы подготовщика </label>
@@ -32,11 +32,11 @@
             @if ($user->educational_requirements === 'yes')
             <option selected value="yes">да</option>
             <option value="no">нет</option>
-            @else   
+            @else
             <option value="yes">да</option>
             <option selected value="no">нет</option>
             @endif
-        </select> 
+        </select>
         <label class="fieldlabels">Максимальная категория лазания</label>
         <select name="grade" class="form-select" aria-label="Default select example">
             <option >Выбрать</option>
@@ -47,7 +47,7 @@
             <option value="{{$grade->grades_name}}">{{$grade->grades_name}}</option>
             @endif
             @endforeach
-        </select> 
+        </select>
         <div class="form-group">
           <label class="fieldlabels">Опыт подготовки местных соревнований</label>
           <input type="range" min="0" max="5" step="1" value="{{$user->exp_local}}" id="foo" name="exp_local">
@@ -57,7 +57,7 @@
           <input type="range" min="0" max="5" step="1" value="{{$user->exp_international}}" id="foo" name="exp_international">
         </div>
     </div>
-    
+
       <div class="form-group">
         <div class="col-md-10">
               <div class="card-body text-center">
@@ -96,3 +96,5 @@
     <div id="ajax-alert" class="alert" style="display:none"></div>
   </div>
 </form>
+
+

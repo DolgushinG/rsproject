@@ -129,7 +129,6 @@ const checkLengthPassword = function (evt) {
         $("#messageError2").addClass('hide_error');
     }
 }
-button.disabled = true; 
 
 input.addEventListener("change", stateHandle);
 input2.addEventListener("change", stateHandle);
