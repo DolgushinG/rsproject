@@ -10,15 +10,27 @@
                 <div class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5
                                     text-center p-0 mt-3 mb-2">
                     <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                        <h2 id="heading">Sign Up Your User Account</h2>
-                        <p>Fill all form field to go to next step</p>
+                        @if($errors->any())
+                            @foreach($errors->all() as $error)
+                                <span class="text-uppercase text-primary d-block mb-3" data-aos="fade-left" data-aos-delay="300">{{ $error }}</span>
+                            @endforeach
+                        @endif
+
+                        @if(session('success'))
+                            <div class="text-uppercase text-primary text-success aos-init aos-animate" data-aos="fade-left" data-aos-delay="300" role="alert">
+                                <p>{{session('success')}} </p>
+                            </div>
+                        @endif
+
+                        <h2 id="heading">Регистрация вашего личного профиля</h2>
+                        <p>Заполните поля в следующих 3-х шагах</p>
                         <form action="{{ route('register') }}" method="POST" id="msform"  name="frmSample" class="was-validated">
                             @csrf
                             <!-- progressbar -->
                             <ul id="progressbar">
-                                <li class="active" id="account"><strong>Account</strong></li>
-                                <li id="personal"><strong>Personal</strong></li>
-                                <li id="confirm"><strong>Finish</strong></li>
+                                <li class="active" id="account"><strong>Аккаунт</strong></li>
+                                <li id="personal"><strong>Личный</strong></li>
+                                <li id="confirm"><strong>Почти всё</strong></li>
                             </ul>
                             <div class="progress">
                                 <div class="progress-bar
@@ -32,10 +44,10 @@
                                 <div class="form-card">
                                     <div class="row">
                                         <div class="col-7">
-                                            <h2 class="fs-title">Account Information:</h2>
+                                            <h2 class="fs-title">Информация об аккаунте:</h2>
                                         </div>
                                         <div class="col-5">
-                                            <h2 class="steps">Step 1 - 4</h2>
+                                            <h2 class="steps">Шаг 1 - 4</h2>
                                         </div>
                                     </div>
                                     <label for="validationInput" class="fieldlabels">Email:*</label>
@@ -43,14 +55,13 @@
                                     <input id="email" type="email" name="email" class="email_id form-control"
                                         placeholder="" required>
                                     </div>
-                                    
-                                    <label class="fieldlabels">Username:*</label>
+                                    <label class="fieldlabels">Имя и фамилия:*</label>
                                     <div class="mb-3">
                                     <input id="name" type="text" name="name"
                                         class="form-control register_input" placeholder="" required
                                         autocomplete="username">
                                     </div>
-                                    <label class="fieldlabels">Password:*</label>
+                                    <label class="fieldlabels">Пароль:*</label>
                                     <div class="mb-3">
                                     <input id="password" name="password" type="password"
                                     class="form-control register_input" required
@@ -60,9 +71,9 @@
                                             Пароль должен быть больше 6 символов, включая большие и маленькие буквы и цифры
                                         </div>
                                     </div>
-                                    <label class="fieldlabels">Confirm Password:*</label>
+                                    <label class="fieldlabels">Подтверждение пароля:*</label>
                                     <input id="password-confirm" type="password"
-                                    class="form-control register_input" name="password-confirm"
+                                    class="form-control register_input" name="password_confirmation"
                                         placeholder="" required autocomplete="new-password">
                                         <span toggle="#password-confirm" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                         <div id="messageError" class="alert alert-danger hide_error" role="alert">
@@ -75,7 +86,7 @@
                                 <div class="form-card">
                                     <div class="row">
                                         <div class="col-7">
-                                            <h2 class="fs-title">Personal Information:</h2>
+                                            <h2 class="fs-title">Информация об опыте:</h2>
                                         </div>
                                         <div class="col-5">
                                             <h2 class="steps">Step 2 - 4</h2>
@@ -96,7 +107,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <label class="fieldlabels">Оплата за час</label>
                                     <div class="mb-3">
                                     <input type="text" id="salary_hour" class="form-control is-invalid" name="salary_hour" placeholder="" required>

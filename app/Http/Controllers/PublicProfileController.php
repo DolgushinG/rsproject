@@ -1,22 +1,44 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Rating;
+use App\Models\UserAndCategories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 class PublicProfileController extends Controller
 {
 
     public function indexPublic($id,Request $request) {
         $user = User::find($id);
+        $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');
+        $categories = Category::whereIn('id', $userAndCategories)->get();
         $reviews = Rating::where('user_id', '=', $id);
         $foundReviews = $reviews->count();
         views($user)->unique()->record();
-        $reviews = $reviews->orderBy('rating','asc')->simplePaginate(5);
+        $reviews = $reviews->orderBy('rating','desc')->simplePaginate(5);
         $userView = views($user)->unique()->count();
-        return view('profilePublic.index', compact('user','reviews','foundReviews','userView'))->render();
+        return view('profilePublic.index', compact('user','reviews','foundReviews','userView','categories'))->render();
     }
     public function postRatingAndReview(Request $request) {
+        $messages = array(
+            'nameGuest.required' => 'Поле имя обязательно для заполнения',
+            'emailGuest.required' => 'Поле email обязательно для заполнения',
+            'review.required' => 'Поле отзыв обязательно для заполнения',
+            'star.required' => 'Проголосуйте звездочками это обязательно для заполнения',
+        );
+        $validator = Validator::make($request->all(), [
+            'nameGuest' => 'required',
+            'emailGuest' => 'required',
+            'review' => 'required',
+            'star' => 'required',
+        ],$messages);
+        if ($validator->fails())
+        {
+            return response()->json(['success' => false,'message'=>$validator->errors()->all()],422);
+        }
         $rate = Rating::where('user_id', '=', $request->userId)->where('user_ip', '=', $request->ip())->first();
         if($rate === null){
             $user = User::find($request->userId);
@@ -32,7 +54,6 @@ class PublicProfileController extends Controller
             } else {
                 $user->average_rating = $averageNum;
             }
-            
             $rating->rating = $request->star;
             $rating->user_id = $request->userId;
             $rating->review = $request->review;
@@ -40,9 +61,9 @@ class PublicProfileController extends Controller
             $rating->email_guest = $request->emailGuest;
             $rating->user_ip = $request->ip();
             $user->ratings()->save($rating);
-        } 
+        }
         else if ($rate !== null){
-            return response()->json(['success' => false, 'message' => 'вы уже сделали отзыв'], 422);
+            return response()->json(['success' => false, 'message' => array('Вы уже сделали отзыв')], 422);
         }
         if ($user->save()) {
             return response()->json(['success' => true, 'message' => 'Ваш комментарий опубликован'], 200);
@@ -58,5 +79,5 @@ class PublicProfileController extends Controller
         return view('profilePublic.comments', compact('reviews','user','foundReviews'))->render();
     }
 
-    
+
 }

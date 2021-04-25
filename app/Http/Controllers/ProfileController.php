@@ -70,10 +70,12 @@ class ProfileController extends Controller
             'salaryHour.numeric' => 'Поле оплата за час нужно вводить только цифры',
             'salaryRoute.numeric' => 'Поле оплата за трассу нужно вводить только цифры',
             'salaryRoute.required' => 'Поле оплата за трассу обязательно для заполнения',
+            'categories.required' => 'Укажите область накрутки, должна быть хотя бы одна область',
         );
         $validator = Validator::make($request->all(), [
             'salaryHour' => 'required|numeric',
             'salaryRoute' => 'required|numeric',
+            'categories' => 'required',
         ],$messages);
         if ($validator->fails())
         {

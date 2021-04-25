@@ -81,13 +81,9 @@ $(document).ready(function () {
 
 
 
-// const fieldcommentName = document.querySelector('#name')
 const fieldcommentPassword = document.querySelector('#password')
 const fieldcommentConfPassword = document.querySelector('#password-confirm')
 const buttoncomment = document.querySelector('.next')
-// fieldcommentName.addEventListener('keyup', validate_form)
-// fieldcommentPassword.addEventListener('keyup', validate_form)
-// buttoncomment.style.background = 'gray';
 
 let input = document.querySelector("#name");
 let input2 = document.querySelector("#password");
@@ -112,7 +108,7 @@ const checkLengthcomment = function (evt) {
         }
         $("#messageError").removeClass('show_error');
         $("#messageError").addClass('hide_error');
-        
+
         button.removeAttribute('disabled')
         button.style.background = '#4154f1';
     } else {
@@ -138,7 +134,7 @@ function stateHandle() {
     fieldcommentConfPassword.addEventListener('keyup', checkLengthcomment)
   } else {
     button.disabled = true;
-    button.style.background = 'gray'; 
+    button.style.background = 'gray';
   }
 }
 
@@ -156,7 +152,7 @@ $(document).on("keyup", ".email_id", function (event) {
     var keypressed = event.which;
     var input_val = $(this).val();
     var is_success = true;
-    
+
     if (keypressed == 9) {
         is_success = validate_email(input_val);
         if (!is_success) {
@@ -179,19 +175,19 @@ const checkLengthcomment2 = function (evt) {
     if (input4.value.length < 0) {
         buttonstep2.setAttribute('disabled', 'disabled');
         buttonstep2.style.background = 'gray';
-    } 
+    }
 }
 input4.addEventListener("change", stateHandle2);
 function stateHandle2() {
-  if (document.querySelector("#educational_requirements").value != "" && 
-                    document.querySelector("#exp_level").value != "" && 
-                    document.querySelector("#salary_route").value != "" && 
+  if (document.querySelector("#educational_requirements").value != "" &&
+                    document.querySelector("#exp_level").value != "" &&
+                    document.querySelector("#salary_route").value != "" &&
                     document.querySelector("#salary_hour").value != "") {
                         buttonstep2.removeAttribute('disabled')
                         buttonstep2.style.background = '#4154f1';
   } else {
     buttonstep2.disabled = true;
-    buttonstep2.style.background = 'gray'; 
+    buttonstep2.style.background = 'gray';
   }
 }
 
@@ -208,7 +204,7 @@ $(".toggle-password").click(function() {
 
 
 
-// step3 
+// step3
 let input5 = document.querySelector("#contact");
 const buttonstep3 = document.querySelector('.next3');
 input5.addEventListener("keyup", stateHandle3);
@@ -218,7 +214,7 @@ function stateHandle3() {
         buttonstep3.style.background = '#4154f1';
   } else {
     buttonstep3.disabled = true;
-    buttonstep3.style.background = 'gray'; 
+    buttonstep3.style.background = 'gray';
   }
 }
 

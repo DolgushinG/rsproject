@@ -9,40 +9,39 @@ $(document).ready(function() {
         $('#rating').addClass('invisible')
         setTimeout(function(){
             $('.alert-success').addClass('invisible');
-          } , 3000);
-        setTimeout(function(){
             $('.alert-danger').addClass('invisible');
           } , 3000);
-          setTimeout(function(){
+        setTimeout(function(){
             $('#rating').removeClass('invisible')
             $('#rating').addClass('visible')
           } , 3000);
      var data = $("#rating").serialize();
      let userId = $('#userId').val();
-     console.log(userId);
      e.preventDefault();
         $.ajax({
             type: 'POST',
             url: 'rating',
             data: data,
             success: function(data) {
-                console.log(data);
                 getProfileReviewAndRate(userId);
                 $("#rating")[0].reset();
                 var messages = $('.messages');
                 var successHtml = '<div class="alert alert-success">'+
                 '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
-                '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></</strong> '+ data.message +
+                '<i class="glyphicon glyphicon-ok-sign push-5-r"> '+ data.message +
                 '</div>';
                 $(messages).html(successHtml);
             },
             error: function(data) {
-                var messages = $('.messages');
-                var successHtml = '<div class="alert alert-danger">'+
-                '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
-                '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></</strong> '+ data.responseJSON.message +
-                '</div>';
-                $(messages).html(successHtml);
+                var errors = data.responseJSON.message;
+                var errorsHtml= '';
+                $.each( errors, function( key, value ) {
+                    errorsHtml += '<div class="alert alert-danger">'+
+                        '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
+                        '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
+                        '</div>';
+                });
+                $('.messages').html(errorsHtml);
             }
         });
     });
@@ -74,13 +73,13 @@ $(document).ready(function(){
                 }
             });
     $(document).on('click', '[role=\'navigation\'] a', function(event){
-       
-       event.preventDefault(); 
+
+       event.preventDefault();
        var page = $(this).attr('href').split('page=')[1];
        let userId = $('#userId').val();
        getProfileReviewAndRate(page, userId);
     });
-   
+
     function getProfileReviewAndRate(page, userId)
     {
         var _token = $("input[name=_token]").val();
@@ -95,3 +94,4 @@ $(document).ready(function(){
        });
     }
    });
+
