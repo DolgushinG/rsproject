@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    let userId = $('#userId').val();
+    getProfileReviewAndRate(userId);
     $.ajaxSetup({
         headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

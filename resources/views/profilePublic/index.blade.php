@@ -94,8 +94,10 @@
                     <div class="progress-bar bg-primary" role="progressbar" style="width: {{12*$user->exp_international}}%" aria-valuenow="{{$user->experience_requirements}}" aria-valuemin="0" aria-valuemax="5"></div>
                   </div>
                 </div></li>
+                @if($user->description)
               <li><strong>О себе</strong>: <br>{{$user->description}}</li>
                 <hr>
+                @endif
               <li><strong>Контакты для связи</strong>: <br>{{$user->contact}}</li>
                 @if($user->company)
                     <hr>
@@ -174,13 +176,9 @@
           <!-- End Counts Section -->
                 <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
                     <h5 class="mb-3 mt-4">Все отзывы и оценки</h5>
-                    @if(count($reviews) === 0)
-                        <h6 class="mb-3 ml-1 mt-4">Отзывов и оценок нет</h6>
-                     @else
                         <div id="allReview">
                             @include('profilePublic.comments')
                         </div>
-                        @endif
                 </div>
             </div>
             <div class="tab-pane fade active show" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">

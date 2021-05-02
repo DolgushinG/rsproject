@@ -17,9 +17,9 @@ class PublicProfileController extends Controller
         $categories = Category::whereIn('id', $userAndCategories)->get();
         $reviews = Rating::where('user_id', '=', $id);
         $foundReviews = $reviews->count();
-        views($user)->unique()->record();
+        views($user)->record();
         $reviews = $reviews->orderBy('rating','desc')->simplePaginate(5);
-        $userView = views($user)->unique()->count();
+        $userView = views($user)->count();
         return view('profilePublic.index', compact('user','reviews','foundReviews','userView','categories'))->render();
     }
     public function postRatingAndReview(Request $request) {

@@ -4,7 +4,7 @@ namespace App\Models;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use willvincent\Rateable\Rateable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -21,7 +21,7 @@ class User extends Model implements
     CanResetPasswordContract,
     Viewable
     {
-    use Authenticatable, Authorizable, CanResetPassword, HasFactory, Notifiable, Rateable, InteractsWithViews;
+    use Authenticatable, Authorizable, CanResetPassword, HasFactory, Notifiable, Rateable, InteractsWithViews, MustVerifyEmail, Notifiable;
     /**
      * The attributes that are mass assignable.
      *
