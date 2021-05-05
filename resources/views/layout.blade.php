@@ -44,6 +44,7 @@
 </head>
 <body>
 @include('layouts.nav')
+@include('cookiemsg')
 <div id="main">
 @yield('content')
 </div>
