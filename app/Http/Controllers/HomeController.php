@@ -88,10 +88,7 @@ class HomeController extends Controller
         echo json_encode($response);
         exit;
       }
-    public function indexContact()
-    {
-        return view('contact');
-    }
+
     public function indexBlog()
     {
         return view('blog.index');

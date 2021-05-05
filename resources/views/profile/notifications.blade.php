@@ -41,6 +41,6 @@
     </div>
   </div>
   <div class="text-right mt-4 ml-4 mb-4">
-    <button id="saveChangesNotifications" type="button" class="btn btn-primary">Save changes</button>
+    <button id="saveChangesNotifications" type="button" class="btn btn-primary">Сохранить</button>
   </div>
 </form>

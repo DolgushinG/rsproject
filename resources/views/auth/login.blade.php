@@ -27,7 +27,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            <input type="submit" class="fadeIn fourth" value="Log In" style="width: auto">
+                            <input type="submit" class="fadeIn fourth" value="Вход" style="width: auto">
                         </form>
                         <!-- Remind Passowrd -->
                         @if (Route::has('password.request'))

@@ -199,4 +199,5 @@
         </div>
     </section>
     <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
+    <script src="{{ asset('js/register.js') }}"></script>
 @endsection

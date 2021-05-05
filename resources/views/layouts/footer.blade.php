@@ -4,9 +4,8 @@
         <div class="container">
             <div class="row gy-4">
                 <div class="col-lg-5 col-md-12 footer-info">
-                    <a href="index.html" class="logo d-flex align-items-center">
-                        <img src="{{asset('storage/images/logo.png')}}" alt="">
-                        <span>Routesetter</span>
+                    <a href="{{route('home')}}" class="logo d-flex align-items-center">
+                        <img src="{{asset('storage/images/logo/logors.svg')}}" alt="">
                     </a>
                     <p>Идея проекта обьединить всех подготовщиков</p>
                     <div class="social-links mt-3">
@@ -20,9 +19,9 @@
                     <ul>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Главная</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">О нас</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Связаться с нами</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('feedback')}}">Связаться с нами</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">Согласие на обработку персональных данных</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">Политика в отношении обработки персональных данных</a></li>
                     </ul>
                 </div>
 
@@ -30,7 +29,7 @@
                     <h4>Наши сервисы</h4>
                     <ul>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Поиск подготовщиков</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Статьи о подготовке</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('blog')}}">Статьи о подготовке</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Оценка подготовщиков</a></li>
                     </ul>
                 </div>
@@ -39,7 +38,8 @@
                     <h4>Контакты</h4>
                     <p>
                         Санкт-Петербург <br>
-                        <strong>Phone:</strong> +7(999)2095596<br>
+                        <strong>Телефон: </strong><a href="tel: +74951234567">+7(999)209-55-96</a>
+                         <br>
                         <strong>Email:</strong> info@routesetters.ru<br>
                     </p>
 

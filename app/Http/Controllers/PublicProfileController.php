@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class PublicProfileController extends Controller
 {
-
     public function indexPublic($id,Request $request) {
         $user = User::find($id);
         $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');

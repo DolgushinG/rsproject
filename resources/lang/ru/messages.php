@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'Please click the button below to verify your email address' => 'Пожалуйста нажмите на кнопку нижу чтобы подтвердить почту',
+    'Verify Email Address' => 'Подтвердить почту',
+    'If you did not create an account, no further action is required.' => 'Если вы не создавали аккаунт, то просто ничего не делайте',
 ];
