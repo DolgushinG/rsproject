@@ -1,19 +1,20 @@
+@if(count($reviews) != 0 )
 <div class="col-lg-12 mb-4">
-    {!! $reviews->links() !!}  
-</div>  
+    {!! $reviews->links() !!}
+</div>
 @foreach ($reviews as $review)
 <div class="reviews-members pt-4 pb-4">
     <div class="media">
-        <a href="#"><img alt="Generic placeholder image" src="http://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-pill"></a>
+      <img alt="Generic placeholder image" src="https://eu.ui-avatars.com/api/?name={{$review->name_guest}}&background=a73737&color=050202&font-size=0.33&size=150" class="mr-3 rounded-pill">
         <div class="container media-body">
             <div class="reviews-members-header">
                 <div class="col-sm-12">
                     @for($i = 5; $i >= 1; $i--)
-                    @if($i === $review->rating) 
+                    @if($i === $review->rating)
                     <form action="">
                     <input class="star star-{{$i}}" value="{{$i}}" id="star-{{$review->id}}" type="radio" name="star" checked>
                     <label class="star star-{{$i}}" for="star-{{$review->id}}"></label>
-                    @else 
+                    @else
                     <input class="star star-{{$i}}" value="{{$i}}" id="star-{{$review->id}}" type="radio" name="star">
                     <label class="star star-{{$i}}" for="star-{{$review->id}}"></label>
                     @endif
@@ -29,5 +30,8 @@
         </div>
     </div>
 </div>
-<hr>  
+<hr>
 @endforeach
+@else
+    <h6 class="mb-3 ml-1 mt-4">Отзывов и оценок нет</h6>
+@endif

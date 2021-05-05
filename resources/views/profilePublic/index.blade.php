@@ -1,6 +1,8 @@
 @extends('layout')
 
 @section('content')
+    <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
     <!-- ======= Breadcrumbs ======= -->
   <section class="breadcrumbs">
     <div class="container">
@@ -16,7 +18,7 @@
       @endif
     </div>
   </section><!-- End Breadcrumbs -->
-  
+
       <!-- ======= Portfolio Details Section ======= -->
   <section id="portfolio-details" class="portfolio-details">
     <div class="container">
@@ -43,9 +45,15 @@
                     <span class="visually-hidden">Button</span>
                   </a>
                   @endif
-                  
+
                 </div>
               </div>
+                <div class="card-body">
+                    <h5 class="h6 card-title">Облаться накрутки</h5>
+                    @foreach($categories as $category)
+                    <span href="#" class="badge bg-primary me-1 my-1">{{$category->category_name}}</span>
+                    @endforeach
+                </div>
             </div>
           </div>
         </div>
@@ -57,7 +65,7 @@
               <form action="">
               <input class="star star-{{$i}}" value="{{$i}}" id="star-{{$user->id+1}}" disabled type="radio" name="star" checked>
               <label class="star star-{{$i}}" for="star-{{$user->id+1}}"></label>
-              @else 
+              @else
               <input class="star star-{{$i}}" value="{{$i}}" id="star-{{$user->id+1}}" disabled type="radio" name="star">
               <label class="star star-{{$i}}" for="star-{{$user->id+1}}"></label>
               @endif
@@ -86,19 +94,27 @@
                     <div class="progress-bar bg-primary" role="progressbar" style="width: {{12*$user->exp_international}}%" aria-valuenow="{{$user->experience_requirements}}" aria-valuemin="0" aria-valuemax="5"></div>
                   </div>
                 </div></li>
+                @if($user->description)
               <li><strong>О себе</strong>: <br>{{$user->description}}</li>
+                <hr>
+                @endif
               <li><strong>Контакты для связи</strong>: <br>{{$user->contact}}</li>
+                @if($user->company)
+                    <hr>
               <li><strong>Место работы (скалодром)</strong>: <br>{{$user->company}}</li>
+                @endif
+                <hr>
               <li><strong>Уровень подготовки</strong>: <br>
                 @if($user->exp_level == 'senior')
                 @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Опытный')" data-toggle="tooltip" data-placement="bottom"></i></a>
                 @elseif($user->exp_level == 'middle')
                 @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Средний уровень')" data-toggle="tooltip" data-placement="bottom"></i></a>
-                @else 
+                @else
                 @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Начинающий')" data-toggle="tooltip" data-placement="bottom"></i></a>
                 @endif</li>
+                <hr>
               <li><strong>Желаемая оплата</strong>: <br>{{$user->salary_hour}}р - час<br>{{$user->salary_route}}р - маршрут</li>
-                
+                <hr>
               @if($user->educational_requirements === 'yes')
               <li><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-patch-check" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M10.354 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -122,9 +138,9 @@
         <div class="tab-content" id="pills-tabContent">
           <section id="counts" class="counts">
             <div class="container" data-aos="fade-up">
-      
+
               <div class="row gy-4">
-      
+
                 <div class="col-lg-3 col-md-6">
                   <div class="count-box">
                     <i class="bi bi-eye-fill"></i>
@@ -134,7 +150,7 @@
                     </div>
                   </div>
                 </div>
-      
+
                 <div class="col-lg-3 col-md-6">
                   <div class="count-box">
                     <i class="bi bi-star-fill" style="color: #fffb01;"></i>
@@ -144,7 +160,7 @@
                     </div>
                   </div>
                 </div>
-      
+
                 <div class="col-lg-3 col-md-6">
                   <div class="count-box">
                     <i class="bi bi-capslock-fill" style="color: #15be56;"></i>
@@ -159,13 +175,10 @@
           </section>
           <!-- End Counts Section -->
                 <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
-                    <a href="#" class="btn btn-outline-primary btn-sm float-right">Негативные отзывы</a>
-                    <a href="#" class="btn btn-outline-primary btn-sm float-right">Позитивные отзывы</a>
-                    <a href="#" class="btn btn-outline-primary btn-sm float-right">Недавно добавленные отзывы</a>
                     <h5 class="mb-3 mt-4">Все отзывы и оценки</h5>
-                    <div id="allReview">
-                      @include('profilePublic.comments')
-                    </div>
+                        <div id="allReview">
+                            @include('profilePublic.comments')
+                        </div>
                 </div>
             </div>
             <div class="tab-pane fade active show" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
@@ -188,16 +201,20 @@
                   <h4 class="mb-2 pt-1">Оцените подготовщика и напишите отзыв</h4>
                   <div class="form-group">
                     <label>Вашe имя</label>
-                    <input name="nameGuest" type="text" class="form-control" required placeholder="Введите имя....">
+                      <div class="mb-3">
+                    <input name="nameGuest" type="text" class="form-control" placeholder="Введите имя...." required>
+                      </div>
                   </div>
                   <div class="form-group">
                     <label>Ваш email</label>
-                    <input name="emailGuest" type="email" class="form-control" required placeholder="Введите email....">
+                      <div class="mb-3">
+                    <input name="emailGuest" type="email" id="email" class="email_id form-control" placeholder="Введите email...." required>
+                      </div>
                   </div>
-                    <div class="form-group">
                         <label>Ваш отзыв</label>
-                        <textarea name="review" class="form-control" required placeholder="Введите текст"></textarea>
-                    </div>
+                        <div class="mb-3">
+                        <textarea name="review" id="validationTextarea" class="form-control" placeholder="Введите текст" required></textarea>
+                        </div>
                     <input type="hidden" id="userId" style="display:none" name="userId" value="{{$user->id}}">
                     <div class="form-group">
                         <button class="btn btn-primary btn-sm" id="submitrating" type="button">Опубликовать</button>
@@ -209,5 +226,6 @@
     </div>
 </div>
 </div>
+    <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/publicProfile.js') }}"></script>
 @endsection

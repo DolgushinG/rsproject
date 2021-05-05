@@ -12,18 +12,18 @@
             <option selected>Выбрать</option>
             @if ($user->exp_level === 'beginner')
             <option selected value="beginner">Начинающий (до 1 года)</option>
-            <option value="middle">Средний уровень(от 1 года)</option>
-            <option value="senior">Опытный(Главный подготовщик ~ от 2 лет)</option>
-            @elseif ($user->exp_level === 'middle') 
+            <option value="middle">Средний уровень (от 1 года)</option>
+            <option value="senior">Опытный (Главный подготовщик ~ от 2 лет)</option>
+            @elseif ($user->exp_level === 'middle')
             <option value="beginner">Начинающий (до 1 года)</option>
-            <option selected value="middle">Средний уровень(от 1 года)</option>
-            <option value="senior">Опытный(Главный подготовщик ~ от 2 лет)</option>
-            @else 
+            <option selected value="middle">Средний уровень (от 1 года)</option>
+            <option value="senior">Опытный (Главный подготовщик ~ от 2 лет)</option>
+            @else
             <option value="beginner">Начинающий (до 1 года)</option>
-            <option value="middle">Средний уровень(от 1 года)</option>
-            <option selected value="senior">Опытный(Главный подготовщик ~ от 2 лет)</option>
+            <option value="middle">Средний уровень (от 1 года)</option>
+            <option selected value="senior">Опытный (Главный подготовщик ~ от 2 лет)</option>
             @endif
-        </select> 
+        </select>
       </div>
       <div class="form-group">
       <label class="fieldlabels">Курсы подготовщика </label>
@@ -32,11 +32,13 @@
             @if ($user->educational_requirements === 'yes')
             <option selected value="yes">да</option>
             <option value="no">нет</option>
-            @else   
+            @else
             <option value="yes">да</option>
             <option selected value="no">нет</option>
             @endif
-        </select> 
+        </select>
+      </div>
+        <div class="form-group">
         <label class="fieldlabels">Максимальная категория лазания</label>
         <select name="grade" class="form-select" aria-label="Default select example">
             <option >Выбрать</option>
@@ -47,7 +49,8 @@
             <option value="{{$grade->grades_name}}">{{$grade->grades_name}}</option>
             @endif
             @endforeach
-        </select> 
+        </select>
+        </div>
         <div class="form-group">
           <label class="fieldlabels">Опыт подготовки местных соревнований</label>
           <input type="range" min="0" max="5" step="1" value="{{$user->exp_local}}" id="foo" name="exp_local">
@@ -57,7 +60,7 @@
           <input type="range" min="0" max="5" step="1" value="{{$user->exp_international}}" id="foo" name="exp_international">
         </div>
     </div>
-    
+
       <div class="form-group">
         <div class="col-md-10">
               <div class="card-body text-center">
@@ -86,13 +89,15 @@
           <input type="text" name="salaryRoute" class="form-control" value="{{$user->salary_route}}">
         </div>
       <div class="form-group">
-        <label class="form-label">Скалодром(на котором работаете постоянно)</label>
+        <label class="form-label">Скалодром (на котором работаете постоянно)</label>
         <input type="text" class="form-control" name="company" value="{{$user->company}}">
       </div>
     </div>
   </div>
   <div class="text-right mt-4 ml-4 mb-4">
-    <button id="saveChangesInfo" type="button" class="btn btn-primary">Save changes</button>
+    <button id="saveChangesInfo" type="button" class="btn btn-primary">Сохранить</button>
     <div id="ajax-alert" class="alert" style="display:none"></div>
   </div>
 </form>
+
+

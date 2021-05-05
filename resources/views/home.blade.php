@@ -2,7 +2,7 @@
 
 @section('content')
 <main id="main">
-<link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
 <!-- ======= Team Section ======= -->
 <section id="team" class="team">
@@ -52,17 +52,17 @@
             </div>
           </div>
        </div>
-       
+
       <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
         <ul class="list-group">
           <li class="list-group-item d-flex justify-content-between align-items-center text-white" style="background-color: #292F4A">
             Город
             <span class="align-items-right">Кол-во подготовщиков</span>
           </li>
-          @foreach ($cityList as $city)
-          <button id="cityTable" value="{{$city->city_name}}" style="border: 0;"><li class="search_city list-group-item d-flex justify-content-between align-items-center table-hover">
-              {{$city->city_name }}
-            <span class="badge badge-primary badge-pill">{{ $cityCount[$city->city_name]}}</span></button>
+          @foreach ($cityCount as $city => $count)
+          <button id="cityTable" value="{{$city}}" style="border: 0;"><li class="search_city list-group-item d-flex justify-content-between align-items-center table-hover">
+              {{$city}}
+            <span class="badge badge-primary badge-pill">{{$count}}</span></button>
             @endforeach
           </li>
         </ul>
@@ -149,18 +149,18 @@
               <a href="{{route('profileDetails', $user->id)}}"><h2>{{$user->name}}</h2></a>
             </p>
             <div class="profile mt-auto">
-              <img src="storage/{{$user->photo}}" class="testimonial-img" alt="">
+                <a href="{{route('profileDetails', $user->id)}}"><img src="storage/{{$user->photo}}" class="testimonial-img" alt=""></a>
             </div>
             @if($user->exp_level == 'senior')
             <p> @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Опытный')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
             @elseif($user->exp_level == 'middle')
             <p> @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Средний уровень')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
-            @else 
+            @else
             <p> @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Начинающий')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
             @endif
-            <p>
+              <a href="{{route('profileDetails', $user->id)}}"><p>
               Максимальная категория лазания - {{$user->grade}}
-            </p>
+                  </p></a>
             <p>
               Город - {{$user->city_name}}
             </p>

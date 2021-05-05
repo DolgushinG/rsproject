@@ -51,6 +51,7 @@ $(document).ready(function () {
     $(document).on('click', '#saveChangesGeneral', function (e) {
         setTimeout(function () {
             $('.alert-success').addClass('invisible');
+            $('.alert-danger').addClass('invisible');
         }, 3000);
         var email = $('#email').val();
         var name = $('#name').val();
@@ -72,12 +73,21 @@ $(document).ready(function () {
                 getProfile(tab);
                 var messages = $('.messages');
                 var successHtml = '<div class="alert alert-success">' +
-                    '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></</strong> ' + data.message +
+                    '<i class="bi bi-check2"></i>' +
+                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
                     '</div>';
                 $(messages).html(successHtml);
             },
             error: function (data) {
+                var errors = data.responseJSON.message;
+                var errorsHtml= '';
+                $.each( errors, function( key, value ) {
+                    errorsHtml += '<div class="alert alert-danger">'+
+                        '<i class="bi bi-exclamation-circle"></i> &ensp; '+
+                        '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
+                        '</div>';
+                });
+                $('.messages').html(errorsHtml);
             }
         });
     });
@@ -92,6 +102,7 @@ $(document).ready(function () {
     $(document).on('click', '#saveChangesNotifications', function (e) {
         setTimeout(function () {
             $('.alert-success').addClass('invisible');
+            $('.alert-danger').addClass('invisible');
         }, 3000);
         var data = $("#notificationsForm").serialize();
         e.preventDefault();
@@ -105,7 +116,7 @@ $(document).ready(function () {
                 var messages = $('.messages');
                 var successHtml = '<div class="alert alert-success">' +
                     '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></</strong> ' + data.message +
+                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
                     '</div>';
                 $(messages).html(successHtml);
             },
@@ -124,6 +135,7 @@ $(document).ready(function () {
     $(document).on('click', '#saveChangesInfo', function (e) {
         setTimeout(function () {
             $('.alert-success').addClass('invisible');
+            $('.alert-danger').addClass('invisible');
         }, 3000);
         var data = $("#infoForm").serialize();
         e.preventDefault();
@@ -137,12 +149,20 @@ $(document).ready(function () {
                 var messages = $('.messages');
                 var successHtml = '<div class="alert alert-success">' +
                     '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></</strong> ' + data.message +
+                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
                     '</div>';
                 $(messages).html(successHtml);
             },
             error: function (data) {
-                console.log("error");
+                var errors = data.responseJSON.message;
+                var errorsHtml= '';
+                $.each( errors, function( key, value ) {
+                    errorsHtml += '<div class="alert alert-danger">'+
+                        '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
+                        '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
+                        '</div>';
+                });
+                $('.messages').html(errorsHtml);
             }
         });
     });
@@ -156,6 +176,7 @@ $(document).ready(function () {
     $(document).on('click', '#saveChangesSocialLinks', function (e) {
         setTimeout(function () {
             $('.alert-success').addClass('invisible');
+            $('.alert-danger').addClass('invisible');
         }, 3000);
         var data = $("#socialLinksForm").serialize();
         e.preventDefault();
@@ -169,13 +190,20 @@ $(document).ready(function () {
                 var messages = $('.messages');
                 var successHtml = '<div class="alert alert-success">' +
                     '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></</strong> ' + data.message +
+                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
                     '</div>';
                 $(messages).html(successHtml);
-
             },
             error: function (data) {
-                console.log("error");
+                var errors = data.responseJSON.message;
+                var errorsHtml= '';
+                $.each( errors, function( key, value ) {
+                    errorsHtml += '<div class="alert alert-danger">'+
+                        '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
+                        '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
+                        '</div>';
+                });
+                $('.messages').html(errorsHtml);
             }
         });
     });
@@ -195,6 +223,7 @@ $("body").on("change", ".image", function (e) {
     var url;
     if (files && files.length > 0) {
         file = files[0];
+
         if (URL) {
             done(URL.createObjectURL(file));
         } else if (FileReader) {
@@ -234,6 +263,7 @@ $("#crop").click(function () {
             var tab = 'General';
             setTimeout(function () {
                 $('.alert-success').addClass('invisible');
+                $('.alert-danger').addClass('invisible');
             }, 3000);
             $.ajax({
                 type: "POST",
@@ -246,7 +276,16 @@ $("#crop").click(function () {
                     var messages = $('.messages');
                     var successHtml = '<div class="alert alert-success">' +
                     '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></</strong> ' + data.message +
+                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
+                    '</div>';
+                    $(messages).html(successHtml);
+                },
+                error: function (data) {
+                    $modal.modal('hide');
+                    var messages = $('.messages');
+                    var successHtml = '<div class="alert alert-danger">'+
+                    '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
+                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ data.responseJSON.message +
                     '</div>';
                     $(messages).html(successHtml);
                 }

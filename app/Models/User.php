@@ -2,26 +2,17 @@
 
 namespace App\Models;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
-use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use willvincent\Rateable\Rateable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Foundation\Auth\Access\Authorizable;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Notifications\Notifiable;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use App\Notifications\CustomResetPasswordNotification;
 
-class User extends Model implements
-    AuthenticatableContract,
-    AuthorizableContract,
-    CanResetPasswordContract,
-    Viewable
+class User extends Authenticatable implements MustVerifyEmail, Viewable
     {
-    use Authenticatable, Authorizable, CanResetPassword, HasFactory, Notifiable, Rateable, InteractsWithViews;
+    use HasFactory, Notifiable, Rateable, InteractsWithViews, Notifiable;
     /**
      * The attributes that are mass assignable.
      *
@@ -77,5 +68,16 @@ class User extends Model implements
     public function rating()
     {
       return $this->hasMany(Rating::class);
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new CustomResetPasswordNotification($token));
     }
 }

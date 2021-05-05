@@ -2,7 +2,9 @@
 @section('content')
 <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
+
 <section id="profile" class="profile">
+
   <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -35,8 +37,7 @@
     <div class="container light-style flex-grow-1 container-p-y">
         <h4 class="font-weight-bold py-3 mb-4">
           Личный кабинет
-        </h4> 
-        @include('message.message')
+        </h4>
         <div class="card overflow-hidden" style="background-color: #8080800a">
           <div class="row no-gutters row-bordered row-border-light">
            @include('profile.sidebar')
@@ -45,7 +46,7 @@
                   @include('profile.general')
               <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
               </div>
-              
+                @include('message.message')
             </div>
           </div>
         </div>
