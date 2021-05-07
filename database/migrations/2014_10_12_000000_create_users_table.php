@@ -43,11 +43,10 @@ class CreateUsersTable extends Migration
             $table->string('photo')->nullable();
             $table->enum('user_type', ['user', 'admin']);
             $table->string('company')->nullable();
+            $table->string('grade')->nullable();
             $table->string('contact')->nullable();
             $table->string('instagram')->nullable();
             $table->string('telegram')->nullable();
-            $table->integer('premium_jobs_balance')->default(0)->nullable();
-            //active_status 0:pending, 1:active, 2:block;
             $table->tinyInteger('active_status')->default(0);
         });
     }
