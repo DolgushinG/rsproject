@@ -114,4 +114,11 @@ class RegisterController extends Controller
         return view('auth.register', compact('categories','grades'));
     }
 
+    public function showRegistrationForm(Request $request)
+    {
+        $categories = Category::all();
+        $grades = Grade::all();
+        return view('auth.register', compact('categories','grades'));
+    }
+
 }
