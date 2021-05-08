@@ -64,8 +64,12 @@
                   <img src="storage/{{$user->photo}}" class="img-fluid" alt="">
 
                   <div class="social">
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-telegram"></i></a>
+                      @if($user->instagram)
+                    <a href="https://instagram.com/{{$user->instagram}}"><i class="bi bi-instagram"></i></a>
+                      @endif
+                      @if($user->telegram)
+                    <a href="https://t.me/{{$user->telegram}}"><i class="bi bi-telegram"></i></a>
+                      @endif
                     <a href="{{route('profileDetails', $user->id)}}" target="_blank" data-title="RouteSetter {{$user->name}}"><i class="bi bi-person-square"></i></a>
                   </div>
                 </div>
