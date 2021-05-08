@@ -38,9 +38,16 @@ body {
     .page-wrapper {
         margin-bottom: 1rem!important;
     }
+    .starMobile{
+        margin-bottom: 3rem!important;
+    }
     .cookie-policy__card {
         bottom:60px;
         max-width: calc(100% - 100px)
+    }
+    .starMobile2{
+        margin-right: 5rem;
+        margin-left: auto;
     }
 }
 #cookie_agree{
@@ -59,6 +66,13 @@ body {
     .cookie-policy__text {
         max-width:190px;
         font-size: 11px
+    }
+    .starMobile{
+        margin-bottom: 3rem!important;
+    }
+    .starMobile2{
+        margin-right: 5rem;
+        margin-left: auto;
     }
 }
 a {
