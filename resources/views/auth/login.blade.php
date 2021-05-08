@@ -15,13 +15,13 @@
                         <!-- Login Form -->
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                            <input id="email" type="email" class="fadeIn third inputLogin @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <input id="email" type="email" class="fadeIn third inputLogin @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="введите логин">
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            <input id="password" type="password" class="fadeIn third inputLogin @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                            <input id="password" type="password" class="fadeIn third inputLogin @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="введите пароль">
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

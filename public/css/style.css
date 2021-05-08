@@ -35,12 +35,17 @@ body {
 }
 
 @media screen and (max-width: 767px) {
+    .page-wrapper {
+        margin-bottom: 1rem!important;
+    }
     .cookie-policy__card {
         bottom:60px;
         max-width: calc(100% - 100px)
     }
 }
-
+#cookie_agree{
+    cursor: pointer;
+}
 .cookie-policy__text {
     font-size: 12px;
     line-height: 18px;
@@ -48,6 +53,9 @@ body {
 }
 
 @media screen and (max-width: 360px) {
+    .page-wrapper {
+        margin-bottom: 1rem!important;
+    }
     .cookie-policy__text {
         max-width:190px;
         font-size: 11px

@@ -4,7 +4,7 @@
       </div>
      </div>
     <div class="cookie-policy__ok-btn i-bem cookie-policy__ok-btn_js_inited">
-      <div id="cookie_agree" class="text text_view_link text_size_m">Ok</div>
+      <div id="cookie_agree" class="text text_view_link text_size_m">ok</div>
       </div>
 </div>
 <script>
