@@ -73,8 +73,8 @@
                     <a href="{{route('profileDetails', $user->id)}}" target="_blank" data-title="RouteSetter {{$user->name}}"><i class="bi bi-person-square"></i></a>
                   </div>
                 </div>
-                  <div class="form-group required">
-                    <div class="col-sm-12">
+                  <div class="form-group required starMobile">
+                    <div class="col-sm-12 starMobile2">
                       <form action="">
                       @for($i = 5; $i >= 1; $i--)
                     @if($i === intval($user->average_rating))
