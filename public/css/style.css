@@ -39,6 +39,8 @@ body {
         margin-bottom: 1rem!important;
     }
     .starMobile{
+        margin-right: 1rem!important;
+        margin-left: auto!important;
         margin-bottom: 3rem!important;
     }
     .cookie-policy__card {
@@ -46,8 +48,10 @@ body {
         max-width: calc(100% - 100px)
     }
     .starMobile2{
-        margin-right: 5rem;
-        margin-left: auto;
+        width: 60%!important;
+        height: auto!important;
+        margin-right: auto!important;
+        margin-left: 5rem!important;
     }
 }
 #cookie_agree{
@@ -68,11 +72,15 @@ body {
         font-size: 11px
     }
     .starMobile{
+        margin-right: 1rem!important;
+        margin-left: auto!important;
         margin-bottom: 3rem!important;
     }
     .starMobile2{
-        margin-right: 5rem;
-        margin-left: auto;
+        width: 60%!important;
+        height: auto!important;
+        margin-right: auto!important;
+        margin-left: 5rem!important;
     }
 }
 a {

@@ -59,7 +59,7 @@
          @foreach ($users as $user)
 
             <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
-              <div class="member">
+              <div class="member starMobile2">
                 <div class="member-img">
                   <img src="storage/{{$user->photo}}" class="img-fluid" alt="">
 
@@ -74,7 +74,7 @@
                   </div>
                 </div>
                   <div class="form-group required starMobile">
-                    <div class="col-sm-12 starMobile2">
+                    <div class="col-sm-12 ">
                       <form action="">
                       @for($i = 5; $i >= 1; $i--)
                     @if($i === intval($user->average_rating))
