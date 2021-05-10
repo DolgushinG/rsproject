@@ -99,7 +99,7 @@
                                                     <h2>Облаться накрутки</h2>
                                                     @foreach ($categories as $category)
                                                         <label class="check">
-                                                            <input type="checkbox" name="categories[{{ $category->id }}]"
+                                                            <input id="categories{{ $category->id }}" type="checkbox" name="categories[{{ $category->id }}]"
                                                                 value="{{ $category->id }}" unchecked>
                                                             <span>{{ $category->category_name }}</span></label>
                                                     @endforeach
@@ -151,15 +151,20 @@
                                         <div class="invalid-feedback">Выберите максимальную категорию</div>
                                     </div>
                                 </div>
-                                <label class="fieldlabels">Опыт подготовки местных соревнований</label>
+                                <div class="mb-3">
+                                <label class="fieldlabels">Опыт подготовки Местных соревнований</label>
                                 <input type="range" min="0" max="5" step="1" value="0" id="foo1" name="exp_local" style="padding: 8px 15px 8px 0px;">
                                 <label class="fieldlabels">Опыт подготовки Национальных соревнований</label>
                                 <input type="range" min="0" max="5" step="1" value="0" id="foo2" name="exp_national" style="padding: 8px 15px 8px 0px;">
-                                <label class="fieldlabels">Опыт подготовки междунарожных соревнований</label>
+                                <label class="fieldlabels">Опыт подготовки Междунарожных соревнований</label>
                                 <input type="range" min="0" max="5" step="1" value="0" id="foo3" name="exp_international" style="padding: 8px 15px 8px 0px;">
+                                </div>
+                                <div id="messageError3" class="alert alert-danger hide_error" role="alert">
+                                    <p>Вы забыли выбрать область накрутки наверху страницы</p>
+                                </div>
                                 <input type="button" name="next" class="next action-button next2" value="Дальше" disabled>
                                 <input type="button" name="previous" class="previous action-button-previous"
-                                    value="Назад" />
+                                    value="Назад">
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
