@@ -63,6 +63,7 @@ class RegisterController extends Controller
              'contact' => ['required', 'string'],
              'grade' => ['required', 'string'],
              'password' => ['required', 'string', 'min:5', 'confirmed'],
+             'categories' => ['required'],
         ]);
     }
 

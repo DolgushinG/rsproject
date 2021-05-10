@@ -9,34 +9,35 @@ $(document).ready(function () {
 
     setProgressBar(current);
 
+
     $(".next").click(function () {
-        current_fs = $(this).parent();
-        next_fs = $(this).parent().next();
+            current_fs = $(this).parent();
+            next_fs = $(this).parent().next();
 
-        //Add Class Active
-        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+            //Add Class Active
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
-        //show the next fieldset
-        next_fs.show();
-        //hide the current fieldset with style
-        current_fs.animate({
-            opacity: 0
-        }, {
-            step: function (now) {
-                // for making fielset appear animation
-                opacity = 1 - now;
+            //show the next fieldset
+            next_fs.show();
+            //hide the current fieldset with style
+            current_fs.animate({
+                opacity: 0
+            }, {
+                step: function (now) {
+                    // for making fielset appear animation
+                    opacity = 1 - now;
 
-                current_fs.css({
-                    'display': 'none',
-                    'position': 'relative'
-                });
-                next_fs.css({
-                    'opacity': opacity
-                });
-            },
-            duration: 500
-        });
-        setProgressBar(++current);
+                    current_fs.css({
+                        'display': 'none',
+                        'position': 'relative'
+                    });
+                    next_fs.css({
+                        'opacity': opacity
+                    });
+                },
+                duration: 500
+            });
+            setProgressBar(++current);
     });
 
     $(".previous").click(function () {
@@ -127,37 +128,6 @@ function stateHandle() {
   }
 }
 
-
-// var validate_email = function (email) {
-//     var pattern = /^([a-zA-A0-9_.-])+@([a-zA-Z0-9_.-])+([a-zA-Z])+/;
-//     var is_email_valid = false;
-//     if (email.match(pattern) != null) {
-//         is_email_valid = true;
-//     }
-//     return is_email_valid;
-// }
-//
-// $(document).on("keyup", ".email_id", function (event) {
-//     var keypressed = event.which;
-//     var input_val = $(this).val();
-//     var is_success = true;
-//
-//     if (keypressed == 9) {
-//         is_success = validate_email(input_val);
-//         if (!is_success) {
-//             $(this).focus();
-//         }
-//     }
-// });
-
-// $(document).on("focusout", ".email_id", function () {
-//     var input_val = $(this).val();
-//     var is_success = validate_email(input_val);
-//     if (!is_success) {
-//         $(".email_id").focus();
-//     }
-// });
-
 let input4 = document.querySelector("#grade");
 const buttonstep2 = document.querySelector('.next2');
 const checkLengthcomment2 = function (evt) {
@@ -171,15 +141,28 @@ function stateHandle2() {
   if (document.querySelector("#educational_requirements").value != "" &&
                     document.querySelector("#exp_level").value != "" &&
                     document.querySelector("#salary_route").value != "" &&
-                    document.querySelector("#salary_hour").value != "") {
-                        buttonstep2.removeAttribute('disabled')
-                        buttonstep2.style.background = '#4154f1';
+                    document.querySelector("#salary_hour").value != ""
+  ) {
+      var textinputs = document.querySelectorAll('input[type=checkbox]');
+      var empty = [].filter.call( textinputs, function( el ) {
+          return !el.checked
+      });
+
+      if (textinputs.length == empty.length) {
+          $("#messageError3").removeClass('hide_error');
+          $("#messageError3").addClass('show_error');
+      } else {
+          $("#messageError3").removeClass('show_error');
+          $("#messageError3").addClass('hide_error');
+          buttonstep2.removeAttribute('disabled')
+          buttonstep2.style.background = '#4154f1';
+      }
+
   } else {
     buttonstep2.disabled = true;
     buttonstep2.style.background = 'gray';
   }
 }
-
 $(".toggle-password").click(function() {
 
     $(this).toggleClass("fa-eye fa-eye-slash");
@@ -203,8 +186,25 @@ function stateHandle3() {
         buttonstep3.style.background = '#4154f1';
   } else {
     buttonstep3.disabled = true;
-    buttonstep3.style.background = 'gray';
+    buttonstep3.style.background = 'gray';S
   }
 }
+$('input[type="checkbox"]').on('change', function() {
+    var textinputs = document.querySelectorAll('input[type=checkbox]');
+    var empty = [].filter.call( textinputs, function( el ) {
+        return !el.checked
+    });
 
+    if (textinputs.length == empty.length) {
+        $("#messageError3").removeClass('hide_error');
+        $("#messageError3").addClass('show_error');
+        buttonstep2.setAttribute('disabled', 'disabled');
+        buttonstep2.style.background = 'gray';
+    } else {
+        $("#messageError3").removeClass('show_error');
+        $("#messageError3").addClass('hide_error');
+        buttonstep2.removeAttribute('disabled')
+        buttonstep2.style.background = '#4154f1';
+    }
+});
 
