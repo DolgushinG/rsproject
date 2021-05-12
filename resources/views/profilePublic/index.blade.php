@@ -113,7 +113,7 @@
                 @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Начинающий')" data-toggle="tooltip" data-placement="bottom"></i></a>
                 @endif</li>
                 <hr>
-              <li><strong>Желаемая оплата</strong>: <br>{{$user->salary_hour}}р - час<br>{{$user->salary_route}}р - маршрут</li>
+              <li><strong>Желаемая оплата</strong>: <br>{{$user->salary_hour}} руб - час<br>{{$user->salary_route_rope}} руб - маршрут трудность<br>{{$user->salary_route_bouldering}} руб - маршрут боулдеринг</li>
                 <hr>
               @if($user->educational_requirements === 'yes')
               <li><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-patch-check" viewBox="0 0 16 16">

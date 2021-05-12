@@ -98,8 +98,8 @@
                   @else
                   <p> @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Начинающий')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
                   @endif
-                  <span>Оплата: {{$user->salary_hour}}р / в час</span>
-                  <span>Оплата: {{$user->salary_route}}р / за трассу</span>
+                  <span>Оплата: {{$user->salary_route_rope}}р / за трассу трудность</span>
+                  <span>Оплата: {{$user->salary_route_bouldering}}р / за трассу боулдеринг</span>
                 </div>
               </div>
             </div>
