@@ -56,7 +56,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
              'name' => ['required', 'string', 'max:255'],
              'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-             'salary_route' => ['required', 'integer'],
+             'salary_route_rope' => ['required', 'integer'],
+             'salary_route_bouldering' => ['required', 'integer'],
              'salary_hour' => ['required', 'integer'],
              'exp_level' => ['required', 'string'],
              'city_name' => ['required', 'string'],
@@ -75,13 +76,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'salary_hour' => intval($data['salary_hour']),
-            'salary_route' => intval($data['salary_route']),
+            'salary_route_rope' => intval($data['salary_route_rope']),
+            'salary_route_bouldering' => intval($data['salary_route_bouldering']),
             'exp_level' => $data['exp_level'],
             'description' => $data['description'],
             'grade' => $data['grade'],

@@ -69,13 +69,16 @@ class ProfileController extends Controller
         $messages = array(
             'salaryHour.required' => 'Поле оплата за час обязательно для заполнения',
             'salaryHour.numeric' => 'Поле оплата за час нужно вводить только цифры',
-            'salaryRoute.numeric' => 'Поле оплата за трассу нужно вводить только цифры',
-            'salaryRoute.required' => 'Поле оплата за трассу обязательно для заполнения',
+            'salaryRouteBouldering.numeric' => 'Поле оплата за трассу боулдеринг нужно вводить только цифры',
+            'salaryRouteRope.required' => 'Поле оплата за трассу трудность обязательно для заполнения',
+            'salaryRouteRope.numeric' => 'Поле оплата за трассу трудность нужно вводить только цифры',
+            'salaryRouteBouldering.required' => 'Поле оплата за трассу боулдеринг обязательно для заполнения',
             'categories.required' => 'Укажите область накрутки, должна быть хотя бы одна область',
         );
         $validator = Validator::make($request->all(), [
             'salaryHour' => 'required|numeric',
-            'salaryRoute' => 'required|numeric',
+            'salaryRouteRope' => 'required|numeric',
+            'salaryRouteBouldering' => 'required|numeric',
             'categories' => 'required',
         ],$messages);
         if ($validator->fails())
@@ -90,7 +93,8 @@ class ProfileController extends Controller
         $user->exp_national = $request->exp_national;
         $user->exp_international = $request->exp_international;
         $user->salary_hour = $request->salaryHour;
-        $user->salary_route = $request->salaryRoute;
+        $user->salary_route_rope = $request->salaryRouteRope;
+        $user->salary_route_bouldering = $request->salaryRouteBouldering;
         $user->company = $request->company;
         $user->grade = $request->grade;
 

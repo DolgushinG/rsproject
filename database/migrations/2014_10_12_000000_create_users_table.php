@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->integer('salary_route')->default(0)->nullable(); //Salary from
+            $table->integer('salary_route_rope')->default(0)->nullable(); //Salary from
+            $table->integer('salary_route_bouldering')->default(0)->nullable(); //Salary from
             $table->integer('salary_hour')->default(0)->nullable(); //Salary to (Up range)
             $table->enum('exp_level', ['beginner', 'middle', 'senior'])->nullable();
             $table->text('description')->nullable();

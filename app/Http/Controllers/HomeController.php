@@ -25,7 +25,7 @@ class HomeController extends Controller
         $usersWithCours = User::where('educational_requirements', '=', 'yes')->count();
         $categories = Category::all();
         $userCount = User::All()->count();
-        $latestUsers = User::latest('created_at')->take(5)->get();
+        $latestUsers = User::latest('created_at')->where('active_status', '=', '0')->take(5)->get();
         arsort($cityCount);
         return view('home', compact(['categories','cityCount','cityList','userCount','latestUsers','usersSenior','usersWithCours']));
     }
@@ -92,5 +92,10 @@ class HomeController extends Controller
     public function indexBlog()
     {
         return view('blog.index');
+    }
+
+    public function indexVerificationPage()
+    {
+        return view('verificationPage');
     }
 }
