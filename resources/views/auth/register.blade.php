@@ -61,14 +61,14 @@
                                         class="form-control register_input" placeholder="" required
                                         autocomplete="username">
                                     </div>
-                                    <label class="fieldlabels">Пароль:*</label>
+                                    <label class="fieldlabels">Пароль:* (от 5 символов)</label>
                                     <div class="mb-3">
                                     <input id="password" name="password" type="password"
                                     class="form-control register_input" required
                                         autocomplete="new-password">
                                         <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                         <div id="messageError2" class="alert alert-danger hide_error" role="alert">
-                                            Пароль должен быть больше 6 символов, включая большие и маленькие буквы и цифры
+                                            Пароль должен быть больше 5 символов, включая большие и маленькие буквы и цифры
                                         </div>
                                     </div>
                                     <label class="fieldlabels">Подтверждение пароля:*</label>
@@ -108,13 +108,17 @@
                                         </div>
                                     </div>
 
-                                    <label class="fieldlabels">Оплата за час</label>
+                                    <label class="fieldlabels">Оплата за час (любая дисциплина)</label>
                                     <div class="mb-3">
-                                    <input type="text" id="salary_hour" class="form-control is-invalid" name="salary_hour" placeholder="" required>
+                                        <input type="text" id="salary_hour" class="form-control is-invalid" name="salary_hour" placeholder="" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" >
                                     </div>
-                                    <label class="fieldlabels">Оплата за трассу</label>
+                                    <label class="fieldlabels">Оплата за трассу трудность</label>
                                     <div class="mb-3">
-                                    <input type="text" id="salary_route" class="form-control is-invalid" name="salary_route" placeholder="" required>
+                                        <input type="text" id="salary_route_rope" class="form-control is-invalid" name="salary_route_rope" placeholder="" required  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" >
+                                    </div>
+                                    <label class="fieldlabels">Оплата за трассу боулдеринг</label>
+                                    <div class="mb-3">
+                                        <input type="text" id="salary_route_bouldering" class="form-control is-invalid" name="salary_route_bouldering" placeholder="" required  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" >
                                     </div>
                                     <label class="fieldlabels">Ваш опыт</label>
                                     <div class="mb-3">

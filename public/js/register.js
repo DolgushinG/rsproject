@@ -93,7 +93,7 @@ let button = document.querySelector(".next");
 // at least one number, one lowercase and one uppercase letter
 // at least six characters that are letters, numbers or the underscore
 const checkLengthcomment = function (evt) {
-    if (fieldcommentConfPassword.value.length > 2) {
+    if (fieldcommentConfPassword.value.length > 5) {
         if(input2.value != input3.value){
             $("#messageError").removeClass('hide_error');
             $("#messageError").addClass('show_error');
@@ -101,9 +101,9 @@ const checkLengthcomment = function (evt) {
         } else {
             $("#messageError").removeClass('show_error');
             $("#messageError").addClass('hide_error');
+            button.removeAttribute('disabled')
+            button.style.background = '#4154f1';
         }
-        button.removeAttribute('disabled')
-        button.style.background = '#4154f1';
     } else {
         button.setAttribute('disabled', 'disabled');
         button.style.background = 'gray';
@@ -113,6 +113,11 @@ const checkLengthPassword = function (evt) {
     if(input2.value.length < 0){
         $("#messageError2").removeClass('hide_error');
         $("#messageError2").addClass('show_error');
+        button.setAttribute('disabled', 'disabled');
+        button.style.background = 'gray';
+    } else {
+        $("#messageError").removeClass('show_error');
+        $("#messageError").addClass('hide_error');
     }
 }
 

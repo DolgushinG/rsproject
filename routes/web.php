@@ -40,6 +40,8 @@ Route::post('profile/rating', [App\Http\Controllers\PublicProfileController::cla
 Route::get('/getrating', [App\Http\Controllers\PublicProfileController::class, 'getRatingAndReview'])->name('getrating');
 
 Route::post('getEmployees',[App\Http\Controllers\HomeController::class, 'getEmployees'])->name('getEmployees');
+Route::get('/verify/success',[App\Http\Controllers\HomeController::class, 'indexVerificationPage']);
+
 Route::get('sendmail', [App\Http\Controllers\MailController::class, 'sendmail']);
 Auth::routes(['verify' => true]);
 Route::get('gmaps', [App\Http\Controllers\LocationController::class, 'gmaps'])->name('gmaps');

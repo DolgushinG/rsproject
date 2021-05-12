@@ -81,12 +81,15 @@
     <hr class="border-light m-0">
     <div class="card-body pb-2">
         <div class="form-group">
-          <label class="form-label">Оплата за час</label>
-          <input type="text" name="salaryHour" class="form-control" value="{{$user->salary_hour}}">
+          <label class="form-label">Оплата за час (любая дисциплина)</label>
+          <input type="text" name="salaryHour" class="form-control" value="{{$user->salary_hour}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
         </div>
         <div class="form-group">
-          <label class="form-label">Оплата за трассу</label>
-          <input type="text" name="salaryRoute" class="form-control" value="{{$user->salary_route}}">
+          <label class="form-label">Оплата за трассу трудность</label>
+          <input type="text" name="salaryRouteRope" class="form-control" value="{{$user->salary_route_rope}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+        </div><div class="form-group">
+          <label class="form-label">Оплата за трассу боулдеринг</label>
+          <input type="text" name="salaryRouteBouldering" class="form-control" value="{{$user->salary_route_bouldering}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
         </div>
       <div class="form-group">
         <label class="form-label">Скалодром (на котором работаете постоянно)</label>
