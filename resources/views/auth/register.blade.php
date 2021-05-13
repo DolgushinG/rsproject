@@ -133,7 +133,6 @@
                                     <label class="fieldlabels is-invalid" for="validationTextarea">О себе</label>
                                     <textarea type="text" id="validationTextarea" name="description"
                                         placeholder=""></textarea>
-
                                     <label class="fieldlabels">Курсы подготовщика </label>
                                     <div class="mb-3">
                                         <select name="educational_requirements" id="educational_requirements" class="form-select" required

@@ -212,4 +212,6 @@ $('input[type="checkbox"]').on('change', function() {
         buttonstep2.style.background = '#4154f1';
     }
 });
-
+$('textarea').on('input', function (){
+    $(this).outerHeight(38).outerHeight(this.scrollHeight);
+});
