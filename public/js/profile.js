@@ -298,6 +298,7 @@ $(document).ready(function () {
     $modal.modal('hide');
 })
 });
+
 // if(Cookies.get("_hidemode") === "Enabled"){
 //     let id = $('.comment').val();
 //     $('#commentField_'+id).slideUp();
@@ -331,3 +332,4 @@ $(document).ready(function () {
 //   const fieldcomment = document.querySelector('#commenttext')
 //   const buttoncomment = document.querySelector('.submitComment')
 //   fieldcomment.addEventListener('keyup', checkLengthcomment)
+

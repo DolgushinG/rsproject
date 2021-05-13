@@ -3133,10 +3133,6 @@ input:disabled {
   cursor: pointer;
 }
 
-textarea {
-  resize: none;
-}
-
 button {
   cursor: pointer;
 }
@@ -3195,7 +3191,7 @@ button {
 }
 
 .ui-w-80 {
-  width: 80px !important;
+  width: 97px !important;
   height: auto;
 }
 
@@ -4259,3 +4255,16 @@ img {
     }
 }
 
+textarea
+{
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    width: 100%;
+    min-height: 38px;
+    overflow: hidden;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    box-sizing: border-box;
+    resize: none;
+}

@@ -3,8 +3,8 @@
 <div class="tab-pane fade active show" id="account-info">
     <div class="card-body pb-2">
       <div class="form-group">
-        <label class="form-label">Краткое резюме о себе или о своем опыте</label>
-        <textarea class="form-control" rows="2" name="description" placeholder="Я давно уже работаю подготовщик .... ">{{$user->description}}</textarea>
+        <label class="fieldlabels">Краткое резюме о себе или о своем опыте</label>
+        <textarea type="text" name="description" placeholder="Я давно уже работаю подготовщик .... ">{{$user->description}}</textarea>
       </div>
       <div class="form-group">
       <label class="fieldlabels">Ваш опыт</label>
@@ -104,3 +104,8 @@
 </form>
 
 
+<script>
+    $('textarea').on('input', function (){
+        $(this).outerHeight(38).outerHeight(this.scrollHeight);
+    });
+</script>
