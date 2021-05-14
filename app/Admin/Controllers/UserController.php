@@ -84,7 +84,9 @@ class UserController extends Controller
         $grid->id('id');
         $grid->name('name');
         $grid->email('email');
-        $grid->slary('slary');
+        $grid->salary_route_rope('salary_route_rope');
+        $grid->sslary_route_bouldering('salary_route_rope');
+        $grid->sslary_hour('sslary_hour');
         $grid->exp_level('exp_level');
         $grid->description('description');
         $grid->skills('skills');
@@ -117,8 +119,9 @@ class UserController extends Controller
         $show->id('id');
         $show->name('name');
         $show->email('email');
-        $show->slary('salary_hour');
-        $show->slary('salary_route');
+        $show->salary_route_rope('salary_route_rope');
+        $show->salary_hour('salary_hour');
+        $show->sslary_route_bouldering('salary_route_rope');
         $show->exp_level('exp_level');
         $show->description('description');
         $show->skills('skills');
@@ -151,7 +154,8 @@ class UserController extends Controller
         $form->text('name', 'name');
         $form->text('email', 'email');
         $form->text('salary_hour', 'salary_hour');
-        $form->text('salary_route', 'salary_route');
+        $form->text('salary_route_rope', 'salary_route_rope');
+        $form->text('salary_route_bouldering', 'salary_route_bouldering');
         $form->text('exp_level', 'exp_level');
         $form->text('description', 'description');
         $form->text('skills', 'skills');
