@@ -18,7 +18,6 @@
                     <h4>Полезные ссылки</h4>
                     <ul>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Главная</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">О нас</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('feedback')}}">Связаться с нами</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Согласие на обработку персональных данных</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Политика в отношении обработки персональных данных</a></li>
@@ -29,7 +28,6 @@
                     <h4>Наши сервисы</h4>
                     <ul>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Поиск подготовщиков</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('blog')}}">Статьи о подготовке</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Оценка подготовщиков</a></li>
                     </ul>
                 </div>
@@ -40,7 +38,7 @@
                         Санкт-Петербург <br>
                         <strong>Телефон: </strong><a href="tel: +74951234567">+7(999)209-55-96</a>
                          <br>
-                        <strong>Email:</strong> info@routesetters.ru<br>
+                        <strong>Email:</strong> mail@routesetters.ru<br>
                     </p>
 
                 </div>

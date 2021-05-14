@@ -1,7 +1,6 @@
 $(document).ready(function () {
     const button1 = document.querySelector('.next').style.background = 'gray';
     const button2 = document.querySelector('.next2').style.background = 'gray';
-    const button3 = document.querySelector('.next3').style.background = 'gray';
     var current_fs, next_fs, previous_fs; //fieldsets
     var opacity;
     var current = 1;
@@ -11,6 +10,7 @@ $(document).ready(function () {
 
 
     $(".next").click(function () {
+
             current_fs = $(this).parent();
             next_fs = $(this).parent().next();
 
@@ -19,6 +19,7 @@ $(document).ready(function () {
 
             //show the next fieldset
             next_fs.show();
+            $('body, html').animate({scrollTop: 0}, 0.001);
             //hide the current fieldset with style
             current_fs.animate({
                 opacity: 0
@@ -37,6 +38,7 @@ $(document).ready(function () {
                 },
                 duration: 500
             });
+
             setProgressBar(++current);
     });
 
@@ -93,7 +95,7 @@ let button = document.querySelector(".next");
 // at least one number, one lowercase and one uppercase letter
 // at least six characters that are letters, numbers or the underscore
 const checkLengthcomment = function (evt) {
-    if (fieldcommentConfPassword.value.length > 5) {
+    if (fieldcommentConfPassword.value.length > 4) {
         if(input2.value != input3.value){
             $("#messageError").removeClass('hide_error');
             $("#messageError").addClass('show_error');
@@ -143,16 +145,10 @@ const checkLengthcomment2 = function (evt) {
 }
 input4.addEventListener("change", stateHandle2);
 function stateHandle2() {
-  if (document.querySelector("#educational_requirements").value != "" &&
-                    document.querySelector("#exp_level").value != "" &&
-                    document.querySelector("#salary_route").value != "" &&
-                    document.querySelector("#salary_hour").value != ""
-  ) {
       var textinputs = document.querySelectorAll('input[type=checkbox]');
       var empty = [].filter.call( textinputs, function( el ) {
           return !el.checked
       });
-
       if (textinputs.length == empty.length) {
           $("#messageError3").removeClass('hide_error');
           $("#messageError3").addClass('show_error');
@@ -162,11 +158,6 @@ function stateHandle2() {
           buttonstep2.removeAttribute('disabled')
           buttonstep2.style.background = '#4154f1';
       }
-
-  } else {
-    buttonstep2.disabled = true;
-    buttonstep2.style.background = 'gray';
-  }
 }
 $(".toggle-password").click(function() {
 
@@ -181,19 +172,19 @@ $(".toggle-password").click(function() {
 
 
 
-// step3
-let input5 = document.querySelector("#contact");
-const buttonstep3 = document.querySelector('.next3');
-input5.addEventListener("keyup", stateHandle3);
-function stateHandle3() {
-  if (document.querySelector("#contact").value.length > 0) {
-        buttonstep3.removeAttribute('disabled');
-        buttonstep3.style.background = '#4154f1';
-  } else {
-    buttonstep3.disabled = true;
-    buttonstep3.style.background = 'gray';S
-  }
-}
+// // step3
+// let input5 = document.querySelectorAll("#contact");
+// const buttonstep3 = document.querySelector('.next3');
+// input5.addEventListener("change", stateHandle3);
+// function stateHandle3() {
+//   if (document.querySelector("#contact").value.length > 0 || document.querySelector("#telegram").value.length > 0 || document.querySelector("#instagram").value.length > 0) {
+//         buttonstep3.removeAttribute('disabled');
+//         buttonstep3.style.background = '#4154f1';
+//   } else {
+//     buttonstep3.disabled = true;
+//     buttonstep3.style.background = 'gray';S
+//   }
+// }
 $('input[type="checkbox"]').on('change', function() {
     var textinputs = document.querySelectorAll('input[type=checkbox]');
     var empty = [].filter.call( textinputs, function( el ) {

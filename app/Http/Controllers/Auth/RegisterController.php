@@ -61,7 +61,6 @@ class RegisterController extends Controller
              'salary_hour' => ['required', 'integer'],
              'exp_level' => ['required', 'string'],
              'city_name' => ['required', 'string'],
-             'contact' => ['required', 'string'],
              'grade' => ['required', 'string'],
              'password' => ['required', 'string', 'min:5', 'confirmed'],
              'categories' => ['required'],
