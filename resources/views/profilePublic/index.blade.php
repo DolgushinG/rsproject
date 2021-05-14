@@ -98,7 +98,9 @@
               <li><strong>О себе</strong>: <br>{{$user->description}}</li>
                 <hr>
                 @endif
+                @if($user->contact)
               <li><strong>Контакты для связи</strong>: <br>{{$user->contact}}</li>
+                @endif
                 @if($user->company)
                     <hr>
               <li><strong>Место работы (скалодром)</strong>: <br>{{$user->company}}</li>
@@ -226,6 +228,11 @@
     </div>
 </div>
 </div>
+    <script>
+        $('textarea').on('input', function (){
+            $(this).outerHeight(38).outerHeight(this.scrollHeight);
+        });
+    </script>
     <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/publicProfile.js') }}"></script>
 @endsection

@@ -9,7 +9,7 @@
       <nav id="navbar" class="navbar">
         <ul class="nav">
           <li><a class="nav-link scrollto" href="{{route('home')}}">Главная</a></li>
-          <li><a href="{{route('blog')}}">Статьи</a></li>
+{{--          <li><a href="{{route('blog')}}">Статьи</a></li>--}}
 
           <li><a class="nav-link scrollto" href="{{route('feedback')}}">Связаться с нами</a></li>
             <!-- Authentication Links -->
@@ -24,12 +24,12 @@
             @else
                 <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i class="bi bi-chevron-down"></i></a>
                   <ul>
-                    <li><a href="{{route('profile')}}">Profile</a></li>
+                    <li><a href="{{route('profile')}}">Профиль</a></li>
                     <li>
                       <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
+                        {{ __('Выйти') }}
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf

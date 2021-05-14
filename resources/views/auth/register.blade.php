@@ -186,17 +186,15 @@
                                     <div class="col-7">
                                         <h2 class="fs-title">Как с вами связаться?(не обязательные поля)</h2>
                                     </div>
-                                    <label class="fieldlabels">Telegram</label>
-                                    <input type="text" id="telegram" name="telegram" placeholder="Имя в телеграмме, после @">
-                                    <label class="fieldlabels">Instagram </label>
-                                    <input type="text" id="instagram" name="instagram" placeholder="Имя после https://instagram.com/">
+                                    <label class="fieldlabels">Telegram (Имя в телеграмме, после @ )</label>
+                                    <input type="text" id="contact" name="telegram" placeholder="">
+                                    <label class="fieldlabels">Instagram (Имя после https://instagram.com/)</label>
+                                    <input type="text" id="contact" name="instagram" placeholder="">
                                     <label class="fieldlabels">Если нет telegram и instagram? запасной контакт для
                                         связи</label>
-                                    <input type="text" id="contact" class="form-control is-invalid" name="contact" placeholder="ссылка на соц.сети или телефон" required>
+                                    <input type="text" id="contact" name="contact" placeholder="ссылка на соц.сети или телефон">
                                 </div>
-                                <button type="submit" class="action-button next3" name="next" value="Submit" disabled>
-                                    <span id="regLoader" style="display: none"><i class="fa fa-spinner fa-pulse"></i><span
-                                            class="sr-only">Loading...</span>&nbsp;</span>
+                                <button type="submit" class="action-button next3" name="next" value="Submit">
                                     регистрация</button>
                                 <input type="button" name="previous" class="previous action-button-previous" value="Назад">
                             </fieldset>
