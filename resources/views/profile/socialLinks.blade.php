@@ -4,11 +4,11 @@
     <div class="card-body pb-2">
 
       <div class="form-group">
-        <label class="form-label">Telegram</label>
+        <label class="form-label">Telegram  <i class="bi bi-telegram" style="font-size: 30px"></i></label>
         <input type="text" name="telegram" class="form-control" value="{{$user->telegram}}">
       </div>
       <div class="form-group">
-        <label class="form-label">Instagram</label>
+        <label class="form-label">Instagram <i class="bi bi-instagram" style="font-size: 30px"></i></label>
         <input type="text" name="instagram" class="form-control" value="{{$user->instagram}}">
       </div>
       <div class="form-group">

@@ -27,6 +27,9 @@ Route::middleware(['auth','verified'])->group(function () {
 });
 
 //public
+
+Route::get('/privacyconf', [App\Http\Controllers\HomeController::class, 'indexPrivacy'])->name('privacyconf');
+Route::get('/privatedata', [App\Http\Controllers\HomeController::class, 'indexPrivacyData'])->name('privatedata');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'indexAbout'])->name('about');
 Route::get('/blog', [App\Http\Controllers\HomeController::class, 'indexBlog'])->name('blog');
 Route::get('/feedback', [App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback');

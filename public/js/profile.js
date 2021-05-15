@@ -332,4 +332,9 @@ $(document).ready(function () {
 //   const fieldcomment = document.querySelector('#commenttext')
 //   const buttoncomment = document.querySelector('.submitComment')
 //   fieldcomment.addEventListener('keyup', checkLengthcomment)
-
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip({
+        animation: false,
+        delay: {"show": 100, "hide": 100}
+    })
+})

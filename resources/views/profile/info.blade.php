@@ -13,15 +13,15 @@
             @if ($user->exp_level === 'beginner')
             <option selected value="beginner">Начинающий (до 1 года)</option>
             <option value="middle">Средний уровень (от 1 года)</option>
-            <option value="senior">Опытный (Главный подготовщик ~ от 2 лет)</option>
+            <option value="senior">Опытный (Главный подготовщик ~ от 5 лет)</option>
             @elseif ($user->exp_level === 'middle')
             <option value="beginner">Начинающий (до 1 года)</option>
             <option selected value="middle">Средний уровень (от 1 года)</option>
-            <option value="senior">Опытный (Главный подготовщик ~ от 2 лет)</option>
+            <option value="senior">Опытный (Главный подготовщик ~ от 5 лет)</option>
             @else
             <option value="beginner">Начинающий (до 1 года)</option>
             <option value="middle">Средний уровень (от 1 года)</option>
-            <option selected value="senior">Опытный (Главный подготовщик ~ от 2 лет)</option>
+            <option selected value="senior">Опытный (Главный подготовщик ~ от 5 лет)</option>
             @endif
         </select>
       </div>
@@ -30,11 +30,11 @@
         <select name="educational_requirements" class="form-select" aria-label="Default select example">
             <option >Выбрать</option>
             @if ($user->educational_requirements === 'yes')
-            <option selected value="yes">да</option>
-            <option value="no">нет</option>
+            <option selected value="yes">проходил</option>
+            <option value="no">не проходил</option>
             @else
-            <option value="yes">да</option>
-            <option selected value="no">нет</option>
+            <option value="yes">проходил</option>
+            <option selected value="no">не проходил</option>
             @endif
         </select>
       </div>
@@ -52,6 +52,21 @@
         </select>
         </div>
         <div class="form-group">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                    Что означают эти шкалы внизу?
+                </button>
+            </h2>
+            <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                <div class="accordion-body">
+                   Опыт подготовки от 0 до 5 , по своему ощущению, на сколько часто вы крутили.
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="form-group">
           <label class="fieldlabels">Опыт подготовки местных соревнований</label>
           <input type="range" min="0" max="5" step="1" value="{{$user->exp_local}}" id="foo" name="exp_local">
           <label class="fieldlabels">Опыт подготовки Национальных соревнований</label>
@@ -64,14 +79,14 @@
       <div class="form-group">
         <div class="col-md-10">
               <div class="card-body text-center">
-                  <h2>Облаться накрутки</h2>
+                  <h2>Облаcть накрутки</h2>
                   @foreach($categories as $category)
                   <label class="check">
-                  <input type="checkbox" name="categories[{{$category->id}}]" value="{{$category->id}}" checked> <span>{{$category->category_name}}</span></label>
+                  <input type="checkbox" name="categories[{{$category->id}}]" value="{{$category->id}}" checked> <span style="border-radius: 15px">{{$category->category_name}}</span></label>
                   @endforeach
                   @foreach($notCategories as $category)
                   <label class="check">
-                  <input type="checkbox" name="categories[{{$category->id}}]" value="{{$category->id}}" unchecked> <span>{{$category->category_name}}</span></label>
+                  <input type="checkbox" name="categories[{{$category->id}}]" value="{{$category->id}}" unchecked> <span style="border-radius: 15px">{{$category->category_name}}</span></label>
                   @endforeach
               </div>
           </div>

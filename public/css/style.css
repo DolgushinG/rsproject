@@ -53,6 +53,10 @@ body {
         margin-right: auto!important;
         margin-left: 5rem!important;
     }
+    .showbuttonsave{
+        display: block!important;
+        margin-left: 1rem;
+    }
 }
 #cookie_agree{
     cursor: pointer;
@@ -2526,7 +2530,7 @@ p {
 #msform textarea {
   padding: 8px 15px 8px 15px;
   border: 1px solid #ccc;
-  border-radius: 0px;
+  border-radius: 10px;
   margin-bottom: 5px;
   margin-top: 2px;
   width: 100%;
@@ -2549,10 +2553,9 @@ p {
 #msform .action-button {
   width: 150px;
   background: #4154f1;
-  font-weight: bold;
   color: white;
   border: 0 none;
-  border-radius: 0px;
+  border-radius: 13px;
   cursor: pointer;
   padding: 10px 5px;
   margin: 10px 0px 10px 5px;
@@ -2567,10 +2570,9 @@ p {
 #msform .action-button-previous {
   width: 100px;
   background: #616161;
-  font-weight: bold;
   color: white;
   border: 0 none;
-  border-radius: 0px;
+  border-radius: 13px;
   cursor: pointer;
   padding: 10px 5px;
   margin: 10px 5px 10px 0px;
@@ -2580,12 +2582,6 @@ p {
 #msform .action-button-previous:hover,
 #msform .action-button-previous:focus {
   background-color: #000000
-}
-
-.card {
-  z-index: 0;
-  border: none;
-  position: relative
 }
 
 .fs-title {
@@ -2705,7 +2701,7 @@ p {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border-radius: 0
+    border-radius: 15px
 }
 
 .card .card-body {
@@ -3193,7 +3189,9 @@ button {
 .ui-w-80 {
   width: 97px !important;
   height: auto;
+    border-radius: 15px;
 }
+
 
 .btn-default {
   border-color: rgba(24,28,33,0.1);
@@ -3231,11 +3229,6 @@ label.btn {
   color: #fff;
 }
 
-.card {
-  background-clip: padding-box;
-  box-shadow: 0 1px 4px rgba(24,28,33,0.012);
-}
-
 .row-bordered {
   overflow: hidden;
 }
@@ -3248,20 +3241,21 @@ label.btn {
   opacity: 0;
 }
 .account-settings-links .list-group-item.active {
-  font-weight: bold !important;
+    border-radius: 15px;
 }
 html:not(.dark-style) .account-settings-links .list-group-item.active {
-  background: transparent !important;
+  background: rgba(13, 110, 253, 0.35) !important;
 }
 .account-settings-multiselect ~ .select2-container {
   width: 100% !important;
 }
 .light-style .account-settings-links .list-group-item {
+    background-color: #fafafa;
   padding: 0.85rem 1.5rem;
   border-color: rgba(24, 28, 33, 0.03) !important;
 }
 .light-style .account-settings-links .list-group-item.active {
-  color: #4e5155 !important;
+  color: #0d6efd !important;
 }
 .material-style .account-settings-links .list-group-item {
   padding: 0.85rem 1.5rem;
@@ -4267,4 +4261,6 @@ textarea
     border: 1px solid #ced4da;
     box-sizing: border-box;
     resize: none;
+    border-radius: 15px;
 }
+

@@ -58,11 +58,11 @@ return [
     */
     'route' => [
 
-        'prefix' => env('ADMIN_ROUTE_PREFIX', 'admin'),
+        'prefix' => env('ADMIN_ROUTE_PREFIX', 'backside'),
 
         'namespace' => 'App\\Admin\\Controllers',
 
-        'middleware' => ['web', 'admin'],
+        'middleware' => ['web', 'admin','auth'],
     ],
 
     /*
@@ -396,18 +396,18 @@ return [
     */
     'extensions' => [
         'media-manager' => [
-        
+
             // Select a local disk that you configured in `config/filesystem.php`
             'disk' => 'public'
         ],
         'phpinfo' => [
-        
+
             // Set this to false if you want to disable this extension
             'enable' => true,
-            
+
             // What information to show，see http://php.net/manual/en/function.phpinfo.php#refsect1-function.phpinfo-parameters
             'what' => INFO_ALL,
-            
+
             // Set access path，defaults to `phpinfo`
             //'path' => '~phpinfo',
             ],
@@ -416,15 +416,15 @@ return [
                 'enable' => true
             ],
             'chartjs' => [
-        
+
                 // Set to `false` if you want to disable this extension
                 'enable' => false,
             ],
             'summernote' => [
-        
+
                 //Set to false if you want to disable this extension
                 'enable' => true,
-                
+
                 // Editor configuration
                 'config' => [
                     'lang'   => 'en-EN',
