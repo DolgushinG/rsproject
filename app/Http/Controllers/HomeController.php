@@ -98,4 +98,13 @@ class HomeController extends Controller
     {
         return view('verificationPage');
     }
+    public function indexPrivacy()
+    {
+        return view('privacy.policiesconf');
+    }
+    public function indexPrivacyData()
+    {
+        return view('privacy.privatedata');
+    }
+
 }

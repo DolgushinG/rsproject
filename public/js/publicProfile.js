@@ -96,4 +96,9 @@ $(document).ready(function(){
        });
     }
    });
-
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip({
+        animation: false,
+        delay: {"show": 100, "hide": 100}
+    })
+})

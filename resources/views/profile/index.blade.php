@@ -8,12 +8,13 @@
   <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-footer">
                 <h5 class="modal-title" id="modalLabel">Выберите область для аватара
                 </h5>
-                <button type="button" class="btn btn-primary close" id="modalclose" data-dismiss="modal" aria-label="Close">
-                  Закрыть
+                <button type="button" class="btn btn-secondary close" id="modalclose" data-dismiss="modal" aria-label="Close">
+                    Отмена
                 </button>
+                <button type="button" style="display: none" class="btn btn-primary showbuttonsave" id="crop">Сохранить</button>
             </div>
             <div class="modal-body">
                 <div class="img-container">

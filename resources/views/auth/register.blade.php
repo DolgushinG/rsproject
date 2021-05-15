@@ -96,12 +96,12 @@
                                         <div class="col-md-10">
                                             <div class="card">
                                                 <div class="card-body text-center">
-                                                    <h2>Облаться накрутки</h2>
+                                                    <h2>Область накрутки</h2>
                                                     @foreach ($categories as $category)
                                                         <label class="check">
                                                             <input id="categories{{ $category->id }}" type="checkbox" name="categories[{{ $category->id }}]"
                                                                 value="{{ $category->id }}" unchecked>
-                                                            <span>{{ $category->category_name }}</span></label>
+                                                            <span style="border-radius: 13px">{{ $category->category_name }}</span></label>
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -126,7 +126,7 @@
                                             <option value="">Выбрать</option>
                                             <option value="beginner">Начинающий (до 1 года)</option>
                                             <option value="middle">Средний уровень(от 1 года)</option>
-                                            <option value="senior">Опытный(Главный подготовщик ~ от 2 лет)</option>
+                                            <option value="senior">Опытный(Главный подготовщик ~ от 5 лет)</option>
                                         </select>
                                         <div class="invalid-feedback">Выберите ваш уровень</div>
                                     </div>
@@ -138,8 +138,8 @@
                                         <select name="educational_requirements" id="educational_requirements" class="form-select" required
                                             aria-label="Default select example">
                                             <option value="">Выбрать</option>
-                                            <option value="yes">да</option>
-                                            <option value="no">нет</option>
+                                            <option value="yes">проходил</option>
+                                            <option value="no">не проходил</option>
                                         </select>
                                         <div class="invalid-feedback">Выберите ваш уровень</div>
                                     </div>
@@ -155,12 +155,30 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
+                                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#panelsStayOpen-collapseOne"
+                                                        aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                                    Что означают эти шкалы внизу?
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapseOne"
+                                                 class="accordion-collapse collapse"
+                                                 aria-labelledby="panelsStayOpen-headingOne">
+                                                <div class="accordion-body">
+                                                    <strong>Опыт подготовки от 0 до 5 , по своему ощущению, на сколько часто вы крутили.</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <label class="fieldlabels">Опыт подготовки Местных соревнований</label>
-                                <input type="range" min="0" max="5" step="1" value="0" id="foo1" name="exp_local" style="padding: 8px 15px 8px 0px;">
+                                <input type="range" min="0" max="5" step="1" value="0" id="foo1" name="exp_local" style="padding: 8px 0px 8px 0px;">
                                 <label class="fieldlabels">Опыт подготовки Национальных соревнований</label>
-                                <input type="range" min="0" max="5" step="1" value="0" id="foo2" name="exp_national" style="padding: 8px 15px 8px 0px;">
+                                <input type="range" min="0" max="5" step="1" value="0" id="foo2" name="exp_national" style="padding: 8px 0px 8px 0px;">
                                 <label class="fieldlabels">Опыт подготовки Междунарожных соревнований</label>
-                                <input type="range" min="0" max="5" step="1" value="0" id="foo3" name="exp_international" style="padding: 8px 15px 8px 0px;">
+                                <input type="range" min="0" max="5" step="1" value="0" id="foo3" name="exp_international" style="padding: 8px 0px 8px 0px;">
                                 </div>
                                 <div id="messageError3" class="alert alert-danger hide_error" role="alert">
                                     <p>Вы забыли выбрать область накрутки наверху страницы</p>

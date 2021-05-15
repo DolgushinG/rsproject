@@ -9,18 +9,19 @@
                     </a>
                     <p>Идея проекта обьединить всех подготовщиков</p>
                     <div class="social-links mt-3">
-                        <a href="#" class="telegram"><i class="bi bi-telegram"></i></a>
-                        <a href="#" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
+                        <a href="https://t.me/dolgushin_georgii" class="telegram"><i class="bi bi-telegram"></i></a>
+                        <a href="https://instagram.com/zhorads" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
                     </div>
                 </div>
 
                 <div class="col-lg-2 col-6 footer-links">
                     <h4>Полезные ссылки</h4>
                     <ul>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Главная</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('home')}}">Главная</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="https://bouldertime.ru">Блог</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('feedback')}}">Связаться с нами</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Согласие на обработку персональных данных</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Политика в отношении обработки персональных данных</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('privatedata')}}">Согласие на обработку персональных данных</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('privacyconf')}}">Политика в отношении обработки персональных данных</a></li>
                     </ul>
                 </div>
 
@@ -46,7 +47,6 @@
             </div>
         </div>
     </div>
-
     <div class="container">
         <div class="copyright">
             &copy; Copyright <strong><span>Routesetters.ru</span></strong>. All Rights Reserved
