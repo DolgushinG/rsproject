@@ -96,6 +96,7 @@ class RegisterController extends Controller
             'contact' => $data['contact'],
             'other_city' => 0,
             'all_time' => 0,
+            'apply_privacy_conf' => 'yes',
             'average_rating' => 0,
             'photo' => 'images/users/defaultAvatar.jpeg',
         ]);

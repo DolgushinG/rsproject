@@ -225,3 +225,4 @@ var rangeSlider = function(){
 };
 
 rangeSlider();
+

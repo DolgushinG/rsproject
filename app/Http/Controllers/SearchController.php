@@ -11,7 +11,7 @@ use App\Models\UserAndCategories;
 class SearchController extends Controller
 {
     public function getResultSearch(Request $request)
-    {   
+    {
         if ($request->categories != null) {
             $users = UserAndCategories::whereIn('category_id', $request->categories)->distinct()->get('user_id');
             $usersResult = [];
@@ -57,8 +57,3 @@ class SearchController extends Controller
         return view('search.resultList', compact('users','foundUsers','valueSearch'))->render();
     }
 }
-#цена за трассу в финале
-#за полуфинал
-#детские 
-#подростки 
-#категория которую может накрутить и пролезсть

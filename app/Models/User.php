@@ -41,6 +41,7 @@ class User extends Authenticatable implements MustVerifyEmail, Viewable
         'all_time',
         'grade',
         'average_rating',
+        'apply_privacy_conf',
     ];
 
     /**

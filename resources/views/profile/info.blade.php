@@ -100,10 +100,10 @@
           <input type="text" name="salaryHour" class="form-control" value="{{$user->salary_hour}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
         </div>
         <div class="form-group">
-          <label class="form-label">Оплата за трассу трудность</label>
+          <label class="form-label">Оплата за трассу трудность минимум</label>
           <input type="text" name="salaryRouteRope" class="form-control" value="{{$user->salary_route_rope}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
         </div><div class="form-group">
-          <label class="form-label">Оплата за трассу боулдеринг</label>
+          <label class="form-label">Оплата за трассу боулдеринг минимум</label>
           <input type="text" name="salaryRouteBouldering" class="form-control" value="{{$user->salary_route_bouldering}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
         </div>
       <div class="form-group">
