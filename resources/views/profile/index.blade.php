@@ -11,10 +11,22 @@
             <div class="modal-footer">
                 <h5 class="modal-title" id="modalLabel">Выберите область для аватара
                 </h5>
-                <button type="button" class="btn btn-secondary close" id="modalclose" data-dismiss="modal" aria-label="Close">
-                    Отмена
-                </button>
-                <button type="button" style="display: none" class="btn btn-primary showbuttonsave" id="crop">Сохранить</button>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                            Не видно кнопок отмена и сохранить?
+                        </button>
+                    </h2>
+                    <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                        <div class="accordion-body">
+                            <button type="button" class="btn btn-secondary close" id="modalclose" data-dismiss="modal" aria-label="Close">
+                                Отмена
+                            </button>
+                            <button type="button" style="display: none" class="btn btn-primary showbuttonsave" id="crop">Сохранить</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div class="modal-body">
                 <div class="img-container">

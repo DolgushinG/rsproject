@@ -72,7 +72,7 @@ $(document).ready(function () {
             success: function (data) {
                 getProfile(tab);
                 var messages = $('.messages');
-                var successHtml = '<div class="alert alert-success">' +
+                var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
                     '<i class="bi bi-check2"></i>' +
                     '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
                     '</div>';
@@ -82,7 +82,7 @@ $(document).ready(function () {
                 var errors = data.responseJSON.message;
                 var errorsHtml= '';
                 $.each( errors, function( key, value ) {
-                    errorsHtml += '<div class="alert alert-danger">'+
+                    errorsHtml += '<div class="alert alert-danger" style="border-radius: 15px">'+
                         '<i class="bi bi-exclamation-circle"></i> &ensp; '+
                         '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
                         '</div>';
@@ -114,7 +114,7 @@ $(document).ready(function () {
             success: function (data) {
                 getProfile(tab);
                 var messages = $('.messages');
-                var successHtml = '<div class="alert alert-success">' +
+                var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
                     '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
                     '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
                     '</div>';
@@ -147,7 +147,7 @@ $(document).ready(function () {
             success: function (data) {
                 getProfile(tab);
                 var messages = $('.messages');
-                var successHtml = '<div class="alert alert-success">' +
+                var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
                     '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
                     '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
                     '</div>';
@@ -157,7 +157,7 @@ $(document).ready(function () {
                 var errors = data.responseJSON.message;
                 var errorsHtml= '';
                 $.each( errors, function( key, value ) {
-                    errorsHtml += '<div class="alert alert-danger">'+
+                    errorsHtml += '<div class="alert alert-danger" style="border-radius: 15px">'+
                         '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
                         '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
                         '</div>';
@@ -188,7 +188,7 @@ $(document).ready(function () {
             success: function (data) {
                 getProfile(tab);
                 var messages = $('.messages');
-                var successHtml = '<div class="alert alert-success">' +
+                var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
                     '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
                     '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
                     '</div>';
@@ -198,7 +198,7 @@ $(document).ready(function () {
                 var errors = data.responseJSON.message;
                 var errorsHtml= '';
                 $.each( errors, function( key, value ) {
-                    errorsHtml += '<div class="alert alert-danger">'+
+                    errorsHtml += '<div class="alert alert-danger" style="border-radius: 15px">'+
                         '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
                         '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
                         '</div>';
@@ -274,7 +274,7 @@ $("#crop").click(function () {
                     $modal.modal('hide');
                     getProfile(tab);
                     var messages = $('.messages');
-                    var successHtml = '<div class="alert alert-success">' +
+                    var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
                     '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
                     '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
                     '</div>';
@@ -283,7 +283,7 @@ $("#crop").click(function () {
                 error: function (data) {
                     $modal.modal('hide');
                     var messages = $('.messages');
-                    var successHtml = '<div class="alert alert-danger">'+
+                    var successHtml = '<div class="alert alert-danger" style="border-radius: 15px">'+
                     '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
                     '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ data.responseJSON.message +
                     '</div>';

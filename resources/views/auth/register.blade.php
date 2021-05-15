@@ -9,7 +9,7 @@
             <div class="row justify-content-center">
                 <div class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5
                                     text-center p-0 mt-3 mb-2">
-                    <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                    <div class="card px-0 pt-4 pb-0 mt-3 mb-3" style="border: 0">
                         @if($errors->any())
                             @foreach($errors->all() as $error)
                                 <span class="text-uppercase text-primary d-block mb-3" data-aos="fade-left" data-aos-delay="300">{{ $error }}</span>
@@ -112,11 +112,11 @@
                                     <div class="mb-3">
                                         <input type="text" id="salary_hour" class="form-control is-invalid" name="salary_hour" placeholder="" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" >
                                     </div>
-                                    <label class="fieldlabels">Оплата за трассу трудность</label>
+                                    <label class="fieldlabels">Оплата за трассу трудность минимум</label>
                                     <div class="mb-3">
                                         <input type="text" id="salary_route_rope" class="form-control is-invalid" name="salary_route_rope" placeholder="" required  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" >
                                     </div>
-                                    <label class="fieldlabels">Оплата за трассу боулдеринг</label>
+                                    <label class="fieldlabels">Оплата за трассу боулдеринг минимум</label>
                                     <div class="mb-3">
                                         <input type="text" id="salary_route_bouldering" class="form-control is-invalid" name="salary_route_bouldering" placeholder="" required  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" >
                                     </div>
@@ -212,6 +212,8 @@
                                         связи</label>
                                     <input type="text" id="contact" name="contact" placeholder="ссылка на соц.сети или телефон">
                                 </div>
+                                <p class="small"><label><input class="text-right" name="checkbox" id="checkboxConf" type="checkbox" checked>Я даю согласие на обработку моих <br> персональных данных
+                                        в порядке и на условиях, указанных в <a href="{{route('privacyconf')}}">согласии</a></label></p>
                                 <button type="submit" class="action-button next3" name="next" value="Submit">
                                     регистрация</button>
                                 <input type="button" name="previous" class="previous action-button-previous" value="Назад">
@@ -222,6 +224,7 @@
             </div>
         </div>
     </section>
+
     <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
     <script src="{{ asset('js/register.js') }}"></script>
 @endsection
