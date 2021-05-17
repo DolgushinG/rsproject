@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="row d-flex justify-content-center mt-100">
                                         <div class="col-md-10">
-                                            <div class="card">
+                                            <div class="card" style="border: 0">
                                                 <div class="card-body text-center">
                                                     <h2>Область накрутки</h2>
                                                     @foreach ($categories as $category)
