@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="{{asset('storage/images/logo/logors.svg')}}" class="img-fluid" alt="">
+                    <img src="{{asset('storage/images/routesetter/routesetter.jpg')}}" class="img-fluid" alt="">
                 </div>
             </div>
         </div>
