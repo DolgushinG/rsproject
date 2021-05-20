@@ -176,4 +176,5 @@
 
 </section><!-- End Testimonials Section -->
   </main><!-- End #main -->
+@include('sponsors.sponsors')
 @endsection

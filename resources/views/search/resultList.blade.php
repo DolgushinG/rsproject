@@ -90,7 +90,7 @@
                      </div>
                   </div>
                 <div class="member-info">
-                  <a href="{{route('profileDetails', $user->id)}}" target="_blank" data-title="RouteSetter {{$user->name}}"><h4>{{$user->name}}</h4>
+                  <a href="{{route('profileDetails', $user->id)}}" target="_blank" data-title="RouteSetter {{$user->name}}"><h4>{{ucwords($user->name)}}</h4>
                       <span>{{$user->city_name}} </span>
                   @if($user->exp_level == 'senior')
                   <p> @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Опытный')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
