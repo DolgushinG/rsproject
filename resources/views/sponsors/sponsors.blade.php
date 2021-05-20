@@ -1,16 +1,17 @@
-<!-- ======= Clients Section ======= -->
-<section id="clients" class="clients">
-
+<section id="counts" class="counts">
+    <header class="section-header">
+        <h2>Те кто поддержал проект</h2>
+    </header>
     <div class="container" data-aos="fade-up">
-
-        <header class="section-header">
-            <h2>Те кто поддержал проект</h2>
-        </header>
-        <div class="clients-slider swiper-container">
-            <div class="swiper-wrapper align-items-center">
-                <div class="swiper-slide" style="margin-left: 37rem;"><a href="https://www.skalolaz.pro/"><img src="{{asset('storage/images/sponsors/skalolazpro.jpeg')}}" class="img-fluid" alt=""></a></div>
+        <div class="row gy-2">
+            <div class="col-lg-3 col-md-4 sponsors" style="margin-right: auto; margin-left: auto">
+                <div class="count-box">
+                    <div>
+                        <p><a href="https://skalolaz.pro"><img src="{{asset('storage/images/sponsors/skalolazPRO.jpeg')}}" class="img-fluid" alt=""></a>
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="swiper-pagination"></div>
         </div>
     </div>
-</section>
+</section><!-- End Counts Section -->

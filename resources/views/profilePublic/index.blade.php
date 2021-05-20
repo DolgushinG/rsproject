@@ -11,7 +11,7 @@
                 <li>Профиль</li>
             </ol>
 
-            <h2>Профиль <br> {{$user->name}}
+            <h2>Профиль <br> {{ucwords($user->name)}}
             </h2>
             <strong>Город</strong>: <br> {{$user->city_name}}
             @if($user->all_time)
