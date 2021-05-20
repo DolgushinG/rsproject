@@ -37,7 +37,7 @@
                     <h4>Контакты</h4>
                     <p>
                         Санкт-Петербург <br>
-                        <strong>Телефон: </strong><a href="tel: +74951234567">+7(999)209-55-96</a>
+                        <strong>Телефон: </strong><a href="tel: +79992095596">+7(999)209-55-96</a>
                          <br>
                         <strong>Email:</strong> mail@routesetters.ru<br>
                     </p>
