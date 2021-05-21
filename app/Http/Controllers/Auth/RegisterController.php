@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use App\Mail\NewUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -12,6 +13,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -76,7 +78,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'name' => ucwords($data['name']),
+            'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'salary_hour' => intval($data['salary_hour']),
@@ -107,7 +109,17 @@ class RegisterController extends Controller
             $userAndCategory->category_id = $id;
             $userAndCategory->save();
         }
+        $newUser = $data['name'];
+        $userCity = $data['city_name'];
+        $details = [
+            'title' => "NEW USER !!",
+            'body' => date('Y-m-d H:i:s'),
+            'userName' => $newUser,
+            'userCity' => $userCity
+        ];
+        Mail::to('Dolgushing@yandex.ru')->send(new NewUser($details));
         return $user;
+
     }
 
     public function indexCategory(){

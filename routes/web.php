@@ -1,7 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,7 +44,14 @@ Route::get('/getrating', [App\Http\Controllers\PublicProfileController::class, '
 
 Route::post('getEmployees',[App\Http\Controllers\HomeController::class, 'getEmployees'])->name('getEmployees');
 Route::get('/verify/success',[App\Http\Controllers\HomeController::class, 'indexVerificationPage']);
-
+Route::get('send_test_email', function(){
+    Mail::raw('Sending emails with Mailgun and Laravel ', function($message)
+    {
+        $message->subject('Mailgun and Laravel ');
+        $message->from('no-reply@website_name.com', 'Website Name');
+        $message->to('pardeepkumargt@gmail.com');
+    });
+});
 Route::get('sendmail', [App\Http\Controllers\MailController::class, 'sendmail']);
 Auth::routes(['verify' => true]);
 Route::get('gmaps', [App\Http\Controllers\LocationController::class, 'gmaps'])->name('gmaps');

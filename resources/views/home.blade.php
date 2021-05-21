@@ -146,7 +146,7 @@
         <div class="swiper-slide">
           <div class="testimonial-item">
             <p>
-              <a href="{{route('profileDetails', $user->id)}}"><h2>{{$user->name}}</h2></a>
+              <a href="{{route('profileDetails', $user->id)}}"><h2 style="text-transform: capitalize;">{{ $user->name }}</h2></a>
             </p>
             <div class="profile mt-auto">
                 <a href="{{route('profileDetails', $user->id)}}"><img src="storage/{{$user->photo}}" class="testimonial-img" alt=""></a>
