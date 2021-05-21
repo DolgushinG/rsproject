@@ -5,13 +5,13 @@
     <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
     <!-- ======= Breadcrumbs ======= -->
     <section class="breadcrumbs">
-        <div class="container">
+        <div class="container" style="text-transform: capitalize;">
             <ol>
                 <li><a href="{{route('home')}}">Главная</a></li>
                 <li>Профиль</li>
             </ol>
 
-            <h2>Профиль <br> {{ucwords($user->name)}}
+            <h2>Профиль <br> {{$user->name }}
             </h2>
             <strong>Город</strong>: <br> {{$user->city_name}}
             @if($user->all_time)
