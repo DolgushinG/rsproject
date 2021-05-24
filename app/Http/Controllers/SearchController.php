@@ -20,7 +20,10 @@ class SearchController extends Controller
             }
             #categories with city_name
             if ($request->city_name != null) {
-                $users = User::where('city_name', '=', $request->city_name)->where('active_status', '=', '0')->whereIn('id', $usersResult);
+                $users = User::where('city_name', '=', $request->city_name)
+                    ->where('active_status', '=', '0')
+                    ->whereNotNull('email_verified_at')
+                    ->whereIn('id', $usersResult);
                 $foundUsers = $users->count();
                 $users = $users->simplePaginate(12);
                 $categories = Category::whereIn('id', $request->categories)->get();
@@ -30,7 +33,9 @@ class SearchController extends Controller
                 );
                 #categories
             } else {
-                $users = User::whereIn('id', $usersResult)->where('active_status', '=', '0');
+                $users = User::whereIn('id', $usersResult)
+                    ->whereNotNull('email_verified_at')
+                    ->where('active_status', '=', '0');
                 $foundUsers = $users->count();
                 $users = $users->simplePaginate(12);
                 $categories = Category::whereIn('id', $request->categories)->get();
@@ -40,16 +45,15 @@ class SearchController extends Controller
             }
             #empty request
         } else if ($request->categories === null && $request->city_name === null) {
-            $users = User::where('active_status', '=', '0');
+            $users = User::where('active_status', '=', '0')->whereNotNull('email_verified_at');
             $foundUsers = $users->count();
             $users = $users->simplePaginate(12);
             $valueSearch= '';
             #city_name
         } else if ($request->city_name) {
-            $users = User::where('city_name', '=', $request->city_name)->where('active_status', '=', '0');
+            $users = User::where('city_name', '=', $request->city_name)->where('active_status', '=', '0')->whereNotNull('email_verified_at');
             $foundUsers = $users->count();
             $users = $users->simplePaginate(12);
-            $valueSearch = $request->city_name;
             $valueSearch = array(
                 'city' => $request->city_name,
             );

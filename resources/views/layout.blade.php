@@ -13,9 +13,9 @@
           content="Здесь можно найти подготовщиков трасс на скалодром как для обычной накрутки, так и для соревнований">
     <meta property="og:image" content="{{asset('storage/images/logo/logors.png')}}">
     <title>Routesetters - search</title>
-    <meta content="" name="description">
+    <meta content="Routesetters - поиск подготовщиков трасс для скалодромов, по всей России" name="description">
 
-    <meta content="" name="keywords">
+    <meta content="подготовщик трасс, рутсеттер, трассы, боулдеринг, скалолазание" name="keywords">
 
     <!-- Favicons -->
     <link href="{{asset('favicon.svg')}}" rel="icon">
