@@ -68,11 +68,11 @@
 
         <div class="form-group">
           <label class="fieldlabels">Опыт подготовки местных соревнований</label>
-          <input type="range" min="0" max="5" step="1" value="{{$user->exp_local}}" id="foo" name="exp_local">
+          <input type="range" min="0" max="5" step="1" value="{{$user->exp_local}}" id="foo" name="exp_local" style="width: 92%" oninput="this.nextElementSibling.value = this.value"> <output>{{$user->exp_local}}</output>
           <label class="fieldlabels">Опыт подготовки Национальных соревнований</label>
-          <input type="range" min="0" max="5" step="1" value="{{$user->exp_national}}" id="foo" name="exp_national">
+          <input type="range" min="0" max="5" step="1" value="{{$user->exp_national}}" id="foo" name="exp_national" style="width: 92%" oninput="this.nextElementSibling.value = this.value"> <output>{{$user->exp_national}}</output>
           <label class="fieldlabels">Опыт подготовки междунарожных соревнований</label>
-          <input type="range" min="0" max="5" step="1" value="{{$user->exp_international}}" id="foo" name="exp_international">
+          <input type="range" min="0" max="5" step="1" value="{{$user->exp_international}}" id="foo" name="exp_international" style="width: 92%" oninput="this.nextElementSibling.value = this.value"> <output>{{$user->exp_international}}</output>
         </div>
     </div>
 

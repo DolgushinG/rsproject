@@ -173,13 +173,38 @@
                                             </div>
                                         </div>
                                     </div>
-                                <label class="fieldlabels">Опыт подготовки Местных соревнований</label>
-                                <input type="range" min="0" max="5" step="1" value="0" id="foo1" name="exp_local" style="padding: 8px 0px 8px 0px;">
-                                <label class="fieldlabels">Опыт подготовки Национальных соревнований</label>
-                                <input type="range" min="0" max="5" step="1" value="0" id="foo2" name="exp_national" style="padding: 8px 0px 8px 0px;">
-                                <label class="fieldlabels">Опыт подготовки Междунарожных соревнований</label>
-                                <input type="range" min="0" max="5" step="1" value="0" id="foo3" name="exp_international" style="padding: 8px 0px 8px 0px;">
+                                    <div class="mb-3 mt-2">
+                                        <label class="fieldlabels">Опыт подготовки Местных соревнований</label>
+                                        <input type="range" min="0" max="5" step="1" value="0" id="foo1" name="exp_local" style="padding: 8px 0px 8px 0px;width: 92%" oninput="this.nextElementSibling.value = this.value"> <output> </output>
+                                        <label class="fieldlabels">Опыт подготовки Национальных соревнований</label>
+                                        <input type="range" min="0" max="5" step="1" value="0" id="foo2" name="exp_national" style="padding: 8px 0px 8px 0px;width: 92%" oninput="this.nextElementSibling.value = this.value"> <output> </output>
+                                        <label class="fieldlabels">Опыт подготовки Междунарожных соревнований</label>
+                                        <input type="range" min="0" max="5" step="1" value="0" id="foo3" name="exp_international" style="padding: 8px 0px 8px 0px;width: 92%" oninput="this.nextElementSibling.value = this.value"> <output> </output>
+                                    </div>
                                 </div>
+                                <script>
+                                    const allRanges = document.querySelectorAll(".range-wrap");
+                                    allRanges.forEach(wrap => {
+                                        const range = wrap.querySelector(".range");
+                                        const bubble = wrap.querySelector(".bubble");
+
+                                        range.addEventListener("input", () => {
+                                            setBubble(range, bubble);
+                                        });
+                                        setBubble(range, bubble);
+                                    });
+
+                                    function setBubble(range, bubble) {
+                                        const val = range.value;
+                                        const min = range.min ? range.min : 0;
+                                        const max = range.max ? range.max : 100;
+                                        const newVal = Number(((val - min) * 100) / (max - min));
+                                        bubble.innerHTML = val;
+
+                                        // Sorta magic numbers based on size of the native UI thumb
+                                        bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+                                    }
+                                </script>
                                 <div id="messageError3" class="alert alert-danger hide_error" role="alert">
                                     <p>Вы забыли выбрать область накрутки наверху страницы</p>
                                 </div>

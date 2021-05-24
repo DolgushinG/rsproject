@@ -344,11 +344,6 @@
                 </td>
             </tr><!-- end tr -->
             <tr>
-                <td valign="middle" class="hero bg_white" style="padding: 3em 0 2em 0;">
-                    <img src="storage/app/public/images/emails/email.png" alt="" style="width: 300px; max-width: 600px; height: auto; margin: auto; display: block;">
-                </td>
-            </tr><!-- end tr -->
-            <tr>
                 <td valign="middle" class="hero bg_white" style="padding: 2em 0 4em 0;">
                     <table>
                         <tr>
