@@ -94,7 +94,7 @@
               <i class="bi bi-building" style="color: #ee6c20;"></i>
               <div>
                 <span data-purecounter-start="0" data-purecounter-end="{{count($cityList)}}" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Городов</p>
+                <p>Количество городов</p>
               </div>
             </div>
           </div>
