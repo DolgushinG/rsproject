@@ -38,7 +38,7 @@
                                 <img src="/storage/{{$user->photo}}" alt="">
                                 <div class="social-details" style="margin-top: 5px">
                                     @if($user->telegram)
-                                        <a href="https://t.me/{{$user->telegram}}" class="btn btn-primary">
+                                        <a href="https://t.me/{{$user->telegram}}" class="btn btn-outline-primary">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
                                                  fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
                                                 <path
@@ -48,7 +48,7 @@
                                         </a>
                                     @endif
                                     @if($user->instagram)
-                                        <a href="https://instagram.com/{{$user->instagram}}" class="btn btn-primary">
+                                        <a href="https://instagram.com/{{$user->instagram}}" class="btn btn-outline-primary">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
                                                  fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
                                                 <path
@@ -74,7 +74,7 @@
                     <div class="portfolio-info">
                         <h3>Опыт подготовки</h3>
                         <ul>
-                            <li><strong>Подготовка местных стартов(фестивалей)</strong>: <br>
+                            <li><strong>Подготовка местных стартов (фестивалей)</strong>: <br>
                                 <div class="card-body">
 
                                     <div class="progress mb-3" style="height: 15px">
