@@ -5,7 +5,9 @@ use App\Models\Category;
 use App\Models\User;
 use App\Models\Rating;
 use App\Models\UserAndCategories;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
 class PublicProfileController extends Controller
@@ -77,6 +79,49 @@ class PublicProfileController extends Controller
         $user = User::find($request->userId);
         return view('profilePublic.comments', compact('reviews','user','foundReviews'))->render();
     }
+    /**
+     * Show user online status.
+     */
+    public function status()
+    {
+        $users = User::all();
 
+        foreach ($users as $user) {
+
+            if (Cache::has('user-is-online-' . $user->id))
+                echo $user->name . " is online. Last seen: " . Carbon::parse($user->last_seen)->diffForHumans() . " ";
+            else {
+                if ($user->last_seen != null) {
+                    echo $user->name . " is offline. Last seen: " . Carbon::parse($user->last_seen)->diffForHumans() . " ";
+                } else {
+                    echo $user->name . " is offline. Last seen: No data ";
+                }
+            }
+        }
+    }
+    /**
+     * Live status.
+     */
+    public function liveStatus($user_id)
+    {
+        // get user data
+        $user = User::find($user_id);
+
+        // check online status
+        if (Cache::has('user-is-online-' . $user->id))
+            $status = 'Online';
+        else
+            $status = 'Offline';
+        // check last seen
+        if ($user->last_seen != null)
+            $last_seen = "Active " . Carbon::parse($user->last_seen)->diffForHumans();
+        else
+            $last_seen = "No data";
+        // response
+        return response()->json([
+            'status' => $status,
+            'last_seen' => $last_seen,
+        ]);
+    }
 
 }
