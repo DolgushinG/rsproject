@@ -9,19 +9,19 @@
       <div class="form-group">
       <label class="fieldlabels">Ваш опыт</label>
         <select name="exp_level" class="form-select" aria-label="Default select example">
-            <option selected>Выбрать</option>
-            @if ($user->exp_level === 'beginner')
-            <option selected value="beginner">Начинающий (до 1 года)</option>
-            <option value="middle">Средний уровень (от 1 года)</option>
-            <option value="senior">Опытный (Главный подготовщик ~ от 5 лет)</option>
-            @elseif ($user->exp_level === 'middle')
-            <option value="beginner">Начинающий (до 1 года)</option>
-            <option selected value="middle">Средний уровень (от 1 года)</option>
-            <option value="senior">Опытный (Главный подготовщик ~ от 5 лет)</option>
-            @else
-            <option value="beginner">Начинающий (до 1 года)</option>
-            <option value="middle">Средний уровень (от 1 года)</option>
-            <option selected value="senior">Опытный (Главный подготовщик ~ от 5 лет)</option>
+            <option selected value="">Выбрать</option>
+            @if ($user->exp_level === 1)
+            <option selected value="1">Начинающий (до 1 года)</option>
+            <option value="2">Средний уровень (от 1 года)</option>
+            <option value="3">Опытный (Главный подготовщик ~ от 5 лет)</option>
+            @elseif ($user->exp_level === 2)
+            <option value="1">Начинающий (до 1 года)</option>
+            <option selected value="2">Средний уровень (от 1 года)</option>
+            <option value="3">Опытный (Главный подготовщик ~ от 5 лет)</option>
+            @elseif($user->exp_level === 3)
+            <option value="1">Начинающий (до 1 года)</option>
+            <option value="2">Средний уровень (от 1 года)</option>
+            <option selected value="3">Опытный (Главный подготовщик ~ от 5 лет)</option>
             @endif
         </select>
       </div>
