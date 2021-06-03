@@ -92,12 +92,12 @@
                 <div class="member-info">
                   <a href="{{route('profileDetails', $user->id)}}" target="_blank" data-title="RouteSetter {{$user->name}}"><h4 style="text-transform: capitalize;">{{$user->name}}</h4>
                       <span>{{$user->city_name}} </span>
-                  @if($user->exp_level == 'senior')
-                  <p> @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Опытный')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
-                  @elseif($user->exp_level == 'middle')
-                  <p> @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Средний уровень')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
+                  @if($user->exp_level == 3)
+                  <p> Опытный <i class="bi bi-info-circle-fill" title="@lang('somewords.Опытный')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
+                  @elseif($user->exp_level == 2)
+                  <p> Средний уровень <i class="bi bi-info-circle-fill" title="@lang('somewords.Средний уровень')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
                   @else
-                  <p> @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill" title="@lang('somewords.Начинающий')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
+                  <p> Начинающий <i class="bi bi-info-circle-fill" title="@lang('somewords.Начинающий')" data-toggle="tooltip" data-placement="bottom"></i></p></a>
                   @endif
                     @if($user->salary_route_rope > 0)
                   <span>Оплата: {{$user->salary_route_rope}}р / за трассу трудность</span>

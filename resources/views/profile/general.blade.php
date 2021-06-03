@@ -21,8 +21,8 @@
             <div class="form-group"> <label class="form-label">E-mail</label>
                 <input type="text" disabled id="email" name="email" class="form-control mb-1" value="{{$user->email}}">
             </div>
-            <div class="form-group"> <label class="form-label">Город</label>
-                <input type="text" name="city_name" id="city" class="form-control" value="{{$user->city_name}}">
+            <div class="form-group"> <label class="form-label" for="city">Город</label>
+                <input type="text" name="city_name" id="city" class="form-control" value="{{$user->city_name}}" required>
             </div>
             </div>
         </div>

@@ -119,26 +119,33 @@
                             @endif
                             <hr>
                             <li><strong>Уровень подготовки</strong>: <br>
-                                @if($user->exp_level == 'senior')
-                                    @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill"
+                                @if($user->exp_level == 3)
+                                    Опытный <i class="bi bi-info-circle-fill"
                                                                             title="@lang('somewords.Опытный')"
                                                                             data-toggle="tooltip"
                                                                             data-placement="bottom"></i></a>
-                                @elseif($user->exp_level == 'middle')
-                                    @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill"
+                                @elseif($user->exp_level == 2)
+                                    Средний уровень <i class="bi bi-info-circle-fill"
                                                                             title="@lang('somewords.Средний уровень')"
                                                                             data-toggle="tooltip"
                                                                             data-placement="bottom"></i></a>
                                 @else
-                                    @lang('somewords.'.$user->exp_level) <i class="bi bi-info-circle-fill"
+                                    Начинающий <i class="bi bi-info-circle-fill"
                                                                             title="@lang('somewords.Начинающий')"
                                                                             data-toggle="tooltip"
                                                                             data-placement="bottom"></i></a>
                                 @endif</li>
                             <hr>
-                            <li><strong>Желаемая оплата</strong>: <br>{{$user->salary_hour}} руб -
-                                час<br>{{$user->salary_route_rope}} руб - маршрут
-                                трудность<br>{{$user->salary_route_bouldering}} руб - маршрут боулдеринг
+                            <li><strong>Желаемая оплата</strong>:
+                                @if($user->salary_hour)
+                                <br>{{$user->salary_hour}} руб - час
+                                @endif
+                                @if($user->salary_route_rope)
+                                <br>{{$user->salary_route_rope}} руб - маршрут трудность
+                                @endif
+                                @if($user->salary_route_bouldering)
+                                <br>{{$user->salary_route_bouldering}} руб - маршрут боулдеринг
+                                @endif
                             </li>
                             <hr>
                             @if($user->educational_requirements === 'yes')
