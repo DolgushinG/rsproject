@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\InfoRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -21,9 +20,9 @@ class ProfileController extends Controller
     {
         $this->middleware(['auth','verified']);
     }
-
     public function index() {
         $user = User::find(Auth()->user()->id);
+//        $status = User::checkUser($user);
         return view('profile.index', compact('user'));
     }
     public function getTabContentGeneral() {
@@ -63,6 +62,7 @@ class ProfileController extends Controller
         $categories = Category::whereIn('id', $userAndCategories)->get();
         $notCategories = Category::whereNotIn('id', $userAndCategories)->get();
         $grades = Grade::all();
+
         return view('profile.info', compact('user','categories','notCategories','grades'));
     }
     public function editChagesInfo(Request $request) {
@@ -70,15 +70,13 @@ class ProfileController extends Controller
             'salaryHour.required' => 'Поле оплата за час обязательно для заполнения',
             'salaryHour.numeric' => 'Поле оплата за час нужно вводить только цифры',
             'salaryRouteBouldering.numeric' => 'Поле оплата за трассу боулдеринг нужно вводить только цифры',
-            'salaryRouteRope.required' => 'Поле оплата за трассу трудность обязательно для заполнения',
-            'salaryRouteRope.numeric' => 'Поле оплата за трассу трудность нужно вводить только цифры',
-            'salaryRouteBouldering.required' => 'Поле оплата за трассу боулдеринг обязательно для заполнения',
             'categories.required' => 'Укажите область накрутки, должна быть хотя бы одна область',
+            'salaryRouteRope.numeric' => 'Поле оплата за трассу трудность нужно вводить только цифры',
         );
         $validator = Validator::make($request->all(), [
-            'salaryHour' => 'required|numeric',
-            'salaryRouteRope' => 'required|numeric',
-            'salaryRouteBouldering' => 'required|numeric',
+            'salaryHour' => 'nullable|numeric',
+            'salaryRouteBouldering' => 'numeric|nullable',
+            'salaryRouteRope' => 'numeric|nullable',
             'categories' => 'required',
         ],$messages);
         if ($validator->fails())
@@ -163,5 +161,6 @@ class ProfileController extends Controller
             return response()->json(['success' => false, 'message' => 'ошибка сохранения'], 422);
         }
     }
+
 
 }

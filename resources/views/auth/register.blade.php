@@ -114,19 +114,19 @@
                                     </div>
                                     <label class="fieldlabels">Оплата за трассу трудность минимум</label>
                                     <div class="mb-3">
-                                        <input type="text" id="salary_route_rope" class="form-control is-invalid" name="salary_route_rope" placeholder="" required  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" >
+                                        <input type="text" id="salary_route_rope" class="form-control is-invalid" name="salary_route_rope" placeholder="" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" >
                                     </div>
                                     <label class="fieldlabels">Оплата за трассу боулдеринг минимум</label>
                                     <div class="mb-3">
-                                        <input type="text" id="salary_route_bouldering" class="form-control is-invalid" name="salary_route_bouldering" placeholder="" required  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" >
+                                        <input type="text" id="salary_route_bouldering" class="form-control is-invalid" name="salary_route_bouldering" placeholder="" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" >
                                     </div>
                                     <label class="fieldlabels">Ваш опыт</label>
                                     <div class="mb-3">
                                         <select name="exp_level" id="exp_level" class="form-select" required aria-label="select example">
                                             <option value="">Выбрать</option>
-                                            <option value="beginner">Начинающий (до 1 года)</option>
-                                            <option value="middle">Средний уровень(от 1 года)</option>
-                                            <option value="senior">Опытный(Главный подготовщик ~ от 5 лет)</option>
+                                            <option value="1">Начинающий (до 1 года)</option>
+                                            <option value="2">Средний уровень(от 1 года)</option>
+                                            <option value="3">Опытный(Главный подготовщик ~ от 5 лет)</option>
                                         </select>
                                         <div class="invalid-feedback">Выберите ваш уровень</div>
                                     </div>

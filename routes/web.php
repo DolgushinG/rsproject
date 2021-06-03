@@ -39,6 +39,7 @@ Route::post('/getresultsearch/paginationSeach', [App\Http\Controllers\SearchCont
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'indexCategory'])->name('register');
 Route::get('/profile/{id}', [App\Http\Controllers\PublicProfileController::class, 'indexPublic'])->name('profileDetails');
+Route::get('/live-status/{id}', [App\Http\Controllers\PublicProfileController::class, 'liveStatus']);
 Route::post('profile/rating', [App\Http\Controllers\PublicProfileController::class, 'postRatingAndReview'])->name('rating');
 Route::get('/getrating', [App\Http\Controllers\PublicProfileController::class, 'getRatingAndReview'])->name('getrating');
 
@@ -55,3 +56,4 @@ Route::get('send_test_email', function(){
 Route::get('sendmail', [App\Http\Controllers\MailController::class, 'sendmail']);
 Auth::routes(['verify' => true]);
 Route::get('gmaps', [App\Http\Controllers\LocationController::class, 'gmaps'])->name('gmaps');
+
