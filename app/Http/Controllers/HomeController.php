@@ -21,7 +21,7 @@ class HomeController extends Controller
         foreach ($cityList as $city) {
             $cityCount[$city->city_name] = User::where('city_name', '=', $city->city_name)->count();
         }
-        $usersSenior = User::where('exp_level', '=', 'senior')->count();
+        $usersSenior = User::where('exp_level', '=', 3)->count();
         $usersWithCours = User::where('educational_requirements', '=', 'yes')->count();
         $categories = Category::all();
         $userCount = User::All()->count();

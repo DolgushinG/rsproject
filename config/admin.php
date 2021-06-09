@@ -396,7 +396,6 @@ return [
     */
     'extensions' => [
         'media-manager' => [
-
             // Select a local disk that you configured in `config/filesystem.php`
             'disk' => 'public'
         ],
@@ -416,12 +415,10 @@ return [
                 'enable' => true
             ],
             'chartjs' => [
-
                 // Set to `false` if you want to disable this extension
                 'enable' => false,
             ],
             'summernote' => [
-
                 //Set to false if you want to disable this extension
                 'enable' => true,
 

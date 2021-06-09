@@ -32,9 +32,11 @@ class Kernel extends ConsoleKernel
                 User::whereNull('email_verified_at')->delete();
             })->weekly();
         }
+        // Backups (to Google Drive)
+        $schedule->command('backup:clean')->dailyAt('01:30');
+        $schedule->command('backup:run --only-db')->dailyAt('01:35');
 
     }
-
     /**
      * Register the commands for the application.
      *
