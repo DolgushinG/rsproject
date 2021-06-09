@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         willvincent\Rateable\RateableServiceProvider::class,
         Laravolt\Avatar\ServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -171,6 +172,7 @@ return [
         /*
          * Application Service Providers...
          */
+        App\Providers\GoogleDriveServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
