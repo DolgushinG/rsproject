@@ -66,7 +66,7 @@ return [
                 'use_single_transaction',
                 'timeout' => 60 * 5, // 5 minute timeout
 //                'exclude_tables' => null,
-                'add_extra_option' => '--column_statistics=0', // for example '--column_statistics=0'
+//                'add_extra_option' => '--column_statistics=0', // for example '--column_statistics=0'
             ]
         ],
 
