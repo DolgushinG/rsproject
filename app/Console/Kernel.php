@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+
     ];
 
     /**
@@ -26,12 +26,12 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('inspire')->hourly();
-        $user = User::whereNull('email_verified_at')->get();
-        if(count($user) > 0){
             $schedule->call(function () {
-                User::whereNull('email_verified_at')->delete();
+                $user = User::whereNull('email_verified_at')->get();
+                if (count($user) > 0) {
+                    User::whereNull('email_verified_at')->delete();
+                }
             })->weekly();
-        }
         // Backups (to Google Drive)
         $schedule->command('backup:clean')->dailyAt('01:30');
         $schedule->command('backup:run --only-db')->dailyAt('01:35');
