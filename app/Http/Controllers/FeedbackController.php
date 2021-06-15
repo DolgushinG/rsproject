@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Mail\NewUser;
 use App\Models\Feedback;
 use App\Http\Requests\FeedbackRequest;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 
 class FeedbackController extends Controller
 {
@@ -31,6 +33,15 @@ class FeedbackController extends Controller
             $feedback->message = $request->message;
             $feedback->save();
         }
+        $newUser = $request->name;
+        $userCity = $request->email;
+        $details = [
+            'title' => $request->subject,
+            'body' => $request->message,
+            'userName' => $newUser,
+            'userCity' => $userCity
+        ];
+        Mail::to('Dolgushing@yandex.ru')->send(new NewUser($details));
 
         if ($feedback->save()) {
             return response()->json(['success' => true, 'message' => 'ошибка сохранения'], 200);

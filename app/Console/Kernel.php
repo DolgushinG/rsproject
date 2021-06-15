@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Console;
-
+use Illuminate\Support\Facades\Artisan;
 use App\Models\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Spatie\Backup\Commands\BackupCommand;
 
 class Kernel extends ConsoleKernel
 {
@@ -14,7 +15,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-
+        \Spatie\Backup\Commands\BackupCommand::class,
     ];
 
     /**
@@ -25,16 +26,17 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')->hourly();
-            $schedule->call(function () {
-                $user = User::whereNull('email_verified_at')->get();
-                if (count($user) > 0) {
-                    User::whereNull('email_verified_at')->delete();
-                }
-            })->weekly();
-        // Backups (to Google Drive)
-        $schedule->command('backup:clean')->dailyAt('01:30');
-        $schedule->command('backup:run --only-db')->dailyAt('01:35');
+        $schedule->call(function () {
+            $user = User::whereNull('email_verified_at')->get();
+            if (count($user) > 0) {
+                User::whereNull('email_verified_at')->delete();
+            }
+        })->weekly();
+        $schedule->exec("php artisan backup:clean")->dailyAt('01:30');
+        $schedule->exec("php artisan backup:run --only-db")->dailyAt('01:30');
+//        // Backups (to Google Drive)
+//        $schedule->command('backup:clean')->dailyAt('01:30')->withoutOverlapping();
+//        $schedule->command('backup:run --only-db')->dailyAt('01:35')->withoutOverlapping();
 
     }
     /**
