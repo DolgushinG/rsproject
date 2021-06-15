@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Mail\NewReview;
+use App\Mail\NewUser;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Rating;
@@ -8,6 +10,7 @@ use App\Models\UserAndCategories;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class PublicProfileController extends Controller
@@ -61,6 +64,13 @@ class PublicProfileController extends Controller
             $rating->name_guest = $request->nameGuest;
             $rating->email_guest = $request->emailGuest;
             $rating->user_ip = $request->ip();
+            $details = [
+                'rating' => $request->star,
+                'body' => $request->review,
+                'userName' => $request->nameGuest,
+                'id' => $user->id
+            ];
+            Mail::to($user->email)->send(new NewReview($details));
             $user->ratings()->save($rating);
         }
         else if ($rate !== null){
