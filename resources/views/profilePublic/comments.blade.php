@@ -12,11 +12,11 @@
                     @for($i = 5; $i >= 1; $i--)
                     @if($i === $review->rating)
                     <form action="">
-                    <input class="star star-{{$i}}" value="{{$i}}" id="star-{{$review->id}}" type="radio" name="star" checked>
-                    <label class="star star-{{$i}}" for="star-{{$review->id}}"></label>
+                    <input class="stars star-{{$i}}" value="{{$i}}" id="star-{{$review->id}}" type="radio" name="star" checked>
+                    <label class="stars star-{{$i}}" for="star-{{$review->id}}"></label>
                     @else
-                    <input class="star star-{{$i}}" value="{{$i}}" id="star-{{$review->id}}" type="radio" name="star">
-                    <label class="star star-{{$i}}" for="star-{{$review->id}}"></label>
+                    <input class="stars star-{{$i}}" value="{{$i}}" id="star-{{$review->id}}" type="radio" name="star">
+                    <label class="stars star-{{$i}}" for="star-{{$review->id}}"></label>
                     @endif
                    @endfor
                     </form>

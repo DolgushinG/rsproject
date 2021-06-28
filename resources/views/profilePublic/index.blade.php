@@ -253,14 +253,14 @@
                                   <div class="col-sm-10">
                                         @for($i = 5; $i >= 1; $i--)
                                           @if($i === intval($user->average_rating))
-                                              <input class="star star-{{$i}}" value="{{$i}}" id="star-{{$user->id+1}}"
+                                              <input class="stars star-{{$i}}" value="{{$i}}" id="star-{{$user->id+1}}"
                                                      disabled type="radio" name="star" checked>
-                                              <label class="star star-{{$i}}" for="star-{{$user->id+1}}"
+                                              <label class="stars star-{{$i}}" for="star-{{$user->id+1}}"
                                                      style="color: black"></label>
                                           @else
-                                              <input class="star star-{{$i}}" value="{{$i}}" id="star-{{$user->id+1}}"
+                                              <input class="stars star-{{$i}}" value="{{$i}}" id="star-{{$user->id+1}}"
                                                      disabled type="radio" name="star">
-                                              <label class="star star-{{$i}}" for="star-{{$user->id+1}}"
+                                              <label class="stars star-{{$i}}" for="star-{{$user->id+1}}"
                                                      style="color: black"></label>
                                           @endif
                                          @endfor
@@ -282,49 +282,46 @@
                 <div class="tab-pane fade active show" id="pills-reviews" role="tabpanel"
                      aria-labelledby="pills-reviews-tab">
                     <div class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
-                        @include('message.message')
-                        <form id="rating" method="POST">
+                        <form action="{{route('postrating')}}" method="POST" class="php-email-form">
                             @csrf
-                            <div class="col-sm-12">
+
+                            <h4 class="mb-2 pt-1">Оцените подготовщика и напишите отзыв</h4>
+                            <div class="col-sm-2" style="margin-left: -20px">
                                 <input class="star star-5" value="5" id="star-b{{$user->id}}" data-id="{{$user->id}}"
-                                       type="radio" name="star"/>
+                                       type="radio" name="star" />
                                 <label class="star star-5" for="star-b{{$user->id}}"></label>
                                 <input class="star star-4" value="4" id="star-v{{$user->id}}" data-id="{{$user->id}}"
-                                       type="radio" name="star"/>
+                                       type="radio" name="star" />
                                 <label class="star star-4" for="star-v{{$user->id}}"></label>
                                 <input class="star star-3" value="3" id="star-c{{$user->id}}" data-id="{{$user->id}}"
-                                       type="radio" name="star"/>
+                                       type="radio" name="star" />
                                 <label class="star star-3" for="star-c{{$user->id}}"></label>
                                 <input class="star star-2" value="2" id="star-x{{$user->id}}" data-id="{{$user->id}}"
-                                       type="radio" name="star"/>
+                                       type="radio" name="star" />
                                 <label class="star star-2" for="star-x{{$user->id}}"></label>
                                 <input class="star star-1" value="1" id="star-z{{$user->id}}" data-id="{{$user->id}}"
-                                       type="radio" name="star"/>
+                                       type="radio" name="star" />
                                 <label class="star star-1" for="star-z{{$user->id}}"></label>
                             </div>
-                            <h4 class="mb-2 pt-1">Оцените подготовщика и напишите отзыв</h4>
-                            <div class="form-group">
-                                <label>Вашe имя</label>
-                                <div class="mb-3">
-                                    <input name="nameGuest" type="text" class="form-control"
-                                           placeholder="Введите имя...." required>
-                                </div>
+                            <div class="mb-3">
+                                <input name="nameGuest" type="text" class="form-control"
+                                       placeholder="Ваше имя" required>
                             </div>
-                            <div class="form-group">
-                                <label>Ваш email</label>
-                                <div class="mb-3">
-                                    <input name="emailGuest" type="email" id="email" class="email_id form-control"
-                                           placeholder="Введите email...." required>
-                                </div>
+                            <div class="mb-3">
+                                <input name="emailGuest" type="email" id="email" class="form-control"
+                                       placeholder="Ваш email" required>
                             </div>
-                            <label>Ваш отзыв</label>
                             <div class="mb-3">
                                 <textarea name="review" id="validationTextarea" class="form-control"
-                                          placeholder="Введите текст" required></textarea>
+                                          placeholder="Ваш отзыв" required></textarea>
                             </div>
+
                             <input type="hidden" id="userId" style="display:none" name="userId" value="{{$user->id}}">
                             <div class="form-group">
-                                <button class="btn btn-primary btn-sm" id="submitrating" type="button">Опубликовать
+                                <div class="loading">Loading</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">Ваше отзыв был опубликован</div>
+                                <button class="btn btn-primary" type="submit">Опубликовать
                                 </button>
                             </div>
                         </form>

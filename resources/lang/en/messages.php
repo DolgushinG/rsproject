@@ -16,4 +16,5 @@ return [
     'Please click the button below to verify your email address' => 'Пожалуйста нажмите на кнопку нижу чтобы подтвердить почту',
     'Verify Email Address' => 'Подтвердить почту',
     'If you did not create an account, no further action is required.' => 'Если вы не создавали аккаунт, то просто ничего не делайте',
+    'New Review' => 'Новый отзыв'
 ];
