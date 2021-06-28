@@ -9,6 +9,7 @@ use App\Models\Rating;
 use App\Models\UserAndCategories;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -27,6 +28,7 @@ class PublicProfileController extends Controller
         return view('profilePublic.index', compact('user','reviews','foundReviews','userView','categories'))->render();
     }
     public function postRatingAndReview(Request $request) {
+//        dd($request);
         $messages = array(
             'nameGuest.required' => 'Поле имя обязательно для заполнения',
             'emailGuest.required' => 'Поле email обязательно для заполнения',
@@ -41,7 +43,7 @@ class PublicProfileController extends Controller
         ],$messages);
         if ($validator->fails())
         {
-            return response()->json(['success' => false,'message'=>$validator->errors()->all()],422);
+            return response()->json(['success' => false,'message'=>$validator->errors()->all()],422, ['message'=>$validator->errors()->all()]);
         }
         $rate = Rating::where('user_id', '=', $request->userId)->where('user_ip', '=', $request->ip())->first();
         if($rate === null){
@@ -74,7 +76,8 @@ class PublicProfileController extends Controller
             $user->ratings()->save($rating);
         }
         else if ($rate !== null){
-            return response()->json(['success' => false, 'message' => array('Вы уже сделали отзыв')], 422);
+            $response = new Response();
+            return $response->setStatusCode(422, 'You already did review');
         }
         if ($user->save()) {
             return response()->json(['success' => true, 'message' => 'Ваш комментарий опубликован'], 200);

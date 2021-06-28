@@ -10,10 +10,13 @@
 
   forms.forEach( function(e) {
     e.addEventListener('submit', function(event) {
-      event.preventDefault();
-
+        event.preventDefault();
+            var option = document.getElementsByClassName('star');
+            if (!(option[0].checked || option[1].checked || option[2].checked || option[3].checked || option[4].checked)) {
+                displayError(this, 'Проголосуйте звездочками это обязательно для заполнения');
+                return;
+            }
       let thisForm = this;
-
       let action = thisForm.getAttribute('action');
       let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
       if( ! action ) {
@@ -49,6 +52,8 @@
   });
 
   function php_email_form_submit(thisForm, action, formData) {
+      let userId = $('#userId').val();
+
     fetch(action, {
       method: 'POST',
       body: formData,
@@ -59,7 +64,17 @@
           thisForm.querySelector('.loading').classList.remove('d-block');
           thisForm.querySelector('.sent-message').classList.add('d-block');
           thisForm.reset();
+          if(userId !== undefined){
+              getProfileReviewAndRate(userId);
+          }
       } else {
+          if(userId !== undefined){
+              if(response.statusText === 'You already did review') {
+                  let msg = 'Вы уже сделали отзыв';
+                  throw new Error(msg);
+              }
+
+          }
         throw new Error(`${response.status} ${response.statusText} ${response.url}`);
       }
     })
@@ -75,3 +90,22 @@
   }
 
 })();
+function getProfileReviewAndRate(userId){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type: 'GET',
+        url: '/getrating',
+        data: {
+            userId: userId,
+        },
+        success: function(data) {
+            $('#allReview').html(data);
+        },
+        error: function(data) {
+        }
+    });
+}
