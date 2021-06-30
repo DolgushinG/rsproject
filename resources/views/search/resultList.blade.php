@@ -38,25 +38,27 @@
     <p>Результат поиска : {{$foundUsers}}</p>
     </div>
 </header>
-
+@if($foundUsers != 0)
 <section id="team" class="team">
     <div class="container" data-aos="fade-up">
         <div id="content" class="row gy-4">
           <div class="row mx-auto mt-5">
             <p>Показано: {{$users->lastItem()}} из {{$foundUsers}}</p>
             <div class="progress" style="padding-left: 0; padding-right: 0; margin-bottom: 2rem;">
+
               <div class="progress-bar
                                   progress-bar-striped
                                   progress-bar-animated" role="progressbar" aria-valuemin="100"
                   aria-valuemax="0" style="width:{{$users->lastItem() * 100 / $foundUsers}}%">
                   {{intval($users->lastItem() * 100 / $foundUsers)}}%
               </div>
+
           </div>
             <div class="col-lg-12 mb-4">
             {!! $users->links() !!}
             </div>
            </div>
-
+            @endif
          @foreach ($users as $user)
 
             <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
