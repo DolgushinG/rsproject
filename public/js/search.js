@@ -8,7 +8,7 @@ $(document).ready(function() {
      var data = $("#searchForm").serialize();
      e.preventDefault();
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: 'getresultsearch',
             data: data,
             success: function(data) {
@@ -30,7 +30,7 @@ $(document).ready(function() {
         e.preventDefault();
         let city_name = $(this).val();
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: 'getresultsearch',
             data: {
                 city_name:city_name,
@@ -53,19 +53,19 @@ $(document).ready(function(){
                 }
             });
     $(document).on('click', '[role=\'navigation\'] a', function(event){
-       
-       event.preventDefault(); 
+
+       event.preventDefault();
        var page = $(this).attr('href').split('page=')[1];
        let city_name = $('#city_search').val();
        getUsers(page, city_name);
     });
-   
+
     function getUsers(page, city_name)
     {
         var _token = $("input[name=_token]").val();
      $.ajax({
          url: '/getresultsearch?page=' + page,
-         method:"POST",
+         method:"GET",
          data:{_token:_token, page:page, city_name:city_name},
          success:function(data)
          {
@@ -73,7 +73,7 @@ $(document).ready(function(){
          }
        });
     }
-   
+
    });
 $(document).ready(function(){
 	$("#search").on("click", function (event) {
