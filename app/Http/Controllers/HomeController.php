@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $cityList = User::select('city_name')->whereNotNull('email_verified_at')->distinct()->take(11)->get();
+        $cityList = User::select('city_name')->whereNotNull('email_verified_at')->distinct()->take(6)->get();
         $cityCount = [];
         foreach ($cityList as $city) {
             $cityCount[$city->city_name] = User::where('city_name', '=', $city->city_name)->count();

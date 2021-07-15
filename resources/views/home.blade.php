@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <ul class="tab-list" style="padding-top: 0px;">
                             <li class="tab-list__item active">
-                                <a class="tab-list__link" href="#tab1" data-toggle="tab">Поиск подготовщиков</a>
+                                <a class="tab-list__link" href="#tab1" data-toggle="tab">Поиск подготовщиков и соревнований</a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -37,9 +37,20 @@
                                         </label>
                                     </div>
                                     @endforeach
-                                    <button id="search" href="#content" class="btn-submit get-started scrollto searchUser" style="font-size: 18px" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                                    </svg> поиск</button>
+                                  <div class="container">
+                                      <div class="row">
+                                          <div class="col">
+                                              <button id="search" href="#content" class="btn-submit get-started scrollto searchUser" style="font-size: 18px" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                                  </svg> поиск подготовщиков </button>
+                                          </div>
+                                          <div class="col">
+                                              <button id="searchEvent" value="1" href="#content" class="btn-submit get-started scrollto searchEvent" style="font-size: 18px" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                                  </svg> поиск соревнований</button>
+                                          </div>
+                                      </div>
+                                  </div>
                                 </form>
                                 <div class="container" style="margin-top: 1rem;
                                 margin-bottom: -1rem;">
@@ -66,6 +77,18 @@
             @endforeach
           </li>
         </ul>
+          <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center text-white" style="background-color: #292F4A">
+                  Город
+                  <span class="align-items-right">Кол-во соревнований</span>
+              </li>
+              @foreach ($cityCount as $city => $count)
+                  <button id="cityTable" value="{{$city}}" style="border: 0;"><li class="search_city list-group-item d-flex justify-content-between align-items-center table-hover">
+                          {{$city}}
+                          <span class="badge badge-primary badge-pill">{{$count}}</span></button>
+                  @endforeach
+                  </li>
+          </ul>
       </div>
     </div>
   </div>

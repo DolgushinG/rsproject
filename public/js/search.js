@@ -19,6 +19,25 @@ $(document).ready(function() {
             }
         });
     });
+    $(document).on('click','.searchEvent', function(e) {
+
+
+        var btnEvent = $("#searchEvent").val();
+        var data = $("#searchForm").serialize();
+        data += '&search_event='+btnEvent;
+        e.preventDefault();
+        $.ajax({
+            type: 'GET',
+            url: 'getresultsearch',
+            data: data,
+            success: function(data) {
+                $('#resultList').html(data);
+            },
+            error: function(data) {
+                console.log("error");
+            }
+        });
+    });
 });
 $(document).ready(function() {
     $.ajaxSetup({

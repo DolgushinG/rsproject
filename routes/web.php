@@ -55,5 +55,16 @@ Route::get('send_test_email', function(){
 });
 Route::get('sendmail', [App\Http\Controllers\MailController::class, 'sendmail']);
 Auth::routes(['verify' => true]);
-Route::get('gmaps', [App\Http\Controllers\LocationController::class, 'gmaps'])->name('gmaps');
+
+Route::middleware(['guest'])->group(function(){
+    Route::get('event', [App\Http\Controllers\EventController::class, 'index'])->name('event');
+    Route::get('/event-details/{id}', [App\Http\Controllers\EventController::class, 'eventDetails'])->name('event-details');
+    Route::get('events', [App\Http\Controllers\EventController::class, 'indexAllEvents'])->name('indexAllEvents');
+    Route::get('event-list',[App\Http\Controllers\EventController::class, 'event_list']);
+    Route::post('event',[App\Http\Controllers\EventController::class,'save_event']);
+    Route::get('all-event',[App\Http\Controllers\EventController::class,'all_event'])->name('all-event');
+    Route::get('single-event/{id}',[App\Http\Controllers\EventController::class,'single_event']);
+    Route::post('update-event',[App\Http\Controllers\EventController::class,'update_event']);
+    Route::delete('delete-event/{id}',[App\Http\Controllers\EventController::class,'delete_event']);
+});
 
