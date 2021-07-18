@@ -1,6 +1,7 @@
 @extends('layout')
 @section('content')
-
+    <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="hero d-flex align-items-center">
         <div class="container">
@@ -44,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <form action="{{route('postfeedback')}}" method="POST" class="php-email-form">
+                                <form action="{{route('postfeedback')}}" method="POST" class="php-email-form-contact">
                                     @csrf
                                     <div class="row gy-4">
                                         <div class="col-md-6">
@@ -52,8 +53,8 @@
                                                    required>
                                         </div>
                                         <div class="col-md-6 ">
-                                            <input type="email" class="form-control" name="email"
-                                                   placeholder="Ваш Email" required>
+                                            <input id="email" type="email" name="email" class="form-control"
+                                                   placeholder="Введите email" required>
                                         </div>
                                         <div class="col-md-12">
                                             <input type="text" class="form-control" name="subject" placeholder="Тема сообщения"
@@ -78,7 +79,9 @@
             </div>
         </div>
     </section>
+
     <script>
+
         /**
          * PHP Email Form Validation - v3.0
          * URL: https://bootstrapmade.com/php-email-form/
@@ -87,17 +90,14 @@
         (function () {
             "use strict";
 
-            let forms = document.querySelectorAll('.php-email-form');
+            let forms = document.querySelectorAll('.php-email-form-contact');
 
             forms.forEach( function(e) {
                 e.addEventListener('submit', function(event) {
                     event.preventDefault();
-                    var option = document.getElementsByClassName('star');
-                    if (!(option[0].checked || option[1].checked || option[2].checked || option[3].checked || option[4].checked)) {
-                        displayError(this, 'Проголосуйте звездочками это обязательно для заполнения');
-                        return;
-                    }
+
                     let thisForm = this;
+
                     let action = thisForm.getAttribute('action');
                     let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
                     if( ! action ) {
@@ -133,8 +133,6 @@
             });
 
             function php_email_form_submit(thisForm, action, formData) {
-                let userId = $('#userId').val();
-
                 fetch(action, {
                     method: 'POST',
                     body: formData,
@@ -145,17 +143,7 @@
                             thisForm.querySelector('.loading').classList.remove('d-block');
                             thisForm.querySelector('.sent-message').classList.add('d-block');
                             thisForm.reset();
-                            if(userId !== undefined){
-                                getProfileReviewAndRate(userId);
-                            }
                         } else {
-                            if(userId !== undefined){
-                                if(response.statusText === 'You already did review') {
-                                    let msg = 'Вы уже сделали отзыв';
-                                    throw new Error(msg);
-                                }
-
-                            }
                             throw new Error(`${response.status} ${response.statusText} ${response.url}`);
                         }
                     })
@@ -171,26 +159,9 @@
             }
 
         })();
-        function getProfileReviewAndRate(userId){
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                type: 'GET',
-                url: '/getrating',
-                data: {
-                    userId: userId,
-                },
-                success: function(data) {
-                    $('#allReview').html(data);
-                },
-                error: function(data) {
-                }
-            });
-        }
+
 
     </script>
+    <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
     <!-- End Team Section -->
 @endsection

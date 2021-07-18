@@ -20,8 +20,8 @@ class EventController extends Controller
         return view('event.index');
     }
 
-    public function sendEvent(){
-
+    public function sendEvent(Request $request){
+        dd($request);
         return view('event.index');
     }
 

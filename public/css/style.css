@@ -1687,6 +1687,85 @@ section {
   transform: rotate(6deg) scale(1.2);
 }
 
+
+.contact .php-email-form-add-event {
+    background: #fafbff;
+    padding: 30px;
+    height: 100%;
+}
+
+.contact .php-email-form-add-event .error-message {
+    display: none;
+    color: #fff;
+    background: #ed3c0d;
+    text-align: left;
+    padding: 15px;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+.contact .php-email-form-add-event .sent-message {
+    display: none;
+    color: #fff;
+    background: #18d26e;
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+.contact .php-email-form-add-event .loading {
+    display: none;
+    background: #fff;
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 24px;
+}
+
+.contact .php-email-form-add-event .loading:before {
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin: 0 10px -6px 0;
+    border: 3px solid #18d26e;
+    border-top-color: #eee;
+    -webkit-animation: animate-loading 1s linear infinite;
+    animation: animate-loading 1s linear infinite;
+}
+
+.contact .php-email-form-add-event input, .contact .php-email-form textarea {
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 14px;
+    border-radius: 0;
+}
+
+.contact .php-email-form-add-event input:focus, .contact .php-email-form textarea:focus {
+    border-color: #4154f1;
+}
+
+.contact .php-email-form-add-event input {
+    padding: 10px 15px;
+}
+
+.contact .php-email-form-add-event textarea {
+    padding: 12px 15px;
+}
+
+.contact .php-email-form-add-event button[type="submit"] {
+    background: #4154f1;
+    border: 0;
+    padding: 10px 30px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 4px;
+}
+
+.contact .php-email-form-add-event button[type="submit"]:hover {
+    background: #5969f3;
+}
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
@@ -1716,13 +1795,13 @@ section {
   margin-bottom: 0;
 }
 
-.contact .php-email-form {
+.contact .php-email-form-contact {
   background: #fafbff;
   padding: 30px;
   height: 100%;
 }
 
-.contact .php-email-form .error-message {
+.contact .php-email-form-contact .error-message {
   display: none;
   color: #fff;
   background: #ed3c0d;
@@ -1732,7 +1811,7 @@ section {
   font-weight: 600;
 }
 
-.contact .php-email-form .sent-message {
+.contact .php-email-form-contact .sent-message {
   display: none;
   color: #fff;
   background: #18d26e;
@@ -1742,7 +1821,7 @@ section {
   font-weight: 600;
 }
 
-.contact .php-email-form .loading {
+.contact .php-email-form-contact .loading {
   display: none;
   background: #fff;
   text-align: center;
@@ -1750,7 +1829,7 @@ section {
   margin-bottom: 24px;
 }
 
-.contact .php-email-form .loading:before {
+.contact .php-email-form-contact .loading:before {
   content: "";
   display: inline-block;
   border-radius: 50%;
@@ -1763,26 +1842,26 @@ section {
   animation: animate-loading 1s linear infinite;
 }
 
-.contact .php-email-form input, .contact .php-email-form textarea {
+.contact .php-email-form-contact input, .contact .php-email-form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
   border-radius: 0;
 }
 
-.contact .php-email-form input:focus, .contact .php-email-form textarea:focus {
+.contact .php-email-form-contact input:focus, .contact .php-email-form textarea:focus {
   border-color: #4154f1;
 }
 
-.contact .php-email-form input {
+.contact .php-email-form-contact input {
   padding: 10px 15px;
 }
 
-.contact .php-email-form textarea {
+.contact .php-email-form-contact textarea {
   padding: 12px 15px;
 }
 
-.contact .php-email-form button[type="submit"] {
+.contact .php-email-form-contact button[type="submit"] {
   background: #4154f1;
   border: 0;
   padding: 10px 30px;
@@ -1791,7 +1870,7 @@ section {
   border-radius: 4px;
 }
 
-.contact .php-email-form button[type="submit"]:hover {
+.contact .php-email-form-contact button[type="submit"]:hover {
   background: #5969f3;
 }
 

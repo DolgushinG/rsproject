@@ -1,5 +1,7 @@
 @extends('layout')
 @section('content')
+    <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="hero d-flex align-items-center">
         <div class="container">
@@ -16,37 +18,37 @@
                                     <div class="col-md-6">
                                         <div class="info-box">
                                             <i class="bi bi-geo-alt"></i>
-                                            <h3>Адрес</h3>
-                                            <p>Санкт-Петербург</p>
+                                            <h3>1 шаг</h3>
+                                            <p>Заполните данные</p>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="info-box">
                                             <i class="bi bi-telephone"></i>
-                                            <h3>Звонок нам</h3>
-                                            <p><a href="tel: +74951234567">+7 (999) 209-55-96</a></p>
+                                            <h3>2 шаг</h3>
+                                            <p>Если корректно нажмите отправить</p>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="info-box">
                                             <i class="bi bi-envelope"></i>
-                                            <h3>Email Us</h3>
-                                            <p>info@routesetters.ru</p>
+                                            <h3>3 шаг</h3>
+                                            <p>Вашу заявку рассмотрят</p>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="info-box">
                                             <i class="bi bi-emoji-wink"></i>
-                                            <h3>Мы читаем ваши сообщение и реагируем</h3>
+                                            <h3>После одобрения соревнование будет видно в течение дня</h3>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <form action="{{route('add-event')}}" method="POST" class="php-email-form">
+                                <form action="{{route('add-event')}}" method="POST" class="php-email-form-add-event">
                                     @csrf
                                     <div class="row gy-4">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <input type="text" name="event_title" class="form-control" placeholder="Ваше название соревнований"
                                                    required>
                                         </div>
@@ -61,7 +63,7 @@
                                                    placeholder="Введите конец соревнований" required>
                                         </div>
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" name="event_city" placeholder="Город"
+                                            <input id="city" type="text" class="form-control" name="event_city" placeholder="Город"
                                                    required>
                                         </div>
                                         <div class="col-md-12">
@@ -90,5 +92,88 @@
                 </section><!-- End Contact Section -->
             </div>
         </div>
-    </section><!-- End Team Section -->
+    </section>
+    <script>
+
+        /**
+         * PHP Email Form Validation - v3.0
+         * URL: https://bootstrapmade.com/php-email-form/
+         * Author: BootstrapMade.com
+         */
+        (function () {
+            "use strict";
+
+            let forms = document.querySelectorAll('.php-email-form-contact');
+
+            forms.forEach( function(e) {
+                e.addEventListener('submit', function(event) {
+                    event.preventDefault();
+
+                    let thisForm = this;
+
+                    let action = thisForm.getAttribute('action');
+                    let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
+                    if( ! action ) {
+                        displayError(thisForm, 'The form action property is not set!')
+                        return;
+                    }
+                    thisForm.querySelector('.loading').classList.add('d-block');
+                    thisForm.querySelector('.error-message').classList.remove('d-block');
+                    thisForm.querySelector('.sent-message').classList.remove('d-block');
+
+                    let formData = new FormData( thisForm );
+
+                    if ( recaptcha ) {
+                        if(typeof grecaptcha !== "undefined" ) {
+                            grecaptcha.ready(function() {
+                                try {
+                                    grecaptcha.execute(recaptcha, {action: 'php_email_form_submit'})
+                                        .then(token => {
+                                            formData.set('recaptcha-response', token);
+                                            php_email_form_submit(thisForm, action, formData);
+                                        })
+                                } catch(error) {
+                                    displayError(thisForm, error)
+                                }
+                            });
+                        } else {
+                            displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
+                        }
+                    } else {
+                        php_email_form_submit(thisForm, action, formData);
+                    }
+                });
+            });
+
+            function php_email_form_submit(thisForm, action, formData) {
+                fetch(action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {'X-Requested-With': 'XMLHttpRequest'}
+                })
+                    .then(response => {
+                        if( response.ok ) {
+                            thisForm.querySelector('.loading').classList.remove('d-block');
+                            thisForm.querySelector('.sent-message').classList.add('d-block');
+                            thisForm.reset();
+                        } else {
+                            throw new Error(`${response.status} ${response.statusText} ${response.url}`);
+                        }
+                    })
+                    .catch((error) => {
+                        displayError(thisForm, error);
+                    });
+            }
+
+            function displayError(thisForm, error) {
+                thisForm.querySelector('.loading').classList.remove('d-block');
+                thisForm.querySelector('.error-message').innerHTML = error;
+                thisForm.querySelector('.error-message').classList.add('d-block');
+            }
+
+        })();
+
+
+    </script>
+    <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script><!-- End Team Section -->
 @endsection
