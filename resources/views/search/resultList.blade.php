@@ -34,9 +34,16 @@
     </div>
     @endforeach
     @endif
+    @if($foundUsers != 0)
     <div class="container mb-2">
     <p>Результат поиска : {{$foundUsers}}</p>
     </div>
+        @endif
+    @if($foundEvents != 0)
+        <div class="container mb-2">
+            <p>Результат поиска : {{$foundEvents}}</p>
+        </div>
+    @endif
 </header>
 @if($foundUsers != 0)
 <section id="team" class="team">
@@ -139,11 +146,44 @@
           </div>
          </div>
                         @elseif($foundEvents != 0)
-                            @foreach ($events as $event)
-                                <h1>
-                                    {{$event->event_title}}
-                                </h1>
-                            @endforeach
+
+{{--                                <h1>--}}
+{{--                                    {{$event->event_title}}--}}
+{{--                                </h1>--}}
+                                <div class='container'>
+                                    <div class='blog-posts'>
+                                        <div class="container">
+                                            <div class="row">
+                                        @foreach ($events as $event)
+                                            <div class="col-6">
+                                                <div class='post'>
+                                                    <a href='#'>
+                                                        <div class='image' style='background-image: url({{'storage'.$event->event_image}})'>
+                                                            <div class='time'>
+                                                                <div class='date'>
+                                                                    {{date('d', strtotime($event->event_start_date))}}
+                                                                </div>
+                                                                <div class='month'>MAR</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class='content'>
+                                                            <h3>{{$event->event_title}}</h3>
+                                                            <p>{{$event->event_description}}.</p>
+                                                            <div class='meta'>
+                                                                <a href="{{$event->event_url}}" ><div class='icon-comment'>Ссылка на соревнования</div><a/>
+                                                                <ul class='tags'>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                     <div class="row mx-auto mt-5">
                         <div class="col-lg-12">
                             {!! $events->links() !!}

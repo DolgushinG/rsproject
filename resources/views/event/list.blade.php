@@ -2,6 +2,7 @@
 @section('content')
     <div class="panel panel-primary">
         <div class="panel-heading text-right">
+            @include('message.message')
             <button id="create_event" type="button" class="btn btn-success btn-md"><i class="fa fa-plus"></i> Create
                 Event
             </button>
@@ -19,6 +20,7 @@
                         <th>City</th>
                         <th>Url</th>
                         <th>categories</th>
+
                         <th class="text-right">Action</th>
                     </tr>
                     </thead>
@@ -97,7 +99,7 @@
 
                                     <label class="">Event Url</label>
                                     <label for="" class="field">
-                                        <span id="view_event_url"></span>
+                                        <span id="view_event_image"></span>
                                     </label>
 
                                 </div>
@@ -244,7 +246,19 @@
                                 </div>
                             </div>
                         </div>
+                            <div class="section row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="media-body ml-4"> <label class="btn btn-outline-primary"> Загрузить новое фото
+                                                <input type="file" id="event_image" name="event_image" class="image">
+                                                <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="section" style="margin-top: 10px">
                             <div class="text-right" id="event_image_error_msg"></div>
                             <p class="text-right">
@@ -260,8 +274,6 @@
             </div>
         </div>
     </div>
-
-
     <!--     Edit Event  -->
     <div class="modal fade" id="edit_event_modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -385,6 +397,15 @@
                                     <label class="">Event Url</label>
                                     <input class="form-control" id="edit_event_url" name="event_url"
                                               placeholder="Url">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="">Event Image</label>
+                                    <input class="form-control" id="edit_event_url" name="event_image"
+                                           placeholder="image">
                                 </div>
                             </div>
                         </div>
@@ -636,13 +657,11 @@
 
 
             if ($('#create_event_frm').parsley().validate() == true && date_compare() == true) {
-                var formData = new FormData($('#create_event_frm')[0]);
                 //$('#create_event_frm').submit();
                 $('#create_event_alert').show().html(loader);
 
                 var action = "{{route('event')}}";
                 var formData = new FormData($('#create_event_frm')[0]);
-
                 $.ajax({
                     type: "POST",
                     url: action,
@@ -921,7 +940,10 @@
             });
         }
 
-
     </script>
-
+<style>
+    .modal-lg {
+        max-width: 1000px !important;
+    }
+</style>
 @endsection

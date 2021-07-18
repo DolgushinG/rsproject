@@ -15,6 +15,16 @@ class EventController extends Controller
 
         return view('event.calendar');
     }
+    public function addEvent(){
+
+        return view('event.index');
+    }
+
+    public function sendEvent(){
+
+        return view('event.index');
+    }
+
 
     public function indexAllEvents(){
         $events = Event::all();
@@ -35,7 +45,6 @@ class EventController extends Controller
             'event_title' => 'required|string|max:150',
             'event_start_date' =>'required|string|max:15',
            ]);
-
          $feed_back=array();
         if ($validator->passes()){
 
@@ -51,6 +60,18 @@ class EventController extends Controller
                 $eventAndCategory->category_id = $id;
                 $eventAndCategory->save();
             }
+            $event = Event::find($event->id);
+            if (!file_exists('storage/images/events/'.$event->id.'/')) {
+                mkdir('storage/images/events/'.$event->id.'/', 0777, true);
+            }
+            $folderPath = public_path('storage/images/event/'.$event->id.'/');
+            if ($request->hasFile('event_image')) {
+                $file = $request->file('event_image');
+                $imageName = time() . '.' . $request->file('event_image')->getClientOriginalExtension();
+                $file->storeAs('/images/events/'.$event->id.'/' , $imageName, 'public');
+                $event->event_image = '/images/events/'.$event->id.'/'.$imageName;
+            }
+            $event->save();
          $feed_back['type']='alert-success';
          $feed_back['message']='Added new records';
          $feed_back['error']=array();
@@ -87,7 +108,7 @@ class EventController extends Controller
             $eventCategoriesName .= $category->category_name . ' ';
         }
         $event_data[$key]['events_categories'] = $eventCategoriesName;
-//        $event_data[$key]['events_not_categories'] = $notCategories;
+        $event_data[$key]['events_image'] = $event_val['event_image'];
         $event_data[$key]['events_id'] = $event_val['id'];
         $event_data[$key]['event_description'] =$event_val['event_description'];
         $event_data[$key]['event_city'] =$event_val['event_city'];

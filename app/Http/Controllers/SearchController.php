@@ -5,15 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\EventAndCategories;
+use GuzzleHttp\Client;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Rating;
 use App\Models\UserAndCategories;
+use Illuminate\Support\Facades\Http;
 
 class SearchController extends Controller
 {
     public function getResultSearch(Request $request)
     {
+        $request->city_name = $request->event_city;
         if ($request->categories != null) {
             #event search
             if ($request->search_event != null){
@@ -22,6 +26,7 @@ class SearchController extends Controller
                 foreach ($events as $event) {
                     $eventsResult[] = $event->event_id;
                 }
+
             } else {
                 #users search
                 $users = UserAndCategories::whereIn('category_id', $request->categories)->distinct()->get('user_id');
@@ -35,6 +40,7 @@ class SearchController extends Controller
                 if ($request->search_event != null){
                     $events = Event::where('event_city', '=', $request->city_name)
                         ->whereIn('id', $eventsResult);
+                    $eventFeature = Event::where('event_city', '=', $request->city_name)->latest('created_at')->first();
                     $foundEvents = $events->count();
                     $events = $events->simplePaginate(12);
                     $categories = Category::whereIn('id', $request->categories)->get();
@@ -56,12 +62,16 @@ class SearchController extends Controller
                         'city' => $request->city_name,
                         'categories' => $categories,
                     );
+                    $events = 0;
+                    $foundEvents = 0;
+                    $eventFeature = 0;
                 }
 
                 #categories
             } else {
                 if ($request->search_event != null){
                     $events = Event::whereIn('id', $eventsResult);
+                    $eventFeature = Event::whereIn('id', $eventsResult)->latest('created_at')->first();
                     $foundEvents = $events->count();
                     $events = $events->simplePaginate(12);
                     $categories = Category::whereIn('id', $request->categories)->get();
@@ -80,12 +90,16 @@ class SearchController extends Controller
                     $valueSearch = array(
                         'categories' => $categories,
                     );
+                    $events = 0;
+                    $foundEvents = 0;
+                    $eventFeature = 0;
                 }
             }
             #empty request
         } else if ($request->categories === null && $request->city_name === null) {
             if ($request->search_event != null){
                 $events = Event::whereNotNull('event_title');
+                $eventFeature = Event::latest('created_at')->first();
                 $foundEvents= $events->count();
                 $events = $events->simplePaginate(12);
                 $valueSearch= '';
@@ -96,11 +110,15 @@ class SearchController extends Controller
                 $foundUsers = $users->count();
                 $users = $users->simplePaginate(12);
                 $valueSearch= '';
+                $events = 0;
+                $foundEvents = 0;
+                $eventFeature = 0;
             }
             #city_name
         } else if ($request->city_name) {
             if ($request->search_event != null){
-                $events = Event::where('city_name', '=', $request->city_name);
+                $events = Event::where('event_city', '=', $request->city_name);
+                $eventFeature = Event::where('event_city', '=', $request->city_name)->latest('created_at')->first();
                 $foundEvents = $events->count();
                 $events = $events->simplePaginate(12);
                 $valueSearch = array(
@@ -115,8 +133,11 @@ class SearchController extends Controller
                 $valueSearch = array(
                     'city' => $request->city_name,
                 );
+                $events = 0;
+                $foundEvents = 0;
+                $eventFeature = 0;
             }
         }
-        return view('search.resultList', compact(['users','foundUsers','valueSearch','foundEvents','events']))->render();
+        return view('search.resultList', compact(['users','foundUsers','valueSearch','foundEvents','events', 'eventFeature']))->render();
     }
 }

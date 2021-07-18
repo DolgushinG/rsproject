@@ -6,6 +6,8 @@ $(document).ready(function() {
             });
     $(document).on('click','.searchUser', function(e) {
      var data = $("#searchForm").serialize();
+     Cookies.remove('searchEvent', '1');
+        Cookies.remove('eventTable', '1');
      e.preventDefault();
         $.ajax({
             type: 'GET',
@@ -21,7 +23,7 @@ $(document).ready(function() {
     });
     $(document).on('click','.searchEvent', function(e) {
 
-
+        Cookies.set('searchEvent', '1');
         var btnEvent = $("#searchEvent").val();
         var data = $("#searchForm").serialize();
         data += '&search_event='+btnEvent;
@@ -48,11 +50,41 @@ $(document).ready(function() {
     $(document).on('click','#cityTable', function(e) {
         e.preventDefault();
         let city_name = $(this).val();
+        Cookies.remove('searchEvent', '1');
+        Cookies.remove('eventTable', '1');
         $.ajax({
             type: 'GET',
             url: 'getresultsearch',
             data: {
                 city_name:city_name,
+            },
+            success: function(data) {
+                $('#resultList').html(data);
+            },
+            error: function(data) {
+                console.log("error");
+            }
+        });
+    });
+});
+$(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $(document).on('click','#eventTable', function(e) {
+        e.preventDefault();
+
+        let event_city = $(this).val();
+        let search_event = '1';
+        Cookies.set('eventTable', '1');
+        $.ajax({
+            type: 'GET',
+            url: 'getresultsearch',
+            data: {
+                event_city:event_city,
+                search_event: search_event
             },
             success: function(data) {
                 $('#resultList').html(data);
@@ -76,9 +108,27 @@ $(document).ready(function(){
        event.preventDefault();
        var page = $(this).attr('href').split('page=')[1];
        let city_name = $('#city_search').val();
-       getUsers(page, city_name);
+       if(Cookies.get("eventTable") === '1'|| Cookies.get("searchEvent") === '1') {
+           getEvent(page, city_name, '1')
+       } else {
+           getUsers(page, city_name);
+       }
+
     });
 
+    function getEvent(page, city_name, search_event)
+    {
+        var _token = $("input[name=_token]").val();
+        $.ajax({
+            url: '/getresultsearch?page=' + page,
+            method:"GET",
+            data:{_token:_token, page:page, city_name:city_name, search_event: search_event},
+            success:function(data)
+            {
+                $('#resultList').html(data);
+            }
+        });
+    }
     function getUsers(page, city_name)
     {
         var _token = $("input[name=_token]").val();
