@@ -17,10 +17,10 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('event_title',150);
-            $table->date('event_start_date');
-            $table->time('event_start_time',15);
-            $table->date('event_end_date');
-            $table->time('event_end_time',15);
+            $table->text('event_start_date');
+            $table->text('event_start_time',15);
+            $table->text('event_end_date');
+            $table->text('event_end_time',15);
             $table->text('event_description')->nullable();
             $table->text('event_city')->nullable();
             $table->text('event_image')->nullable();
