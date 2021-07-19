@@ -38,8 +38,8 @@
             });
             $(document).on('click', '#btnImport', function (e) {
                 document.querySelector("#btnImport").innerHTML = 'Импорт начался';
-                $('#subscribeBtn').removeClass('btnImportDone');
-                $('#subscribeBtn').addClass('btnImportProcess');
+                $('#btnImport').removeClass('btnImportDone');
+                $('#btnImport').addClass('btnImportProcess');
 
                 let data = $('#form-import-url').serialize();
                 e.preventDefault();
@@ -49,9 +49,9 @@
                     url: 'importEvent',
                     data: data,
                     success: function (data) {
-                        document.querySelector("#subscribeBtn").innerHTML = 'Импорт закочился';
-                        $('#subscribeBtn').removeClass('btnImportProcess');
-                        $('#subscribeBtn').addClass('btnImportDone');
+                        document.querySelector("#btnImport").innerHTML = 'Импорт закочился';
+                        $('#btnImport').removeClass('btnImportProcess');
+                        $('#btnImport').addClass('btnImportDone');
                     },
                 });
             });
