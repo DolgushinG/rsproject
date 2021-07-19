@@ -38,10 +38,13 @@
     <div class="container mb-2">
     <p>Результат поиска : {{$foundUsers}}</p>
     </div>
-        @endif
-    @if($foundEvents != 0)
+    @elseif($foundEvents != 0)
         <div class="container mb-2">
             <p>Результат поиска : {{$foundEvents}}</p>
+        </div>
+    @else
+        <div class="container mb-2">
+            <p>Результат поиска : ничего не найдено </p>
         </div>
     @endif
 </header>

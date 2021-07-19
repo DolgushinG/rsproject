@@ -117,7 +117,6 @@ class SearchController extends Controller
                 $valueSearch= '';
                 $events = 0;
                 $foundEvents = 0;
-                $eventFeature = 0;
             }
             #city_name
         } else if ($request->city_name) {
@@ -142,7 +141,6 @@ class SearchController extends Controller
                 );
                 $events = 0;
                 $foundEvents = 0;
-                $eventFeature = 0;
             }
         }
         return view('search.resultList', compact(['users','foundUsers','valueSearch','foundEvents','events']))->render();
