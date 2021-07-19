@@ -26,6 +26,8 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('/profile/save', [App\Http\Controllers\ProfileController::class, 'saveAvatar'])->name('saveAvatar');
     Route::post('importEvent',[App\Http\Controllers\ImportEvent::class, 'importEvent']);
     Route::get('importInterEvent',[App\Http\Controllers\ImportEvent::class, 'importInterEvent'])->name('importInterEvent');
+    Route::post('subscriptionUser', [App\Http\Controllers\SubscriptionUserController::class, 'getEmailUsers'])->name('subscriptionUser');
+    Route::get('toSendEmailSubscribe', [App\Http\Controllers\SubscriptionUserController::class, 'sendEmailToSubscribeUser']);
 });
 
 //public
@@ -47,9 +49,7 @@ Route::post('/postrating', [App\Http\Controllers\PublicProfileController::class,
 Route::get('/getrating', [App\Http\Controllers\PublicProfileController::class, 'getRatingAndReview'])->name('getrating');
 Route::post('getEmployees',[App\Http\Controllers\HomeController::class, 'getEmployees'])->name('getEmployees');
 Route::get('/verify/success',[App\Http\Controllers\HomeController::class, 'indexVerificationPage']);
-Route::get('toSendEmaiSubscribe', [App\Http\Controllers\SubscriptionUserController::class, 'sendEmailToSubscribeUser']);
 Route::get('support-project', [App\Http\Controllers\HomeController::class, 'indexSupport'])->name('support-project');
-Route::post('subscriptionUser', [App\Http\Controllers\SubscriptionUserController::class, 'getEmailUsers'])->name('subscriptionUser');
 
 Auth::routes(['verify' => true]);
 

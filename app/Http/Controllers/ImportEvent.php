@@ -71,7 +71,7 @@ class ImportEvent extends Controller
 
     }
     public function importInterEvent() {
-        return view('event.index');
+        return view('event.indexImport');
     }
 
 }

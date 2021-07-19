@@ -55,6 +55,7 @@ class SubscriptionUserController extends Controller
             $details[$event->id]['event_start_end'] = $event->event_start_end;
             $details[$event->id]['event_url'] = $event->event_url;
         }
+        $subscribeUser = SubscriptionUser::all();
         Mail::to('Dolgushing@yandex.ru')->send(new \App\Mail\SubscriptionUser($details));
     }
 }
