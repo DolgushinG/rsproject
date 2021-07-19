@@ -1,12 +1,13 @@
 @extends('layout')
 @section('content')
-    <main id="main">
         <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css"
               rel="stylesheet"/>
         <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
         <!-- ======= Hero Section ======= -->
         <div class="container">
             <div class="row justify-content-center">
+            </div>
+        </div>
                 <!-- ======= Contact Section ======= -->
                 <section id="contact" class="contact">
                     <div class="container" data-aos="fade-up">
@@ -130,7 +131,7 @@
                 </section>
             </div>
         </div>
-    </main>
+
     <!-- End Contact Section -->
     <script>
         /**
@@ -206,3 +207,4 @@
         })();
     </script>
     <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script><!-- End Team Section -->
+@endsection
