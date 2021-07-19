@@ -16,6 +16,7 @@ class CreateSubscriptionUsersTable extends Migration
         Schema::create('subscription_users', function (Blueprint $table) {
             $table->id();
             $table->string('email_user',150);
+            $table->enum('active',[0,1])->default(1);
             $table->timestamps();
         });
     }

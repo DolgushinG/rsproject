@@ -20,6 +20,7 @@ class SubscriptionUserController extends Controller
         if ($validator->passes()){
             $subscriptionUser = new SubscriptionUser;
             $subscriptionUser->email_user = $request->email_user;
+            $subscriptionUser->active = 1;
             $subscriptionUser->save();
             $feed_back['type']='alert-success';
             $feed_back['message']='Вы успешно подписаны';
