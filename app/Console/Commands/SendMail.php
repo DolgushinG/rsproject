@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Event;
 use App\Models\EventAndCategories;
-use App\Models\subscriptionUser;
+use App\Models\SubscriptionUser;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
