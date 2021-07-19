@@ -76,14 +76,14 @@ $(document).ready(function() {
     $(document).on('click','#eventTable', function(e) {
         e.preventDefault();
 
-        let event_city = $(this).val();
+        let city_name = $(this).val();
         let search_event = '1';
         Cookies.set('eventTable', '1');
         $.ajax({
             type: 'GET',
             url: 'getresultsearch',
             data: {
-                event_city:event_city,
+                city_name:city_name,
                 search_event: search_event
             },
             success: function(data) {
