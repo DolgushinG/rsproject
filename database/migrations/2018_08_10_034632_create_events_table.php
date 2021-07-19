@@ -25,6 +25,7 @@ class CreateEventsTable extends Migration
             $table->text('event_city')->nullable();
             $table->text('event_image')->nullable();
             $table->text('event_url')->nullable();
+            $table->text('active_status')->nullable();
         });
     }
 

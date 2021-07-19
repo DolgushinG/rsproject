@@ -62,6 +62,12 @@ body {
         display: block!important;
         margin-left: 1rem;
     }
+    .searchUser{
+        font-size: 14px;
+    }
+    .searchEvent{
+        font-size: 14px;
+    }
 }
 #cookie_agree{
     cursor: pointer;
@@ -97,6 +103,15 @@ body {
     label.star {
         padding: 6px!important;
         font-size: 18px!important;
+    }
+    .card-body {
+        padding: 0.14rem !important;
+    }
+    .searchUser{
+        font-size: 14px!important;
+    }
+    .searchEvent{
+        font-size: 14px!important;
     }
 }
 .php-email-form .form-group .loading{
@@ -205,6 +220,12 @@ section {
   .breadcrumbs {
     margin-top: 57px;
   }
+    .searchUser{
+        font-size: 14px!important;
+    }
+    .searchEvent{
+        font-size: 14px!important;
+    }
 }
 
 .breadcrumbs h2 {
@@ -1766,6 +1787,7 @@ section {
 .contact .php-email-form-add-event button[type="submit"]:hover {
     background: #5969f3;
 }
+
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
@@ -2605,7 +2627,8 @@ section {
 }
 
 html {
-  height: 100%
+  height: 100%;
+    scroll-behavior: smooth;
 }
 
 p {
@@ -2929,8 +2952,8 @@ div.table-title {
 }
 
 th {
- color:#D5DDE5;
- background:#292f4a;
+ color: #64a4e5;
+ background: rgba(87, 110, 206, 0.53);
  font-size:23px;
  font-weight: 100;
  padding:24px;
@@ -3093,6 +3116,12 @@ td.text-right {
     padding: 0 10px;
     padding-top: 40px;
   }
+    label.check span {
+        font-size: 12px!important;
+    }
+    .card-body {
+        padding: 0.14rem !important;
+    }
 }
 
 .tab-list__item {
@@ -3133,7 +3162,7 @@ td.text-right {
 
 @media (max-width: 767px) {
   .tab-content > .tab-pane {
-    padding: 30px;
+    padding: 14px;
     padding-bottom: 45px;
   }
 }
@@ -4668,27 +4697,63 @@ textarea
     .ag-format-container {
         width: 96%;
     }
+    .searchUser{
+        font-size: 10px!important;
+    }
+    .searchEvent{
+        font-size: 10px!important;
+    }
 
 }
 
 @media only screen and (max-width: 639px) {
-
+    .card-body {
+        padding: 0.14rem !important;
+    }
+    .searchUser{
+        font-size: 9.15px!important;
+    }
+    .searchEvent{
+        font-size: 9.15px!important;
+    }
 }
 
 @media only screen and (max-width: 479px) {
-
+    .card-body {
+        padding: 0.14rem !important;
+    }
+    .searchUser{
+        font-size: 9.15px!important;
+    }
+    .searchEvent{
+        font-size: 9.15px!important;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
     .ag-format-container {
         width: 750px;
     }
-
+    .card-body {
+        padding: 0.14rem !important;
+    }
+    .searchUser{
+        font-size: 11px!important;
+    }
+    .searchEvent{
+        font-size: 11px!important;
+    }
 }
 
 @media (min-width: 980px) and (max-width: 1161px) {
     .ag-format-container {
         width: 960px;
+    }
+    .searchUser{
+        font-size: 12px!important;
+    }
+    .searchEvent{
+        font-size: 12px!important;
     }
 
 }
@@ -5033,4 +5098,41 @@ textarea
         clear: both;
     }
 
+}
+.home-newsletter {
+    padding: 10px 0;
+    background: rgba(41, 121, 239, 0.71);
+}
+
+.home-newsletter .single {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2; }
+.home-newsletter .single h2 {
+    font-size: 22px;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 40px; }
+.home-newsletter .single .form-control {
+    height: 50px;
+    background: rgba(255, 255, 255, 0.6);
+    border-color: transparent;
+    border-radius: 20px 0 0 20px; }
+.home-newsletter .single .form-control:focus {
+    box-shadow: none;
+    border-color: #243c4f; }
+.home-newsletter .single .btn {
+    margin-top: 10px;
+    min-height: 50px;
+    border-radius: 0 20px 20px 0;
+    background: #243c4f;
+    color: #fff;
+}
+.subscribeDone{
+    background-color: green!important;
+}
+.subscribedefault{
+    background-color: #243c4f;
 }

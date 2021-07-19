@@ -16,9 +16,6 @@ class ImportEvent extends Controller
             $eventob = new Event;
             $eventob->event_title = $value['event'];
             $eventob->event_start_date = $value['local_start_date'];
-            $eventob->event_description .= $value['local_start_date'].' -  ';
-            $eventob->event_description .= $value['local_end_date']. '    ';
-
             foreach ($value['d_cats'] as $d_cat => $i) {
                 $eventob->event_description .= $i['name']. ' ';
             }
@@ -30,7 +27,6 @@ class ImportEvent extends Controller
             $html = file_get_contents('https://www.ifsc-climbing.org/index.php/component/ifsc/?view=event&WetId=' . $value['event_id']);
             preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $html, $matches);
             $imagePoster = '';
-
             foreach ($matches[1] as $urlImage) {
                 $imageStr = substr($urlImage, 0, 44);
                 if ($imageStr === 'https://cdn.ifsc-climbing.org/images/Events/') {

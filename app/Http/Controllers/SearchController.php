@@ -39,8 +39,9 @@ class SearchController extends Controller
             if ($request->city_name != null) {
                 if ($request->search_event != null){
                     $events = Event::where('event_city', '=', $request->city_name)
+                        ->where('active_status', '=', '1')
+                        ->orderBy('event_start_date')
                         ->whereIn('id', $eventsResult);
-                    $eventFeature = Event::where('event_city', '=', $request->city_name)->latest('created_at')->first();
                     $foundEvents = $events->count();
                     $events = $events->simplePaginate(12);
                     $categories = Category::whereIn('id', $request->categories)->get();
@@ -70,8 +71,9 @@ class SearchController extends Controller
                 #categories
             } else {
                 if ($request->search_event != null){
-                    $events = Event::whereIn('id', $eventsResult);
-                    $eventFeature = Event::whereIn('id', $eventsResult)->latest('created_at')->first();
+                    $events = Event::whereIn('id', $eventsResult)
+                        ->where('active_status', '=', '1')
+                        ->orderBy('event_start_date');
                     $foundEvents = $events->count();
                     $events = $events->simplePaginate(12);
                     $categories = Category::whereIn('id', $request->categories)->get();
@@ -98,8 +100,8 @@ class SearchController extends Controller
             #empty request
         } else if ($request->categories === null && $request->city_name === null) {
             if ($request->search_event != null){
-                $events = Event::whereNotNull('event_title');
-                $eventFeature = Event::latest('created_at')->first();
+                $events = Event::where('active_status', '=', '1')
+                    ->orderBy('event_start_date');
                 $foundEvents= $events->count();
                 $events = $events->simplePaginate(12);
                 $valueSearch= '';
@@ -117,8 +119,9 @@ class SearchController extends Controller
             #city_name
         } else if ($request->city_name) {
             if ($request->search_event != null){
-                $events = Event::where('event_city', '=', $request->city_name);
-                $eventFeature = Event::where('event_city', '=', $request->city_name)->latest('created_at')->first();
+                $events = Event::where('event_city', '=', $request->city_name)
+                        ->where('active_status', '=', '1')
+                        ->orderBy('event_start_date');
                 $foundEvents = $events->count();
                 $events = $events->simplePaginate(12);
                 $valueSearch = array(
@@ -138,6 +141,6 @@ class SearchController extends Controller
                 $eventFeature = 0;
             }
         }
-        return view('search.resultList', compact(['users','foundUsers','valueSearch','foundEvents','events', 'eventFeature']))->render();
+        return view('search.resultList', compact(['users','foundUsers','valueSearch','foundEvents','events']))->render();
     }
 }

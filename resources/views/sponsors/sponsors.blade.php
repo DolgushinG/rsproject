@@ -2,7 +2,7 @@
     <header class="section-header">
         <h2>Те кто поддержал проект</h2>
     </header>
-    <div class="container" data-aos="fade-up">
+    <div class="container" data-aos="">
         <div class="row gy-2">
             <div class="col-lg-3 col-md-4 sponsors" style="margin-right: auto; margin-left: auto">
                 <div class="count-box">

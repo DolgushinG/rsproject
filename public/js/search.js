@@ -161,3 +161,41 @@ $("button").click(function() {
         scrollTop: $("#resultList").offset().top},
         'slow');
 });
+
+$(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(document).on('click', '#subscribeBtn', function (e) {
+        document.querySelector("#subscribeBtn").innerHTML = 'Подписка оформлена';
+        $('#subscribeBtn').removeClass('subscribedefault');
+        $('#subscribeBtn').addClass('subscribeDone');
+        disableScrolling()
+        setTimeout(function () {
+            document.querySelector("#subscribeBtn").innerHTML = 'Подписаться';
+            $('#subscribeBtn').removeClass('subscribeDone');
+            $('#subscribeBtn').addClass('subscribedefault');
+            enableScrolling()
+        }, 1000);
+        let data = $('#subscribeUser').serialize();
+        $(".php-email-form-subscribe")[0].reset();
+        $.ajax({
+            type: 'POST',
+            url: 'subscriptionUser',
+            data: data,
+            success: function (data) {
+            },
+        });
+    });
+});
+function enableScrolling(){
+    window.onscroll=function(){};
+}
+function disableScrolling(){
+    var x=window.scrollX;
+    var y=window.scrollY;
+    window.onscroll=function(){window.scrollTo(x, y);};
+}

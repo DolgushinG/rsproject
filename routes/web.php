@@ -54,6 +54,9 @@ Route::get('send_test_email', function(){
     });
 });
 Route::get('sendmail', [App\Http\Controllers\MailController::class, 'sendmail']);
+
+Route::post('subscriptionUser', [App\Http\Controllers\SubscriptionUserController::class, 'getEmailUsers'])->name('subscriptionUser');
+
 Auth::routes(['verify' => true]);
 Route::get('importEvent',[App\Http\Controllers\ImportEvent::class, 'importEvent']);
 Route::middleware(['guest'])->group(function(){
@@ -62,7 +65,6 @@ Route::middleware(['guest'])->group(function(){
     Route::get('add-event', [App\Http\Controllers\EventController::class, 'addEvent'])->name('add-event');
     Route::post('add-event', [App\Http\Controllers\EventController::class, 'sendEvent']);
     Route::get('/event-details/{id}', [App\Http\Controllers\EventController::class, 'eventDetails'])->name('event-details');
-    Route::get('events', [App\Http\Controllers\EventController::class, 'indexAllEvents'])->name('indexAllEvents');
     Route::get('event-list',[App\Http\Controllers\EventController::class, 'event_list']);
     Route::post('event',[App\Http\Controllers\EventController::class,'save_event']);
     Route::get('all-event',[App\Http\Controllers\EventController::class,'all_event'])->name('all-event');

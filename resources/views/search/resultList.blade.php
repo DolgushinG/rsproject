@@ -146,10 +146,6 @@
           </div>
          </div>
                         @elseif($foundEvents != 0)
-
-{{--                                <h1>--}}
-{{--                                    {{$event->event_title}}--}}
-{{--                                </h1>--}}
                                 <div class='container'>
                                     <div class='blog-posts'>
                                         <div class="container">
@@ -159,11 +155,11 @@
                                                 <div class='post'>
                                                     <a href='#'>
                                                         <div class='image' style='background-image: url({{'storage'.$event->event_image}})'>
-                                                            <div class='time'>
-                                                                <div class='date'>
+                                                            <div class='time' style="width: 110px;">
+                                                                <div class='date' style="font-size: 1.7rem;">
                                                                     {{date('d', strtotime($event->event_start_date))}}
                                                                 </div>
-                                                                <div class='month'>MAR</div>
+                                                                <div class='month' style="font-size: 1.5rem;">{{date('m', strtotime($event->event_start_date))}}</div>
                                                             </div>
                                                         </div>
                                                         <div class='content'>
