@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use App\Mail\NewUser;
 use App\Models\Category;
 use App\Models\EventAndCategories;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
 {

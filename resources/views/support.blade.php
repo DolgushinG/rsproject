@@ -23,7 +23,7 @@
             </div>
         </div>
     </section>
-    <main id="main" style="margin-top: -10rem;">
+    <main id="main" style="margin-top: -10rem;margin-bottom: 10em;" >
         <!-- ======= F.A.Q Section ======= -->
         <section id="faq" class="faq" style="padding: 0px 0;">
             <div class="container" data-aos="fade-up">
@@ -141,6 +141,6 @@
                     </div>
                 </div>
             </div>
-        </section><!-- End F.A.Q Section -->
+        </section>
     </main>
 @endsection
