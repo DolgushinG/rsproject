@@ -102,7 +102,6 @@ class RegisterController extends Controller
             'average_rating' => 0,
             'photo' => 'images/users/defaultAvatar.jpeg',
         ]);
-
         foreach($data['categories'] as $id => $x){
             $userAndCategory = new UserAndCategories;
             $userAndCategory->user_id = $user->id;

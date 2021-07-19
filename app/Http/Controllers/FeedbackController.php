@@ -44,7 +44,7 @@ class FeedbackController extends Controller
         Mail::to('Dolgushing@yandex.ru')->send(new NewUser($details));
 
         if ($feedback->save()) {
-            return response()->json(['success' => true, 'message' => 'ошибка сохранения'], 200);
+            return response()->json(['success' => true, 'message' => 'отправлено'], 200);
         } else {
             return response()->json(['success' => false, 'message' => 'ошибка сохранения'], 422);
         }

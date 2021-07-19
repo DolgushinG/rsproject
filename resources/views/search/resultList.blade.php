@@ -34,9 +34,16 @@
     </div>
     @endforeach
     @endif
+    @if($foundUsers != 0)
     <div class="container mb-2">
     <p>Результат поиска : {{$foundUsers}}</p>
     </div>
+        @endif
+    @if($foundEvents != 0)
+        <div class="container mb-2">
+            <p>Результат поиска : {{$foundEvents}}</p>
+        </div>
+    @endif
 </header>
 @if($foundUsers != 0)
 <section id="team" class="team">
@@ -58,7 +65,28 @@
             {!! $users->links() !!}
             </div>
            </div>
+            @elseif ($foundEvents != 0)
+                <section id="team" class="team">
+                    <div class="container" data-aos="fade-up">
+                        <div id="content" class="row gy-4">
+                            <div class="row mx-auto mt-5">
+                                <p>Показано: {{$events->lastItem()}} из {{$foundEvents}}</p>
+                                <div class="progress" style="padding-left: 0; padding-right: 0; margin-bottom: 2rem;">
+
+                                    <div class="progress-bar
+                                  progress-bar-striped
+                                  progress-bar-animated" role="progressbar" aria-valuemin="100"
+                                         aria-valuemax="0" style="width:{{$events->lastItem() * 100 / $foundEvents}}%">
+                                        {{intval($events->lastItem() * 100 / $foundEvents)}}%
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-12 mb-4">
+                                    {!! $events->links() !!}
+                                </div>
+                            </div>
             @endif
+        @if($foundUsers != 0)
          @foreach ($users as $user)
 
             <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
@@ -117,5 +145,46 @@
           {!! $users->links() !!}
           </div>
          </div>
+                        @elseif($foundEvents != 0)
+                                <div class='container'>
+                                    <div class='blog-posts'>
+                                        <div class="container">
+                                            <div class="row">
+                                        @foreach ($events as $event)
+                                            <div class="col-6">
+                                                <div class='post'>
+                                                    <a href='#'>
+                                                        <div class='image' style='background-image: url({{'storage'.$event->event_image}})'>
+                                                            <div class='time' style="width: 110px;">
+                                                                <div class='date' style="font-size: 1.7rem;">
+                                                                    {{date('d', strtotime($event->event_start_date))}}
+                                                                </div>
+                                                                <div class='month' style="font-size: 1.5rem;">{{date('m', strtotime($event->event_start_date))}}</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class='content'>
+                                                            <h3>{{$event->event_title}}</h3>
+                                                            <p>{{$event->event_description}}.</p>
+                                                            <div class='meta'>
+                                                                <a href="{{$event->event_url}}" ><div class='icon-comment'>Ссылка на соревнования</div><a/>
+                                                                <ul class='tags'>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                    <div class="row mx-auto mt-5">
+                        <div class="col-lg-12">
+                            {!! $events->links() !!}
+                        </div>
+                    </div>
+                        @endif
     </div>
 </section>
