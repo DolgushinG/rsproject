@@ -26,7 +26,6 @@ class SearchController extends Controller
                 foreach ($events as $event) {
                     $eventsResult[] = $event->event_id;
                 }
-
             } else {
                 #users search
                 $users = UserAndCategories::whereIn('category_id', $request->categories)->distinct()->get('user_id');
@@ -66,7 +65,6 @@ class SearchController extends Controller
                     );
                     $events = 0;
                     $foundEvents = 0;
-                    $eventFeature = 0;
                 }
 
                 #categories
@@ -100,7 +98,7 @@ class SearchController extends Controller
                 }
             }
             #empty request
-        } else if ($request->categories === null && $request->city_name === null) {
+        } else if ($request->categories === null && $request->city_name === null ) {
             if ($request->search_event != null){
                 $events = Event::where('active_status', '=', '1')
                     ->whereBetween('event_start_date', [Carbon::now()->toDate(),'21-12-31'.' 23:59:59'])
@@ -121,14 +119,15 @@ class SearchController extends Controller
             #city_name
         } else if ($request->city_name) {
             if ($request->search_event != null){
-                $events = Event::where('event_city', '=', $request->city_name)
+                $request->event_city = $request->city_name;
+                $events = Event::where('event_city', '=', $request->event_city)
                         ->whereBetween('event_start_date', [Carbon::now()->toDate(),'21-12-31'.' 23:59:59'])
                         ->where('active_status', '=', '1')
                         ->orderBy('event_start_date');
                 $foundEvents = $events->count();
                 $events = $events->simplePaginate(12);
                 $valueSearch = array(
-                    'city' => $request->city_name,
+                    'city' => $request->event_city,
                 );
                 $users = 0;
                 $foundUsers = 0;

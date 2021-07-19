@@ -105,7 +105,7 @@
                                         <div class="col-md-12">
                                             <textarea class="form-control" name="event_description" rows="6"
                                                       placeholder="Краткое описание"
-                                                      required></textarea>
+                                                      ></textarea>
                                         </div>
                                         <div class="col-md-12">
                                             <input type="file" class="form-control" name="event_image" rows="6"

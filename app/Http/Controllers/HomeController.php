@@ -5,6 +5,7 @@ use App\Models\Event;
 use App\Models\User;
 use App\Models\Category;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -18,7 +19,7 @@ class HomeController extends Controller
     public function index()
     {
         $userCityList = User::select('city_name')->whereNotNull('email_verified_at')->distinct()->take(6)->get();
-        $eventCityList = Event::select('event_city')->where('active_status', '=', '1')->distinct()->take(6)->get();
+        $eventCityList = Event::select('event_city')->whereBetween('event_start_date', [Carbon::now()->toDate(),'21-12-31'.' 23:59:59'])->where('active_status', '=', '1')->distinct()->take(6)->get();
         $userCityCount = [];
         foreach ($userCityList as $city) {
             $userCityCount[$city->city_name] = User::where('city_name', '=', $city->city_name)->count();
