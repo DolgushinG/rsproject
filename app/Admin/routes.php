@@ -15,5 +15,5 @@ Route::group([
     $router->resource('/users', UserController::class);
     $router->resource('/feedback', FeedbackContoller::class);
     $router->resource('/events', EventController::class);
-    $router->resource('/subscriptionUsers', SubscriptionUser::class);
+    $router->resource('/subscriptionUser', SubscriptionUserController::class);
 });
