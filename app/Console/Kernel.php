@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Console;
+use App\Console\Commands\SendMail;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\User;
 use Illuminate\Console\Scheduling\Schedule;
@@ -16,6 +17,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \Spatie\Backup\Commands\BackupCommand::class,
+        SendMail::class,
     ];
 
     /**
@@ -32,12 +34,11 @@ class Kernel extends ConsoleKernel
                 User::whereNull('email_verified_at')->delete();
             }
         })->weekly();
-        $schedule->exec("php artisan backup:clean")->dailyAt('01:30');
-        $schedule->exec("php artisan backup:run --only-db")->dailyAt('01:30');
+        $schedule->exec("php artisan backup:clean")->weeklyOn(1, '00:00');
+        $schedule->exec("php artisan backup:run --only-db")->weeklyOn(1, '00:00');
 //        // Backups (to Google Drive)
-//        $schedule->command('backup:clean')->dailyAt('01:30')->withoutOverlapping();
+        $schedule->command('sendMail')->weeklyOn(1, '10:00');
 //        $schedule->command('backup:run --only-db')->dailyAt('01:35')->withoutOverlapping();
-
     }
     /**
      * Register the commands for the application.
