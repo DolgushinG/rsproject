@@ -44,6 +44,10 @@ class HomeController extends Controller
     {
         return view('blog.index');
     }
+    public function indexSupport()
+    {
+        return view('support');
+    }
 
     public function indexVerificationPage()
     {

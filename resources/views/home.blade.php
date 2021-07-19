@@ -83,7 +83,7 @@
                                                 </div>
                                                 <div class="container" style="margin-top: 1rem;
                                 margin-bottom: -1rem;">
-                                                    <a href="{{route('add-event')}}" style="color: #00ad5f"> <span>Не нашли свои соревнования ? добавьте его здесь</span></a>
+                                                    <a href="{{route('add-event')}}" style="color: #00ad5f"> <span> Не нашли свои соревнования ? добавьте здесь</span></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -160,11 +160,11 @@
 
                         <div class="col-lg-3 col-md-6">
                             <div class="count-box">
-                                <i class="bi bi-patch-check" style="color: #15be56;"></i>
+                                <i class="bi bi-flag"></i>
                                 <div>
-                                    <span data-purecounter-start="0" data-purecounter-end="{{$usersWithCours}}"
+                                    <span data-purecounter-start="0" data-purecounter-end="{{$eventCount}}"
                                           data-purecounter-duration="1" class="purecounter"></span>
-                                    <p>Те кто прошел курсы</p>
+                                    <p>Всего соревнований</p>
                                 </div>
                             </div>
                         </div>

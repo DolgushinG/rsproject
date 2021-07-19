@@ -6,9 +6,9 @@
    * Easy selector helper function
    */
   const select = (el, all = false) => {
-    // if(el === undefined){
-    //   return;
-    // }
+    if(el === undefined){
+      return;
+    }
     el = el.trim()
     if (all) {
       return [...document.querySelectorAll(el)]

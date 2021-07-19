@@ -11,7 +11,7 @@ class ImportEvent extends Controller
 {
     public  function importEvent (Request $request)
     {
-        $json = json_decode(file_get_contents('https://components.ifsc-climbing.org/results-api.php?api=season_leagues_calendar&league=388'), true);
+        $json = json_decode(file_get_contents($request->url), true);
         foreach ($json['events'] as $event => $value) {
             $eventob = new Event;
             $eventob->event_title = $value['event'];
@@ -58,7 +58,7 @@ class ImportEvent extends Controller
                     $eventCategories->category_id = 2;
                 }
                 if ($x == 'LEAD') {
-                    $eventCategories->category_id = 2;
+                    $eventCategories->category_id = 1;
                 }
                 if ($x == 'SPEE') {
                     $eventCategories->category_id = 7;
@@ -67,4 +67,8 @@ class ImportEvent extends Controller
             }
         }
     }
+    public function importInterEvent() {
+        return view('event.index');
+    }
+
 }

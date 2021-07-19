@@ -14,4 +14,5 @@ Route::group([
     $router->resource('/categories', CategoryController::class);
     $router->resource('/users', UserController::class);
     $router->resource('/feedback', FeedbackContoller::class);
+    $router->resource('/events', EventController::class);
 });

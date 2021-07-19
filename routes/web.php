@@ -24,10 +24,13 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('/editChagesSocialLinks', [App\Http\Controllers\ProfileController::class, 'editChagesSocialLinks'])->name('editChagesSocialLinks');
     Route::post('/cropimageupload', [App\Http\Controllers\CropImageController::class,'uploadCropImage'])->name('cropimageupload');
     Route::post('/profile/save', [App\Http\Controllers\ProfileController::class, 'saveAvatar'])->name('saveAvatar');
+    Route::post('importEvent',[App\Http\Controllers\ImportEvent::class, 'importEvent']);
+    Route::get('importInterEvent',[App\Http\Controllers\ImportEvent::class, 'importInterEvent'])->name('importInterEvent');
 });
 
 //public
-
+Route::get('add-event', [App\Http\Controllers\EventController::class, 'addEvent'])->name('add-event');
+Route::post('add-event', [App\Http\Controllers\EventController::class, 'sendEvent']);
 Route::get('/privacyconf', [App\Http\Controllers\HomeController::class, 'indexPrivacy'])->name('privacyconf');
 Route::get('/privatedata', [App\Http\Controllers\HomeController::class, 'indexPrivacyData'])->name('privatedata');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'indexAbout'])->name('about');
@@ -42,34 +45,12 @@ Route::get('/profile/{id}', [App\Http\Controllers\PublicProfileController::class
 Route::get('/live-status/{id}', [App\Http\Controllers\PublicProfileController::class, 'liveStatus']);
 Route::post('/postrating', [App\Http\Controllers\PublicProfileController::class, 'postRatingAndReview'])->name('postrating');
 Route::get('/getrating', [App\Http\Controllers\PublicProfileController::class, 'getRatingAndReview'])->name('getrating');
-
 Route::post('getEmployees',[App\Http\Controllers\HomeController::class, 'getEmployees'])->name('getEmployees');
 Route::get('/verify/success',[App\Http\Controllers\HomeController::class, 'indexVerificationPage']);
-Route::get('send_test_email', function(){
-    Mail::raw('Sending emails with Mailgun and Laravel ', function($message)
-    {
-        $message->subject('Mailgun and Laravel ');
-        $message->from('no-reply@website_name.com', 'Website Name');
-        $message->to('pardeepkumargt@gmail.com');
-    });
-});
-Route::get('sendmail', [App\Http\Controllers\MailController::class, 'sendmail']);
-
+Route::get('toSendEmaiSubscribe', [App\Http\Controllers\SubscriptionUserController::class, 'sendEmailToSubscribeUser']);
+Route::get('support-project', [App\Http\Controllers\HomeController::class, 'indexSupport'])->name('support-project');
 Route::post('subscriptionUser', [App\Http\Controllers\SubscriptionUserController::class, 'getEmailUsers'])->name('subscriptionUser');
 
 Auth::routes(['verify' => true]);
-Route::get('importEvent',[App\Http\Controllers\ImportEvent::class, 'importEvent']);
-Route::middleware(['guest'])->group(function(){
 
-    Route::get('event', [App\Http\Controllers\EventController::class, 'index'])->name('event');
-    Route::get('add-event', [App\Http\Controllers\EventController::class, 'addEvent'])->name('add-event');
-    Route::post('add-event', [App\Http\Controllers\EventController::class, 'sendEvent']);
-    Route::get('/event-details/{id}', [App\Http\Controllers\EventController::class, 'eventDetails'])->name('event-details');
-    Route::get('event-list',[App\Http\Controllers\EventController::class, 'event_list']);
-    Route::post('event',[App\Http\Controllers\EventController::class,'save_event']);
-    Route::get('all-event',[App\Http\Controllers\EventController::class,'all_event'])->name('all-event');
-    Route::get('single-event/{id}',[App\Http\Controllers\EventController::class,'single_event']);
-    Route::post('update-event',[App\Http\Controllers\EventController::class,'update_event']);
-    Route::delete('delete-event/{id}',[App\Http\Controllers\EventController::class,'delete_event']);
-});
 

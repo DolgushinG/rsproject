@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\EventAndCategories;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -17,7 +18,6 @@ class SearchController extends Controller
 {
     public function getResultSearch(Request $request)
     {
-        $request->city_name = $request->event_city;
         if ($request->categories != null) {
             #event search
             if ($request->search_event != null){
@@ -39,6 +39,7 @@ class SearchController extends Controller
             if ($request->city_name != null) {
                 if ($request->search_event != null){
                     $events = Event::where('event_city', '=', $request->city_name)
+                        ->whereBetween('event_start_date', [Carbon::now()->toDate(),'21-12-31'.' 23:59:59'])
                         ->where('active_status', '=', '1')
                         ->orderBy('event_start_date')
                         ->whereIn('id', $eventsResult);
@@ -72,6 +73,7 @@ class SearchController extends Controller
             } else {
                 if ($request->search_event != null){
                     $events = Event::whereIn('id', $eventsResult)
+                        ->whereBetween('event_start_date', [Carbon::now()->toDate(),'21-12-31'.' 23:59:59'])
                         ->where('active_status', '=', '1')
                         ->orderBy('event_start_date');
                     $foundEvents = $events->count();
@@ -101,6 +103,7 @@ class SearchController extends Controller
         } else if ($request->categories === null && $request->city_name === null) {
             if ($request->search_event != null){
                 $events = Event::where('active_status', '=', '1')
+                    ->whereBetween('event_start_date', [Carbon::now()->toDate(),'21-12-31'.' 23:59:59'])
                     ->orderBy('event_start_date');
                 $foundEvents= $events->count();
                 $events = $events->simplePaginate(12);
@@ -120,6 +123,7 @@ class SearchController extends Controller
         } else if ($request->city_name) {
             if ($request->search_event != null){
                 $events = Event::where('event_city', '=', $request->city_name)
+                        ->whereBetween('event_start_date', [Carbon::now()->toDate(),'21-12-31'.' 23:59:59'])
                         ->where('active_status', '=', '1')
                         ->orderBy('event_start_date');
                 $foundEvents = $events->count();

@@ -181,6 +181,7 @@ $(document).ready(function () {
             enableScrolling()
         }, 1000);
         let data = $('#subscribeUser').serialize();
+        e.preventDefault();
         $(".php-email-form-subscribe")[0].reset();
         $.ajax({
             type: 'POST',
