@@ -262,7 +262,7 @@
             </div>
         </section>
     </main>
-    <script type="text/javascript" src="{{ asset('js/search.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/search.js?v=1.0') }}"></script>
     <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
     <!-- End #main -->
     @include('sponsors.sponsors')
