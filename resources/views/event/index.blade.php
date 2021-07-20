@@ -19,28 +19,28 @@
                                 <div class="row gy-4">
                                     <div class="col-md-6">
                                         <div class="info-box">
-                                            <i class="bi bi-geo-alt"></i>
+                                            <i class="bi bi-calendar2-check"></i>
                                             <h3>1 шаг</h3>
                                             <p>Заполните данные</p>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="info-box">
-                                            <i class="bi bi-telephone"></i>
+                                            <i class="bi bi-check-square-fill"></i>
                                             <h3>2 шаг</h3>
                                             <p>Если корректно нажмите отправить</p>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="info-box">
-                                            <i class="bi bi-envelope"></i>
+                                            <i class="bi bi-eye-fill"></i>
                                             <h3>3 шаг</h3>
                                             <p>Вашу заявку рассмотрят</p>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="info-box">
-                                            <i class="bi bi-emoji-wink"></i>
+                                            <i class="bi bi-file-earmark-richtext"></i>
                                             <h3>После одобрения соревнование будет видно в течение дня</h3>
                                         </div>
                                     </div>
