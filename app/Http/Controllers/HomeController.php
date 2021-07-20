@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function index()
     {
         $userCityList = User::select('city_name')->whereNotNull('email_verified_at')->distinct()->take(6)->get();
-        $eventCityList = Event::select('event_city')->whereBetween('event_start_date', [Carbon::now()->toDate(),'21-12-31'.' 23:59:59'])->where('active_status', '=', '1')->distinct()->take(6)->get();
+        $eventCityList = Event::select('event_city')->whereBetween('event_start_date', [Carbon::now()->toDate(),'21-12-31'.' 23:59:59'])->where('active_status', '=', '1')->orderBy('event_start_date')->take(6)->get();
         $userCityCount = [];
         foreach ($userCityList as $city) {
             $userCityCount[$city->city_name] = User::where('city_name', '=', $city->city_name)->count();
@@ -35,6 +35,7 @@ class HomeController extends Controller
         $eventCount = Event::All()->count();
         $latestUsers = User::latest('created_at')->where('active_status', '=', '0')->whereNotNull('email_verified_at')->take(5)->get();
         arsort($userCityCount);
+        arsort($eventCityCount);
         return view('home', compact(['categories','eventCityCount','eventCityList','eventCount','userCityCount','userCityList','userCount','latestUsers','usersSenior','usersWithCours']));
     }
     public function indexAbout()
