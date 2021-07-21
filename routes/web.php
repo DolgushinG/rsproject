@@ -28,6 +28,7 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('importInterEvent',[App\Http\Controllers\ImportEvent::class, 'importInterEvent'])->name('importInterEvent');
     Route::post('subscriptionUser', [App\Http\Controllers\SubscriptionUserController::class, 'getEmailUsers'])->name('subscriptionUser');
     Route::get('toSendEmailSubscribe', [App\Http\Controllers\SubscriptionUserController::class, 'sendEmailToSubscribeUser']);
+    Route::get('api-vk', [App\Http\Controllers\ApiVkController::class, 'takeResponse'])->name('api-vk');
 });
 
 //public
