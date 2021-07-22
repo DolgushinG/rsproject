@@ -349,11 +349,15 @@
                         <tr>
                             <td>
                                 <div class="text" style="padding: 0 2.5em; text-align: center;">
+                                    @if(isset($details['result']))
+                                            <h1>{{ $details['result'] }}</h1>
+                                    @else
                                     @foreach($details as $item)
-                                        <h1>{{ $item['key'] }}</h1>
                                         <h2>{{ $item['url'] }}</h2>
+                                            <h2>{{ $item['date'] }}</h2>
                                         <p>{{ $item['text'] }}</p>
                                     @endforeach
+                                    @endif
                                 </div>
                             </td>
                         </tr>
