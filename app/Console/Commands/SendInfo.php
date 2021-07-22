@@ -59,6 +59,7 @@ class SendInfo extends Command
             'url' => 'https://api.vk.com/method/',
         ];
         $responsegroup = array();
+        $check = '';
         foreach ($groups as $group){
             $curl_handle = curl_init();
             curl_setopt($curl_handle, CURLOPT_URL, $config['url'] . $config['method'] . '?' . 'owner_id=-' . $group . '&offset=0&count=1&' . 'access_token=' . $config['access_token'] . '&v=' . $config['VK_API_VERSION']);
@@ -67,6 +68,9 @@ class SendInfo extends Command
             $response = curl_exec($curl_handle);
             curl_close($curl_handle);
             $post = json_decode($response);
+            if ($response) {
+                $check .= '1';
+            }
             if(isset($post->response->items[0]->date)) {
                 $date = $post->response->items[0]->date;
                 $today = Carbon::now()->toDate();
@@ -76,7 +80,6 @@ class SendInfo extends Command
                         $keys = ['соревнован', 'регистрац','фестивал'];
                         foreach ($keys as $key) {
                             if (strpos($text, $key) !== false) {
-                                $responsegroup[$group]['key'] = $key;
                                 $responsegroup[$group]['date'] = gmdate("d-m-Y", $date);
                                 $responsegroup[$group]['url'] = 'https://vk.com/club'.$group;
                                 $responsegroup[$group]['text'] = $text;
@@ -86,15 +89,10 @@ class SendInfo extends Command
                 }
             }
         }
-        if(!empty($responsegroup)){
+        if(empty($responsegroup)){
+            $responsegroup['result'] = 'Проверено - '. strlen($check).'ничего не найдено';
             Mail::to('Dolgushing@yandex.ru')->send(new NewInfo($responsegroup));
         } else {
-            $responsegroup = [
-                'date' => 'empty result',
-                'key' => 'empty result',
-                'text' => 'empty result',
-                'url' => 'empty result',
-             ];
             Mail::to('Dolgushing@yandex.ru')->send(new NewInfo($responsegroup));
         }
     }
