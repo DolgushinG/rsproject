@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Mail\newInfo;
+use App\Mail\NewInfo;
 use App\Models\ClimbingGym;
 use App\Models\FedGroup;
 use Carbon\Carbon;
