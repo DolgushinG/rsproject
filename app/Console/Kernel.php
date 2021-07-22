@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Console;
+use App\Console\Commands\SendInfo;
 use App\Console\Commands\SendMail;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\User;
@@ -18,6 +19,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \Spatie\Backup\Commands\BackupCommand::class,
         SendMail::class,
+        SendInfo::class,
     ];
 
     /**
@@ -38,6 +40,7 @@ class Kernel extends ConsoleKernel
         $schedule->exec("php artisan backup:run --only-db")->weeklyOn(1, '00:00');
 //        // Backups (to Google Drive)
         $schedule->command('sendMail')->weeklyOn(1, '10:00');
+        $schedule->command('searchEvent')->dailyAt('08:00');
 //        $schedule->command('backup:run --only-db')->dailyAt('01:35')->withoutOverlapping();
     }
     /**
