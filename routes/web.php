@@ -28,10 +28,13 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('importInterEvent',[App\Http\Controllers\ImportEvent::class, 'importInterEvent'])->name('importInterEvent');
     Route::post('subscriptionUser', [App\Http\Controllers\SubscriptionUserController::class, 'getEmailUsers'])->name('subscriptionUser');
     Route::get('toSendEmailSubscribe', [App\Http\Controllers\SubscriptionUserController::class, 'sendEmailToSubscribeUser']);
-    Route::get('api-vk', [App\Http\Controllers\ApiVkController::class, 'takeResponse'])->name('api-vk');
 });
 
 //public
+Route::get('/posts', [App\Http\Controllers\PostsController::class, 'index'])->name('posts');
+Route::get('/post/{post}', [App\Http\Controllers\PostsController::class, 'show'])->name('post');
+Route::post('/post/likedislike',[App\Http\Controllers\PostsController::class, 'saveLikeDislike'])->name('likeDisLike');
+
 Route::get('add-event', [App\Http\Controllers\EventController::class, 'addEvent'])->name('add-event');
 Route::post('add-event', [App\Http\Controllers\EventController::class, 'sendEvent']);
 Route::get('/privacyconf', [App\Http\Controllers\HomeController::class, 'indexPrivacy'])->name('privacyconf');
