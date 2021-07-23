@@ -261,6 +261,7 @@
                 </div>
             </div>
         </section>
+        @include('blog.homePosts')
     </main>
     <script type="text/javascript" src="{{ asset('js/search.js?v=1.0') }}"></script>
     <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
