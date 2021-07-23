@@ -67,7 +67,7 @@
                                                                 <input type="checkbox" id="event_categories"
                                                                        name="event_categories[{{$category->id}}]"
                                                                        value="{{$category->id}}" unchecked> <span
-                                                                    style="border-radius: 15px; padding: 0px 14px;">{{$category->category_name}}</span></label><br>
+                                                                    style="border-radius: 15px; padding: 0px 14px;" >{{$category->category_name}}</span></label><br>
                                                         </div>
                                                     @endforeach
                                                 </div>
@@ -145,8 +145,15 @@
             forms.forEach(function (e) {
                 e.addEventListener('submit', function (event) {
                     event.preventDefault();
-
                     let thisForm = this;
+                    var textinputs = document.querySelectorAll('input[type=checkbox]');
+                    var empty = [].filter.call( textinputs, function( el ) {
+                        return !el.checked
+                    });
+                    if (textinputs.length === empty.length) {
+                        displayError(thisForm, 'Заполните область или дисциплину соревнований')
+                        return;
+                    }
                     let action = thisForm.getAttribute('action');
                     let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
                     if (!action) {
@@ -191,7 +198,8 @@
                             thisForm.querySelector('.sent-message').classList.add('d-block');
                             thisForm.reset();
                         } else {
-                            throw new Error(`${response.status} ${response.statusText} ${response.url}`);
+                            console.log(response.statusText);
+                            throw new Error(`${response.statusText}`);
                         }
                     })
                     .catch((error) => {
@@ -206,5 +214,5 @@
             }
         })();
     </script>
-    <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script><!-- End Team Section -->
+    <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
 @endsection

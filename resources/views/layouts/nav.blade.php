@@ -7,20 +7,33 @@
         <nav id="navbar" class="navbar">
             <ul class="nav">
                 <li><a class="nav-link scrollto" href="{{route('home')}}">Главная</a></li>
-                <li><a class="nav-link scrollto" href="{{route('support-project')}}">Поддержка проекта</a></li>
-                <li><a href="https://bouldertime.ru">Статьи</a></li>
-                <li><a class="nav-link scrollto" href="{{route('add-event')}}">Добавить соревнование</a></li>
-                <li><a class="nav-link scrollto" href="{{route('feedback')}}">Связаться с нами</a></li>
+                <li class="dropdown" style="text-transform: capitalize;"><a
+                        href="#"><span>Соревнования</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a class="nav-link scrollto" href="{{route('add-event')}}">Добавить соревнование</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{route('posts')}}">Статьи</a></li>
+                <li class="dropdown"><a
+                        href="#"><span>Поддержка и связь</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a class="nav-link scrollto" href="{{route('support-project')}}">Поддержка проекта</a></li>
+                        <li><a class="nav-link scrollto" href="{{route('feedback')}}">Связаться с нами</a></li>
+                    </ul>
+                </li>
                 <!-- Authentication Links -->
                 @guest
-                    @if (Route::has('login'))
-                        <li><a class="nav-link scrollto" href="{{route('login')}}">Вход</a></li>
-                    @endif
-
-                    @if (Route::has('register'))
-                        <li><a class="nav-link scrollto" href="{{route('register')}}">Регистрация подготовщиков</a></li>
-                    @endif
-
+                    <li class="dropdown" style="text-transform: capitalize;"><a
+                            href="#"><span>Авторизация</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            @if (Route::has('login'))
+                                <li><a class="nav-link scrollto" href="{{route('login')}}">Вход</a></li>
+                            @endif
+                                @if (Route::has('register'))
+                                    <li><a class="nav-link scrollto" href="{{route('register')}}">Регистрация подготовщиков</a></li>
+                                @endif
+                        </ul>
+                    </li>
                 @else
                     <li class="dropdown" style="text-transform: capitalize;"><a
                             href="#"><span>{{ Auth::user()->name }}</span> <i class="bi bi-chevron-down"></i></a>

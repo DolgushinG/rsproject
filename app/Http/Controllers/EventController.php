@@ -7,7 +7,9 @@ use App\Models\Category;
 use App\Models\EventAndCategories;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
 {
@@ -16,6 +18,35 @@ class EventController extends Controller
         return view('event.index',compact('categories'));
     }
     public function sendEvent(Request $request){
+        $messages = array(
+            'event_title.required' => 'Title name required',
+            'event_start_date.required' => 'Date end required',
+            'event_start_time.required' => 'Time start required',
+            'event_end_date.required' => 'Date end required',
+            'event_end_time.required' => 'Time end required',
+            'event_city.required' => 'City required',
+            'event_url.required' => 'url required',
+            'event_image.image' => 'image - jpg,png,jpeg',
+            'event_image.required' => 'image required',
+        );
+        $validator = Validator::make($request->all(), [
+            'event_title' => 'required|string',
+            'event_start_date' => 'required',
+            'event_start_time' => 'required',
+            'event_end_date' => 'required',
+            'event_end_time' => 'required',
+            'event_city' => 'required|string',
+            'event_url' => 'required|string',
+            'event_image' => 'required|image',
+        ],$messages);
+        if ($validator->errors()->all())
+        {
+            $response = new Response();
+            foreach ($validator->errors()->all() as $msg) {
+                return $response->setStatusCode(422,$msg);
+            }
+
+        }
         if($request){
             $event = new Event();
             $event->event_title = $request->event_title;

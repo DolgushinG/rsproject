@@ -18,7 +18,7 @@
                     <h4>Полезные ссылки</h4>
                     <ul>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('home')}}">Главная</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="https://bouldertime.ru">Блог</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('posts')}}">Блог</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('feedback')}}">Связаться с нами</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('support-project')}}">Поддержите проект</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('add-event')}}">Добавить соревнование</a></li>
@@ -34,6 +34,7 @@
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Оценка подготовщиков</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Поиск соревнований</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Ежемесячная рассылка соревнований</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">Статьи</a></li>
                     </ul>
                 </div>
 

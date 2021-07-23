@@ -16,4 +16,6 @@ Route::group([
     $router->resource('/feedback', FeedbackContoller::class);
     $router->resource('/events', EventController::class);
     $router->resource('/subscriptionUser', SubscriptionUserController::class);
+    $router->resource('/posts', PostsController::class);
+    $router->resource('/post-categories', PostCategoriesController::class);
 });
