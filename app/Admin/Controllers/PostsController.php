@@ -84,7 +84,6 @@ class PostsController extends Controller
         $grid = new Grid(new Posts);
         $grid->id('ID');
         $grid->author_id('author_id');
-        $grid->checkbox('category_name','PostCategories')->options(PostCategories::all()->pluck('category_name','id'));
         $grid->title('title');
         $grid->seo_title('seo_title');
         $grid->excerpt('excerpt');
@@ -110,7 +109,6 @@ class PostsController extends Controller
     protected function detail($id)
     {
         $show = new Show(Posts::findOrFail($id));
-        $show->checkbox('category_name','PostCategories')->options(PostCategories::all()->pluck('category_name','id'));
         $show->id('ID');
         $show->author_id('author_id');
         $show->title('title');
@@ -137,7 +135,6 @@ class PostsController extends Controller
     protected function form()
     {
         $form = new Form(new Posts);
-        $form->checkbox('category_name','PostCategories')->options(PostCategories::all()->pluck('category_name','id'));
         $form->display('ID');
         $form->text('author_id', 'author_id');
         $form->text('title', 'title');
