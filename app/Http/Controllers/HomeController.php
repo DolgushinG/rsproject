@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Event;
+use App\Models\Posts;
 use App\Models\User;
 use App\Models\Category;
 
@@ -36,7 +37,8 @@ class HomeController extends Controller
         $latestUsers = User::latest('created_at')->where('active_status', '=', '0')->whereNotNull('email_verified_at')->take(5)->get();
         arsort($userCityCount);
         arsort($eventCityCount);
-        return view('home', compact(['categories','eventCityCount','eventCityList','eventCount','userCityCount','userCityList','userCount','latestUsers','usersSenior','usersWithCours']));
+        $recentlyPost = Posts::latest('created_at')->where('status', '=', 'PUBLISHED')->paginate(3);
+        return view('home', compact(['recentlyPost','categories','eventCityCount','eventCityList','eventCount','userCityCount','userCityList','userCount','latestUsers','usersSenior','usersWithCours']));
     }
     public function indexAbout()
     {
