@@ -40,7 +40,7 @@ class Kernel extends ConsoleKernel
         $schedule->exec("php artisan backup:run --only-db")->weeklyOn(1, '00:00');
 //        // Backups (to Google Drive)
         $schedule->command('sendMail')->weeklyOn(1, '10:00');
-        $schedule->command('searchEvent')->dailyAt('22:00');
+        $schedule->command('searchEvent')->dailyAt('22:20');
 //        $schedule->command('backup:run --only-db')->dailyAt('01:35')->withoutOverlapping();
     }
     /**
