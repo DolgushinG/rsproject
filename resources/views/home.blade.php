@@ -212,6 +212,7 @@
                 </div>
             </div>
         </section>
+        @include('event.recentlyEvent')
         <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials">
             <div class="container" data-aos="fade-up">

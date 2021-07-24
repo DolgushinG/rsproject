@@ -20,7 +20,7 @@ class HomeController extends Controller
     public function index()
     {
         $userCityList = User::select('city_name')->whereNotNull('email_verified_at')->distinct()->take(6)->get();
-        $eventCityList = Event::select('event_city')->whereBetween('event_start_date', [Carbon::now()->toDate(),'21-12-31'.' 23:59:59'])->where('active_status', '=', '1')->orderBy('event_start_date')->take(6)->get();
+        $eventCityList = Event::select('event_city')->whereBetween('event_start_date', [Carbon::now()->toDate(),Carbon::now()->addYears()->toDate()])->where('active_status', '=', '1')->orderBy('event_start_date')->take(6)->get();
         $userCityCount = [];
         foreach ($userCityList as $city) {
             $userCityCount[$city->city_name] = User::where('city_name', '=', $city->city_name)->count();
@@ -38,7 +38,18 @@ class HomeController extends Controller
         arsort($userCityCount);
         arsort($eventCityCount);
         $recentlyPost = Posts::latest('created_at')->where('status', '=', 'PUBLISHED')->paginate(3);
-        return view('home', compact(['recentlyPost','categories','eventCityCount','eventCityList','eventCount','userCityCount','userCityList','userCount','latestUsers','usersSenior','usersWithCours']));
+        $Events = Event::where('active_status', '=', '1')->whereBetween('event_start_date', [Carbon::now()->toDate(),Carbon::now()->addYears()->toDate()])->get();
+        $now = Carbon::now();
+        $recentlyEventID = [];
+        foreach ($Events as $event) {
+            $date = Carbon::parse($event->event_start_date);
+            $diff = $date->diffInDays($now);
+            if($diff < 60){
+                array_push($recentlyEventID, $event->id);
+            }
+        }
+        $recentlyEvent = Event::whereIn('id',$recentlyEventID)->paginate(4);
+        return view('home', compact(['recentlyPost','recentlyEvent','categories','eventCityCount','eventCityList','eventCount','userCityCount','userCityList','userCount','latestUsers','usersSenior','usersWithCours']));
     }
     public function indexAbout()
     {
