@@ -36,8 +36,8 @@ class Kernel extends ConsoleKernel
                 User::whereNull('email_verified_at')->delete();
             }
         })->weekly();
-        $schedule->exec("php artisan backup:clean")->weeklyOn(1, '00:00');
         $schedule->exec("php artisan backup:run --only-db")->weeklyOn(1, '00:00');
+        $schedule->exec("php artisan backup:run")->weeklyOn(2, '00:00');
 //        // Backups (to Google Drive)
         $schedule->command('sendMail')->weeklyOn(1, '10:00');
         $schedule->command('searchEvent')->dailyAt('20:00');

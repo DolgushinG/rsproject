@@ -141,7 +141,7 @@ class PostsController extends Controller
         $form->text('seo_title', 'seo_title');
         $form->text('excerpt', 'excerpt');
         $form->summernote('body');
-        $form->text('image', 'image');
+        $form->image('image', 'image');
         $form->text('slug', 'slug');
         $form->text('meta_description', 'meta_description');
         $form->text('meta_keywords', 'meta_keywords');
