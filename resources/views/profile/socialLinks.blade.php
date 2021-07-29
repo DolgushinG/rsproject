@@ -1,6 +1,7 @@
 <form action="{{ route('editChagesSocialLinks') }}" id="socialLinksForm">
   @csrf
-<div class="tab-pane fade active show" id="account-social-links">
+<div class="tab-pane fade active show" id="account-social-links" style="padding: 14px;
+    padding-bottom: 45px;">
     <div class="card-body pb-2">
 
       <div class="form-group">

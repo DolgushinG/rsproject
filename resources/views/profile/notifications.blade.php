@@ -1,6 +1,7 @@
 <form action="{{ route('editChagesNotifications') }}" method="POST" id="notificationsForm">
   @csrf
-  <div class="tab-pane fade active show" id="account-notifications">
+  <div class="tab-pane fade active show" id="account-notifications" style="padding: 14px;
+    padding-bottom: 45px;">
     <div class="card-body mt-2 pb-3">
       <div class="form-group">
         <div class="checkbox">
