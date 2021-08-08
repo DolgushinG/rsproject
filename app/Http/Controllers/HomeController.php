@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\AllGyms;
 use App\Models\Event;
+use App\Models\LikeDislike;
 use App\Models\Posts;
 use App\Models\User;
 use App\Models\Category;
@@ -49,7 +51,13 @@ class HomeController extends Controller
             }
         }
         $recentlyEvent = Event::whereIn('id',$recentlyEventID)->paginate(4);
-        return view('home', compact(['recentlyPost','recentlyEvent','categories','eventCityCount','eventCityList','eventCount','userCityCount','userCityList','userCount','latestUsers','usersSenior','usersWithCours']));
+        $likesDislikes = LikeDislike::whereNotNull('all_gyms_id')->whereNotIn('dislike', [1])->get();
+        $likes = [];
+        foreach ($likesDislikes as $item){
+            $likes[] = $item->all_gyms_id;
+        }
+        $likesDislikesGyms = AllGyms::whereIn('id', $likes)->get();
+        return view('home', compact(['likesDislikesGyms','recentlyPost','recentlyEvent','categories','eventCityCount','eventCityList','eventCount','userCityCount','userCityList','userCount','latestUsers','usersSenior','usersWithCours']));
     }
     public function indexAbout()
     {

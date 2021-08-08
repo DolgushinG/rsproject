@@ -22,6 +22,21 @@ $("#email").suggestions({
         console.log(suggestion);
     }
 });
+$("#address").suggestions({
+    token: token,
+    type: "ADDRESS",
+    constraints: {
+        locations: { country: "*" }
+    },
+    onSelect: function(suggestion) {
+    }
+});
+$("#country").suggestions({
+    token: token,
+    type: "COUNTRY",
+    onSelect: function(suggestion) {
+    }
+});
     //dadate
 $("#city").suggestions({
     minChars: "2",
@@ -39,6 +54,5 @@ $("#city").suggestions({
     formatSelected: formatSelected,
     /* Вызывается, когда пользователь выбирает одну из подсказок */
     onSelect: function(suggestion) {
-        console.log(suggestion);
     }
 });
