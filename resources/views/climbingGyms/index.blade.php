@@ -81,7 +81,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4 hero-img" data-aos="zoom-out" data-aos-delay="200">
+                        <div class="col-lg-4 hero-img" data-aos="zoom-out" data-aos-delay="200" style="margin-bottom: 15rem;">
                             <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between align-items-center text-white"
                                     style="background-color: #007bff">

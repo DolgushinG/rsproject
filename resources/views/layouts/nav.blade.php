@@ -17,6 +17,7 @@
                 <li class="dropdown"><a
                         href="{{route('climbing-gyms')}}"><span>Скалодромы</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
+                        <li><a class="nav-link scrollto" href="{{route('climbing-gyms')}}">Все скалодромы</a></li>
                         <li><a class="nav-link scrollto" href="{{route('add-climbing-gyms')}}">Добавить скалодром</a></li>
                     </ul>
                 </li>
