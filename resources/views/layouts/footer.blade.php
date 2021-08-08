@@ -22,6 +22,7 @@
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('feedback')}}">Связаться с нами</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('support-project')}}">Поддержите проект</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('add-event')}}">Добавить соревнование</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('add-climbing-gyms')}}">Добавить скалодром</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('privatedata')}}">Согласие на обработку персональных данных</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('privacyconf')}}">Политика в отношении обработки персональных данных</a></li>
                     </ul>
@@ -35,6 +36,7 @@
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Поиск соревнований</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Ежемесячная рассылка соревнований</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Статьи</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('climbing-gyms')}}">Все скалодромы России</a></li>
                     </ul>
                 </div>
 

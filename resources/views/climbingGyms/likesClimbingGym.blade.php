@@ -12,7 +12,7 @@
                     </p>
                     <div class="text-center text-lg-start">
                         <a href="{{route('climbing-gyms')}}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
-                            <span>На страницу скалодромов</span>
+                            <span>подробнее</span>
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
