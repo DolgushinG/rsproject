@@ -81,6 +81,7 @@ class PostsController extends Controller
      */
     protected function grid()
     {
+
         $grid = new Grid(new Posts);
         $grid->id('ID');
         $grid->author_id('author_id');
@@ -136,17 +137,17 @@ class PostsController extends Controller
     {
         $form = new Form(new Posts);
         $form->display('ID');
-        $form->text('author_id', 'author_id');
+        $form->number('author_id', 'author_id');
         $form->text('title', 'title');
         $form->text('seo_title', 'seo_title');
         $form->text('excerpt', 'excerpt');
         $form->summernote('body');
-        $form->image('image', 'image');
+        $form->image('image', 'image')->move('blog/posts')->uniqueName();
         $form->text('slug', 'slug');
         $form->text('meta_description', 'meta_description');
         $form->text('meta_keywords', 'meta_keywords');
-        $form->text('status', 'status');
-        $form->text('featured', 'featured');
+        $form->select('status', 'status')->options(['PUBLISHED' => 'PUBLISHED', 'DRAFT' => 'DRAFT', 'PENDING' => 'PENDING']);
+        $form->number('featured', 'featured');
         $form->display(trans('admin.created_at'));
         $form->display(trans('admin.updated_at'));
         return $form;

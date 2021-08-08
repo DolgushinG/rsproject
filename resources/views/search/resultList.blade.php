@@ -180,9 +180,6 @@
                                             <div class="member-img">
                                                 <img src="{{'storage'.$event->event_image}}" class="img-fluid" alt="">
                                                 <div class="social">
-                                                    <a href="https://instagram.com/#"><i
-                                                            class="bi bi-instagram"></i></a>
-                                                    <a href="https://t.me/#"><i class="bi bi-telegram"></i></a>
                                                     <a href="{{$event->event_url}}" target="_blank"
                                                        data-title="{{$event->event_title}}"><i
                                                             class="bi bi-person-square"></i></a>
@@ -193,8 +190,7 @@
                                                    data-title="{{$event->event_title}}"><h4
                                                         style="text-transform: capitalize;">{{$event->event_title}}</h4>
                                                     <span>{{$event->event_city}} </span>
-                                                    <h2> {{date('m', strtotime($event->event_start_date))}} </h2></a>
-                                                <h3>{{date('d', strtotime($event->event_start_date))}}</h3>
+                                                    <h2> {{date('d/m/y', strtotime($event->event_start_date))}} </h2></a>
                                             </div>
                                         </div>
                                     </div>

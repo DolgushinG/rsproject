@@ -12,7 +12,7 @@ class PostsController extends Controller
     public function index()
     {
         $recentlyPost = Posts::latest('created_at')->where('status', '=', 'PUBLISHED')->paginate(6);
-        $posts = Posts::where('status', '=', 'PUBLISHED')->paginate(6);
+        $posts = Posts::where('status', '=', 'PUBLISHED')->latest('created_at')->paginate(6);
         return view('blog.index', compact(['posts', 'recentlyPost']))->render();
     }
 
