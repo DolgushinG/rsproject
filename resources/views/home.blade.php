@@ -127,8 +127,7 @@
                     </div>
                 </div>
             </div>
-            </div>
-
+        </section>
 
             <!-- ======= Counts Section ======= -->
             <section id="counts" class="counts">
@@ -184,7 +183,7 @@
 
                 </div>
             </section><!-- End Counts Section -->
-
+            @include('climbingGyms.likesClimbingGym')
             <div id="content" style="padding-top: 2rem">
                 <div id="resultList"></div>
             </div>

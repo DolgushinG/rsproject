@@ -15,4 +15,13 @@ class LikeDislike extends Model
     public function dislikes(){
         return $this->belongsToMany('App\Models\Posts');
     }
+
+    public function likesGyms(){
+
+        return $this->belongsToMany('App\Models\AllGyms');
+    }
+    // Dislikes
+    public function dislikesGyms(){
+        return $this->belongsToMany('App\Models\AllGyms');
+    }
 }

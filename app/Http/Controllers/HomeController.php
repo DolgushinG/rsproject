@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Models\Category;
 
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -48,7 +47,7 @@ class HomeController extends Controller
                 array_push($recentlyEventID, $event->id);
             }
         }
-        $recentlyEvent = Event::whereIn('id',$recentlyEventID)->orderBy('event_start_date')->paginate(4);
+        $recentlyEvent = Event::whereIn('id',$recentlyEventID)->paginate(4);
         return view('home', compact(['recentlyPost','recentlyEvent','categories','eventCityCount','eventCityList','eventCount','userCityCount','userCityList','userCount','latestUsers','usersSenior','usersWithCours']));
     }
     public function indexAbout()

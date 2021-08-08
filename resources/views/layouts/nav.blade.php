@@ -15,6 +15,12 @@
                 </li>
                 <li><a href="{{route('posts')}}">Статьи</a></li>
                 <li class="dropdown"><a
+                        href="{{route('climbing-gyms')}}"><span>Скалодромы</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a class="nav-link scrollto" href="{{route('add-climbing-gyms')}}">Добавить скалодром</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a
                         href="#"><span>Поддержка и связь</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a class="nav-link scrollto" href="{{route('support-project')}}">Поддержка проекта</a></li>
