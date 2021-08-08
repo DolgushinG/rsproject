@@ -1,15 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\AllGyms;
 use App\Models\Event;
-use App\Models\LikeDislike;
 use App\Models\Posts;
 use App\Models\User;
 use App\Models\Category;
 
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
