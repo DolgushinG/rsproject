@@ -112,13 +112,14 @@ class ClimbingGymController extends Controller
     }
 
     public function index() {
-        $allCityList = AllGyms::where('country', '=', 'Россия')->where('active_status', '=', '0')->select('city')->distinct()->get('city');
+        $allCityList = AllGyms::where('active_status', '=', '1')->where('country', '=', 'Россия')->select('city')->distinct()->get('city');
+
         $allCityListCount = [];
         foreach ($allCityList as $city) {
-            $allCityListCount[$city->city] = AllGyms::where('city', '=', $city->city)->where('active_status', '=', '0')->count();
+            $allCityListCount[$city->city] = AllGyms::where('city', '=', $city->city)->count();
         }
-        $allGymsPagination = AllGyms::orderBy('id')->get();
-        $allGymsCity = AllGyms::where('country', '=', 'Россия')->select('city')->where('active_status', '=', '0')->distinct()->get('city');
+        $allGymsPagination = AllGyms::orderBy('id')->where('active_status', '=', '1')->get();
+        $allGymsCity = AllGyms::where('country', '=', 'Россия')->select('city')->distinct()->get('city');
         $listCity = array();
         foreach ($allGymsCity as $item => $city) {
             foreach ($allGymsPagination as $gym) {
@@ -133,12 +134,12 @@ class ClimbingGymController extends Controller
         foreach ($listCity as $i => $city){
             $allGymsCount += count((array)$city);
         }
-        $likesDislikes = LikeDislike::whereNotNull('all_gyms_id')->where('active_status', '=', '0')->whereNotIn('dislike', [1])->get();
+        $likesDislikes = LikeDislike::whereNotNull('all_gyms_id')->whereNotIn('dislike', [1])->get();
         $likes = [];
         foreach ($likesDislikes as $item){
             $likes[] = $item->all_gyms_id;
         }
-        $likesDislikesGyms = AllGyms::whereIn('id', $likes)->where('active_status', '=', '0')->simplePaginate(5);
+        $likesDislikesGyms = AllGyms::whereIn('id', $likes)->simplePaginate(5);
        return view('climbingGyms.index', compact(['allGymsPagination','allGymsCity','listCity','allCityListCount','allGymsCount','likesDislikesGyms']));
     }
     public function saveLikeDislike(Request $request)
