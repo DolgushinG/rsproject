@@ -19,12 +19,15 @@ $("#email").suggestions({
     type: "EMAIL",
     /* Вызывается, когда пользователь выбирает одну из подсказок */
     onSelect: function(suggestion) {
-        console.log(suggestion);
     }
 });
 $("#address").suggestions({
     token: token,
+    minChars: "2",
+    noSuggestionsHint: "ADDRESS: 'Неизвестный адрес'",
+    count: 5,
     type: "ADDRESS",
+    hint: false,
     constraints: {
         locations: { country: "*" }
     },

@@ -21,7 +21,8 @@ class ClimbingGymController extends Controller
     public function addClimbingGyms(Request $request){
         $messages = array(
             'name.required' => 'Name required',
-            'address.required' => 'Address required',
+            'region.required' => 'Region required',
+            'city.required' => 'City required',
             'country.required' => 'Country start required',
             'phone.required' => 'Phone required',
             'time1.required' => 'Time required',
@@ -30,8 +31,9 @@ class ClimbingGymController extends Controller
         );
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'address' => 'required',
+            'region' => 'required',
             'country' => 'required',
+            'city' => 'required',
             'phone' => 'required',
             'time1' => 'required',
             'time2' => 'required',
@@ -48,7 +50,9 @@ class ClimbingGymController extends Controller
         if($request){
             $allGyms= new AllGyms;
             $allGyms->name = $request->name;
-            $allGyms->address = $request->country.','.$request->address;
+            $allGyms->address = $request->street.','.$request->house;
+            $allGyms->city = $request->city;
+            $allGyms->region = $request->region;
             $allGyms->url = $request->url;
             $allGyms->country = $request->country;
             $allGyms->phone = $request->phone;
@@ -59,10 +63,6 @@ class ClimbingGymController extends Controller
             }
             $hours.= $request->time1.' - '.$request->time2;
             $allGyms->hours = $hours;
-            $infoAddress = explode(", ", $request->address);
-            if(count($infoAddress) > 1){
-                $allGyms->city = $infoAddress[0];
-            }
             $allGyms->save();
         }
         $details = [
@@ -84,7 +84,6 @@ class ClimbingGymController extends Controller
             $json = json_decode(file_get_contents($request->url), true);
             foreach ($json['features'] as $i => $gym) {
                 $climbingGym = new AllGyms;
-//                dd($gym['properties']['CompanyMetaData']['url']);
                 $climbingGym->name = $gym['properties']['CompanyMetaData']['name'];
                 $climbingGym->active_status = 1;
                 $climbingGym->address = $gym['properties']['CompanyMetaData']['address'];
@@ -113,13 +112,13 @@ class ClimbingGymController extends Controller
     }
 
     public function index() {
-        $allCityList = AllGyms::where('country', '=', 'Россия')->select('city')->distinct()->get('city');
+        $allCityList = AllGyms::where('country', '=', 'Россия')->where('active_status', '=', '0')->select('city')->distinct()->get('city');
         $allCityListCount = [];
         foreach ($allCityList as $city) {
-            $allCityListCount[$city->city] = AllGyms::where('city', '=', $city->city)->count();
+            $allCityListCount[$city->city] = AllGyms::where('city', '=', $city->city)->where('active_status', '=', '0')->count();
         }
         $allGymsPagination = AllGyms::orderBy('id')->get();
-        $allGymsCity = AllGyms::where('country', '=', 'Россия')->select('city')->distinct()->get('city');
+        $allGymsCity = AllGyms::where('country', '=', 'Россия')->select('city')->where('active_status', '=', '0')->distinct()->get('city');
         $listCity = array();
         foreach ($allGymsCity as $item => $city) {
             foreach ($allGymsPagination as $gym) {
@@ -134,12 +133,12 @@ class ClimbingGymController extends Controller
         foreach ($listCity as $i => $city){
             $allGymsCount += count((array)$city);
         }
-        $likesDislikes = LikeDislike::whereNotNull('all_gyms_id')->whereNotIn('dislike', [1])->get();
+        $likesDislikes = LikeDislike::whereNotNull('all_gyms_id')->where('active_status', '=', '0')->whereNotIn('dislike', [1])->get();
         $likes = [];
         foreach ($likesDislikes as $item){
             $likes[] = $item->all_gyms_id;
         }
-        $likesDislikesGyms = AllGyms::whereIn('id', $likes)->simplePaginate(5);
+        $likesDislikesGyms = AllGyms::whereIn('id', $likes)->where('active_status', '=', '0')->simplePaginate(5);
        return view('climbingGyms.index', compact(['allGymsPagination','allGymsCity','listCity','allCityListCount','allGymsCount','likesDislikesGyms']));
     }
     public function saveLikeDislike(Request $request)
