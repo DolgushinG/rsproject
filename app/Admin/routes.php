@@ -18,4 +18,5 @@ Route::group([
     $router->resource('/subscriptionUser', SubscriptionUserController::class);
     $router->resource('/posts', PostsController::class);
     $router->resource('/post-categories', PostCategoriesController::class);
+    $router->resource('/gyms', GymController::class);
 });

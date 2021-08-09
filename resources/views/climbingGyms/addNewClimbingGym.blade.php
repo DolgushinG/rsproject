@@ -51,7 +51,7 @@
                                     @csrf
                                     <div class="row gy-4">
                                         <div class="col-md-6">
-                                            <input type="text" name="name" class="form-control" placeholder="Ваше имя"
+                                            <input type="text" name="name" class="form-control" placeholder="Введите название скалодрома"
                                                    required>
                                         </div>
                                         <div class="col-md-6 ">
@@ -59,13 +59,26 @@
                                                    placeholder="Введите страну" required>
                                         </div>
                                         <div class="col-md-6 ">
-                                            <input id="address" type="text" name="address" class="form-control"
-                                                   placeholder="Введите адрес" required>
+                                            <input id="region" type="text" name="region" class="form-control"
+                                                   placeholder="Введите регион" required>
+                                        </div>
+                                        <div class="col-md-6 ">
+                                            <input id="city" type="text" name="city" class="form-control"
+                                                   placeholder="Введите город" required>
+                                        </div>
+                                        <div class="col-md-6 ">
+                                            <input id="street" type="text" name="street" class="form-control"
+                                                   placeholder="Введите улицу" required>
+                                        </div>
+                                        <div class="col-md-6 ">
+                                            <input id="house" type="text" name="house" class="form-control"
+                                                   placeholder="Введите дом" required>
                                         </div>
                                         <div class="col-md-12">
                                             <input type="text" class="form-control" name="url" placeholder="Введите ссылку на веб-сайт" >
                                         </div>
                                         <div class="col-md-12">
+                                            <label for="telephone">Телефон</label>
                                             <input class="form-control" id="telephone" type="tel" name="phone" pattern="(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?" title="Введите номер телефона в формате +7 XXX XXX XX XX" required>
                                         </div>
 
@@ -190,7 +203,58 @@
         $(document).ready(function(){
             $('#telephone').inputmask('+7(999)-999-9999');
         });
+
+        // Замените на свой API-ключ
+        var token = "33c419ffb77324c6b14c23909f66ac321646a8cc";
+
+        var type  = "ADDRESS";
+        var $region = $("#region");
+        var $city   = $("#city");
+        var $street = $("#street");
+        var $house  = $("#house");
+        var $country = $("#country");
+        // регион и район
+        $region.suggestions({
+            token: token,
+            type: type,
+            hint: false,
+            bounds: "region-area"
+        });
+        $country.suggestions({
+            token: token,
+            type: "COUNTRY",
+            onSelect: function(suggestion) {
+            }
+        });
+        // город и населенный пункт
+        $city.suggestions({
+            token: token,
+            type: type,
+            hint: false,
+            bounds: "city-settlement",
+            constraints: $region
+        });
+
+        // улица
+        $street.suggestions({
+            token: token,
+            type: type,
+            hint: false,
+            bounds: "street",
+            constraints: $city,
+            count: 15
+        });
+
+        // дом
+        $house.suggestions({
+            token: token,
+            type: type,
+            hint: false,
+            noSuggestionsHint: false,
+            bounds: "house",
+            constraints: $street
+        });
     </script>
-    <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
     <!-- End Team Section -->
+
 @endsection
