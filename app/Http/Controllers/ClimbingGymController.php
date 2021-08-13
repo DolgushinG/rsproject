@@ -139,7 +139,7 @@ class ClimbingGymController extends Controller
         foreach ($likesDislikes as $item){
             $likes[] = $item->all_gyms_id;
         }
-        $likesDislikesGyms = AllGyms::whereIn('id', $likes)->simplePaginate(5);
+        $likesDislikesGyms = AllGyms::whereIn('id', $likes)->simplePaginate(7);
        return view('climbingGyms.index', compact(['allGymsPagination','allGymsCity','listCity','allCityListCount','allGymsCount','likesDislikesGyms']));
     }
     public function saveLikeDislike(Request $request)
@@ -199,5 +199,15 @@ class ClimbingGymController extends Controller
             ]);
         }
 
+    }
+
+    public function votesGyms () {
+        $likesDislikes = LikeDislike::whereNotNull('all_gyms_id')->whereNotIn('dislike', [1])->get();
+        $likes = [];
+        foreach ($likesDislikes as $item){
+            $likes[] = $item->all_gyms_id;
+        }
+        $likesDislikesGyms = AllGyms::whereIn('id', $likes)->simplePaginate(7);
+        return view('climbingGyms.votesGyms', compact('likesDislikesGyms'));
     }
 }
