@@ -41,8 +41,6 @@ class Kernel extends ConsoleKernel
 //        // Backups (to Google Drive)
         $schedule->command('sendMail')->weeklyOn(1, '10:00');
         $schedule->command('searchEvent')->dailyAt('20:00');
-        $schedule->command('searchEvent')->dailyAt('15:00');
-        $schedule->command('searchEvent')->dailyAt('10:00');
     }
     /**
      * Register the commands for the application.

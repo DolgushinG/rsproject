@@ -46,10 +46,12 @@ class ApiVkController extends Controller
                         $keys = ['соревнован', 'регистрац','фестивал'];
                         foreach ($keys as $key) {
                             if (strpos($text, $key) !== false) {
-                                $responsegroup[$group]['key'] = $key;
-                                $responsegroup[$group]['date'] = gmdate("d-m-Y", $date);
-                                $responsegroup[$group]['url'] = 'https://vk.com/club'.$group;
-                                $responsegroup[$group]['text'] = $text;
+                                if(strpos('скало', $key) !== false){
+                                    $responsegroup[$group]['key'] = $key;
+                                    $responsegroup[$group]['date'] = gmdate("d-m-Y", $date);
+                                    $responsegroup[$group]['url'] = 'https://vk.com/club'.$group;
+                                    $responsegroup[$group]['text'] = $text;
+                                }
                             }
                         }
                     }
