@@ -15,7 +15,18 @@ class ClimbingMovesController extends Controller
 
     public function indexMoves() {
         $moves = ClimbingMoves::all();
-        return view('ClimbingMoves.moves', compact('moves'));
+        $shareButtons = \Share::page(
+            'https://www.routesetters.ru/',
+            'Your share text comes here',
+        )
+            ->facebook()
+            ->twitter()
+            ->linkedin()
+            ->telegram()
+            ->whatsapp()
+            ->reddit();
+
+        return view('ClimbingMoves.moves', compact('moves','shareButtons'));
     }
     public function sendMove(Request $request) {
         $move = new ClimbingMoves();

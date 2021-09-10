@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "52148d8b445e766e6ce8a0cbc27540b0",
+    "content-hash": "a767986def7e000d5b75ce80a3f35062",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1601,6 +1601,65 @@
             "time": "2021-05-24T20:30:32+00:00"
         },
         {
+            "name": "jorenvanhocht/laravel-share",
+            "version": "4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jorenvh/laravel-share.git",
+                "reference": "9ad09ee5f65a64cf993169636366d9fa0b6a993c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jorenvh/laravel-share/zipball/9ad09ee5f65a64cf993169636366d9fa0b6a993c",
+                "reference": "9ad09ee5f65a64cf993169636366d9fa0b6a993c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~6.7",
+                "phpunit/phpunit": "9.4.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jorenvh\\Share\\Providers\\ShareServiceProvider"
+                    ],
+                    "aliases": {
+                        "Share": "Jorenvh\\Share\\ShareFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jorenvh\\Share\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joren Van Hocht",
+                    "email": "joren@codeswitch.be",
+                    "homepage": "https://codeswitch.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Optional package for Laravel to generate social share links.",
+            "homepage": "https://github.com/jorenvh/laravel-share",
+            "keywords": [
+                "laravel",
+                "share",
+                "social links",
+                "social share links"
+            ],
+            "time": "2021-08-09T18:48:08+00:00"
+        },
+        {
             "name": "jxlwqq/env-manager",
             "version": "0.1.0",
             "source": {
@@ -2080,6 +2139,59 @@
             "time": "2019-12-11T02:46:10+00:00"
         },
         {
+            "name": "laravel-admin-ext/summernote",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-admin-extensions/summernote.git",
+                "reference": "1193b17ccd70e52854cc25f80964c177cd5c35f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-admin-extensions/summernote/zipball/1193b17ccd70e52854cc25f80964c177cd5c35f9",
+                "reference": "1193b17ccd70e52854cc25f80964c177cd5c35f9",
+                "shasum": ""
+            },
+            "require": {
+                "encore/laravel-admin": "~1.6",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Encore\\Summernote\\SummernoteServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Encore\\Summernote\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "song",
+                    "email": "zsong@126.com"
+                }
+            ],
+            "description": "Summernote extension for laravel-admin",
+            "homepage": "https://github.com/laravel-admin-ext/summernote",
+            "keywords": [
+                "editor",
+                "extension",
+                "laravel-admin"
+            ],
+            "time": "2019-03-04T08:27:18+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v8.47.0",
             "source": {
@@ -2427,50 +2539,6 @@
                 "laravolt"
             ],
             "time": "2021-03-25T01:43:03+00:00"
-        },
-        {
-            "name": "latfur/laravel-event-crud",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/latfur1/laravel-event-crud.git",
-                "reference": "2aeefe722d5fd883753ae525975b6fb0b5df6081"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/latfur1/laravel-event-crud/zipball/2aeefe722d5fd883753ae525975b6fb0b5df6081",
-                "reference": "2aeefe722d5fd883753ae525975b6fb0b5df6081",
-                "shasum": ""
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Latfur\\Event\\EventServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Latfur\\Event\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "latfur",
-                    "email": "rubel.itlive@gmail.com"
-                }
-            ],
-            "description": "Laravel Event CRUD With Full Calendar",
-            "support": {
-                "issues": "https://github.com/latfur1/laravel-event-crud/issues",
-                "source": "https://github.com/latfur1/laravel-event-crud/tree/master"
-            },
-            "time": "2018-08-26T10:41:43+00:00"
         },
         {
             "name": "league/commonmark",
@@ -7299,6 +7367,50 @@
             "time": "2021-06-08T15:18:38+00:00"
         },
         {
+            "name": "latfur/laravel-event-crud",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/latfur1/laravel-event-crud.git",
+                "reference": "2aeefe722d5fd883753ae525975b6fb0b5df6081"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/latfur1/laravel-event-crud/zipball/2aeefe722d5fd883753ae525975b6fb0b5df6081",
+                "reference": "2aeefe722d5fd883753ae525975b6fb0b5df6081",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Latfur\\Event\\EventServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Latfur\\Event\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "latfur",
+                    "email": "rubel.itlive@gmail.com"
+                }
+            ],
+            "description": "Laravel Event CRUD With Full Calendar",
+            "support": {
+                "issues": "https://github.com/latfur1/laravel-event-crud/issues",
+                "source": "https://github.com/latfur1/laravel-event-crud/tree/master"
+            },
+            "time": "2018-08-26T10:41:43+00:00"
+        },
+        {
             "name": "mockery/mockery",
             "version": "1.4.3",
             "source": {
@@ -9169,5 +9281,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "1.1.0"
 }

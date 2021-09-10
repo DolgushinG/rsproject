@@ -5,14 +5,19 @@
              data-aos-delay="400">
             <div class="member">
                 <div class="member-video">
+                    {!! Share::page(url('/climbing-moves/'))->facebook()->twitter()->whatsapp() !!}
                     <video id="video{{$move->id}}" width="200" height="240" controls loop>
                         <source src="{{asset('storage'.$move->path)}}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-{{--                    <div class="social">--}}
-{{--                        <a href="{{$move->url}}"><i class="bi bi-instagram"></i></a>--}}
-{{--                    </div>--}}
-
+                    <div class="social">
+                        <a href="{{$move->url}}"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="member-info">
+                <div class="social-btn-sp">
+                    {!! $shareButtons !!}
                 </div>
             </div>
         </div>
