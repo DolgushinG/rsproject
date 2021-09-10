@@ -201,7 +201,7 @@ class ClimbingGymController extends Controller
 
     }
 
-    public function votesGyms () {
+    public function votesGyms() {
         $likesDislikes = LikeDislike::whereNotNull('all_gyms_id')->whereNotIn('dislike', [1])->get();
         $likes = [];
         foreach ($likesDislikes as $item){

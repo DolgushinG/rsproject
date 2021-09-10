@@ -24,4 +24,9 @@ class LikeDislike extends Model
     public function dislikesGyms(){
         return $this->belongsToMany('App\Models\AllGyms');
     }
+
+    public function likesMoves(){
+
+        return $this->belongsToMany('App\Models\ClimbingMoves');
+    }
 }

@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClimbingMoves extends Model
 {
-
+    public function likesMoves(){
+        return $this->hasMany('App\Models\LikeDislike')->sum('like');
+    }
 }
