@@ -131,6 +131,7 @@
             });
         }
         $(document).on('click', '#saveLikeDislike', function () {
+
             let _gym = $(this).data('gym');
             let _type = $(this).data('type');
             let vm = $(this);

@@ -1,77 +1,72 @@
 @extends('layout')
 @section('content')
     <style>
-        .send-loading{
-            display: none;
-            background: #fff;
-            text-align: center;
-            padding: 15px;
-            margin-bottom: 24px;
+        @media screen and (max-width: 767px) {
+            ol, ul {
+                padding-left: 4rem!important;
+            }
         }
-
-        .send-loading:before{
-            content: "";
-            display: inline-block;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            margin: 0 10px -6px 0;
-            border: 3px solid #18d26e;
-            border-top-color: #eee;
-            -webkit-animation: animate-loading 1s linear infinite;
-            animation: animate-loading 1s linear infinite;
+        @media screen and (max-width: 600px) {
+            ol, ul {
+                padding-left: 4rem!important;
+            }
         }
-        .sent-file-message{
-            display: none;
-            color: #fff;
-            background: #18d26e;
-            text-align: center;
-            padding: 15px;
-            margin-bottom: 24px;
-            font-weight: 600;
+        @media screen and (max-width: 840px) {
+            ol, ul {
+                padding-left: 4rem!important;
+            }
         }
-        .send-error-message {
-            display: none;
-            color: #fff;
-            background: #ed3c0d;
-            text-align: left;
-            padding: 15px;
-            margin-bottom: 24px;
-            font-weight: 600;
+        @media screen and (max-width: 320px) {
+            ol, ul {
+                padding-left: 4rem!important;
+            }
         }
-        Gifffer({
-        playButtonStyles: {
-        'width': '60px',
-        'height': '60px',
-        'border-radius': '30px',
-        'background': 'rgba(0, 0, 0, 0.3)',
-        'position': 'absolute',
-        'top': '50%',
-        'left': '50%',
-        'margin': '-30px 0 0 -30px'
-        },
-        playButtonIconStyles: {
-        'width': '0',
-        'height': '0',
-        'border-top': '14px solid transparent',
-        'border-bottom': '14px solid transparent',
-        'border-left': '14px solid rgba(0, 0, 0, 0.5)',
-        'position': 'absolute',
-        'left': '26px',
-        'top': '16px'
+        @media screen and (max-width: 460px) {
+            ol, ul {
+                padding-left: 4rem!important;
+            }
         }
-        });
+        ol, ul {
+            padding-left: 0;
+        }
     </style>
     <section id="team" class="team">
-
         <div class="container" data-aos="fade-up">
             <header class="section-header">
                 <p>База скалолазных движений для роутсеттеров</p>
             </header>
-            <div id="moves" class="row gy-4">
+            <div class="social-btn-sp">
+               {!! $shareButtons !!}
             </div>
+            <div class="row gy-4">
+                @if($moves)
+                    @foreach($moves as $move)
+                        <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                             data-aos-delay="400">
+                            <div class="member">
+                                <div class="member-video">
+                                    <video id="video{{$move->id}}" width="200" height="240" controls loop>
+                                        <source src="{{asset('storage'.$move->path)}}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="social">
+                                        <a href="{{$move->url}}"><i class="bi bi-instagram"></i></a>
+                                    </div>
+                                </div>
+                                <div class="member-info">
+                    <span title="Likes" id="likeMove{{$move->id}}" data-type="like" data-move="{{$move->id}}"
+                          class="btn btn-primary btn-sm" style="color:#FFFFFF" onclick="like(this)">
+                          Нравится <i class="like-count{{$move->id}} badge badge-primary badge-pill" style="background-color: #236efd; margin-left: 2em">{{ $move->likesMoves() }}</i>
+                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
+        @isset(Auth::user()->id )
+            @if(Auth::user()->id === 30)
         <div class="container">
             <form id="send" method="POST"
                   enctype="multipart/form-data">
@@ -91,26 +86,40 @@
                 </div>
             </form>
         </div>
+                @endif
+        @endisset
+        <div class="container">
+            {{$moves->links('pagination::bootstrap-4')}}
+        </div>
     </section>
 
     <script>
-
-        getMoves()
-        function getMoves()
-        {$.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-            $.ajax({
-                url: '/moves',
-                method:"GET",
-                success:function(data)
-                {
-                    $('#moves').html(data);
+        $(document).ready(function(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-        }
+            $(document).on('click', '[role=\'navigation\'] a', function(event){
+                event.preventDefault();
+                var page = $(this).attr('href').split('page=')[1];
+                getMoves(page)
+            });
+
+            function getMoves(page)
+            {
+                var _token = $("input[name=_token]").val();
+                $.ajax({
+                    url: '/climbing-moves?page=' + page,
+                    method:"GET",
+                    data:{_token:_token, page:page},
+                    success:function(data)
+                    {
+                        $('#moves').html(data);
+                    }
+                });
+            }
+        });
         $('#process-file-button').on('click', function (e) {
             $.ajaxSetup({
                 headers: {
@@ -145,5 +154,43 @@
                 }
             });
         });
+
+        function like(e) {
+            let _type = e.getAttribute('data-type')
+            let _move = e.getAttribute('data-move');
+            let vm = $(e);
+            let token = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                url: "/climbing-moves/likeDisLikeMove",
+                type: "post",
+                dataType: 'json',
+                data: {
+                    move: _move,
+                    type: _type,
+                    _token: token,
+                },
+
+                beforeSend: function () {
+                    vm.addClass('disabled');
+                },
+                success: function (res) {
+                    if (res.bool) {
+                        vm.removeClass('disabled').addClass('active');
+                        vm.removeAttr('id');
+                        var _prevCount = $("." + _type + "-count" + _move).text();
+                        _prevCount++;
+                        $("." + _type + "-count" + _move).text(_prevCount);
+                    }
+                    if (!res.bool) {
+                        vm.removeClass('disabled').addClass('active');
+                        vm.removeAttr('id');
+                        var _prevCount = $("." + _type + "-count" + _move).text();
+                        _prevCount--;
+                        $("." + _type + "-count" + _move).text(_prevCount);
+                    }
+                }
+            });
+
+        }
     </script>
 @endsection

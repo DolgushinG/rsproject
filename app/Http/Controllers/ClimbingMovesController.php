@@ -5,30 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\ClimbingMoves;
 use App\Models\LikeDislike;
 use Illuminate\Http\Request;
+use Jorenvh\Share\ShareFacade;
 
 class ClimbingMovesController extends Controller
 {
 
     public function index() {
-        $moves = ClimbingMoves::all();
-        return view('ClimbingMoves.index', compact('moves'));
-    }
-
-    public function indexMoves() {
-        $moves = ClimbingMoves::all();
-        $shareButtons = \Share::page(
-            'https://www.routesetters.ru/',
+        $shareButtons = ShareFacade::page(
+            'https://www.routesetters.ru/climbing-moves',
             'Your share text comes here',
         )
             ->facebook()
-            ->twitter()
-            ->linkedin()
             ->telegram()
-            ->whatsapp()
-            ->reddit();
-
-        return view('ClimbingMoves.moves', compact('moves','shareButtons'));
+            ->whatsapp();
+        $moves = ClimbingMoves::paginate(2);
+        return view('ClimbingMoves.index', compact('shareButtons','moves'));
     }
+
     public function sendMove(Request $request) {
         $move = new ClimbingMoves();
 
@@ -43,10 +36,10 @@ class ClimbingMovesController extends Controller
 //        return view('ClimbingMoves.moves', compact('moves'));
     }
 
-    public function saveLikeDislike(Request $request)
+    public function likeDisLikeMove(Request $request)
     {
-        $likeMove = LikeDislike::where('move_id','=', $request->move)->get();
-        $likeCheckInMove = LikeDislike::where('move_id','=', $request->move)->first();
+        $likeMove = LikeDislike::where('climbing_moves_id','=', $request->move)->get();
+        $likeCheckInMove = LikeDislike::where('climbing_moves_id','=', $request->move)->first();
 
         $data = new LikeDislike;
         if($likeCheckInMove !== null){
@@ -71,10 +64,10 @@ class ClimbingMovesController extends Controller
                     } else {
                         $data->dislike = 1;
                     }
-                    $allMoves = ClimbingMoves::find($request->gym);
-                    $allMoves->sum_likes = $allMoves->likesGyms()+1;
+                    $allMoves = ClimbingMoves::find($request->move);
+                    $allMoves->sum_likes = $allMoves->likesMoves()+1;
                     $allMoves->save();
-                    $data->move_id = $request->move;
+                    $data->climbing_moves_id = $request->move;
                     $data->user_ip = $request->ip();
                     $data->save();
                     return response()->json([
@@ -88,10 +81,10 @@ class ClimbingMovesController extends Controller
             } else {
                 $data->dislike = 1;
             }
-            $allMoves = ClimbingMoves::find($request->gym);
-            $allMoves->sum_likes = $allMoves->likesGyms()+1;
+            $allMoves = ClimbingMoves::find($request->move);
+            $allMoves->sum_likes = $allMoves->likesMoves()+1;
             $allMoves->save();
-            $data->move_id = $request->move;
+            $data->climbing_moves_id = $request->move;
             $data->user_ip = $request->ip();
             $data->save();
             return response()->json([
