@@ -13,7 +13,14 @@
                         <li><a class="nav-link scrollto" href="{{route('add-event')}}">Добавить соревнование</a></li>
                     </ul>
                 </li>
-                <li><a href="{{route('posts')}}">Статьи</a></li>
+                <li class="dropdown" style="text-transform: capitalize;"><a
+                        href="#"><span>База знаний</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="{{route('posts')}}">Статьи</a></li>
+                        <li><a class="nav-link scrollto" href="{{route('climbing-moves')}}">Скалолазные движения</a></li>
+                    </ul>
+                </li>
+
                 <li class="dropdown"><a
                         href="{{route('climbing-gyms')}}"><span>Скалодромы</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>

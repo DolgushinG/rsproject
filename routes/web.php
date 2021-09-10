@@ -31,6 +31,10 @@ Route::middleware(['auth','verified'])->group(function () {
 });
 
 //public
+
+Route::post('/send-move', [App\Http\Controllers\ClimbingMovesController::class, 'sendMove'])->name('send-move');
+Route::get('/climbing-moves', [App\Http\Controllers\ClimbingMovesController::class, 'index'])->name('climbing-moves');
+Route::get('/moves', [App\Http\Controllers\ClimbingMovesController::class, 'indexMoves'])->name('moves');
 Route::get('/posts', [App\Http\Controllers\PostsController::class, 'index'])->name('posts');
 Route::get('/climbing-gyms', [App\Http\Controllers\ClimbingGymController::class, 'index'])->name('climbing-gyms');
 Route::get('/add-climbing-gyms', [App\Http\Controllers\ClimbingGymController::class, 'indexAddClimbingGyms'])->name('add-climbing-gyms');
