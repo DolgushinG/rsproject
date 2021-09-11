@@ -190,7 +190,8 @@
                                                    data-title="{{$event->event_title}}"><h4
                                                         style="text-transform: capitalize;">{{$event->event_title}}</h4>
                                                     <span>{{$event->event_city}} </span>
-                                                    <h2> {{date('d/m/y', strtotime($event->event_start_date))}} </h2></a>
+                                                    <h2> {{date('d/m/y', strtotime($event->event_start_date))}} </h2>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -203,3 +204,6 @@
                             @endif
                         </div>
                     </section>
+            </div>
+        </div>
+    </section>
