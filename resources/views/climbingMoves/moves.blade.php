@@ -4,8 +4,8 @@
              data-aos-delay="400">
             <div class="member">
                 <div class="member-video">
-                    <video id="video{{$move->id}}" width="200" height="240" controls="true" loop playsinline>
-                        <source src="{{asset('storage'.$move->path)}}" type="video/mp4">
+                    <video id="video{{$move->id}}" preload="none" width="200" height="240" controls loop playsinline>
+                        <source src="{{asset('storage'.$move->path)}}#t=0.001" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <div class="social">
