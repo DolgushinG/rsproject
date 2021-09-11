@@ -4,7 +4,7 @@
              data-aos-delay="400">
             <div class="member">
                 <div class="member-video">
-                    <video id="video{{$move->id}}" width="200" height="240" controls="true" loop playsinline>
+                    <video id="video{{$move->id}}" preload="metadata" muted width="200" height="240" controls loop playsinline>
                         <source src="{{asset('storage'.$move->path)}}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -25,4 +25,9 @@
         {{$moves->links('pagination::bootstrap-4')}}
     </div>
 @endif
+<script>
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        document.querySelectorAll('video').forEach((e)=> {e.setAttribute('autoplay','')})
+    }
+</script>
 
