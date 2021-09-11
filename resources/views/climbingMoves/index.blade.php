@@ -38,35 +38,12 @@
             <div class="social-btn-sp">
                {!! $shareButtons !!}
             </div>
-            <div class="row gy-4">
-                @if($moves)
-                    @foreach($moves as $move)
-                        <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
-                             data-aos-delay="400">
-                            <div class="member">
-                                <div class="member-video">
-                                    <video id="video{{$move->id}}" width="200" height="240" controls loop>
-                                        <source src="{{asset('storage'.$move->path)}}" type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                    <div class="social">
-                                        <a href="{{$move->url}}"><i class="bi bi-instagram"></i></a>
-                                    </div>
-                                </div>
-                                <div class="member-info">
-                    <span title="Likes" id="likeMove{{$move->id}}" data-type="like" data-move="{{$move->id}}"
-                          class="btn btn-primary btn-sm" style="color:#FFFFFF" onclick="like(this)">
-                          Нравится <i class="like-count{{$move->id}} badge badge-primary badge-pill" style="background-color: #236efd; margin-left: 2em">{{ $move->likesMoves() }}</i>
-                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
+            <div id="moves" class="row gy-4">
+                @include('climbingMoves.moves')
             </div>
         </div>
         @isset(Auth::user()->id )
-            @if(Auth::user()->id === 30)
+            @if(Auth::user()->id === 64)
         <div class="container">
             <form id="send" method="POST"
                   enctype="multipart/form-data">
@@ -76,6 +53,8 @@
                         <label for="file">Прикрепите ваше движение в формате gif до 1.2 mb</label>
                         <input type="file" id="file" class="form-control" name="file"
                                placeholder="Прикрепите ваше движение в формате gif до 1.2 mb">
+                        <label for="url">Url full video</label>
+                        <input type="text" id="url" name="url" class="form-control" placeholder="https://example.com/some">
                         <div class="col-md-12 text-center">
                             <div class="send-loading">Loading</div>
                             <div class="send-error-message"></div>
@@ -88,9 +67,6 @@
         </div>
                 @endif
         @endisset
-        <div class="container">
-            {{$moves->links('pagination::bootstrap-4')}}
-        </div>
     </section>
 
     <script>
@@ -100,7 +76,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            $(document).on('click', '[role=\'navigation\'] a', function(event){
+            $(document).on('click', '.pagination a', function(event){
                 event.preventDefault();
                 var page = $(this).attr('href').split('page=')[1];
                 getMoves(page)
@@ -108,11 +84,11 @@
 
             function getMoves(page)
             {
-                var _token = $("input[name=_token]").val();
+
                 $.ajax({
-                    url: '/climbing-moves?page=' + page,
+                    url: '/climbing-moves/moves?page='+page,
                     method:"GET",
-                    data:{_token:_token, page:page},
+                    data:{page:page},
                     success:function(data)
                     {
                         $('#moves').html(data);
@@ -120,16 +96,37 @@
                 });
             }
         });
+        function getMoves(page)
+        {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: '/climbing-moves/moves?page='+page,
+                method:"GET",
+                success:function(data)
+                {
+                    $('#moves').html(data);
+                }
+            });
+        }
         $('#process-file-button').on('click', function (e) {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+            var url_string = window.location.href
+            var url_str = new URL(url_string);
+            var page = url_str.searchParams.get("page");
             e.preventDefault();
             // you can't pass Jquery form it has to be javascript form object
-            var files = new FormData();
-
+            let files = new FormData();
+            let url = $('#url').val()
+            files.append('url', url);
             files.append('move', $('#file')[0].files[0]);
             document.querySelector('.send-loading').classList.add('d-block');
             document.querySelector('.send-error-message').classList.remove('d-block');
@@ -145,7 +142,7 @@
                     document.querySelector('.send-loading').classList.remove('d-block');
                     document.querySelector('.sent-file-message').classList.add('d-block');
                     document.querySelector('#send').reset();
-                    getMoves()
+                    getMoves(page)
                 },
                 error: function(response) {
                     document.querySelector('.send-loading').classList.remove('d-block');

@@ -32,6 +32,7 @@ Route::middleware(['auth','verified'])->group(function () {
 
 //public
 
+Route::get('/climbing-moves/moves', [App\Http\Controllers\ClimbingMovesController::class, 'moves']);
 Route::post('/climbing-moves/likeDisLikeMove', [App\Http\Controllers\ClimbingMovesController::class, 'likeDisLikeMove']);
 Route::post('/send-move', [App\Http\Controllers\ClimbingMovesController::class, 'sendMove'])->name('send-move');
 Route::get('/climbing-moves', [App\Http\Controllers\ClimbingMovesController::class, 'index'])->name('climbing-moves');
@@ -55,7 +56,6 @@ Route::get('/blog', [App\Http\Controllers\HomeController::class, 'indexBlog'])->
 Route::get('/feedback', [App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback');
 Route::post('/postfeedback', [App\Http\Controllers\FeedbackController::class, 'postFeedback'])->name('postfeedback');
 Route::get('/getresultsearch', [App\Http\Controllers\SearchController::class, 'getResultSearch'])->name('getresultsearch');
-Route::get('/getresultsearch/paginationSeach', [App\Http\Controllers\SearchController::class, 'paginationSeach'])->name('paginationSeach');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'indexCategory'])->name('register');
 Route::get('/profile/{id}', [App\Http\Controllers\PublicProfileController::class, 'indexPublic'])->name('profileDetails');

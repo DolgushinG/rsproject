@@ -18,22 +18,30 @@ class ClimbingMovesController extends Controller
             ->facebook()
             ->telegram()
             ->whatsapp();
-        $moves = ClimbingMoves::paginate(2);
-        return view('ClimbingMoves.index', compact('shareButtons','moves'));
+        $moves = ClimbingMoves::paginate(18);
+        return view('ClimbingMoves.index', compact(['shareButtons','moves']))->render();
+    }
+
+    public function moves(){
+        $moves = ClimbingMoves::paginate(18);
+        return view('ClimbingMoves.moves', compact(['moves']))->render();
     }
 
     public function sendMove(Request $request) {
         $move = new ClimbingMoves();
-
+        $move->url = $request->url;
         if ($request->move) {
+
             $file = $request->file('move');
             $imageName = time() . '.' . $request->file('move')->getClientOriginalExtension();
             $file->storeAs('/images/moves/'.$move->id, $imageName, 'public');
             $move->path = '/images/moves/'.$move->id.$imageName;
         }
-        $move->save();
-//        $moves = ClimbingMoves::all();
-//        return view('ClimbingMoves.moves', compact('moves'));
+        if ($move->save()) {
+            return response()->json(['success' => true, 'message' => 'true'], 200);
+        } else {
+            return response()->json(['success' => false, 'message' => 'error save'], 422);
+        }
     }
 
     public function likeDisLikeMove(Request $request)
