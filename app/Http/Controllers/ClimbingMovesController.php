@@ -19,12 +19,12 @@ class ClimbingMovesController extends Controller
             ->telegram()
             ->whatsapp();
         $moves = ClimbingMoves::paginate(18);
-        return view('ClimbingMoves.index', compact(['shareButtons','moves']))->render();
+        return view('climbingMoves.index', compact(['shareButtons','moves']))->render();
     }
 
     public function moves(){
         $moves = ClimbingMoves::paginate(18);
-        return view('ClimbingMoves.moves', compact(['moves']))->render();
+        return view('climbingMoves.moves', compact(['moves']))->render();
     }
 
     public function sendMove(Request $request) {
