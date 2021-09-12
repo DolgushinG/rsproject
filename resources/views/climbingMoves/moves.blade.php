@@ -1,7 +1,6 @@
 @if($moves)
     @foreach($moves as $move)
-        <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
-             data-aos-delay="400">
+        <div class="col-lg-2 col-md-6 d-flex align-items-stretch climbing_moves">
             <div class="member">
                 <div class="member-video">
                     <video id="video{{$move->id}}" preload="metadata" muted width="200" height="240" controls loop playsinline>
@@ -21,10 +20,12 @@
             </div>
         </div>
     @endforeach
+    <div class="send-loading-end">Loading</div>
     <div class="container">
         {{$moves->links('pagination::bootstrap-4')}}
     </div>
 @endif
+
 <script>
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         document.querySelectorAll('video').forEach((e)=> {e.setAttribute('autoplay','')})

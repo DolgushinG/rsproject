@@ -344,13 +344,12 @@ section {
   opacity: 1;
 }
 
-/*--------------------------------------------------------------
-# Disable aos animation delay on mobile devices
---------------------------------------------------------------*/
+/*!*--------------------------------------------------------------*/
+/*# Disable aos animation delay on mobile devices*/
+/*--------------------------------------------------------------*!*/
 @media screen and (max-width: 768px) {
-  [data-aos-delay] {
+    .climbing_moves{
       margin-left: 3em;
-    transition-delay: 0 !important;
   }
 }
 
@@ -879,7 +878,10 @@ section {
 }
 
 @media (max-width: 768px) {
-  .features .feture-tabs h3 {
+    .navbar a i{
+        margin-right: 2rem;
+    }
+    .features .feture-tabs h3 {
     font-size: 28px;
   }
 }
@@ -4860,6 +4862,9 @@ textarea
     padding: 0 !important;
 }
 @media only screen and (max-width: 639px) {
+    .navbar a i{
+        margin-right: 2rem;
+    }
     .card-body {
         padding: 0.14rem !important;
     }
@@ -4875,6 +4880,9 @@ textarea
 }
 
 @media only screen and (max-width: 479px) {
+    .navbar a i{
+        margin-right: 2rem;
+    }
     .card-body {
         padding: 0.14rem !important;
 
@@ -4898,6 +4906,9 @@ textarea
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
+    .navbar a i{
+        margin-right: 2rem;
+    }
     .ag-format-container {
         width: 750px;
     }
@@ -5345,6 +5356,26 @@ table #social-links ul li a{
     border-radius: 50%;
     width: 24px;
     height: 24px;
+    margin: 0 10px -6px 0;
+    border: 3px solid #18d26e;
+    border-top-color: #eee;
+    -webkit-animation: animate-loading 1s linear infinite;
+    animation: animate-loading 1s linear infinite;
+}
+.send-loading-main{
+    display: none;
+    background: #fff0;
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 24px;
+}
+
+.send-loading-main:before{
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+    width: 96px;
+    height: 96px;
     margin: 0 10px -6px 0;
     border: 3px solid #18d26e;
     border-top-color: #eee;
