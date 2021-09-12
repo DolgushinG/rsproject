@@ -2,32 +2,38 @@
 @section('content')
     <style>
         @media screen and (max-width: 767px) {
-            ol, ul {
+            #social-links ol, ul {
                 padding-left: 4rem!important;
             }
         }
         @media screen and (max-width: 600px) {
-            ol, ul {
+            #social-links ol, ul {
                 padding-left: 4rem!important;
             }
         }
         @media screen and (max-width: 840px) {
-            ol, ul {
+            #social-links ol, ul {
                 padding-left: 4rem!important;
             }
         }
         @media screen and (max-width: 320px) {
-            ol, ul {
+            #social-links ol, ul {
                 padding-left: 4rem!important;
             }
         }
         @media screen and (max-width: 460px) {
-            ol, ul {
+            #social-links ol, ul{
                 padding-left: 4rem!important;
+            }
+            #navbar ul{
+                padding-left: 0rem!important;
             }
         }
         ol, ul {
             padding-left: 0;
+        }
+        .movesHide {
+            display: none;
         }
     </style>
     <section id="team" class="team">
@@ -38,7 +44,10 @@
             <div class="social-btn-sp">
                {!! $shareButtons !!}
             </div>
-            <div id="moves" class="row gy-4">
+            <div class="col-md-12 text-center">
+                <div class="send-loading-main">Loading</div>
+            </div>
+            <div id="moves" class="row gy-4 movesHide">
                 @include('climbingMoves.moves')
             </div>
         </div>
@@ -70,6 +79,11 @@
     </section>
 
     <script>
+        document.querySelector('.send-loading-main').classList.add('d-block');
+        setTimeout(function() {
+            document.querySelector('#moves').classList.remove('movesHide');
+            document.querySelector('.send-loading-main').classList.remove('d-block');
+        }, 2000);
         $(document).ready(function(){
             $.ajaxSetup({
                 headers: {
@@ -84,13 +98,16 @@
 
             function getMoves(page)
             {
-
                 $.ajax({
                     url: '/climbing-moves/moves?page='+page,
                     method:"GET",
                     data:{page:page},
                     success:function(data)
                     {
+                        document.querySelector('.send-loading-end').classList.add('d-block');
+                        setTimeout(function() {
+                            document.querySelector('.send-loading-end').classList.remove('d-block');
+                        }, 2000);
                         $('#moves').html(data);
                     }
                 });
@@ -103,6 +120,10 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+            document.querySelector('.send-loading-end').classList.add('d-block');
+            setTimeout(function() {
+                document.querySelector('.send-loading-end').classList.remove('d-block');
+            }, 2000);
 
             $.ajax({
                 url: '/climbing-moves/moves?page='+page,
