@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\ClimbingMoves;
 use App\Models\Event;
 use App\Models\Posts;
 use App\Models\User;
@@ -48,7 +49,8 @@ class HomeController extends Controller
             }
         }
         $recentlyEvent = Event::whereIn('id',$recentlyEventID)->paginate(4);
-        return view('home', compact(['recentlyPost','recentlyEvent','categories','eventCityCount','eventCityList','eventCount','userCityCount','userCityList','userCount','latestUsers','usersSenior','usersWithCours']));
+        $latestMoves = ClimbingMoves::latest('created_at')->take(5)->get();
+        return view('home', compact(['recentlyPost','latestMoves','recentlyEvent','categories','eventCityCount','eventCityList','eventCount','userCityCount','userCityList','userCount','latestUsers','usersSenior','usersWithCours']));
     }
     public function indexAbout()
     {

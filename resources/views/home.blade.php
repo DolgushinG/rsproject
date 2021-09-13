@@ -183,6 +183,7 @@
 
                 </div>
             </section><!-- End Counts Section -->
+            @include('climbingMoves.homeMoves')
             @include('climbingGyms.likesClimbingGym')
             <div id="content" style="padding-top: 2rem">
                 <div id="resultList"></div>
