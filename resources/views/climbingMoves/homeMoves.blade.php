@@ -15,12 +15,11 @@
                     <div class="swiper-slide">
                         <div class="testimonial-item">
                             <div class="profile mt-auto">
-                                <a href="{{$move->url}}">
-                                    <video id="video{{$move->id}}" preload="metadata" muted width="200" height="240" autoplay controls loop playsinline>
-                                        <source src="{{asset('storage'.$move->path)}}" type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </a>
+                                <video id="video{{$move->id}}" preload="metadata" muted width="200" height="240" autoplay controls loop playsinline>
+                                    <source src="{{asset('storage'.$move->path)}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <a href="{{$move->url}}"><i class="bi bi-instagram"></i></a>
                             </div>
                         </div>
                     </div><!-- End testimonial item -->
