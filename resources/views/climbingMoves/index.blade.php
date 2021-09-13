@@ -104,9 +104,9 @@
                     data:{page:page},
                     success:function(data)
                     {
-                        document.querySelector('.send-loading-end').classList.add('d-block');
+                        document.querySelector('.send-loading-main').classList.add('d-block');
                         setTimeout(function() {
-                            document.querySelector('.send-loading-end').classList.remove('d-block');
+                            document.querySelector('.send-loading-main').classList.remove('d-block');
                         }, 2000);
                         $('#moves').html(data);
                     }
@@ -120,9 +120,9 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            document.querySelector('.send-loading-end').classList.add('d-block');
+            document.querySelector('.send-loading-main').classList.add('d-block');
             setTimeout(function() {
-                document.querySelector('.send-loading-end').classList.remove('d-block');
+                document.querySelector('.send-loading-main').classList.remove('d-block');
             }, 2000);
 
             $.ajax({
