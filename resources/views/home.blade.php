@@ -268,4 +268,9 @@
     <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
     <!-- End #main -->
     @include('sponsors.sponsors')
+    <script>
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            document.querySelectorAll('video').forEach((e)=> {e.setAttribute('autoplay','')})
+        }
+    </script>
 @endsection
