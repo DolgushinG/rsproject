@@ -20,7 +20,6 @@
             </div>
         </div>
     @endforeach
-    <div class="send-loading-end">Loading</div>
     <div class="container">
         {{$moves->links('pagination::bootstrap-4')}}
     </div>
