@@ -31,7 +31,9 @@ Route::middleware(['auth','verified'])->group(function () {
 });
 
 //public
-
+Route::get('/climbing-holds', [App\Http\Controllers\HoldsController::class, 'index']);
+Route::get('/climbing-holds/holds', [App\Http\Controllers\HoldsController::class, 'holds']);
+Route::post('/holds', [App\Http\Controllers\HoldsController::class, 'sendHold']);
 Route::get('/climbing-moves/moves', [App\Http\Controllers\ClimbingMovesController::class, 'moves']);
 Route::post('/climbing-moves/likeDisLikeMove', [App\Http\Controllers\ClimbingMovesController::class, 'likeDisLikeMove']);
 Route::post('/send-move', [App\Http\Controllers\ClimbingMovesController::class, 'sendMove'])->name('send-move');
