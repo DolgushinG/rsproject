@@ -212,6 +212,7 @@
                 </div>
             </div>
         </section>
+        @include('holds.homeHolds')
         @include('event.recentlyEvent')
         <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials">

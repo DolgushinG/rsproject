@@ -18,6 +18,7 @@
                     <ul>
                         <li><a href="{{route('posts')}}">Статьи</a></li>
                         <li><a class="nav-link scrollto" href="{{route('climbing-moves')}}">Скалолазные движения</a></li>
+                        <li><a class="nav-link scrollto" href="{{route('climbing-holds')}}">Производители зацеп</a></li>
                     </ul>
                 </li>
 

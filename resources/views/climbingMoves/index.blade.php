@@ -52,7 +52,7 @@
             </div>
         </div>
         @isset(Auth::user()->id )
-            @if(Auth::user()->id === 64)
+            @if(Auth::user()->id === 30)
         <div class="container">
             <form id="send" method="POST"
                   enctype="multipart/form-data">
@@ -140,9 +140,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            var url_string = window.location.href
-            var url_str = new URL(url_string);
-            var page = url_str.searchParams.get("page");
+            var page = document.querySelector('.page-item.active').innerText;
             e.preventDefault();
             // you can't pass Jquery form it has to be javascript form object
             let files = new FormData();
