@@ -52,7 +52,7 @@
             </div>
         </div>
         @isset(Auth::user()->id )
-            @if(Auth::user()->id === 64)
+            @if(Auth::user()->id === 30)
         <div class="container">
             <form id="send" method="POST"
                   enctype="multipart/form-data">

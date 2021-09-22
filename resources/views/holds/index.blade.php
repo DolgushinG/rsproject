@@ -1,149 +1,128 @@
 @extends('layout')
 @section('content')
-    <section id="features" class="features">
+    <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
+    <!-- ======= Values Section ======= -->
+    <section id="values" class="values">
         <div class="container" data-aos="fade-up">
             <header class="section-header">
-                <p>База скалолазных зацепок</p>
+                <p>База производителей зацепок</p>
             </header>
-            <div class="row">
-                <!-- Feature Icons -->
-                <div class="row feature-icons" data-aos="fade-up">
-                    <div class="row">
-                        <div id="holds">
-                            @include('holds.holds')
-                        </div>
-                    </div>
-                </div>
+
+            @auth
                 <div class="accordion accordion-flush" id="faqlist1">
                     <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button"
-                                        data-bs-toggle="collapse"
-                                        data-bs-target="#faq-content-1">
-                                    <h6> name accordion </h6>
-                                </button>
-                            </h2>
-                            <div id="faq-content-1"
-                                 class="accordion-collapse collapse"
-                                 data-bs-parent="#faqlist1">
-                                <div class="accordion-body">
-                                    <section id="contact" class="contact">
-                                        <div class="container" data-aos="fade-up">
-                                            <header class="section-header">
-                                                <h2>Добавить скалодром</h2>
-                                            </header>
-                                            <div class="row gy-4">
-                                                <div class="col-lg-6">
-                                                    <div class="row gy-4">
-                                                        <div class="col-md-6">
-                                                            <div class="info-box">
-                                                                <i class="bi bi-calendar2-check"></i>
-                                                                <h3>1 шаг</h3>
-                                                                <p>Заполните данные</p>
-                                                            </div>
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faq-content-1">
+                                <header class="section-header">
+                                    <h2>Добавить производителя зацеп</h2>
+                                </header>
+                            </button>
+                        </h2>
+                        <div id="faq-content-1"
+                             class="accordion-collapse collapse"
+                             data-bs-parent="#faqlist1">
+                            <div class="accordion-body">
+                                <section id="contact" class="contact">
+                                    <div class="container" data-aos="fade-up">
+                                        <div class="row gy-4">
+                                            <div class="col-lg-6">
+                                                <div class="row gy-4">
+                                                    <div class="col-md-6">
+                                                        <div class="info-box">
+                                                            <i class="bi bi-calendar2-check"></i>
+                                                            <h3>1 шаг</h3>
+                                                            <p>Заполните данные</p>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <div class="info-box">
-                                                                <i class="bi bi-check-square-fill"></i>
-                                                                <h3>2 шаг</h3>
-                                                                <p>Если корректно нажмите отправить</p>
-                                                            </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="info-box">
+                                                            <i class="bi bi-check-square-fill"></i>
+                                                            <h3>2 шаг</h3>
+                                                            <p>Если корректно нажмите отправить</p>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <div class="info-box">
-                                                                <i class="bi bi-eye-fill"></i>
-                                                                <h3>3 шаг</h3>
-                                                                <p>Вашу заявку рассмотрят</p>
-                                                            </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="info-box">
+                                                            <i class="bi bi-eye-fill"></i>
+                                                            <h3>3 шаг</h3>
+                                                            <p>Вашу заявку рассмотрят</p>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <div class="info-box">
-                                                                <i class="bi bi-file-earmark-richtext"></i>
-                                                                <h3>После одобрения скалодром будет видно в течение дня</h3>
-                                                            </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="info-box">
+                                                            <i class="bi bi-file-earmark-richtext"></i>
+                                                            <h3>После одобрения производителя будет видно в течение дня</h3>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <form action="{{route('sendHold')}}" method="POST" class="php-email-form-add-new-holds">
-                                                        @csrf
-                                                        <div class="row gy-4">
-                                                            <div class="col-md-6">
-                                                                <input type="text" name="name" class="form-control" placeholder="Введите название скалодрома"
-                                                                       required>
-                                                            </div>
-                                                            <div class="col-md-6 ">
-                                                                <input id="country" type="text" name="country" class="form-control"
-                                                                       placeholder="Введите страну" required>
-                                                            </div>
-                                                            <div class="col-md-6 ">
-                                                                <input id="region" type="text" name="region" class="form-control"
-                                                                       placeholder="Введите регион" required>
-                                                            </div>
-                                                            <div class="col-md-6 ">
-                                                                <input id="city" type="text" name="city" class="form-control"
-                                                                       placeholder="Введите город" required>
-                                                            </div>
-                                                            <div class="col-md-6 ">
-                                                                <input id="street" type="text" name="street" class="form-control"
-                                                                       placeholder="Введите улицу" required>
-                                                            </div>
-                                                            <div class="col-md-6 ">
-                                                                <input id="house" type="text" name="house" class="form-control"
-                                                                       placeholder="Введите дом" required>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <input type="text" class="form-control" name="url" placeholder="Введите ссылку на веб-сайт" >
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <label for="telephone">Телефон</label>
-                                                                <input class="form-control" id="telephone" type="tel" name="phone" pattern="(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?" title="Введите номер телефона в формате +7 XXX XXX XX XX" required>
-                                                            </div>
-
-                                                            <div class="col-md-12">
-                                                                <label for="time1">Время работы с</label>
-                                                                <input class="form-control" type="time" id="time1"  name="time1" rows="6" placeholder="Время работы с"
-                                                                       required>
-                                                            </div>
-
-                                                            <div class="col-md-12">
-                                                                <label for="time2">Время работы до</label>
-                                                                <input class="form-control" type="time" id="time2" name="time2" rows="6" placeholder="Время работы до"
-                                                                       required>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <label for="scheduleDay">Дни работы</label>
-                                                                <select name="scheduleDay[]" id="scheduleDay" class="form-select" required aria-label="select example" multiple>
-                                                                    <option value="Пн">Пн</option>
-                                                                    <option value="Вт">Вт</option>
-                                                                    <option value="Ср">Ср</option>
-                                                                    <option value="Чт">Чт</option>
-                                                                    <option value="Сб">Сб</option>
-                                                                    <option value="Вс">Вс</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-md-12 text-center">
-                                                                <div class="loading">Loading</div>
-                                                                <div class="error-message"></div>
-                                                                <div class="sent-message">Ваше сообщение было отправлено</div>
-                                                                <button type="submit">Отправить</button>
-                                                            </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <form action="{{route('send-hold')}}" method="POST" class="php-email-form-add-new-holds">
+                                                    @csrf
+                                                    <div class="row gy-4">
+                                                        <div class="col-md-6">
+                                                            <input type="text" name="name" class="form-control" placeholder="Введите название производителя"
+                                                                   required>
                                                         </div>
-                                                    </form>
-                                                </div>
+                                                        <div class="col-md-6">
+                                                            <select name="materials[]" class="form-select" required aria-label="select example" multiple>
+                                                                <option value="PU">PU</option>
+                                                                <option value="fiberglass">fiberglass</option>
+                                                                <option value="wood">wood</option>
+                                                                <option value="holds">holds</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <select name="zone" class="form-select" required aria-label="select example">
+                                                                <option value="Europe">Europe</option>
+                                                                <option value="Asia">Asia</option>
+                                                                <option value="Oceania">Oceania</option>
+                                                                <option value="USA">USA</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6 ">
+                                                            <input id="country" type="text" name="country" class="form-control"
+                                                                   placeholder="Введите страну" required>
+                                                        </div>
+                                                        <div class="col-md-6 ">
+                                                            <input id="city" type="text" name="city" class="form-control"
+                                                                   placeholder="Введите город" required>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <input type="text" class="form-control" name="url" placeholder="Введите ссылку на веб-сайт" >
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label for="file">Прикрепите лого</label>
+                                                            <input type="file" id="file" class="form-control" name="image"
+                                                                   placeholder="Прикрепите лого"
+                                                                   required>
+                                                        </div>
+                                                        <div class="col-md-12 text-center">
+                                                            <div class="loading">Loading</div>
+                                                            <div class="error-message"></div>
+                                                            <div class="sent-message">Ваше сообщение было отправлено</div>
+                                                            <button type="submit">Отправить</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
-                                    </section><!-- End Contact Section -->
-                                </div>
+                                    </div>
+                                </section><!-- End Contact Section -->
                             </div>
                         </div>
+                    </div>
                 </div>
-                <!-- End Feature Icons -->
-            </div>
+            @endauth
+                <div class="row" id="holds">
+                    @include('holds.holds')
+                </div>
         </div>
     </section>
     <script>
-        getHolds();
         function getHolds() {
             $.ajaxSetup({
                 headers: {
@@ -217,6 +196,7 @@
                 })
                     .then(response => {
                         if( response.ok ) {
+                            getHolds()
                             thisForm.querySelector('.loading').classList.remove('d-block');
                             thisForm.querySelector('.sent-message').classList.add('d-block');
                             thisForm.reset();
@@ -236,6 +216,33 @@
             }
 
         })();
+        // Замените на свой API-ключ
+        var token = "33c419ffb77324c6b14c23909f66ac321646a8cc";
 
+        var type  = "ADDRESS";
+        var $region = $("#region");
+        var $city   = $("#city");
+        var $country = $("#country");
+        // регион и район
+        $region.suggestions({
+            token: token,
+            type: type,
+            hint: false,
+            bounds: "region-area"
+        });
+        $country.suggestions({
+            token: token,
+            type: "COUNTRY",
+            onSelect: function(suggestion) {
+            }
+        });
+        // город и населенный пункт
+        $city.suggestions({
+            token: token,
+            type: type,
+            hint: false,
+            bounds: "city-settlement",
+            constraints: $region
+        });
     </script>
 @endsection

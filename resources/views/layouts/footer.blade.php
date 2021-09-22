@@ -36,6 +36,7 @@
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Поиск соревнований</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Ежемесячная рассылка соревнований</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('climbing-moves')}}">База скалолазных движений</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('climbing-holds')}}">Производители зацеп</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Статьи</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('climbing-gyms')}}">Все скалодромы России</a></li>
                     </ul>

@@ -28,15 +28,15 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('importInterEvent',[App\Http\Controllers\ImportEvent::class, 'importInterEvent'])->name('importInterEvent');
     Route::post('subscriptionUser', [App\Http\Controllers\SubscriptionUserController::class, 'getEmailUsers'])->name('subscriptionUser');
     Route::get('toSendEmailSubscribe', [App\Http\Controllers\SubscriptionUserController::class, 'sendEmailToSubscribeUser']);
+    Route::post('/send-move', [App\Http\Controllers\ClimbingMovesController::class, 'sendMove'])->name('send-move');
+    Route::post('/send-hold', [App\Http\Controllers\HoldsController::class, 'sendHolds'])->name('send-hold');
 });
 
 //public
-Route::get('/climbing-holds', [App\Http\Controllers\HoldsController::class, 'index']);
+Route::get('/climbing-holds', [App\Http\Controllers\HoldsController::class, 'index'])->name('climbing-holds');
 Route::get('/climbing-holds/holds', [App\Http\Controllers\HoldsController::class, 'holds']);
-Route::post('/holds', [App\Http\Controllers\HoldsController::class, 'sendHold']);
 Route::get('/climbing-moves/moves', [App\Http\Controllers\ClimbingMovesController::class, 'moves']);
 Route::post('/climbing-moves/likeDisLikeMove', [App\Http\Controllers\ClimbingMovesController::class, 'likeDisLikeMove']);
-Route::post('/send-move', [App\Http\Controllers\ClimbingMovesController::class, 'sendMove'])->name('send-move');
 Route::get('/climbing-moves', [App\Http\Controllers\ClimbingMovesController::class, 'index'])->name('climbing-moves');
 Route::get('/posts', [App\Http\Controllers\PostsController::class, 'index'])->name('posts');
 Route::get('/climbing-gyms', [App\Http\Controllers\ClimbingGymController::class, 'index'])->name('climbing-gyms');
