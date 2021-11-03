@@ -2,17 +2,15 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\PostCategories;
-use App\Models\Posts;
+use App\Models\Sponsors;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
-use Illuminate\Database\Eloquent\Model;
 
-class PostsController extends Controller
+class SponsorsController extends Controller
 {
     use HasResourceActions;
 
@@ -81,20 +79,12 @@ class PostsController extends Controller
      */
     protected function grid()
     {
+        $grid = new Grid(new Sponsors);
 
-        $grid = new Grid(new Posts);
         $grid->id('ID');
-        $grid->author_id('author_id');
-        $grid->title('title');
-        $grid->seo_title('seo_title');
-        $grid->excerpt('excerpt');
-        $grid->body('body');
+        $grid->name('name');
+        $grid->url('url');
         $grid->image('image');
-        $grid->slug('slug');
-        $grid->meta_description('meta_description');
-        $grid->meta_keywords('meta_keywords');
-        $grid->status('status');
-        $grid->featured('featured');
         $grid->created_at(trans('admin.created_at'));
         $grid->updated_at(trans('admin.updated_at'));
 
@@ -109,19 +99,12 @@ class PostsController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(Posts::findOrFail($id));
+        $show = new Show(Sponsors::findOrFail($id));
+
         $show->id('ID');
-        $show->author_id('author_id');
-        $show->title('title');
-        $show->seo_title('seo_title');
-        $show->excerpt('excerpt');
-        $show->body('body');
+        $show->name('name');
+        $show->url('url');
         $show->image('image');
-        $show->slug('slug');
-        $show->meta_description('meta_description');
-        $show->meta_keywords('meta_keywords');
-        $show->status('status');
-        $show->featured('featured');
         $show->created_at(trans('admin.created_at'));
         $show->updated_at(trans('admin.updated_at'));
 
@@ -135,21 +118,15 @@ class PostsController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Posts);
+        $form = new Form(new Sponsors);
+
         $form->display('ID');
-        $form->number('author_id', 'author_id');
-        $form->text('title', 'title');
-        $form->text('seo_title', 'seo_title');
-        $form->text('excerpt', 'excerpt');
-        $form->summernote('body');
-        $form->image('image', 'image')->move('/images/blog/posts)');
-        $form->text('slug', 'slug');
-        $form->text('meta_description', 'meta_description');
-        $form->text('meta_keywords', 'meta_keywords');
-        $form->select('status', 'status')->options(['PUBLISHED' => 'PUBLISHED', 'DRAFT' => 'DRAFT', 'PENDING' => 'PENDING']);
-        $form->number('featured', 'featured');
+        $form->text('name', 'name');
+        $form->url('url', 'url');
+        $form->image('image', 'image')->move('/images/sponsors');
         $form->display(trans('admin.created_at'));
         $form->display(trans('admin.updated_at'));
+
         return $form;
     }
 }
