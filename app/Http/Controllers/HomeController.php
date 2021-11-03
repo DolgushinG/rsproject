@@ -5,6 +5,7 @@ use App\Models\ClimbingMoves;
 use App\Models\Event;
 use App\Models\Holds;
 use App\Models\Posts;
+use App\Models\Sponsors;
 use App\Models\User;
 use App\Models\Category;
 
@@ -52,7 +53,8 @@ class HomeController extends Controller
         $recentlyEvent = Event::whereIn('id',$recentlyEventID)->paginate(4);
         $latestMoves = ClimbingMoves::latest('created_at')->take(5)->get();
         $latestHolds = Holds::where('active_status', '=', '1')->inRandomOrder()->take(4)->get();
-        return view('home', compact(['recentlyPost','latestHolds','latestMoves','recentlyEvent','categories','eventCityCount','eventCityList','eventCount','userCityCount','userCityList','userCount','latestUsers','usersSenior','usersWithCours']));
+        $sponsors = Sponsors::all();
+        return view('home', compact(['sponsors','recentlyPost','latestHolds','latestMoves','recentlyEvent','categories','eventCityCount','eventCityList','eventCount','userCityCount','userCityList','userCount','latestUsers','usersSenior','usersWithCours']));
     }
     public function indexAbout()
     {
