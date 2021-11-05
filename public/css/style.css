@@ -20,6 +20,7 @@ body {
     flex-direction: column;
 
 }
+
 .dark-theme .form-switch {
     padding-left: 3.5em;
 }
@@ -2176,7 +2177,7 @@ section {
     background: #4154f1;
     border: 0;
     padding: 10px 30px;
-    color: #fff;
+    color: #fff!important;
     transition: 0.4s;
     border-radius: 4px;
 }
@@ -2255,7 +2256,7 @@ section {
     background: #4154f1;
     border: 0;
     padding: 10px 30px;
-    color: #fff;
+    color: #fff!important;
     transition: 0.4s;
     border-radius: 4px;
 }
@@ -2335,7 +2336,7 @@ section {
     background: #4154f1;
     border: 0;
     padding: 10px 30px;
-    color: #fff;
+    color: #fff!important;
     transition: 0.4s;
     border-radius: 4px;
 }
@@ -2470,7 +2471,7 @@ section {
   background: #4154f1;
   border: 0;
   padding: 10px 30px;
-  color: #fff;
+  color: #fff!important;
   transition: 0.4s;
   border-radius: 4px;
 }
