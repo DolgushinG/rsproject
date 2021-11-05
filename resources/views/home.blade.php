@@ -9,8 +9,7 @@
         <section id="team" class="team">
             <div class="container" data-aos="fade-up" style="margin-top: 4rem;">
                 <div class="row">
-                    <div class="col-lg-6 d-flex flex-column justify-content-center" style="background-color: #ffffffeb;
-        border-radius: 16px;">
+                    <div class="col-lg-6 d-flex flex-column justify-content-center" style="border-radius: 16px;">
                         <div class="page-wrapper">
                             <div class="wrapper wrapper--w720">
                                 <div class="card card-3">

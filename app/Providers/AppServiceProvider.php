@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Encore\Admin\Config\Config;
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -29,5 +30,13 @@ class AppServiceProvider extends ServiceProvider
         if (Schema::hasTable($table)) {
             Config::load();
         }
+        view()->composer('layout', function ($view) {
+            $theme = \Cookie::get('theme');
+            if ($theme != 'dark' && $theme != 'light') {
+                $theme = 'light';
+            }
+
+            $view->with('theme', $theme);
+        });
     }
 }

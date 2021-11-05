@@ -2,10 +2,22 @@
 <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
         <a href="{{route('home')}}" class="logo d-flex align-items-center">
-            <img src="{{asset('storage/images/logo/logors.svg')}}" alt="">
+            <img id="dark-logo" src="{{asset('storage/images/logo/dark_logo.svg')}}" alt="">
+            <img id="white-logo" src="{{asset('storage/images/logo/white_logo.svg')}}" alt="">
         </a>
         <nav id="navbar" class="navbar">
             <ul class="nav">
+                <li>
+                    <div class="form-check form-switch">
+                    <input class="form-check-input"
+                           type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">
+                                <img id="dark-icon" alt="dark-theme" src="{{asset('storage/images/switch/dark-theme.png')}}">
+                                <img id="white-icon" alt="white-theme" src="{{asset('storage/images/switch/white-theme.png')}}">
+                            </label>
+
+                    </div>
+                </li>
                 <li><a class="nav-link scrollto" href="{{route('home')}}">Главная</a></li>
                 <li class="dropdown" style="text-transform: capitalize;"><a
                         href="#"><span>Соревнования</span> <i class="bi bi-chevron-down"></i></a>

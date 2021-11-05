@@ -30,7 +30,7 @@
         </div>
     </div>
 </div>
-<hr>
+
 @endforeach
 @else
     <h6 class="mb-3 ml-1 mt-4">Отзывов и оценок нет</h6>

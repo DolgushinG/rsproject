@@ -67,8 +67,9 @@
     <noscript><div><img src="https://mc.yandex.ru/watch/78826194" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
 </head>
-<body>
+<body id="body" class="{{ $theme . '-theme' }}">
 @include('layouts.nav')
+
 @include('cookiemsg')
 @yield('content')
 @include('layouts.footer')
@@ -84,7 +85,7 @@
 <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
 
 <script src="{{ asset('js/main.js') }}"></script>
-
+<script src="{{ asset('js/switch-theme.js') }}"></script>
 </body>
 
 </html>
