@@ -38,5 +38,13 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('theme', $theme);
         });
+        view()->composer('home', function ($view) {
+            $theme = \Cookie::get('theme');
+            if ($theme != 'dark' && $theme != 'light') {
+                $theme = 'light';
+            }
+
+            $view->with('theme', $theme);
+        });
     }
 }

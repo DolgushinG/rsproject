@@ -12,7 +12,7 @@
                     <div class="col-lg-6 d-flex flex-column justify-content-center" style="border-radius: 16px;">
                         <div class="page-wrapper">
                             <div class="wrapper wrapper--w720">
-                                <div class="card card-3">
+                                <div class="card card-3" style="background: rgba(17, 25, 54, 0.9)!important;">
                                     <div class="card-body">
                                         <ul class="tab-list" style="padding-top: 0px;">
                                             <li class="tab-list__item active">
@@ -95,7 +95,7 @@
                     <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
                         <ul class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-center text-white"
-                                style="background-color: #007bff">
+                                style="background-color: #007bff!important;">
                                 Город
                                 <span class="align-items-right">Кол-во подготовщиков</span>
                             </li>
@@ -110,7 +110,7 @@
                         </ul>
                         <ul class="list-group" style="margin-top: 5px">
                             <li class="list-group-item d-flex justify-content-between align-items-center text-white"
-                                style="background-color: #00ad5f">
+                                style="background-color: #00ad5f!important;">
                                 Город
                                 <span class="align-items-right">Кол-во соревнований</span>
                             </li>

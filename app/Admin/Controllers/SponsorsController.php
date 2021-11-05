@@ -85,6 +85,7 @@ class SponsorsController extends Controller
         $grid->name('name');
         $grid->url('url');
         $grid->image('image');
+        $grid->theme('theme');
         $grid->created_at(trans('admin.created_at'));
         $grid->updated_at(trans('admin.updated_at'));
 
@@ -105,6 +106,7 @@ class SponsorsController extends Controller
         $show->name('name');
         $show->url('url');
         $show->image('image');
+        $show->theme('theme');
         $show->created_at(trans('admin.created_at'));
         $show->updated_at(trans('admin.updated_at'));
 
@@ -124,6 +126,7 @@ class SponsorsController extends Controller
         $form->text('name', 'name');
         $form->url('url', 'url');
         $form->image('image', 'image')->move('/images/sponsors');
+        $form->text('theme', 'theme');
         $form->display(trans('admin.created_at'));
         $form->display(trans('admin.updated_at'));
 
