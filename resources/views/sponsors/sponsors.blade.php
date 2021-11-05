@@ -14,7 +14,16 @@
                     </div>
                 </div>
             </div>
-                @elseif($sponsors->theme === 'light')
+                @elseif($theme === 'light' && $sponsors->theme === 'light')
+                    <div class="col-lg-3 col-md-4 sponsors" style="margin-right: auto; margin-left: auto">
+                        <div class="count-box">
+                            <div>
+                                <p><a href="{{$sponsors->url}}"><img src="{{asset('storage/'.$sponsors->image)}}" class="img-fluid" alt=""></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @elseif($sponsors->theme === 'grey')
                     <div class="col-lg-3 col-md-4 sponsors" style="margin-right: auto; margin-left: auto">
                         <div class="count-box">
                             <div>
@@ -24,6 +33,7 @@
                         </div>
                     </div>
                 @endif
+
             @endforeach
         </div>
     </div>
