@@ -47,7 +47,7 @@
                                                             <div class="col">
                                                                 <button id="search" href="#content"
                                                                         class="btn-submit get-started scrollto searchUser"
-                                                                        style="font-size: 18px;font-weight: 5!important; background-color: #007bff"
+                                                                        style="font-size: 18px;font-weight: 5!important; background-color: #007bff; color: white!important;"
                                                                         type="button">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                                          height="24" fill="currentColor"
@@ -61,7 +61,7 @@
                                                             <div class="col">
                                                                 <button id="searchEvent" value="1" href="#content"
                                                                         class="btn-submit get-started scrollto searchEvent"
-                                                                        style="font-size: 18px;font-weight: 5!important; background-color: #00ad5f"
+                                                                        style="font-size: 18px;font-weight: 5!important; background-color: #00ad5f; color: white!important;"
                                                                         type="button">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                                          height="24" fill="currentColor"
