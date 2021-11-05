@@ -49,7 +49,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 
-    <link href="{{ asset('css/style.css?v=4.0.0')}}" rel="stylesheet">
+    <link href="{{ asset('css/style.css?v=5.0.0')}}" rel="stylesheet">
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript" >
