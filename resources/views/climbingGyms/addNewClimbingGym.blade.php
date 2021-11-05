@@ -1,15 +1,14 @@
 @extends('layout')
 @section('content')
-    <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.60/inputmask/jquery.inputmask.js"></script>
-
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="hero d-flex align-items-center">
-        <div class="container">
-            <div class="row">
+    <div class="container">
+        <div class="row justify-content-center">
+        </div>
+    </div>
                 <!-- ======= Contact Section ======= -->
-                <section id="contact" class="contact">
+                <section id="contact" class="contact2">
                     <div class="container" data-aos="fade-up">
                         <header class="section-header">
                             <h2>Добавить скалодром</h2>
@@ -51,7 +50,8 @@
                                     @csrf
                                     <div class="row gy-4">
                                         <div class="col-md-6">
-                                            <input type="text" name="name" class="form-control" placeholder="Введите название скалодрома"
+                                            <input type="text" name="name" class="form-control"
+                                                   placeholder="Введите название скалодрома"
                                                    required>
                                         </div>
                                         <div class="col-md-6 ">
@@ -75,27 +75,33 @@
                                                    placeholder="Введите дом" required>
                                         </div>
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" name="url" placeholder="Введите ссылку на веб-сайт" >
+                                            <input type="text" class="form-control" name="url"
+                                                   placeholder="Введите ссылку на веб-сайт">
                                         </div>
                                         <div class="col-md-12">
                                             <label for="telephone">Телефон</label>
-                                            <input class="form-control" id="telephone" type="tel" name="phone" pattern="(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?" title="Введите номер телефона в формате +7 XXX XXX XX XX" required>
+                                            <input class="form-control" id="telephone" type="tel" name="phone"
+                                                   pattern="(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?"
+                                                   title="Введите номер телефона в формате +7 XXX XXX XX XX" required>
                                         </div>
 
                                         <div class="col-md-12">
                                             <label for="time1">Время работы с</label>
-                                            <input class="form-control" type="time" id="time1"  name="time1" rows="6" placeholder="Время работы с"
-                                                      required>
+                                            <input class="form-control" type="time" id="time1" name="time1" rows="6"
+                                                   placeholder="Время работы с"
+                                                   required>
                                         </div>
 
                                         <div class="col-md-12">
                                             <label for="time2">Время работы до</label>
-                                            <input class="form-control" type="time" id="time2" name="time2" rows="6" placeholder="Время работы до"
-                                                      required>
+                                            <input class="form-control" type="time" id="time2" name="time2" rows="6"
+                                                   placeholder="Время работы до"
+                                                   required>
                                         </div>
                                         <div class="col-md-12">
                                             <label for="scheduleDay">Дни работы</label>
-                                            <select name="scheduleDay[]" id="scheduleDay" class="form-select" required aria-label="select example" multiple>
+                                            <select name="scheduleDay[]" id="scheduleDay" class="form-select" required
+                                                    aria-label="select example" multiple>
                                                 <option value="Пн">Пн</option>
                                                 <option value="Вт">Вт</option>
                                                 <option value="Ср">Ср</option>
@@ -116,9 +122,6 @@
                         </div>
                     </div>
                 </section><!-- End Contact Section -->
-            </div>
-        </div>
-    </section>
 
     <script>
 
@@ -132,15 +135,15 @@
 
             let forms = document.querySelectorAll('.php-email-form-add-new');
 
-            forms.forEach( function(e) {
-                e.addEventListener('submit', function(event) {
+            forms.forEach(function (e) {
+                e.addEventListener('submit', function (event) {
                     event.preventDefault();
 
                     let thisForm = this;
 
                     let action = thisForm.getAttribute('action');
                     let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
-                    if( ! action ) {
+                    if (!action) {
                         displayError(thisForm, 'The form action property is not set!')
                         return;
                     }
@@ -148,18 +151,18 @@
                     thisForm.querySelector('.error-message').classList.remove('d-block');
                     thisForm.querySelector('.sent-message').classList.remove('d-block');
 
-                    let formData = new FormData( thisForm );
+                    let formData = new FormData(thisForm);
 
-                    if ( recaptcha ) {
-                        if(typeof grecaptcha !== "undefined" ) {
-                            grecaptcha.ready(function() {
+                    if (recaptcha) {
+                        if (typeof grecaptcha !== "undefined") {
+                            grecaptcha.ready(function () {
                                 try {
                                     grecaptcha.execute(recaptcha, {action: 'php_email_form_submit'})
                                         .then(token => {
                                             formData.set('recaptcha-response', token);
                                             php_email_form_submit(thisForm, action, formData);
                                         })
-                                } catch(error) {
+                                } catch (error) {
                                     displayError(thisForm, error)
                                 }
                             });
@@ -179,7 +182,7 @@
                     headers: {'X-Requested-With': 'XMLHttpRequest'}
                 })
                     .then(response => {
-                        if( response.ok ) {
+                        if (response.ok) {
                             thisForm.querySelector('.loading').classList.remove('d-block');
                             thisForm.querySelector('.sent-message').classList.add('d-block');
                             thisForm.reset();
@@ -200,18 +203,18 @@
 
         })();
 
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('#telephone').inputmask('+7(999)-999-9999');
         });
 
         // Замените на свой API-ключ
         var token = "33c419ffb77324c6b14c23909f66ac321646a8cc";
 
-        var type  = "ADDRESS";
+        var type = "ADDRESS";
         var $region = $("#region");
-        var $city   = $("#city");
+        var $city = $("#city");
         var $street = $("#street");
-        var $house  = $("#house");
+        var $house = $("#house");
         var $country = $("#country");
         // регион и район
         $region.suggestions({
@@ -223,7 +226,7 @@
         $country.suggestions({
             token: token,
             type: "COUNTRY",
-            onSelect: function(suggestion) {
+            onSelect: function (suggestion) {
             }
         });
         // город и населенный пункт

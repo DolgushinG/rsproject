@@ -281,7 +281,7 @@
                             </div>
                         </section>
                         <!-- End Counts Section -->
-                        <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
+                        <div id="public-review" class="rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
                             <h5 class="mb-3 mt-4">Все отзывы и оценки</h5>
                             <div id="allReview">
                                 @include('profilePublic.comments')
@@ -290,7 +290,7 @@
                     </div>
                     <div class="tab-pane fade active show" id="pills-reviews" role="tabpanel"
                          aria-labelledby="pills-reviews-tab">
-                        <div class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
+                        <div id="private-review" class="rounded shadow-sm p-4 mb-5 rating-review-select-page">
                             <form action="{{route('postrating')}}" method="POST" class="php-email-form">
                                 @csrf
                                 <h4 class="mb-2 pt-1">Оцените подготовщика и напишите отзыв</h4>
@@ -328,7 +328,6 @@
                                 <textarea name="review" id="validationTextarea" class="form-control"
                                           placeholder="Ваш отзыв" required></textarea>
                                 </div>
-
                                 <input type="hidden" id="userId" style="display:none" name="userId"
                                        value="{{$user->id}}">
                                 <div class="form-group">

@@ -4,13 +4,13 @@
         <div class="container" data-aos="fade-up" style="margin-top: 4rem;">
             <div class="row">
                 <div class="col-lg-8 d-flex flex-column justify-content-center"
-                     style="border-radius: 16px;background-color: rgb(253 253 253 / 90%);">
+                     style="border-radius: 16px;">
                     <div class="page-wrapper">
                         <div class="wrapper wrapper--w720">
                             <ul class="tab-list" style="padding-top: 0px;">
                                 <li class="tab-list__item active">
-                                    <a class="tab-list__link" href="#tab1" data-toggle="tab"
-                                       style="color: #0a0302">Скалодромы <span
+                                    <a id="title-climbing-gyms" class="tab-list__link" href="#tab1" data-toggle="tab"
+                                      >Скалодромы <span
                                             class="badge badge-primary badge-pill">{{$allGymsCount}}</span></a>
 
                                 </li>
@@ -92,7 +92,7 @@
                 </div>
                 <div class="col-lg-4 hero-img" data-aos="zoom-out" data-aos-delay="200" style="margin-bottom: 15rem;">
                     <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center text-white"
+                        <li id="title-popular" class="list-group-item d-flex justify-content-between align-items-center text-white"
                             style="background-color: #007bff">
                                     <span class="align-items-right">Популярные скалодромы <i
                                             class="bi bi-info-circle-fill"

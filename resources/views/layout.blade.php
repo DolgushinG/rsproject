@@ -49,7 +49,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 
-    <link href="{{ asset('css/style.css?v=4.0.0')}}" rel="stylesheet">
+    <link href="{{ asset('css/style.css?v=5.0.0')}}" rel="stylesheet">
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript" >
@@ -67,8 +67,9 @@
     <noscript><div><img src="https://mc.yandex.ru/watch/78826194" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
 </head>
-<body>
+<body id="body" class="{{ $theme . '-theme' }}">
 @include('layouts.nav')
+
 @include('cookiemsg')
 @yield('content')
 @include('layouts.footer')
@@ -84,7 +85,7 @@
 <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
 
 <script src="{{ asset('js/main.js') }}"></script>
-
+<script src="{{ asset('js/switch-theme.js') }}"></script>
 </body>
 
 </html>

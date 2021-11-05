@@ -9,7 +9,7 @@
                 <i class="bi bi-arrow-right"></i>
             </a>
         </header>
-        <div class="testimonials-slider swiper-container">
+        <div class="testimonials-slider swiper-container" id="video_moves">
             <div class="swiper-wrapper">
                 @foreach ($latestMoves as $move)
                     <div class="swiper-slide">
