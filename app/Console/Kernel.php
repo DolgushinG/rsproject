@@ -3,10 +3,13 @@
 namespace App\Console;
 use App\Console\Commands\SendInfo;
 use App\Console\Commands\SendMail;
+use App\Mail\NewInfo;
+use App\Mail\NewUser;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Mail;
 use Spatie\Backup\Commands\BackupCommand;
 
 class Kernel extends ConsoleKernel
@@ -33,12 +36,19 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             $user = User::whereNull('email_verified_at')->get();
             if (count($user) > 0) {
+                $details = [
+                    'title' => "Schedule delete user without verify",
+                    'body' => date('Y-m-d H:i:s'),
+                    'userName' => $user->name,
+                    'userCity' => $user->email
+                ];
+                Mail::to('Dolgushing@yandex.ru')->send(new NewInfo($details));
                 User::whereNull('email_verified_at')->delete();
             }
         })->weekly();
         $schedule->exec("php artisan backup:run --only-db")->weeklyOn(1, '00:00');
         $schedule->exec("php artisan backup:run")->weeklyOn(2, '00:00');
-//        // Backups (to Google Drive)
+         // Backups (to Google Drive)
         $schedule->command('sendMail')->weeklyOn(1, '10:00');
         $schedule->command('searchEvent')->dailyAt('20:00');
     }

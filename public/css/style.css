@@ -115,9 +115,22 @@ body {
 .light-theme .header #white-logo{
     display: none!important;
 }
+.dark-theme .footer #white-logo-footer{
+    display: block!important;
+}
+.dark-theme .footer #dark-logo-footer{
+    display: none!important;
+}
+.light-theme .footer #dark-logo-footer{
+    display: block!important;
+}
+.light-theme .footer #white-logo-footer{
+    display: none!important;
+}
 .dark-theme .header #white-icon{
     display: block!important;
 }
+
 .dark-theme .header #dark-icon{
     display: none!important;
 }
@@ -149,7 +162,6 @@ body {
 }
 .dark-theme #navbar li a:hover{
     color: #b9c1f1;!important;
-
 }
 .dark-theme .list-group-item{
     color: #d7d6d6!important;
@@ -161,7 +173,6 @@ body {
 
 .dark-theme .accordion-flush .accordion-button{
      transition: none;
-
 }
 .accordion-item h4 button{
     color: black;
@@ -191,6 +202,26 @@ h6{
 .dark-theme {
     color: #d7d6d6!important;
     background-color: black!important;
+}
+.dark-theme .input-group,.dark-theme .search-slt{
+    color: #d7d6d6!important;
+    background-color: black!important;
+}
+.dark-theme .section-header p{
+    color: #d2d6f3;
+}
+.dark-theme .container.media-body a{
+    color: #d2d6f3;
+}
+
+.dark-theme .testimonial-item p{
+    color: #d2d6f3;
+}
+.dark-theme #allReview h6{
+    color: #d2d6f3;
+}
+.dark-theme .box ul li{
+    color: #d2d6f3;
 }
 .dark-theme .contact .php-email-form-add-event{
     background-color: rgba(24, 24, 24, 0.94);
@@ -502,7 +533,9 @@ h6{
     padding: 15px;
     margin-bottom: 24px;
 }
-
+.dark-theme .php-email-form .form-group .loading{
+    background: rgba(64, 64, 64, 0.82);
+}
 .php-email-form .form-group .loading:before{
     content: "";
     display: inline-block;
@@ -2140,7 +2173,9 @@ section {
     padding: 15px;
     margin-bottom: 24px;
 }
-
+.dark-theme .contact .php-email-form-add-event .loading{
+    background: rgba(66, 66, 66, 0.66);
+}
 .contact .php-email-form-add-event .loading:before {
     content: "";
     display: inline-block;
@@ -2219,7 +2254,9 @@ section {
     padding: 15px;
     margin-bottom: 24px;
 }
-
+.dark-theme .contact2 .php-email-form-add-new .loading {
+    background: rgba(66, 66, 66, 0.8);
+}
 .contact2 .php-email-form-add-new .loading:before {
     content: "";
     display: inline-block;
@@ -2298,6 +2335,9 @@ section {
     text-align: center;
     padding: 15px;
     margin-bottom: 24px;
+}
+.dark-theme .php-email-form-add-new-holds .loading{
+    background: rgba(66, 66, 66, 0.8);
 }
 
 .php-email-form-add-new-holds .loading:before {
@@ -2434,7 +2474,9 @@ section {
   padding: 15px;
   margin-bottom: 24px;
 }
-
+.dark-theme .contact .php-email-form-contact .loading{
+    background: rgba(66, 66, 66, 0.8);
+}
 .contact .php-email-form-contact .loading:before {
   content: "";
   display: inline-block;
