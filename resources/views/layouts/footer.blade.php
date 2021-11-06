@@ -5,7 +5,8 @@
             <div class="row gy-4">
                 <div class="col-lg-5 col-md-12 footer-info">
                     <a href="{{route('home')}}" class="logo d-flex align-items-center">
-                        <img src="{{asset('storage/images/logo/logors.svg')}}" alt="">
+                        <img id="dark-logo-footer" src="{{asset('storage/images/logo/dark_logo.svg')}}" alt="">
+                        <img id="white-logo-footer" src="{{asset('storage/images/logo/white_logo.svg')}}" alt="">
                     </a>
                     <p>Идея проекта обьединить всех подготовщиков</p>
                     <div class="social-links mt-3">
