@@ -1,0 +1,269 @@
+[
+    {
+        "name": "Всероссийские юношеские соревнования (отбор спартакиады)",
+        "date_start": "2022-01-04",
+        "date_end": "2022-01-12",
+        "event_categories": [
+            "2",
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2201voronezh/",
+        "place": "Воронеж"
+    },
+    {
+        "name": "Чемпионат и первенство ПФО",
+        "date_start": "2022-02-10",
+        "date_end": "2022-02-14",
+        "event_categories": [
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2202ufa/",
+        "place": "Воронеж"
+    },
+    {
+        "name": "Чемпионат и первенство СЗФО",
+        "date_start": "2022-02-17",
+        "date_end": "2022-02-22",
+        "event_categories": [
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2202apatity/",
+        "place": "Уфа"
+    },
+    {
+        "name": "Чемпионат России",
+        "date_start": "2022-03-10",
+        "date_end": "2022-03-14",
+        "event_categories": [
+            "2",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2203tumen_ch/",
+        "place": "Уфа"
+    },
+    {
+        "name": "Кубок России",
+        "date_start": "2022-03-13",
+        "date_end": "2022-03-16",
+        "event_categories": [
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2203tumen_kr/",
+        "place": "Апатиты"
+    },
+    {
+        "name": "Первенство России",
+        "date_start": "2022-03-24",
+        "date_end": "2022-03-29",
+        "event_categories": [
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2203perm_perv/",
+        "place": "Апатиты"
+    },
+    {
+        "name": "Всероссийские юношеские соревнования (отбор спартакиады)",
+        "date_start": "2022-03-28",
+        "date_end": "2022-03-31",
+        "event_categories": [
+            "2",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2203perm_vs/",
+        "place": "Тюмень"
+    },
+    {
+        "name": "Чемпионат России",
+        "date_start": "2022-04-15",
+        "date_end": "2022-04-18",
+        "event_categories": [
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2204voronezh_ch/",
+        "place": "Тюмень"
+    },
+    {
+        "name": "Кубок России",
+        "date_start": "2022-04-17",
+        "date_end": "2022-04-21",
+        "event_categories": [
+            "2",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2204voronezh_kr/",
+        "place": "Тюмень"
+    },
+    {
+        "name": "ВЮС «Янтарные вершины» (отбор спартакиады)",
+        "date_start": "2022-04-30",
+        "date_end": "2022-05-05",
+        "event_categories": [
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2204klnd_vs1/",
+        "place": "Тюмень"
+    },
+    {
+        "name": "Первенство России (отбор в Дв)",
+        "date_start": "2022-05-04",
+        "date_end": "2022-05-08",
+        "event_categories": [
+            "2",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2205klnd_perv1/",
+        "place": "Пермь"
+    },
+    {
+        "name": "ВЮС «Янтарные вершины»",
+        "date_start": "2022-05-04",
+        "date_end": "2022-05-08",
+        "event_categories": [
+            "2",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2205klnd_vs2/",
+        "place": "Пермь"
+    },
+    {
+        "name": "Первенство России",
+        "date_start": "2022-05-07",
+        "date_end": "2022-05-09",
+        "event_categories": [
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2205klnd_perv2/",
+        "place": "Пермь"
+    },
+    {
+        "name": "Первенство России",
+        "date_start": "2022-05-31",
+        "date_end": "2022-06-06",
+        "event_categories": [
+            "2",
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2205krsk/",
+        "place": "Пермь"
+    },
+    {
+        "name": "Финал спартакиады",
+        "date_start": "2022-06-23",
+        "date_end": "2022-06-27",
+        "event_categories": [
+            "2",
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2206perm/",
+        "place": "Воронеж"
+    },
+    {
+        "name": "ВЮС «Кубок Дружбы»",
+        "date_start": "2022-07-15",
+        "date_end": "2022-07-21",
+        "event_categories": [
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2207yalta/",
+        "place": "Воронеж"
+    },
+    {
+        "name": "Первенство СКФО",
+        "date_start": "2022-09-23",
+        "date_end": "2022-09-26",
+        "event_categories": [
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2209kslv/",
+        "place": "Воронеж"
+    },
+    {
+        "name": "Чемпионат и первенство ЦФО",
+        "date_start": "2022-10-13",
+        "date_end": "2022-10-17",
+        "event_categories": [
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2210voronezh/",
+        "place": "Воронеж"
+    },
+    {
+        "name": "ВЮС «Невские вертикали»",
+        "date_start": "2022-11-02",
+        "date_end": "2022-11-07",
+        "event_categories": [
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2211spb/",
+        "place": "Калининград"
+    },
+    {
+        "name": "Всероссийские соревнования (отбор в Дв)",
+        "date_start": "2022-11-15",
+        "date_end": "2022-11-21",
+        "event_categories": [
+            "2",
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2211msk_vs/",
+        "place": "Калининград"
+    },
+    {
+        "name": "Чемпионат России",
+        "date_start": "2022-11-20",
+        "date_end": "2022-11-22",
+        "event_categories": [
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2211msk_ch/",
+        "place": "Калининград"
+    },
+    {
+        "name": "Всероссийские юношеские соревнования",
+        "date_start": "2022-11-29",
+        "date_end": "2022-12-05",
+        "event_categories": [
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2211eka/",
+        "place": "Калининград"
+    },
+    {
+        "name": "Первенство СЗФО «Кубок Белого моря»",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-15",
+        "event_categories": [
+            "2",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2212arh/",
+        "place": "Калининград"
+    },
+    {
+        "name": "Чемпионат и первенство ДФО",
+        "date_start": "2022-12-15",
+        "date_end": "2022-12-18",
+        "event_categories": [
+            "2",
+            "1",
+            "4"
+        ],
+        "link": "https://rusclimbing.ru/competitions/2212kna/",
+        "place": "Калининград"
+    }
+]

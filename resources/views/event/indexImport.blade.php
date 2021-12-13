@@ -33,6 +33,12 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-4">
+                            <label for="file_json">Events local russia</label>
+                            <input type="checkbox" name="file_json" id="file_json" placeholder="file_json .. ">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
                             <button class="btn btn-outline-primary" id="btnImport" type="button">IMPORT</button>
                         </div>
                     </div>
