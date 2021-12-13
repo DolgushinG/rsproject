@@ -9,6 +9,7 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
+use Illuminate\Database\Eloquent\Model;
 
 class SponsorsController extends Controller
 {
@@ -26,6 +27,7 @@ class SponsorsController extends Controller
             ->header(trans('admin.index'))
             ->description(trans('admin.description'))
             ->body($this->grid());
+
     }
 
     /**
@@ -40,7 +42,7 @@ class SponsorsController extends Controller
         return $content
             ->header(trans('admin.detail'))
             ->description(trans('admin.description'))
-            ->body($this->detail($id));
+            ->body($this->detail($id),);
     }
 
     /**
@@ -86,6 +88,7 @@ class SponsorsController extends Controller
         $grid->url('url');
         $grid->image('image');
         $grid->theme('theme');
+        $grid->active('active', 'active');
         $grid->created_at(trans('admin.created_at'));
         $grid->updated_at(trans('admin.updated_at'));
 
@@ -107,6 +110,7 @@ class SponsorsController extends Controller
         $show->url('url');
         $show->image('image');
         $show->theme('theme');
+        $show->active('active', 'active');
         $show->created_at(trans('admin.created_at'));
         $show->updated_at(trans('admin.updated_at'));
 
@@ -127,6 +131,7 @@ class SponsorsController extends Controller
         $form->url('url', 'url');
         $form->image('image', 'image')->move('/images/sponsors');
         $form->text('theme', 'theme');
+        $form->switch('active', 'active');
         $form->display(trans('admin.created_at'));
         $form->display(trans('admin.updated_at'));
 
