@@ -143,7 +143,7 @@ class EventController extends Controller
         $form->text('event_city', 'event_city');
         $form->text('event_url', 'event_url');
         $form->text('event_description', 'event_description');
-        $form->text('active_status', 'active_status');
+        $form->switch('active_status', 'active_status');
         $form->text('event_image', 'event_image');
         $form->display(trans('admin.created_at'));
         $form->display(trans('admin.updated_at'));

@@ -142,7 +142,7 @@ class GymController extends Controller
         $form->text('url', 'url');
         $form->text('phone', 'phone');
         $form->text('hours', 'hours');
-        $form->text('active_status', 'active_status');
+        $form->switch('active_status', 'active_status');
         $form->text('region', 'region');
         $form->text('sum_likes', 'sum_likes');
         $form->display(trans('admin.created_at'));

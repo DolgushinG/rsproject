@@ -6,6 +6,7 @@ use App\Models\LikeDislike;
 use App\Models\Posts;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PostsController extends Controller
 {

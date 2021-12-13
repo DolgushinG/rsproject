@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ImportEvent extends Controller
 {
-    public  function importEvent (Request $request)
+    public function importEvent (Request $request)
     {
         if($request->url){
             $json = json_decode(file_get_contents($request->url), true);
@@ -67,6 +67,33 @@ class ImportEvent extends Controller
                     $eventCategories->save();
                 }
             }
+        }
+        if ($request->file_json){
+            $file_data = file_get_contents(base_path()."/data.json");
+            $data = json_decode($file_data, true);
+            foreach ($data as $event){
+                $eventob = new Event;
+                $eventob->event_title = $event["name"];
+                $eventob->event_start_date = $event["date_start"];
+                $eventob->event_start_time = "08:00";
+                $eventob->event_end_date = $event["date_end"];
+                $eventob->event_end_time = "23:00";
+                $eventob->event_city = $event["place"];
+                $eventob->event_url = $event["link"];
+                $eventob->event_image = "/images/events/default/cfr.jpeg";
+                $eventob->save();
+                foreach($event['event_categories'] as $id => $x){
+                    $eventAndCategory = new EventAndCategories;
+                    $eventAndCategory->event_id = $eventob->id;
+                    $eventAndCategory->category_id = intval($x);
+                    $eventAndCategory->save();
+                }
+            }
+            $eventCategories = new EventAndCategories;
+            $eventCategories->category_id = 5;
+            $eventCategories->event_id = $eventob->id;
+            $eventCategories->save();
+
         }
 
     }

@@ -47,6 +47,16 @@ body {
 .dark-theme .about .content h2{
     color: #4c61fc!important;
 }
+.dark-theme .team .member .member-info p{
+    color: #d7d6d6!important;
+}
+.dark-theme .team .member .member-info h4 {
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: #d7d6d6!important;
+}
+
 .dark-theme .testimonials #video_moves .testimonial-item {
     background-color: black;
 }
@@ -279,7 +289,7 @@ h6{
     background-color: rgb(30 30 30 / 58%);
 }
 .dark-theme .home-newsletter{
-    background-color: rgba(75, 141, 238, 0.58);;
+    background-color: rgba(75, 141, 238, 0.23);;
 }
 
 .dark-theme #msform fieldset{
@@ -1950,6 +1960,9 @@ section {
   /* background: #fff; */
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
   transition: 0.3s;
+}
+.dark-theme .team .member {
+    background: #6d79ff4d;!important;
 }
 
 .team .member .member-img {
