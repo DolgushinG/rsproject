@@ -16,7 +16,7 @@
                         <div class="testimonial-item">
                             <div class="profile mt-auto">
                                 <video id="video{{$move->id}}" preload="metadata" muted width="200" height="240" autoplay controls loop playsinline>
-                                    <source src="{{asset('storage'.$move->path)}}" type="video/mp4">
+                                    <source src="{{asset('storage'.$move->path)}}#t=0.1" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                                 <a href="{{$move->url}}"><i class="bi bi-instagram"></i></a>
