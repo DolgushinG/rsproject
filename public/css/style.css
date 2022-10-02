@@ -770,7 +770,6 @@ section {
 */
 #header {
     position:fixed;
-    overflow: hidden;
 }
 
 .navbar ul {
@@ -1962,7 +1961,7 @@ section {
 --------------------------------------------------------------*/
 .team {
   background: url(/storage/images/footer-bg.png) no-repeat bottom;
-  padding: 0px 0;
+  padding: 36px 0;
 }
 .team .member {
   overflow: hidden;
