@@ -51,9 +51,13 @@ class HomeController extends Controller
             }
         }
         $recentlyEvent = Event::whereIn('id',$recentlyEventID)->paginate(4);
-        $latestMoves = ClimbingMoves::latest('created_at')->take(5)->get();
         $latestHolds = Holds::where('active_status', '=', '1')->inRandomOrder()->take(4)->get();
         $sponsors = Sponsors::all();
+        if (!$this->isMobileDevice()){
+            $latestMoves = ClimbingMoves::latest('created_at')->take(5)->get();
+        } else {
+            $latestMoves = ClimbingMoves::inRandomOrder()->take(1)->get();;
+        }
         return view('home', compact(['sponsors','recentlyPost','latestHolds','latestMoves','recentlyEvent','categories','eventCityCount','eventCityList','eventCount','userCityCount','userCityList','userCount','latestUsers','usersSenior','usersWithCours']));
     }
     public function indexAbout()
@@ -82,4 +86,24 @@ class HomeController extends Controller
         return view('privacy.privatedata');
     }
 
+    public function isMobileDevice(): bool
+    {
+        $aMobileUA = array(
+            '/iphone/i' => 'iPhone',
+            '/ipod/i' => 'iPod',
+            '/ipad/i' => 'iPad',
+            '/android/i' => 'Android',
+            '/blackberry/i' => 'BlackBerry',
+            '/webos/i' => 'Mobile'
+        );
+
+        //Return true if Mobile User Agent is detected
+        foreach($aMobileUA as $sMobileKey => $sMobileOS){
+            if(preg_match($sMobileKey, $_SERVER['HTTP_USER_AGENT'])){
+                return true;
+            }
+        }
+        //Otherwise return false..
+        return false;
+    }
 }

@@ -768,8 +768,9 @@ section {
 /**
 * Desktop Navigation
 */
-.navbar {
-  padding: 0;
+#header {
+    position:fixed;
+    overflow: hidden;
 }
 
 .navbar ul {
@@ -1310,7 +1311,10 @@ section {
 }
 
 @media (max-width: 768px) {
-  .features .feature-icons h3 {
+    .navbar a {
+        font-size:15px;
+    }
+    .features .feature-icons h3 {
     font-size: 28px;
   }
 }
@@ -1931,6 +1935,9 @@ section {
 }
 
 @media (max-width: 1199px) {
+    .navbar a {
+        font-size:12px;
+    }
   .testimonials .swiper-slide-active {
     opacity: 1;
   }
@@ -1945,7 +1952,11 @@ section {
     transform: scale(1.12);
   }
 }
-
+@media (min-width: 1512px) {
+    .navbar a {
+        font-size:14px;
+    }
+}
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
@@ -3148,6 +3159,9 @@ section {
 }
 
 @media (max-width: 992px) {
+    .navbar a {
+        font-size:15px;
+    }
   .footer .footer-top {
     background-position: center bottom;
   }
