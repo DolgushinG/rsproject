@@ -112,7 +112,7 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center text-white"
                                 style="background-color: #00ad5f!important;">
                                 Город
-                                <span class="align-items-right">Кол-во соревнований</span>
+                                <span class="align-items-right">Кол-во планируемых событий</span>
                             </li>
                             @foreach ($eventCityCount as $event => $count)
                                 <button id="eventTable" value="{{$event}}" style="border: 0;">
