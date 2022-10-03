@@ -407,7 +407,11 @@ h6{
     display: none
 }
 
+
 @media screen and (max-width: 767px) {
+    .android {
+        margin-right: 120px!important;
+    }
     .page-wrapper {
         margin-bottom: 1rem!important;
     }
