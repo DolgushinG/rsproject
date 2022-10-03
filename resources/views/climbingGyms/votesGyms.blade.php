@@ -4,9 +4,4 @@
                             data-toggle="tooltip"
                             data-placement="bottom">{{$gym->sum_likes}}</span>
     </li>
-    <div class="progress" title="{{100*$gym->sum_likes/1000}}%"
-         data-toggle="tooltip"
-         data-placement="bottom">
-        <div class="progress-bar"  role="progressbar" style="width: {{100*$gym->sum_likes/1000}}%;" aria-valuenow="{{$gym->sum_likes}}" aria-valuemin="0" aria-valuemax="1000">{{$gym->sum_likes}}</div>
-    </div>
 @endforeach

@@ -232,10 +232,17 @@
         // город и населенный пункт
         $city.suggestions({
             token: token,
-            type: type,
+            type: "ADDRESS",
             hint: false,
-            bounds: "city-settlement",
-            constraints: $region
+            bounds: "city",
+            constraints: {
+                locations: { city_type_full: "город" }
+            },
+            formatResult: formatResult,
+            formatSelected: formatSelected,
+            onSelect: function(suggestion) {
+                console.log(suggestion);
+            }
         });
 
         // улица
@@ -257,6 +264,18 @@
             bounds: "house",
             constraints: $street
         });
+        var defaultFormatResult = $.Suggestions.prototype.formatResult;
+
+        function formatResult(value, currentValue, suggestion, options) {
+            var newValue = suggestion.data.city;
+            suggestion.value = newValue;
+            return defaultFormatResult.call(this, newValue, currentValue, suggestion, options);
+        }
+
+        function formatSelected(suggestion) {
+            return suggestion.data.city;
+        }
+
     </script>
     <!-- End Team Section -->
 
