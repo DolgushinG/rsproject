@@ -22,14 +22,14 @@ class HomeController extends Controller
     public function index()
     {
         $userCityList = User::select('city_name')->whereNotNull('email_verified_at')->distinct()->take(6)->get();
-        $eventCityList = Event::select('event_city')->whereBetween('event_start_date', [Carbon::now()->toDate(),Carbon::now()->addYears()->toDate()])->where('active_status', '=', '1')->orderBy('event_start_date')->take(6)->get();
+        $eventCityList = Event::select('event_city')->whereBetween('event_start_date', [Carbon::now()->toDate(),Carbon::now()->addYears(2)->toDate()])->where('active_status', '=', '1')->orderBy('event_start_date')->take(8)->get();
         $userCityCount = [];
         foreach ($userCityList as $city) {
             $userCityCount[$city->city_name] = User::where('city_name', '=', $city->city_name)->count();
         }
         $eventCityCount = [];
         foreach ($eventCityList as $city) {
-            $eventCityCount[$city->event_city] = Event::where('event_city', '=', $city->event_city)->count();
+            $eventCityCount[$city->event_city] =+ 1;
         }
         $usersSenior = User::where('exp_level', '=', 3)->count();
         $usersWithCours = User::where('educational_requirements', '=', 'yes')->count();
@@ -40,7 +40,7 @@ class HomeController extends Controller
         arsort($userCityCount);
         arsort($eventCityCount);
         $recentlyPost = Posts::latest('created_at')->where('status', '=', 'PUBLISHED')->paginate(3);
-        $Events = Event::where('active_status', '=', '1')->whereBetween('event_start_date', [Carbon::now()->toDate(),Carbon::now()->addYears()->toDate()])->get();
+        $Events = Event::where('active_status', '=', '1')->whereBetween('event_start_date', [Carbon::now()->toDate(),Carbon::now()->addYears(2)->toDate()])->get();
         $now = Carbon::now();
         $recentlyEventID = [];
         foreach ($Events as $event) {
