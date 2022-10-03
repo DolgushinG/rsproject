@@ -268,6 +268,7 @@
     <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
     <!-- End #main -->
     @include('sponsors.sponsors')
+
     <script>
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
         // Windows Phone must come first because its UA also contains "Android"
