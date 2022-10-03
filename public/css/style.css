@@ -455,6 +455,7 @@ h6{
     color: hsla(0,0%,100%,.9)
 }
 @media screen and (max-width: 320px) {
+
     .searchUser{
         font-size: 14px!important;
         padding: 0 !important;
@@ -640,14 +641,18 @@ section {
   padding: 15px 0;
   background: #012970;
   min-height: 40px;
-  margin-top: 0px;
+  margin-top: 110px;
   color: #fff;
+
 }
 
 @media (max-width: 992px) {
-  .breadcrumbs {
-    margin-top: 57px;
-  }
+    .android {
+        margin-right: 120px!important;
+    }
+    .breadcrumbs {
+    margin-top: 110px;
+    }
     .searchUser{
         font-size: 14px!important;
     }
@@ -879,6 +884,9 @@ section {
 }
 
 @media (max-width: 1366px) {
+    .android {
+        margin-right: 140px!important;
+    }
   .navbar .dropdown .dropdown ul {
     left: -90%;
   }
@@ -887,6 +895,9 @@ section {
   }
 }
 @media (max-width: 991px){
+    .android {
+        margin-right: 120px!important;
+    }
   .navbar ul {
     display: none;
 }
@@ -2166,7 +2177,15 @@ section {
   transform: rotate(6deg) scale(1.2);
 }
 
-
+#contact {
+    padding-top: 100px;
+}
+.team {
+    padding-top: 100px;
+}
+.values {
+    padding-top: 100px;
+}
 .contact .php-email-form-add-event {
     background: #fafbff;
     padding: 30px;
