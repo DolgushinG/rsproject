@@ -18,12 +18,12 @@ class ClimbingMovesController extends Controller
             ->facebook()
             ->telegram()
             ->whatsapp();
-        $moves = ClimbingMoves::paginate(18);
+        $moves = ClimbingMoves::paginate(12);
         return view('climbingMoves.index', compact(['shareButtons','moves']))->render();
     }
 
     public function moves(){
-        $moves = ClimbingMoves::paginate(18);
+        $moves = ClimbingMoves::paginate(12);
         return view('climbingMoves.moves', compact(['moves']))->render();
     }
 

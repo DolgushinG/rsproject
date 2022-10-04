@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\LikeDislike;
 use App\Models\Posts;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use ErrorException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class PostsController extends Controller
 {
@@ -71,8 +71,18 @@ class PostsController extends Controller
     }
     public function show(Posts $post, Request $request)
     {
+        $access_denied = null;
+        try {
+            $user = User::find(Auth()->user()->id);
+            if ($user->id != 30){
+                $access_denied = true;
+            }
+        } catch (ErrorException $e) {
+            $access_denied = true;
+        }
+
         $postStatus = Posts::find($post->id);
-        if($postStatus->status !== 'PUBLISHED') {
+        if($postStatus->status !== 'PUBLISHED' && $access_denied) {
             return redirect('/');
         }
         views($post)->unique()->record();
