@@ -87,8 +87,6 @@ class PostsController extends Controller
         $grid->author_id('author_id');
         $grid->title('title');
         $grid->seo_title('seo_title');
-        $grid->excerpt('excerpt');
-        $grid->body('body');
         $grid->image('image');
         $grid->slug('slug');
         $grid->meta_description('meta_description');
@@ -142,7 +140,7 @@ class PostsController extends Controller
         $form->text('seo_title', 'seo_title');
         $form->text('excerpt', 'excerpt');
         $form->summernote('body');
-        $form->image('image', 'image')->move('/images/blog/posts)');
+        $form->image('image', 'image')->move('/images/blog/posts');
         $form->text('slug', 'slug');
         $form->text('meta_description', 'meta_description');
         $form->text('meta_keywords', 'meta_keywords');
