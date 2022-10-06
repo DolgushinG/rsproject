@@ -50,17 +50,17 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             $post = Posts::where('status', '=', 'PENDING')->first();
             if ($post){
-                $post->status = 'PUBLISHED';
-                $post->save();
                 $details = [
                     'title' => "Schedule publish post",
                     'body' => date('Y-m-d H:i:s'),
                     'userName' => $post->title,
-                    'userCity' => $post->status
+                    'userCity' => 'PUBLISHED'
                 ];
                 Mail::to('Dolgushing@yandex.ru')->send(new NewInfo($details));
+                $post->status = 'PUBLISHED';
+                $post->save();
             }
-        })->dailyAt('10:00');
+        })->weeklyOn(1, '10:00');
         $schedule->exec("php artisan backup:run --only-db")->weeklyOn(1, '00:00');
         $schedule->exec("php artisan backup:run")->weeklyOn(2, '00:00');
          // Backups (to Google Drive)
