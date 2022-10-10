@@ -1,28 +1,29 @@
-$('#tab-general').addClass('active');
-$(document).on('click', '#general', function () {
+$('#general_organizer').addClass('active');
+$(document).on('click', '#general_organizer', function () {
     deactivateAllTabs();
-    $('#tab-general').addClass('active');
-    getProfile('General');
+    $('#general_organizer').addClass('active');
+    getProfile('GeneralOrganizer');
 });
-$(document).on('click', '#edit', function () {
+$(document).on('click', '#create_event', function () {
     deactivateAllTabs();
-    $('#tab-edit').addClass('active');
-    getProfile('Edit');
+    $('#create_event').addClass('active');
+    getProfile('CreateEvent');
 });
-$(document).on('click', '#socialLinks', function () {
+$(document).on('click', '#previews_event', function () {
     deactivateAllTabs();
-    $('#tab-socialLinks').addClass('active');
-    getProfile('SocialLinks');
+    $('#previews_event').addClass('active');
+    getProfile('PreviewsEvent');
 });
-$(document).on('click', '#reviews', function () {
+$(document).on('click', '#current_event', function () {
     deactivateAllTabs();
-    $('#tab-reviews').addClass('active');
-    getProfile('Reviews');
+    $('#current_event').addClass('active');
+    getProfile('CurrentEvent');
 });
 function deactivateAllTabs() {
-    $('#tab-general, #tab-info, #tab-socialLinks, #tab-notifications').removeClass('active');
+    $('#general_organizer, #create_event, #previews_event, #current_event').removeClass('active');
 }
 function getProfile(tab) {
+    console.log(tab);
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -30,7 +31,7 @@ function getProfile(tab) {
     });
     $.ajax({
         type: 'GET',
-        url: 'getProfile' + tab,
+        url: '/organizer/profile/getProfile' + tab,
         success: function (data) {
             $('#tabContent').html(data);
         },
@@ -42,7 +43,7 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $(document).on('click', '#saveChangesGeneral', function (e) {
+    $(document).on('click', '#saveChangesGeneralOrganizer', function (e) {
         setTimeout(function () {
             $('.alert-success').addClass('invisible');
             $('.alert-danger').addClass('invisible');
@@ -54,11 +55,11 @@ $(document).ready(function () {
         form_data.append('name', name);
         form_data.append('email', email);
         form_data.append('city', city);
-        let tab = 'General';
+        let tab = 'GeneralOrganizer';
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: 'editChagesGeneral',
+            url: '/organizer/profile/editChangesGeneralOrganizer',
             data: form_data,
             cache: false,
             contentType: false,
@@ -93,17 +94,17 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $(document).on('click', '#saveChanges', function (e) {
+    $(document).on('click', '#saveChangesCreateEvent', function (e) {
         setTimeout(function () {
             $('.alert-success').addClass('invisible');
             $('.alert-danger').addClass('invisible');
         }, 3000);
-        var data = $("#editForm").serialize();
+        var data = $("#createEventForm").serialize();
         e.preventDefault();
-        let tab = 'Edit';
+        let tab = 'CreateEvent';
         $.ajax({
             type: 'POST',
-            url: 'editChanges',
+            url: '/organizer/profile/editChangesCreateEvent',
             data: data,
             success: function (data) {
                 getProfile(tab);
@@ -126,17 +127,17 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $(document).on('click', '#saveChangesInfo', function (e) {
+    $(document).on('click', '#saveChangesCurrentEvent', function (e) {
         setTimeout(function () {
             $('.alert-success').addClass('invisible');
             $('.alert-danger').addClass('invisible');
         }, 3000);
-        var data = $("#infoForm").serialize();
+        var data = $("#CurrentEventForm").serialize();
         e.preventDefault();
-        let tab = 'Info';
+        let tab = 'CurrentEvent';
         $.ajax({
             type: 'POST',
-            url: 'editChagesInfo',
+            url: '/organizer/profile/editChangesCurrentEvent',
             data: data,
             success: function (data) {
                 getProfile(tab);
@@ -167,17 +168,17 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $(document).on('click', '#saveChangesSocialLinks', function (e) {
+    $(document).on('click', '#saveChangesPreviewsEvent', function (e) {
         setTimeout(function () {
             $('.alert-success').addClass('invisible');
             $('.alert-danger').addClass('invisible');
         }, 3000);
-        var data = $("#socialLinksForm").serialize();
+        var data = $("#PreviewsEventForm").serialize();
         e.preventDefault();
-        let tab = 'SocialLinks';
+        let tab = 'PreviewsEvent';
         $.ajax({
             type: 'POST',
-            url: 'editChagesSocialLinks',
+            url: '/organizer/profile/editChangesPreviewsEvent',
             data: data,
             success: function (data) {
                 getProfile(tab);

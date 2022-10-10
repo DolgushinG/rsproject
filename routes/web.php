@@ -12,16 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware(['auth','verified'])->group(function () {
+Route::middleware(['auth','verified', 'is_routesetter'])->group(function () {
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
     Route::get('/getProfileGeneral', [App\Http\Controllers\ProfileController::class, 'getTabContentGeneral'])->name('getProfileGeneral');
-    Route::post('/editChagesGeneral', [App\Http\Controllers\ProfileController::class, 'editTabContentGeneral'])->name('editChagesGeneral');
-    Route::get('/getProfileInfo', [App\Http\Controllers\ProfileController::class, 'getTabContentInfo'])->name('getProfileInfo');
-    Route::post('/editChagesInfo', [App\Http\Controllers\ProfileController::class, 'editChagesInfo'])->name('editChagesInfo');
-    Route::get('/getProfileNotifications', [App\Http\Controllers\ProfileController::class, 'getTabContentNotifications'])->name('getProfileNotifications');
-    Route::post('/editChagesNotifications', [App\Http\Controllers\ProfileController::class, 'editChagesNotifications'])->name('editChagesNotifications');
+    Route::get('/getProfileReviews', [App\Http\Controllers\ProfileController::class, 'getTabContentReviews'])->name('getTabContentReviews');
+    Route::get('/getProfileEdit', [App\Http\Controllers\ProfileController::class, 'getTabContentEdit'])->name('getTabContentEdit');
+    Route::post('/editChanges', [App\Http\Controllers\ProfileController::class, 'editChanges'])->name('editChanges');
     Route::get('/getProfileSocialLinks', [App\Http\Controllers\ProfileController::class, 'getTabContentSocialLinks'])->name('getTabContentSocialLinks');
-    Route::post('/editChagesSocialLinks', [App\Http\Controllers\ProfileController::class, 'editChagesSocialLinks'])->name('editChagesSocialLinks');
     Route::post('/cropimageupload', [App\Http\Controllers\CropImageController::class,'uploadCropImage'])->name('cropimageupload');
     Route::post('/profile/save', [App\Http\Controllers\ProfileController::class, 'saveAvatar'])->name('saveAvatar');
     Route::post('importEvent',[App\Http\Controllers\ImportEvent::class, 'importEvent']);
@@ -30,6 +27,18 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('toSendEmailSubscribe', [App\Http\Controllers\SubscriptionUserController::class, 'sendEmailToSubscribeUser']);
     Route::post('/send-move', [App\Http\Controllers\ClimbingMovesController::class, 'sendMove'])->name('send-move');
     Route::post('/send-hold', [App\Http\Controllers\HoldsController::class, 'sendHolds'])->name('send-hold');
+
+});
+Route::middleware(['auth','verified', 'is_organizer'])->group(function () {
+    Route::get('/organizer/profile', [App\Http\Controllers\ProfileController::class, 'indexOrganizer'])->name('profile.organizer');
+    Route::get('/organizer/profile/getProfileCurrentEvent', [App\Http\Controllers\ProfileController::class, 'getTabContentCurrentEvent'])->name('getProfileCurrentEvent');
+    Route::get('/organizer/profile/getProfileCreateEvent', [App\Http\Controllers\ProfileController::class, 'getTabContentCreateEvent'])->name('getProfileCreateEvent');
+    Route::get('/organizer/profile/getProfilePreviewsEvent', [App\Http\Controllers\ProfileController::class, 'getTabContentPreviewsEvent'])->name('getProfilePreviewsEvent');
+    Route::post('/organizer/profile/editChangesCreateEvent', [App\Http\Controllers\ProfileController::class, 'editChangesCreateEvent'])->name('editChangesCreateEvent');
+    Route::post('/organizer/profile/editChangesCurrentEvent', [App\Http\Controllers\ProfileController::class, 'editChangesCurrentEvent'])->name('editChangesCurrentEvent');
+    Route::post('/organizer/profile/editChangesPreviewsEvent', [App\Http\Controllers\ProfileController::class, 'editChangesPreviewsEvent'])->name('editChangesPreviewsEvent');
+    Route::get('/organizer/profile/getProfileGeneralOrganizer', [App\Http\Controllers\ProfileController::class, 'getTabContentGeneralOrganizer'])->name('getProfileGeneralOrganizer');
+    Route::post('/organizer/profile/editChangesGeneralOrganizer', [App\Http\Controllers\ProfileController::class, 'editTabContentGeneralOrganizer'])->name('editChangesGeneralOrganizer');
 });
 
 //public
@@ -60,7 +69,9 @@ Route::post('/postfeedback', [App\Http\Controllers\FeedbackController::class, 'p
 Route::get('/getresultsearch', [App\Http\Controllers\SearchController::class, 'getResultSearch'])->name('getresultsearch');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'indexCategory'])->name('register');
+Route::get('/register/organizer', [App\Http\Controllers\Auth\RegisterController::class, 'indexCategory'])->name('register.organizer');
 Route::get('/profile/{id}', [App\Http\Controllers\PublicProfileController::class, 'indexPublic'])->name('profileDetails');
+//Route::get('/profile/organizer/{id}', [App\Http\Controllers\PublicProfileController::class, 'indexPublic'])->name('profileDetails');
 Route::get('/live-status/{id}', [App\Http\Controllers\PublicProfileController::class, 'liveStatus']);
 Route::post('/postrating', [App\Http\Controllers\PublicProfileController::class, 'postRatingAndReview'])->name('postrating');
 Route::get('/getrating', [App\Http\Controllers\PublicProfileController::class, 'getRatingAndReview'])->name('getrating');

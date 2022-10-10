@@ -1,4 +1,4 @@
-<section id="contact" class="contact">
+<section id="contact-support" class="contact">
     <div class="container" data-aos="fade-up">
 
         <header class="section-header">

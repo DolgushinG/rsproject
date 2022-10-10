@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <section class="hero" style="height: 43vh;">
+    <section class="hero" style="height: 70vh!important;padding-top: 166px;margin-bottom: 0!important;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -20,7 +20,7 @@
 
                             <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                                 @csrf
-                                <button type="submit" class="btn btn-submit p-0 m-0 align-baseline">{{ __('Отправить повторно') }}</button>
+                                <button type="submit" class="btn btn-submit p-0 m-0 align-baseline" style="color: white!important;">{{ __('Отправить повторно') }}</button>
                             </form>
                         </div>
                     </div>

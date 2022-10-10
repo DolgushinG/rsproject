@@ -63,16 +63,35 @@ class User extends Authenticatable implements MustVerifyEmail, Viewable
         'email_verified_at' => 'datetime',
     ];
 
-    public function categories()
+    public function categories(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany('App\Models\UserAndCategories');
+        return $this->hasMany(UserAndCategories::class);
     }
-    public function rating()
+    public function rating(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
       return $this->hasMany(Rating::class);
     }
 
+    public function organizer(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Organizer::class);
+    }
+
+    public function is_organizator()
+    {
+        $user_id = Auth()->user()->id;
+        $organizer = Organizer::where('user_id','=', $user_id)->get('user_id');
+        return count($organizer) !== 0;
+    }
+
+    public function is_routesetter()
+    {
+        $user_id = Auth()->user()->id;
+        $routesetter = Routesetter::where('user_id','=', $user_id)->get('user_id');
+        return count($routesetter) !== 0;
+    }
     /**
+     *
      * Send the password reset notification.
      *
      * @param  string  $token

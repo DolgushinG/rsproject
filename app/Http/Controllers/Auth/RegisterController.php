@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 use App\Mail\NewUser;
+use App\Models\Organizer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -35,7 +36,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/email/verify';
+    protected $redirectTo = 'email/verify';
 
     /**
      * Create a new controller instance.
@@ -55,19 +56,32 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-             'name' => ['required', 'string', 'max:255'],
-             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-             'salary_route_rope' => ['integer','nullable'],
-             'salary_route_bouldering' => ['integer','nullable'],
-             'salary_hour' => ['required', 'integer'],
-             'exp_level' => ['required', 'string'],
-             'city_name' => ['required', 'string'],
-             'grade' => ['required', 'string'],
-             'password' => ['required', 'string', 'min:5', 'confirmed'],
-             'categories' => ['required'],
-        ]);
+        if (array_key_exists("is_organizer",$data) && $data['is_organizer'] == '1')
+        {
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'city_name' => ['required', 'string'],
+                'password' => ['required', 'string', 'min:5', 'confirmed'],
+            ]);
+        }
+        else
+        {
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'salary_route_rope' => ['integer','nullable'],
+                'salary_route_bouldering' => ['integer','nullable'],
+                'salary_hour' => ['required', 'integer'],
+                'exp_level' => ['required', 'string'],
+                'city_name' => ['required', 'string'],
+                'grade' => ['required', 'string'],
+                'password' => ['required', 'string', 'min:5', 'confirmed'],
+                'categories' => ['required'],
+            ]);
+        }
     }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -77,48 +91,71 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'salary_hour' => intval($data['salary_hour']),
-            'salary_route_rope' => intval($data['salary_route_rope']),
-            'salary_route_bouldering' => intval($data['salary_route_bouldering']),
-            'exp_level' => $data['exp_level'],
-            'description' => $data['description'],
-            'grade' => $data['grade'],
-            'educational_requirements' => $data['educational_requirements'],
-            'exp_local' => $data['exp_local'],
-            'exp_national' => $data['exp_national'],
-            'exp_international' => $data['exp_international'],
-            'city_name' => $data['city_name'],
-            'company' => $data['company'],
-            'telegram' => $data['telegram'],
-            'instagram' => $data['instagram'],
-            'contact' => $data['contact'],
-            'other_city' => 0,
-            'all_time' => 0,
-            'apply_privacy_conf' => 'yes',
-            'average_rating' => 0,
-            'photo' => 'images/users/defaultAvatar.jpeg',
-        ]);
-        foreach($data['categories'] as $id => $x){
-            $userAndCategory = new UserAndCategories;
-            $userAndCategory->user_id = $user->id;
-            $userAndCategory->category_id = $id;
-            $userAndCategory->save();
+        if (array_key_exists("is_organizer",$data) && $data['is_organizer'] == '1') {
+            $user = User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'city_name' => $data['city_name'],
+                'telegram' => $data['telegram'],
+                'contact' => $data['contact'],
+                'apply_instruction' => 'yes',
+            ]);
+            $organizer = new Organizer;
+            $organizer->user_id = $user->id;
+            $organizer->save();
+
+            $newUser = $data['name'];
+            $userCity = $data['city_name'];
+            $details = [
+                'title' => "NEW ORGANIZER !!",
+                'body' => date('Y-m-d H:i:s'),
+                'userName' => $newUser,
+                'userCity' => $userCity
+            ];
+        } else {
+            $user = User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'salary_hour' => intval($data['salary_hour']),
+                'salary_route_rope' => intval($data['salary_route_rope']),
+                'salary_route_bouldering' => intval($data['salary_route_bouldering']),
+                'exp_level' => $data['exp_level'],
+                'description' => $data['description'],
+                'grade' => $data['grade'],
+                'educational_requirements' => $data['educational_requirements'],
+                'exp_local' => $data['exp_local'],
+                'exp_national' => $data['exp_national'],
+                'exp_international' => $data['exp_international'],
+                'city_name' => $data['city_name'],
+                'company' => $data['company'],
+                'telegram' => $data['telegram'],
+                'instagram' => $data['instagram'],
+                'contact' => $data['contact'],
+                'other_city' => 0,
+                'all_time' => 0,
+                'apply_privacy_conf' => 'yes',
+                'average_rating' => 0,
+                'photo' => 'images/users/defaultAvatar.jpeg',
+            ]);
+            foreach ($data['categories'] as $id => $x) {
+                $userAndCategory = new UserAndCategories;
+                $userAndCategory->user_id = $user->id;
+                $userAndCategory->category_id = $id;
+                $userAndCategory->save();
+            }
+            $newUser = $data['name'];
+            $userCity = $data['city_name'];
+            $details = [
+                'title' => "NEW USER !!",
+                'body' => date('Y-m-d H:i:s'),
+                'userName' => $newUser,
+                'userCity' => $userCity
+            ];
         }
-        $newUser = $data['name'];
-        $userCity = $data['city_name'];
-        $details = [
-            'title' => "NEW USER !!",
-            'body' => date('Y-m-d H:i:s'),
-            'userName' => $newUser,
-            'userCity' => $userCity
-        ];
         Mail::to('Dolgushing@yandex.ru')->send(new NewUser($details));
         return $user;
-
     }
 
     public function indexCategory(){

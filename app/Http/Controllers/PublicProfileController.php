@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Mail\NewReview;
 use App\Mail\NewUser;
 use App\Models\Category;
+use App\Models\Organizer;
 use App\Models\User;
 use App\Models\Rating;
 use App\Models\UserAndCategories;
