@@ -22,7 +22,7 @@ $(document).on('click', '#reviews', function () {
 function deactivateAllTabs() {
     $('#tab-general, #tab-info, #tab-socialLinks, #tab-notifications').removeClass('active');
 }
-function getProfile(tab) {
+function getProfile(tab, id='#tabContent') {
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -32,60 +32,10 @@ function getProfile(tab) {
         type: 'GET',
         url: 'getProfile' + tab,
         success: function (data) {
-            $('#tabContent').html(data);
+            $(id).html(data);
         },
     });
 }
-$(document).ready(function () {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $(document).on('click', '#saveChangesGeneral', function (e) {
-        setTimeout(function () {
-            $('.alert-success').addClass('invisible');
-            $('.alert-danger').addClass('invisible');
-        }, 3000);
-        var email = $('#email').val();
-        var name = $('#name').val();
-        var city = $('#city').val();
-        var form_data = new FormData();
-        form_data.append('name', name);
-        form_data.append('email', email);
-        form_data.append('city', city);
-        let tab = 'General';
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: 'editChagesGeneral',
-            data: form_data,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                getProfile(tab);
-                var messages = $('.messages');
-                var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
-                    '<i class="bi bi-check2"></i>' +
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
-                    '</div>';
-                $(messages).html(successHtml);
-            },
-            error: function (data) {
-                var errors = data.responseJSON.message;
-                var errorsHtml= '';
-                $.each( errors, function( key, value ) {
-                    errorsHtml += '<div class="alert alert-danger" style="border-radius: 15px">'+
-                        '<i class="bi bi-exclamation-circle"></i> &ensp; '+
-                        '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
-                        '</div>';
-                });
-                $('.messages').html(errorsHtml);
-            }
-        });
-    });
-});
 
 $(document).ready(function () {
     $.ajaxSetup({
@@ -94,11 +44,14 @@ $(document).ready(function () {
         }
     });
     $(document).on('click', '#saveChanges', function (e) {
+        let btn_saveChanges = $('#saveChanges')
+        btn_saveChanges.html('Loading...').sleep(2000).html('ДАННЫЕ ОТПРАВЛЕНЫ');
         setTimeout(function () {
-            $('.alert-success').addClass('invisible');
-            $('.alert-danger').addClass('invisible');
+            btn_saveChanges.removeClass('btn-edit-change')
+            btn_saveChanges.removeClass('btn-failed-change')
+            btn_saveChanges.addClass('btn-save-change')
         }, 3000);
-        var data = $("#editForm").serialize();
+        let data = $("#editForm").serialize();
         e.preventDefault();
         let tab = 'Edit';
         $.ajax({
@@ -107,102 +60,17 @@ $(document).ready(function () {
             data: data,
             success: function (data) {
                 getProfile(tab);
-                var messages = $('.messages');
-                var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
-                    '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
-                    '</div>';
-                $(messages).html(successHtml);
+                btn_saveChanges.removeClass('btn-save-change')
+                btn_saveChanges.addClass('btn-edit-change')
+                btn_saveChanges.html(data.message).sleep(2000).html('Сохранить');
             },
-            error: function (data) {
-                console.log("error");
+            error: function (xhr, status, error) {
+                btn_saveChanges.addClass('btn-failed-change')
+                btn_saveChanges.html(xhr.responseJSON.message[0]).sleep(2000).html('Сохранить');
             }
         });
     });
 });
-$(document).ready(function () {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $(document).on('click', '#saveChangesInfo', function (e) {
-        setTimeout(function () {
-            $('.alert-success').addClass('invisible');
-            $('.alert-danger').addClass('invisible');
-        }, 3000);
-        var data = $("#infoForm").serialize();
-        e.preventDefault();
-        let tab = 'Info';
-        $.ajax({
-            type: 'POST',
-            url: 'editChagesInfo',
-            data: data,
-            success: function (data) {
-                getProfile(tab);
-                var messages = $('.messages');
-                var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
-                    '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
-                    '</div>';
-                $(messages).html(successHtml);
-            },
-            error: function (data) {
-                var errors = data.responseJSON.message;
-                var errorsHtml= '';
-                $.each( errors, function( key, value ) {
-                    errorsHtml += '<div class="alert alert-danger" style="border-radius: 15px">'+
-                        '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
-                        '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
-                        '</div>';
-                });
-                $('.messages').html(errorsHtml);
-            }
-        });
-    });
-});
-$(document).ready(function () {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $(document).on('click', '#saveChangesSocialLinks', function (e) {
-        setTimeout(function () {
-            $('.alert-success').addClass('invisible');
-            $('.alert-danger').addClass('invisible');
-        }, 3000);
-        var data = $("#socialLinksForm").serialize();
-        e.preventDefault();
-        let tab = 'SocialLinks';
-        $.ajax({
-            type: 'POST',
-            url: 'editChagesSocialLinks',
-            data: data,
-            success: function (data) {
-                getProfile(tab);
-                var messages = $('.messages');
-                var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
-                    '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
-                    '</div>';
-                $(messages).html(successHtml);
-            },
-            error: function (data) {
-                var errors = data.responseJSON.message;
-                var errorsHtml= '';
-                $.each( errors, function( key, value ) {
-                    errorsHtml += '<div class="alert alert-danger" style="border-radius: 15px">'+
-                        '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
-                        '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
-                        '</div>';
-                });
-                $('.messages').html(errorsHtml);
-            }
-        });
-    });
-});
-
 var $modal = $('#modal');
 var image = document.getElementById('image');
 var cropper;
@@ -254,10 +122,13 @@ $("#crop").click(function () {
         reader.readAsDataURL(blob);
         reader.onloadend = function () {
             var base64data = reader.result;
-            var tab = 'General';
+            var tab = 'Sidebar';
+            let btn_saveChanges = $('#saveChanges')
+            btn_saveChanges.html('Loading...').sleep(2000).html('ДАННЫЕ ОТПРАВЛЕНЫ');
             setTimeout(function () {
-                $('.alert-success').addClass('invisible');
-                $('.alert-danger').addClass('invisible');
+                btn_saveChanges.removeClass('btn-edit-change')
+                btn_saveChanges.removeClass('btn-failed-change')
+                btn_saveChanges.addClass('btn-save-change')
             }, 3000);
             $.ajax({
                 type: "POST",
@@ -266,22 +137,16 @@ $("#crop").click(function () {
                 data: { '_token': $('meta[name="_token"]').attr('content'), 'image': base64data },
                 success: function (data) {
                     $modal.modal('hide');
-                    getProfile(tab);
-                    var messages = $('.messages');
-                    var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
-                    '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
-                    '</div>';
-                    $(messages).html(successHtml);
+                    getProfile(tab, '#sidebar');
+                    getProfile('Edit');
+                    btn_saveChanges.removeClass('btn-save-change')
+                    btn_saveChanges.addClass('btn-edit-change')
+                    btn_saveChanges.html(data.message).sleep(2000).html('Сохранить');
                 },
-                error: function (data) {
+                error: function (xhr, status, error) {
                     $modal.modal('hide');
-                    var messages = $('.messages');
-                    var successHtml = '<div class="alert alert-danger" style="border-radius: 15px">'+
-                    '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ data.responseJSON.message +
-                    '</div>';
-                    $(messages).html(successHtml);
+                    btn_saveChanges.addClass('btn-failed-change')
+                    btn_saveChanges.html(xhr.responseJSON.message[0]).sleep(2000).html('Сохранить');
                 }
             });
         }
@@ -292,7 +157,33 @@ $(document).ready(function () {
     $modal.modal('hide');
 })
 });
-
+$(document).ready(function () {
+    $(document).on('click', '#opt1', function (e) {
+        let checked = 0;
+        if (document.querySelector('#opt1:checked')) {
+            checked = 1;
+        }
+        document.getElementById('opt1').value = checked;
+    })
+});
+$(document).ready(function () {
+    $(document).on('click', '#opt2', function (e) {
+        let checked = 0;
+        if (document.querySelector('#opt2:checked')) {
+            checked = 1;
+        }
+        document.getElementById('opt2').value = checked;
+    })
+});
+$(document).ready(function () {
+    $(document).on('click', '#opt3', function (e) {
+        let checked = 0;
+        if (document.querySelector('#opt3:checked')) {
+            checked = 1;
+        }
+        document.getElementById('opt3').value = checked;
+    })
+});
 // if(Cookies.get("_hidemode") === "Enabled"){
 //     let id = $('.comment').val();
 //     $('#commentField_'+id).slideUp();

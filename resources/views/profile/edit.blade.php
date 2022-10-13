@@ -18,7 +18,7 @@
         <div class="form-group row">
             <label class="col-lg-3 col-form-label form-control-label">Город</label>
             <div class="col-lg-6">
-                <input type="text" name="city_name" id="city" class="form-control" value="{{$user->city_name}}" required>
+                <input type="text" name="city_name" id="city" class="form-control" value="{{$user->city_name}}">
             </div>
         </div>
         <div class="form-group row"><label
@@ -88,23 +88,6 @@
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-lg-9">
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#faq-content-1">
-                            Что означают эти шкалы внизу?
-                        </button>
-                    </h2>
-                    <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
-                        <div class="accordion-body">
-                            Опыт подготовки от 0 до 5 , по своему ощущению, на сколько часто вы крутили.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
             <label class="col-lg-3 col-form-label form-control-label">Опыт подготовки местных соревнований</label>
             <div class="col-lg-9">
                 <input type="range" min="0" max="5" step="1" value="{{$user->exp_local}}" id="foo"
@@ -127,13 +110,13 @@
             <div class="col-lg-9">
                     @foreach($categories as $category)
                     <div class="form-check form-switch">
-                        <input class="form-check-input" name="active" data-name="categories[{{$category->id}}]" type="checkbox" id="flexSwitchCheckChecked" checked value="1">
+                        <input class="form-check-input" name="categories[{{$category->id}}]" type="checkbox" id="flexSwitchCheckChecked" checked value="1">
                         <label class="form-check-label" for="flexSwitchCheckChecked">{{$category->category_name}}</label>
                     </div>
                     @endforeach
                     @foreach($notCategories as $category)
                     <div class="form-check form-switch">
-                        <input class="form-check-input" name="active" data-name="categories[{{$category->id}}]" type="checkbox" id="flexSwitchCheckDefault" value="0">
+                        <input class="form-check-input" name="categories[{{$category->id}}]" type="checkbox" id="flexSwitchCheckDefault" value="0">
                         <label class="form-check-label" for="flexSwitchCheckDefault">{{$category->category_name}}</label>
                     </div>
                     @endforeach
@@ -189,48 +172,38 @@
         <hr>
         <div class="form-group row">
             <div class="checkbox">
-              @if(!$user->active_status)
                 <div class="form-check form-switch">
-                    <input class="form-check-input" name="active" type="checkbox" id="flexSwitchCheckDefault" value="1">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Скрыть мое резюме</label>
+                @if($user->active_status === 1)
+                    <input class="form-check-input" name="active" id="opt3" type="checkbox" checked value="{{$user->active_status}}">
+                @else
+                    <input class="form-check-input" name="active" id="opt3" type="checkbox" value="{{$user->active_status}}">
+                @endif
+                    <label class="form-check-label" for="flexSwitchCheckChecked1">Скрыть мое резюме</label>
                 </div>
-              @else
-                <div class="form-check form-switch">
-                    <input class="form-check-input" name="active" type="checkbox" id="flexSwitchCheckChecked" checked value="0">
-                    <label class="form-check-label" for="flexSwitchCheckChecked">Скрыть мое резюме</label>
-                </div>
-              @endif
             </div>
         </div>
         <div class="form-group row">
             <div class="checkbox">
-              @if(!$user->other_city)
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" name="otherCity" type="checkbox" id="flexSwitchCheckDefault" value="1">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Не готов ездить в другие города</label>
-                    </div>
-              @else
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" name="otherCity" type="checkbox" id="flexSwitchCheckChecked" checked value="0">
-                        <label class="form-check-label" for="flexSwitchCheckChecked">Не готов ездить в другие города</label>
-                    </div>
-              @endif
+                <div class="form-check form-switch">
+                @if($user->other_city === 1)
+                    <input class="form-check-input" name="otherCity" id="opt2" type="checkbox" checked value="{{$user->other_city}}">
+                @else
+                    <input class="form-check-input" name="otherCity" id="opt2" type="checkbox" value="{{$user->other_city}}">
+                @endif
+                    <label class="form-check-label" for="opt2">Не готов ездить в другие города</label>
+                </div>
             </div>
         </div>
         <div class="form-group row">
             <div class="checkbox">
-              @if(!$user->all_time)
                 <div class="form-check form-switch">
-                    <input class="form-check-input" name="allTime" type="checkbox" id="flexSwitchCheckDefault" value="1">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">В поиске работы на постоянной основе</label>
+                    @if($user->all_time === 1)
+                        <input class="form-check-input" name="allTime" id="opt1" type="checkbox" checked value="{{$user->all_time}}">
+                    @else
+                        <input class="form-check-input" name="allTime" id="opt1" type="checkbox" value="{{$user->all_time}}">
+                    @endif
+                        <label class="form-check-label" for="opt1">В поиске работы на постоянной основе</label>
                 </div>
-              @else
-              <div class="form-check form-switch">
-                <input class="form-check-input" name="allTime" type="checkbox" id="flexSwitchCheckChecked" checked value="0">
-                <label class="form-check-label" for="flexSwitchCheckChecked">В поиске работы на постоянной основе</label>
-              </div>
-              @endif
-
             </div>
         </div>
         <div class="form-group row">
@@ -239,7 +212,21 @@
               <a href="profile/{{$user->id}}">мой профиль</a>
             </div>
         </div>
-        <button id="saveChanges" type="button" class="btn btn-submit" style="color: white!important;">Сохранить</button>
+        <button id="saveChanges" type="button" class="btn btn-save-change">Сохранить</button>
         <div id="ajax-alert" class="alert" style="display:none"></div>
     </form>
 </div>
+<script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/xml4jquery.js') }}"></script>
+<script>
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        $(document).ready(function () {
+            {
+                $('#saveChanges').addClass('button-mobile-fixed');
+            }
+        });
+    }
+    $('textarea').on('input', function () {
+        $(this).outerHeight(38).outerHeight(this.scrollHeight);
+    });
+</script>

@@ -10,7 +10,9 @@
             <div id="snippetContent">
                 <div class="container">
                     <div class="row">
-                        @include('profile.sidebar')
+                        <div class="col-lg-4" id="sidebar">
+                            @include('profile.sidebar')
+                        </div>
                         <div class="col-lg-8">
                             <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
                                  aria-hidden="true">
@@ -53,7 +55,7 @@
                                             <a id="general" data-toggle="pill"
                                                class="nav-link active show">
                                                 <i class="icon-user"></i>
-                                                <span class="hidden-xs">Профиль</span>
+                                                <span class="hidden-xs">Инфо</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
@@ -65,7 +67,7 @@
                                         <li class="nav-item">
                                             <a id="edit" data-toggle="pill" class="nav-link">
                                                 <i class="icon-note"></i>
-                                                <span class="hidden-xs">Изменить данные</span>
+                                                <span class="hidden-xs">Опции</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -81,25 +83,15 @@
             </div>
         </section>
     </div>
-
-                        <div class="container light-style flex-grow-1 container-p-y">
-                            <h4 class="font-weight-bold py-3 mb-4">
-                                Личный кабинет
-                            </h4>
-                            <div class="card overflow-hidden" style="background-color: #8080800a">
-                                <div class="row no-gutters row-bordered row-border-light">
-                                    <div class="col-md-9">
-                                        <div id="tabContent" class="tab-content">
-
-                                            <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
+        <script>
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                $(document).ready(function () {
+                    {
+                        $('#saveChanges').addClass('button-mobile-fixed');
+                    }
+                });
+            }
+        </script>
         <script type="text/javascript" src="{{ asset('js/profile.js') }}"></script>
 @endsection
 

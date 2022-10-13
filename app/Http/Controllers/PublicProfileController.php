@@ -19,6 +19,9 @@ class PublicProfileController extends Controller
 {
     public function indexPublic($id,Request $request) {
         $user = User::find($id);
+        if(!$user){
+            return view('errors.404');
+        }
         $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');
         $categories = Category::whereIn('id', $userAndCategories)->get();
         $reviews = Rating::where('user_id', '=', $id);

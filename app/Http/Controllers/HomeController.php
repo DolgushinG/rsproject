@@ -10,6 +10,8 @@ use App\Models\User;
 use App\Models\Category;
 
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -72,7 +74,6 @@ class HomeController extends Controller
     {
         return view('support');
     }
-
     public function indexVerificationPage()
     {
         return view('verificationPage');

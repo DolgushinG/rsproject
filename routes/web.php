@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth','verified', 'is_routesetter'])->group(function () {
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
     Route::get('/getProfileGeneral', [App\Http\Controllers\ProfileController::class, 'getTabContentGeneral'])->name('getProfileGeneral');
+    Route::get('/getProfileSidebar', [App\Http\Controllers\ProfileController::class, 'getTabContentSidebar'])->name('getProfileSidebar');
     Route::get('/getProfileReviews', [App\Http\Controllers\ProfileController::class, 'getTabContentReviews'])->name('getTabContentReviews');
     Route::get('/getProfileEdit', [App\Http\Controllers\ProfileController::class, 'getTabContentEdit'])->name('getTabContentEdit');
     Route::post('/editChanges', [App\Http\Controllers\ProfileController::class, 'editChanges'])->name('editChanges');
@@ -40,7 +41,6 @@ Route::middleware(['auth','verified', 'is_organizer'])->group(function () {
     Route::get('/organizer/profile/getProfileGeneralOrganizer', [App\Http\Controllers\ProfileController::class, 'getTabContentGeneralOrganizer'])->name('getProfileGeneralOrganizer');
     Route::post('/organizer/profile/editChangesGeneralOrganizer', [App\Http\Controllers\ProfileController::class, 'editTabContentGeneralOrganizer'])->name('editChangesGeneralOrganizer');
 });
-
 //public
 Route::get('/climbing-holds', [App\Http\Controllers\HoldsController::class, 'index'])->name('climbing-holds');
 Route::get('/climbing-holds/holds', [App\Http\Controllers\HoldsController::class, 'holds']);

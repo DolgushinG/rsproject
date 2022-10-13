@@ -392,6 +392,10 @@ h6{
 #theme-toggle:hover {
     cursor: pointer;
 }
+
+.button-mobile-fixed_hidden{
+    display: none
+}
 .cookie-policy__card {
     width: 360px;
     position: fixed;
@@ -409,6 +413,7 @@ h6{
 
 
 @media screen and (max-width: 767px) {
+
     .android {
         margin-right: 120px!important;
     }
@@ -478,6 +483,7 @@ h6{
 }
 
 @media screen and (max-width: 386px) {
+
     .searchUser{
         font-size: 14px!important;
         padding: 0 !important;
@@ -496,6 +502,7 @@ h6{
     }
 }
 @media screen and (max-width: 360px) {
+
     .page-wrapper {
         margin-bottom: 1rem!important;
     }
@@ -627,7 +634,51 @@ section {
   font-weight: 700;
   color: #012970;
 }
+.btn-edit-change{
+    background-color: green!important;
+    color: white!important;
+    margin-top: 32px;
+    width: 100%;
+    font-family: inherit;
+}
+.btn-failed-change{
+    background-color: rgba(169, 0, 0, 0.92) !important;
+    color: white!important;
+    margin-top: 32px;
+    width: 100%;
+    font-family: inherit;
+}
+.btn-save-change:hover{
+    background-color: #0054a8;
 
+}
+.button-mobile-fixed{
+    width: 360px;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    padding: 12px 30px;
+    background-color: #007bff;
+    border-radius: 30px;
+    z-index: 99
+}
+.btn-save-change{
+    margin-top: 32px;
+    width: 100%;
+    font-family: inherit;
+    background-color: #007bff;
+    color: white!important;
+}
+.alert-save-up-btn{
+    width: 360px;
+    position: fixed!important;
+    left: 0px;
+    bottom: 23px;
+    padding: 12px 30px;
+    background-color: rgba(65, 84, 241, 0.51);
+    border-radius: 30px;
+    z-index: 99
+}
 @media (max-width: 768px) {
   .section-header p {
     font-size: 28px;
@@ -933,7 +984,7 @@ section {
 }
 
 .navbar-mobile {
-  position: fixed;
+  position: fixed!important;
   overflow: hidden;
   top: 0;
   right: 0;

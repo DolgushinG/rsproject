@@ -90,6 +90,12 @@ class User extends Authenticatable implements MustVerifyEmail, Viewable
         $routesetter = Routesetter::where('user_id','=', $user_id)->get('user_id');
         return count($routesetter) !== 0;
     }
+
+    public function is_admin()
+    {
+        $user_id = Auth()->user()->id;
+        return $user_id === 30;
+    }
     /**
      *
      * Send the password reset notification.
