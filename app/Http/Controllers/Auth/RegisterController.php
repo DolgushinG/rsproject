@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 use App\Mail\NewUser;
 use App\Models\Organizer;
+use App\Models\Routesetter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -139,6 +140,10 @@ class RegisterController extends Controller
                 'average_rating' => 0,
                 'photo' => 'images/users/defaultAvatar.jpeg',
             ]);
+            $routesetter = new Routesetter;
+            $routesetter->user_id = $user->id;
+            $routesetter->save();
+
             foreach ($data['categories'] as $id => $x) {
                 $userAndCategory = new UserAndCategories;
                 $userAndCategory->user_id = $user->id;
