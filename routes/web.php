@@ -31,15 +31,16 @@ Route::middleware(['auth','verified', 'is_routesetter'])->group(function () {
 
 });
 Route::middleware(['auth','verified', 'is_organizer'])->group(function () {
-    Route::get('/organizer/profile', [App\Http\Controllers\ProfileController::class, 'indexOrganizer'])->name('profile.organizer');
-    Route::get('/organizer/profile/getProfileCurrentEvent', [App\Http\Controllers\ProfileController::class, 'getTabContentCurrentEvent'])->name('getProfileCurrentEvent');
-    Route::get('/organizer/profile/getProfileCreateEvent', [App\Http\Controllers\ProfileController::class, 'getTabContentCreateEvent'])->name('getProfileCreateEvent');
-    Route::get('/organizer/profile/getProfilePreviewsEvent', [App\Http\Controllers\ProfileController::class, 'getTabContentPreviewsEvent'])->name('getProfilePreviewsEvent');
-    Route::post('/organizer/profile/editChangesCreateEvent', [App\Http\Controllers\ProfileController::class, 'editChangesCreateEvent'])->name('editChangesCreateEvent');
-    Route::post('/organizer/profile/editChangesCurrentEvent', [App\Http\Controllers\ProfileController::class, 'editChangesCurrentEvent'])->name('editChangesCurrentEvent');
-    Route::post('/organizer/profile/editChangesPreviewsEvent', [App\Http\Controllers\ProfileController::class, 'editChangesPreviewsEvent'])->name('editChangesPreviewsEvent');
-    Route::get('/organizer/profile/getProfileGeneralOrganizer', [App\Http\Controllers\ProfileController::class, 'getTabContentGeneralOrganizer'])->name('getProfileGeneralOrganizer');
-    Route::post('/organizer/profile/editChangesGeneralOrganizer', [App\Http\Controllers\ProfileController::class, 'editTabContentGeneralOrganizer'])->name('editChangesGeneralOrganizer');
+    Route::get('/organizer/profile', [App\Http\Controllers\ProfileOrganizerController::class, 'indexOrganizer'])->name('profile.organizer');
+    Route::get('/organizer/profile/dashboard', [App\Http\Controllers\ProfileOrganizerController::class, 'dashboard'])->name('profile.organizer.dashboard');
+    Route::get('/organizer/profile/getProfileCurrentEvent', [App\Http\Controllers\ProfileOrganizerController::class, 'getTabContentCurrentEvent'])->name('getProfileCurrentEvent');
+    Route::get('/organizer/profile/create/event', [App\Http\Controllers\ProfileOrganizerController::class, 'ContentCreateEvent'])->name('create.event');
+    Route::get('/organizer/profile/getProfilePreviewsEvent', [App\Http\Controllers\ProfileOrganizerController::class, 'getTabContentPreviewsEvent'])->name('getProfilePreviewsEvent');
+    Route::post('/organizer/profile/editChangesCreateEvent', [App\Http\Controllers\ProfileOrganizerController::class, 'editChangesCreateEvent'])->name('editChangesCreateEvent');
+    Route::post('/organizer/profile/editChangesCurrentEvent', [App\Http\Controllers\ProfileOrganizerController::class, 'editChangesCurrentEvent'])->name('editChangesCurrentEvent');
+    Route::post('/organizer/profile/editChangesPreviewsEvent', [App\Http\Controllers\ProfileOrganizerController::class, 'editChangesPreviewsEvent'])->name('editChangesPreviewsEvent');
+    Route::get('/organizer/profile/getProfileGeneralOrganizer', [App\Http\Controllers\ProfileOrganizerController::class, 'getTabContentGeneralOrganizer'])->name('getProfileGeneralOrganizer');
+    Route::post('/organizer/profile/editChangesGeneralOrganizer', [App\Http\Controllers\ProfileOrganizerController::class, 'editTabContentGeneralOrganizer'])->name('editChangesGeneralOrganizer');
 });
 //public
 Route::get('/climbing-holds', [App\Http\Controllers\HoldsController::class, 'index'])->name('climbing-holds');

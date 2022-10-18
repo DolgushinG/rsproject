@@ -2400,19 +2400,8 @@ section {
     animation: animate-loading 1s linear infinite;
 }
 
-.contact2 .php-email-form-add-new input, .contact2 .php-email-form-add-new textarea {
-    border-radius: 0;
-    box-shadow: none;
-    font-size: 14px;
-    border-radius: 0;
-}
-
 .contact2 .php-email-form-add-new input:focus, .contact2 .php-email-form-add-new textarea:focus {
     border-color: #4154f1;
-}
-
-.contact2 .php-email-form-add-new input {
-    padding: 10px 15px;
 }
 
 .contact2 .php-email-form-add-new textarea {

@@ -19,6 +19,7 @@ class ClimbingGymController extends Controller
     }
 
     public function addClimbingGyms(Request $request){
+//        dd($request);
         $messages = array(
             'name.required' => 'Name required',
             'region.required' => 'Region required',

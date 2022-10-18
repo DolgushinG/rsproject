@@ -1,18 +1,29 @@
-$('#general_organizer').addClass('active');
-$(document).on('click', '#general_organizer', function () {
+// $('#general_organizer').addClass('active');
+setCookie('tab', 'dashboard')
+
+$(document).ready(function () {
+    let tab = $('#'+currTab)
     deactivateAllTabs();
-    $('#general_organizer').addClass('active');
-    getProfile('GeneralOrganizer');
+    tab.removeClass('navigation__tab');
+    tab.addClass('navigation__active');
+});
+$(document).on('click', '#dashboard', function () {
+    // deactivateAllTabs();
+    // $('#general_organizer').addClass('active');
+    getContent('dashboard');
+    setCookie('tab', 'dashboard')
 });
 $(document).on('click', '#create_event', function () {
     deactivateAllTabs();
-    $('#create_event').addClass('active');
-    getProfile('CreateEvent');
+    let createEvent = $('#create_event')
+    createEvent.addClass('navigation__active');
+    setCookie('tab', 'create_event')
 });
 $(document).on('click', '#previews_event', function () {
     deactivateAllTabs();
     $('#previews_event').addClass('active');
-    getProfile('PreviewsEvent');
+    // getProfile('PreviewsEvent');
+    setCookie('tab', 'create_event')
 });
 $(document).on('click', '#current_event', function () {
     deactivateAllTabs();
@@ -20,10 +31,9 @@ $(document).on('click', '#current_event', function () {
     getProfile('CurrentEvent');
 });
 function deactivateAllTabs() {
-    $('#general_organizer, #create_event, #previews_event, #current_event').removeClass('active');
+    $('#general_organizer, #create_event, #previews_event, #current_event').removeClass('navigation__active');
 }
-function getProfile(tab) {
-    console.log(tab);
+function getContent(tab) {
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -31,9 +41,10 @@ function getProfile(tab) {
     });
     $.ajax({
         type: 'GET',
-        url: '/organizer/profile/getProfile' + tab,
+        url: '/organizer/profile/'+ tab,
         success: function (data) {
-            $('#tabContent').html(data);
+            $('#content').html(data);
+
         },
     });
 }
@@ -65,7 +76,7 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (data) {
-                getProfile(tab);
+                getContent(tab);
                 var messages = $('.messages');
                 var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
                     '<i class="bi bi-check2"></i>' +
