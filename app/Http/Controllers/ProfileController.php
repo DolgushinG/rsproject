@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Rating;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -20,60 +21,66 @@ class ProfileController extends Controller
     {
         $this->middleware(['auth','verified']);
     }
+    public function getTabContentSidebar(){
+        $user = User::find(Auth()->user()->id);
+        $reviews = Rating::where('user_id', '=', $user->id);
+        $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');
+        $categories = Category::whereIn('id', $userAndCategories)->get();
+        $notCategories = Category::whereNotIn('id', $userAndCategories)->get();
+        $foundReviews = $reviews->count();
+        $userView = views($user)->count();
+        $grades = Grade::all();
+        return view('profile.sidebar', compact(['user', 'userView', 'foundReviews','categories','notCategories','grades']));
+    }
     public function index() {
         $user = User::find(Auth()->user()->id);
-//        $status = User::checkUser($user);
-        return view('profile.index', compact('user'));
+        $reviews = Rating::where('user_id', '=', $user->id);
+        $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');
+        $categories = Category::whereIn('id', $userAndCategories)->get();
+        $notCategories = Category::whereNotIn('id', $userAndCategories)->get();
+        $foundReviews = $reviews->count();
+        $userView = views($user)->count();
+        $grades = Grade::all();
+        return view('profile.index', compact(['user', 'userView', 'foundReviews','categories','notCategories','grades']));
     }
     public function getTabContentGeneral() {
-        $user = User::find(Auth()->user()->id);
-        return view('profile.general', compact('user'));
-    }
-    public function editTabContentGeneral(Request $request) {
-        $messages = array(
-            'email.required' => 'Поле email обязательно для заполнения',
-            'city.string' => 'Поле город нужно вводить только текст',
-            'city.required' => 'Поле город обязательно для заполнения',
-            'name.required' => 'Поле имя обязательно для заполнения',
-        );
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'city' => 'required|string',
-            'email' => 'required',
-        ],$messages);
-        if ($validator->fails())
-        {
-            return response()->json(['success' => false,'message'=>$validator->errors()->all()],422);
-        }
-        $id = Auth()->user()->id;
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->city_name = $request->city;
-        if ($user->save()) {
-            return response()->json(['success' => true, 'message' => 'сохранено'], 200);
-        } else {
-            return response()->json(['success' => false, 'message' => 'ошибка сохранения'], 422);
-        }
-    }
-
-    public function getTabContentInfo() {
         $user = User::find(Auth()->user()->id);
         $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');
         $categories = Category::whereIn('id', $userAndCategories)->get();
         $notCategories = Category::whereNotIn('id', $userAndCategories)->get();
         $grades = Grade::all();
 
-        return view('profile.info', compact('user','categories','notCategories','grades'));
+        return view('profile.general', compact(['user','categories','notCategories','grades']));
     }
-    public function editChagesInfo(Request $request) {
+    public function getTabContentReviews() {
+        $user = User::find(Auth()->user()->id);
+        $reviews = Rating::where('user_id', '=', $user->id)->get();
+        return view('profile.reviews', compact('user', 'reviews'));
+    }
+    public function getTabContentEdit() {
+        $user = User::find(Auth()->user()->id);
+        $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');
+        $categories = Category::whereIn('id', $userAndCategories)->get();
+        $notCategories = Category::whereNotIn('id', $userAndCategories)->get();
+        $grades = Grade::all();
+        return view('profile.edit', compact(['user','categories','notCategories','grades']));
+    }
+    public function editChanges(Request $request) {
         $messages = array(
+            'city.string' => 'Поле город нужно вводить только текст',
+            'city.required' => 'Поле город обязательно для заполнения',
+            'name.required' => 'Поле имя обязательно для заполнения',
             'salaryHour.required' => 'Поле оплата за час обязательно для заполнения',
             'salaryHour.numeric' => 'Поле оплата за час нужно вводить только цифры',
             'salaryRouteBouldering.numeric' => 'Поле оплата за трассу боулдеринг нужно вводить только цифры',
             'categories.required' => 'Укажите область накрутки, должна быть хотя бы одна область',
             'salaryRouteRope.numeric' => 'Поле оплата за трассу трудность нужно вводить только цифры',
+            'contact.required' => 'Поле контакт для связи обязательно для заполнения',
         );
         $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'city_name' => 'required|string',
+            'contact' => 'required',
             'salaryHour' => 'nullable|numeric',
             'salaryRouteBouldering' => 'numeric|nullable',
             'salaryRouteRope' => 'numeric|nullable',
@@ -81,9 +88,10 @@ class ProfileController extends Controller
         ],$messages);
         if ($validator->fails())
         {
-            return response()->json(['success' => false,'message'=>$validator->errors()->all()],422);
+            return response()->json(['error' => true,'message'=>$validator->errors()->all()],422);
         }
         $user = User::find(Auth()->user()->id);
+        $user->name = $request->name;
         $user->description = $request->description;
         $user->exp_level = $request->exp_level;
         $user->educational_requirements = $request->educational_requirements;
@@ -95,13 +103,20 @@ class ProfileController extends Controller
         $user->salary_route_bouldering = $request->salaryRouteBouldering;
         $user->company = $request->company;
         $user->grade = $request->grade;
-
+        $user->active_status = intval($request->active);
+        $user->other_city = intval($request->otherCity);
+        $user->city_name = $request->city_name;
+        $user->all_time = intval($request->allTime);
+        $user->telegram = $request->telegram;
+        $user->instagram = $request->instagram;
+        $user->contact = $request->contact;
         $notCategories = Category::whereNotIn('id', $request->categories)->get();
+
         foreach($notCategories as $notCategory){
-           $match = UserAndCategories::where('user_id','=',$user->id)->where('category_id','=',$notCategory->id)->get()->count();
-           if($match) {
-            UserAndCategories::where('user_id','=',$user->id)->where('category_id','=',$notCategory->id)->delete();
-           }
+            $match = UserAndCategories::where('user_id','=',$user->id)->where('category_id','=',$notCategory->id)->get()->count();
+            if($match) {
+                UserAndCategories::where('user_id','=',$user->id)->where('category_id','=',$notCategory->id)->delete();
+            }
         }
         foreach($request->categories as $id => $x){
             $userAndCategory = new UserAndCategories;
@@ -112,55 +127,11 @@ class ProfileController extends Controller
                 $userAndCategory->save();
             }
         }
-        $user->save();
         if ($user->save()) {
-            return response()->json(['success' => true, 'message' => 'сохранено'], 200);
+            return response()->json(['success' => true, 'message' => 'Успешно сохранено'], 200);
         } else {
-            return response()->json(['success' => false, 'message' => 'ошибка сохранения'], 422);
+            return response()->json(['success' => false, 'message' => 'Ошибка сохранения'], 422);
         }
     }
-
-    public function getTabContentNotifications() {
-        $user = User::find(Auth()->user()->id);
-        return view('profile.notifications', compact('user'));
-    }
-    public function editChagesNotifications(Request $request) {
-        $user = User::find(Auth()->user()->id);
-        $user->active_status = intval($request->active);
-        $user->other_city = intval($request->otherCity);
-        $user->all_time = intval($request->allTime);
-        if ($user->save()) {
-            return response()->json(['success' => true, 'message' => 'сохранено'], 200);
-        } else {
-            return response()->json(['success' => false, 'message' => 'ошибка сохранения'], 422);
-        }
-    }
-    public function getTabContentSocialLinks() {
-        $user = User::find(Auth()->user()->id);
-        return view('profile.socialLinks', compact('user'));
-    }
-
-    public function editChagesSocialLinks(Request $request) {
-        $messages = array(
-            'contact.required' => 'Поле контакт для связи обязательно для заполнения',
-        );
-        $validator = Validator::make($request->all(), [
-            'contact' => 'required',
-        ],$messages);
-        if ($validator->fails())
-        {
-            return response()->json(['success' => false,'message'=>$validator->errors()->all()],422);
-        }
-        $user = User::find(Auth()->user()->id);
-        $user->telegram = $request->telegram;
-        $user->instagram = $request->instagram;
-        $user->contact = $request->contact;
-        if ($user->save()) {
-            return response()->json(['success' => true, 'message' => 'сохранено'], 200);
-        } else {
-            return response()->json(['success' => false, 'message' => 'ошибка сохранения'], 422);
-        }
-    }
-
 
 }

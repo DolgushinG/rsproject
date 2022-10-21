@@ -28,6 +28,13 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    protected function redirectTo(): string
+    {
+        if (auth()->user()->is_organizator()) {
+            return RouteServiceProvider::HOME_ORGANIZATOR;
+        }
+        return RouteServiceProvider::HOME;
+    }
     /**
      * Create a new controller instance.
      *
@@ -37,4 +44,5 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
 }

@@ -1,34 +1,28 @@
-$('#general').addClass('active');
+$('#tab-general').addClass('active');
 $(document).on('click', '#general', function () {
     deactivateAllTabs();
-    $('#general').addClass('active');
+    $('#tab-general').addClass('active');
     getProfile('General');
 });
-$(document).on('click', '#info', function () {
+$(document).on('click', '#edit', function () {
     deactivateAllTabs();
-    $('#info').addClass('active');
-    getProfile('Info');
+    $('#tab-edit').addClass('active');
+    getProfile('Edit');
 });
 $(document).on('click', '#socialLinks', function () {
     deactivateAllTabs();
-    $('#socialLinks').addClass('active');
+    $('#tab-socialLinks').addClass('active');
     getProfile('SocialLinks');
 });
-$(document).on('click', '#connections', function () {
+$(document).on('click', '#reviews', function () {
     deactivateAllTabs();
-    $('#connections').addClass('active');
-    getProfile('Connections');
-});
-$(document).on('click', '#notifications', function () {
-    deactivateAllTabs();
-    $('#notifications').addClass('active');
-    getProfile('Notifications');
+    $('#tab-reviews').addClass('active');
+    getProfile('Reviews');
 });
 function deactivateAllTabs() {
-    $('#general, #info, #socialLinks, #connections, #notifications').removeClass('active');
+    $('#tab-general, #tab-info, #tab-socialLinks, #tab-notifications').removeClass('active');
 }
-function getProfile(tab) {
-    console.log(tab);
+function getProfile(tab, id='#tabContent') {
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -38,60 +32,10 @@ function getProfile(tab) {
         type: 'GET',
         url: 'getProfile' + tab,
         success: function (data) {
-            $('#tabContent').html(data);
+            $(id).html(data);
         },
     });
 }
-$(document).ready(function () {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $(document).on('click', '#saveChangesGeneral', function (e) {
-        setTimeout(function () {
-            $('.alert-success').addClass('invisible');
-            $('.alert-danger').addClass('invisible');
-        }, 3000);
-        var email = $('#email').val();
-        var name = $('#name').val();
-        var city = $('#city').val();
-        var form_data = new FormData();
-        form_data.append('name', name);
-        form_data.append('email', email);
-        form_data.append('city', city);
-        let tab = 'General';
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: 'editChagesGeneral',
-            data: form_data,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                getProfile(tab);
-                var messages = $('.messages');
-                var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
-                    '<i class="bi bi-check2"></i>' +
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
-                    '</div>';
-                $(messages).html(successHtml);
-            },
-            error: function (data) {
-                var errors = data.responseJSON.message;
-                var errorsHtml= '';
-                $.each( errors, function( key, value ) {
-                    errorsHtml += '<div class="alert alert-danger" style="border-radius: 15px">'+
-                        '<i class="bi bi-exclamation-circle"></i> &ensp; '+
-                        '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
-                        '</div>';
-                });
-                $('.messages').html(errorsHtml);
-            }
-        });
-    });
-});
 
 $(document).ready(function () {
     $.ajaxSetup({
@@ -99,116 +43,44 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $(document).on('click', '#saveChangesNotifications', function (e) {
-        setTimeout(function () {
-            $('.alert-success').addClass('invisible');
-            $('.alert-danger').addClass('invisible');
-        }, 3000);
-        var data = $("#notificationsForm").serialize();
+    $(document).on('click', '#saveChanges', function (e) {
+        let btn_saveChanges = $('#saveChanges')
+        let data = $("#editForm").serialize();
         e.preventDefault();
-        let tab = 'Notifications';
+        let tab = 'Edit';
         $.ajax({
             type: 'POST',
-            url: 'editChagesNotifications',
+            url: 'editChanges',
             data: data,
             success: function (data) {
-                getProfile(tab);
-                var messages = $('.messages');
-                var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
-                    '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
-                    '</div>';
-                $(messages).html(successHtml);
+                btn_saveChanges.removeClass('btn-save-change')
+                btn_saveChanges.addClass('btn-edit-change')
+                btn_saveChanges.text('').append('<i id="spinner" style="margin-left: -12px;\n' +
+                    '    margin-right: 8px;" class="fa fa-spinner fa-spin"></i> Обработка...')
+                setTimeout(function () {
+                    btn_saveChanges.text(data.message)
+                }, 3000);
+                setTimeout(function () {
+                    getProfile(tab);
+                }, 4000);
             },
-            error: function (data) {
-                console.log("error");
+            error: function (xhr, status, error) {
+                btn_saveChanges.text('').append('<i id="spinner" style="margin-left: -12px;\n' +
+                    '    margin-right: 8px;" class="fa fa-spinner fa-spin"></i> Обработка...')
+                setTimeout(function () {
+                    btn_saveChanges.removeClass('btn-save-change')
+                    btn_saveChanges.addClass('btn-failed-change')
+                    btn_saveChanges.text(xhr.responseJSON.message[0])
+                }, 3000);
+                setTimeout(function () {
+                    btn_saveChanges.removeClass('btn-failed-change')
+                    btn_saveChanges.addClass('btn-save-change')
+                    btn_saveChanges.text('Cохранить')
+                }, 6000);
             }
         });
     });
 });
-$(document).ready(function () {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $(document).on('click', '#saveChangesInfo', function (e) {
-        setTimeout(function () {
-            $('.alert-success').addClass('invisible');
-            $('.alert-danger').addClass('invisible');
-        }, 3000);
-        var data = $("#infoForm").serialize();
-        e.preventDefault();
-        let tab = 'Info';
-        $.ajax({
-            type: 'POST',
-            url: 'editChagesInfo',
-            data: data,
-            success: function (data) {
-                getProfile(tab);
-                var messages = $('.messages');
-                var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
-                    '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
-                    '</div>';
-                $(messages).html(successHtml);
-            },
-            error: function (data) {
-                var errors = data.responseJSON.message;
-                var errorsHtml= '';
-                $.each( errors, function( key, value ) {
-                    errorsHtml += '<div class="alert alert-danger" style="border-radius: 15px">'+
-                        '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
-                        '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
-                        '</div>';
-                });
-                $('.messages').html(errorsHtml);
-            }
-        });
-    });
-});
-$(document).ready(function () {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $(document).on('click', '#saveChangesSocialLinks', function (e) {
-        setTimeout(function () {
-            $('.alert-success').addClass('invisible');
-            $('.alert-danger').addClass('invisible');
-        }, 3000);
-        var data = $("#socialLinksForm").serialize();
-        e.preventDefault();
-        let tab = 'SocialLinks';
-        $.ajax({
-            type: 'POST',
-            url: 'editChagesSocialLinks',
-            data: data,
-            success: function (data) {
-                getProfile(tab);
-                var messages = $('.messages');
-                var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
-                    '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
-                    '</div>';
-                $(messages).html(successHtml);
-            },
-            error: function (data) {
-                var errors = data.responseJSON.message;
-                var errorsHtml= '';
-                $.each( errors, function( key, value ) {
-                    errorsHtml += '<div class="alert alert-danger" style="border-radius: 15px">'+
-                        '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
-                        '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ value +
-                        '</div>';
-                });
-                $('.messages').html(errorsHtml);
-            }
-        });
-    });
-});
-
 var $modal = $('#modal');
 var image = document.getElementById('image');
 var cropper;
@@ -260,11 +132,8 @@ $("#crop").click(function () {
         reader.readAsDataURL(blob);
         reader.onloadend = function () {
             var base64data = reader.result;
-            var tab = 'General';
-            setTimeout(function () {
-                $('.alert-success').addClass('invisible');
-                $('.alert-danger').addClass('invisible');
-            }, 3000);
+            var tab = 'Sidebar';
+            let btn_saveChanges = $('#saveChanges')
             $.ajax({
                 type: "POST",
                 dataType: "json",
@@ -272,22 +141,32 @@ $("#crop").click(function () {
                 data: { '_token': $('meta[name="_token"]').attr('content'), 'image': base64data },
                 success: function (data) {
                     $modal.modal('hide');
-                    getProfile(tab);
-                    var messages = $('.messages');
-                    var successHtml = '<div class="alert alert-success" style="border-radius: 15px">' +
-                    '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>' +
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> ' + data.message +
-                    '</div>';
-                    $(messages).html(successHtml);
+                    btn_saveChanges.removeClass('btn-save-change')
+                    btn_saveChanges.addClass('btn-edit-change')
+                    btn_saveChanges.text('').append('<i id="spinner" style="margin-left: -12px;\n' +
+                        '    margin-right: 8px;" class="fa fa-spinner fa-spin"></i> Обработка...')
+                    setTimeout(function () {
+                        btn_saveChanges.text(data.message)
+                    }, 3000);
+                    setTimeout(function () {
+                        getProfile(tab, '#sidebar');
+                        getProfile('Edit');
+                    }, 4000);
                 },
-                error: function (data) {
+                error: function (xhr, status, error) {
                     $modal.modal('hide');
-                    var messages = $('.messages');
-                    var successHtml = '<div class="alert alert-danger" style="border-radius: 15px">'+
-                    '<button type="button" class="btn-close btn-close-black" aria-label="Close" data-dismiss="alert"></button>'+
-                    '<strong><i class="glyphicon glyphicon-ok-sign push-5-r"></strong> '+ data.responseJSON.message +
-                    '</div>';
-                    $(messages).html(successHtml);
+                    btn_saveChanges.text('').append('<i id="spinner" style="margin-left: -12px;\n' +
+                        '    margin-right: 8px;" class="fa fa-spinner fa-spin"></i> Обработка...')
+                    setTimeout(function () {
+                        btn_saveChanges.removeClass('btn-save-change')
+                        btn_saveChanges.addClass('btn-failed-change')
+                        btn_saveChanges.text(xhr.responseJSON.message[0])
+                    }, 3000);
+                    setTimeout(function () {
+                        btn_saveChanges.removeClass('btn-failed-change')
+                        btn_saveChanges.addClass('btn-save-change')
+                        btn_saveChanges.text('Cохранить')
+                    }, 6000);
                 }
             });
         }
@@ -298,7 +177,33 @@ $(document).ready(function () {
     $modal.modal('hide');
 })
 });
-
+$(document).ready(function () {
+    $(document).on('click', '#opt1', function (e) {
+        let checked = 0;
+        if (document.querySelector('#opt1:checked')) {
+            checked = 1;
+        }
+        document.getElementById('opt1').value = checked;
+    })
+});
+$(document).ready(function () {
+    $(document).on('click', '#opt2', function (e) {
+        let checked = 0;
+        if (document.querySelector('#opt2:checked')) {
+            checked = 1;
+        }
+        document.getElementById('opt2').value = checked;
+    })
+});
+$(document).ready(function () {
+    $(document).on('click', '#opt3', function (e) {
+        let checked = 0;
+        if (document.querySelector('#opt3:checked')) {
+            checked = 1;
+        }
+        document.getElementById('opt3').value = checked;
+    })
+});
 // if(Cookies.get("_hidemode") === "Enabled"){
 //     let id = $('.comment').val();
 //     $('#commentField_'+id).slideUp();

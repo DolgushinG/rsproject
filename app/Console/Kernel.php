@@ -43,7 +43,7 @@ class Kernel extends ConsoleKernel
                     'userName' => $user->name,
                     'userCity' => $user->email
                 ];
-                Mail::to('Dolgushing@yandex.ru')->send(new NewInfo($details));
+                Mail::to('Dolgushing@yandex.ru')->send(new NewUser($details));
                 User::whereNull('email_verified_at')->delete();
             }
         })->weekly();
@@ -56,7 +56,7 @@ class Kernel extends ConsoleKernel
                     'userName' => $post->title,
                     'userCity' => 'PUBLISHED'
                 ];
-                Mail::to('Dolgushing@yandex.ru')->send(new NewInfo($details));
+                Mail::to('Dolgushing@yandex.ru')->send(new NewUser($details));
                 $post->status = 'PUBLISHED';
                 $post->save();
             }
