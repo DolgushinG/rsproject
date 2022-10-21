@@ -57,11 +57,11 @@
                             @if (Route::has('register'))
                                 <li><a class="nav-link scrollto" href="{{route('register')}}">Регистрация подготовщика</a></li>
                             @endif
-                            @auth(Auth()->user()->is_admin())
+                            @if(false)
                                 @if (Route::has('register.organizer'))
                                     <li><a class="nav-link scrollto" href="{{route('register.organizer')}}">Регистрация организатора</a></li>
                                 @endif
-                            @endauth
+                            @endif
                         </ul>
                     </li>
                 @else
