@@ -22,17 +22,6 @@ class ProfileOrganizerController extends Controller
     {
         $this->middleware(['auth','verified']);
     }
-    public function getTabContentSidebar(){
-        $user = User::find(Auth()->user()->id);
-        $reviews = Rating::where('user_id', '=', $user->id);
-        $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');
-        $categories = Category::whereIn('id', $userAndCategories)->get();
-        $notCategories = Category::whereNotIn('id', $userAndCategories)->get();
-        $foundReviews = $reviews->count();
-        $userView = views($user)->count();
-        $grades = Grade::all();
-        return view('profile.sidebar', compact(['user', 'userView', 'foundReviews','categories','notCategories','grades']));
-    }
     public function index() {
         $user = User::find(Auth()->user()->id);
         $reviews = Rating::where('user_id', '=', $user->id);
@@ -53,41 +42,6 @@ class ProfileOrganizerController extends Controller
     public function indexOrganizer() {
         $organizer = User::find(Auth()->user()->id);
         return view('profileOrganizer.index', compact('organizer'));
-    }
-    public function getTabContentGeneral() {
-        $user = User::find(Auth()->user()->id);
-        $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');
-        $categories = Category::whereIn('id', $userAndCategories)->get();
-        $notCategories = Category::whereNotIn('id', $userAndCategories)->get();
-        $grades = Grade::all();
-
-        return view('profile.general', compact(['user','categories','notCategories','grades']));
-    }
-    public function editTabContentGeneral(Request $request) {
-        $messages = array(
-            'email.required' => 'Поле email обязательно для заполнения',
-            'city.string' => 'Поле город нужно вводить только текст',
-            'city.required' => 'Поле город обязательно для заполнения',
-            'name.required' => 'Поле имя обязательно для заполнения',
-        );
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'city' => 'required|string',
-            'email' => 'required',
-        ],$messages);
-        if ($validator->fails())
-        {
-            return response()->json(['success' => false,'message'=>$validator->errors()->all()],422);
-        }
-        $id = Auth()->user()->id;
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->city_name = $request->city;
-        if ($user->save()) {
-            return response()->json(['success' => true, 'message' => 'сохранено'], 200);
-        } else {
-            return response()->json(['success' => false, 'message' => 'ошибка сохранения'], 422);
-        }
     }
 
     public function getTabContentGeneralOrganizer() {
@@ -120,22 +74,6 @@ class ProfileOrganizerController extends Controller
         } else {
             return response()->json(['success' => false, 'message' => 'ошибка сохранения'], 422);
         }
-    }
-
-
-    public function getTabContentReviews() {
-        $user = User::find(Auth()->user()->id);
-        $reviews = Rating::where('user_id', '=', $user->id)->get();
-        return view('profile.reviews', compact('user', 'reviews'));
-    }
-
-    public function getTabContentEdit() {
-        $user = User::find(Auth()->user()->id);
-        $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');
-        $categories = Category::whereIn('id', $userAndCategories)->get();
-        $notCategories = Category::whereNotIn('id', $userAndCategories)->get();
-        $grades = Grade::all();
-        return view('profile.edit', compact(['user','categories','notCategories','grades']));
     }
     public function editChanges(Request $request) {
         $messages = array(

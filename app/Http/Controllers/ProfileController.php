@@ -105,7 +105,7 @@ class ProfileController extends Controller
         $user->grade = $request->grade;
         $user->active_status = intval($request->active);
         $user->other_city = intval($request->otherCity);
-        $user->city_name = intval($request->city_name);
+        $user->city_name = $request->city_name;
         $user->all_time = intval($request->allTime);
         $user->telegram = $request->telegram;
         $user->instagram = $request->instagram;

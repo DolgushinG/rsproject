@@ -45,12 +45,6 @@ $(document).ready(function () {
     });
     $(document).on('click', '#saveChanges', function (e) {
         let btn_saveChanges = $('#saveChanges')
-        btn_saveChanges.html('Loading...').sleep(2000).html('ДАННЫЕ ОТПРАВЛЕНЫ');
-        setTimeout(function () {
-            btn_saveChanges.removeClass('btn-edit-change')
-            btn_saveChanges.removeClass('btn-failed-change')
-            btn_saveChanges.addClass('btn-save-change')
-        }, 3000);
         let data = $("#editForm").serialize();
         e.preventDefault();
         let tab = 'Edit';
@@ -59,14 +53,30 @@ $(document).ready(function () {
             url: 'editChanges',
             data: data,
             success: function (data) {
-                getProfile(tab);
                 btn_saveChanges.removeClass('btn-save-change')
                 btn_saveChanges.addClass('btn-edit-change')
-                btn_saveChanges.html(data.message).sleep(2000).html('Сохранить');
+                btn_saveChanges.text('').append('<i id="spinner" style="margin-left: -12px;\n' +
+                    '    margin-right: 8px;" class="fa fa-spinner fa-spin"></i> Обработка...')
+                setTimeout(function () {
+                    btn_saveChanges.text(data.message)
+                }, 3000);
+                setTimeout(function () {
+                    getProfile(tab);
+                }, 4000);
             },
             error: function (xhr, status, error) {
-                btn_saveChanges.addClass('btn-failed-change')
-                btn_saveChanges.html(xhr.responseJSON.message[0]).sleep(2000).html('Сохранить');
+                btn_saveChanges.text('').append('<i id="spinner" style="margin-left: -12px;\n' +
+                    '    margin-right: 8px;" class="fa fa-spinner fa-spin"></i> Обработка...')
+                setTimeout(function () {
+                    btn_saveChanges.removeClass('btn-save-change')
+                    btn_saveChanges.addClass('btn-failed-change')
+                    btn_saveChanges.text(xhr.responseJSON.message[0])
+                }, 3000);
+                setTimeout(function () {
+                    btn_saveChanges.removeClass('btn-failed-change')
+                    btn_saveChanges.addClass('btn-save-change')
+                    btn_saveChanges.text('Cохранить')
+                }, 6000);
             }
         });
     });
@@ -124,12 +134,6 @@ $("#crop").click(function () {
             var base64data = reader.result;
             var tab = 'Sidebar';
             let btn_saveChanges = $('#saveChanges')
-            btn_saveChanges.html('Loading...').sleep(2000).html('ДАННЫЕ ОТПРАВЛЕНЫ');
-            setTimeout(function () {
-                btn_saveChanges.removeClass('btn-edit-change')
-                btn_saveChanges.removeClass('btn-failed-change')
-                btn_saveChanges.addClass('btn-save-change')
-            }, 3000);
             $.ajax({
                 type: "POST",
                 dataType: "json",
@@ -137,16 +141,32 @@ $("#crop").click(function () {
                 data: { '_token': $('meta[name="_token"]').attr('content'), 'image': base64data },
                 success: function (data) {
                     $modal.modal('hide');
-                    getProfile(tab, '#sidebar');
-                    getProfile('Edit');
                     btn_saveChanges.removeClass('btn-save-change')
                     btn_saveChanges.addClass('btn-edit-change')
-                    btn_saveChanges.html(data.message).sleep(2000).html('Сохранить');
+                    btn_saveChanges.text('').append('<i id="spinner" style="margin-left: -12px;\n' +
+                        '    margin-right: 8px;" class="fa fa-spinner fa-spin"></i> Обработка...')
+                    setTimeout(function () {
+                        btn_saveChanges.text(data.message)
+                    }, 3000);
+                    setTimeout(function () {
+                        getProfile(tab, '#sidebar');
+                        getProfile('Edit');
+                    }, 4000);
                 },
                 error: function (xhr, status, error) {
                     $modal.modal('hide');
-                    btn_saveChanges.addClass('btn-failed-change')
-                    btn_saveChanges.html(xhr.responseJSON.message[0]).sleep(2000).html('Сохранить');
+                    btn_saveChanges.text('').append('<i id="spinner" style="margin-left: -12px;\n' +
+                        '    margin-right: 8px;" class="fa fa-spinner fa-spin"></i> Обработка...')
+                    setTimeout(function () {
+                        btn_saveChanges.removeClass('btn-save-change')
+                        btn_saveChanges.addClass('btn-failed-change')
+                        btn_saveChanges.text(xhr.responseJSON.message[0])
+                    }, 3000);
+                    setTimeout(function () {
+                        btn_saveChanges.removeClass('btn-failed-change')
+                        btn_saveChanges.addClass('btn-save-change')
+                        btn_saveChanges.text('Cохранить')
+                    }, 6000);
                 }
             });
         }

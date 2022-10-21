@@ -212,7 +212,8 @@
               <a href="profile/{{$user->id}}">мой профиль</a>
             </div>
         </div>
-        <button id="saveChanges" type="button" class="btn btn-save-change">Сохранить</button>
+        <button id="saveChanges" type="button" class="btn btn-save-change buttonload">
+            Сохранить</button>
         <div id="ajax-alert" class="alert" style="display:none"></div>
     </form>
 </div>
