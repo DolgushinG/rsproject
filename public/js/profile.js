@@ -61,7 +61,7 @@ $(document).ready(function () {
                     btn_saveChanges.text(data.message)
                 }, 3000);
                 setTimeout(function () {
-                    getProfile(tab, '#sidebar');
+                    getProfile('Sidebar', '#sidebar');
                     getProfile(tab);
                 }, 4000);
             },
