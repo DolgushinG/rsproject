@@ -360,10 +360,10 @@ h6{
 .dark-theme .contact .php-email-form-add-event button[type="submit"]{
     color: #d7d6d6!important;
 }
-.dark-theme .accordion-flush .accordion-header h4,button{
+.dark-theme .accordion-flush .accordion-header h4,.dark-theme button{
     color: #fcfafa !important;
 }
-.dark-theme .accordion-flush .accordion-header h6,button{
+.dark-theme .accordion-flush .accordion-header h6,.dark-theme button{
     color: #d7d6d6;!important;
 }
 .dark-theme .accordion-body p{
@@ -4210,10 +4210,12 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
   padding: 0.85rem 1.5rem;
   border-color: rgba(24, 28, 33, 0.03) !important;
 }
-.list-group-item {
-    background-color: #2f354d!important;
+.light-theme .list-group-item {
+    background-color: #f8f8f8 !important;
 }
-
+.dark-theme .list-group-item {
+    background-color: rgba(7, 7, 7, 0.4) !important;
+}
 .light-style .account-settings-links .list-group-item.active {
   color: #0d6efd !important;
 }
