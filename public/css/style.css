@@ -190,8 +190,11 @@ body {
 .dark-theme .accordion-flush .accordion-button{
      transition: none;
 }
+.dark-theme .accordion-item h4 button{
+    color: white!important;
+}
 .accordion-item h4 button{
-    color: black;
+    color: black!important;
 }
 .dark-theme .bg-primary{
     background-color: rgba(5, 61, 121, 0.36)!important;
@@ -358,7 +361,7 @@ h6{
     color: #d7d6d6!important;
 }
 .dark-theme .accordion-flush .accordion-header h4,button{
-    color: #7382f5 !important;
+    color: #fcfafa !important;
 }
 .dark-theme .accordion-flush .accordion-header h6,button{
     color: #d7d6d6;!important;
@@ -1712,9 +1715,13 @@ section {
   font-weight: 600;
   border: 0;
   font-size: 18px;
-  color: #444444;
+  color: #0c0c0c!important;
   text-align: left;
 }
+.dark-theme .faq .accordion-button {
+    color: #ffffff!important;
+}
+
 
 .faq .accordion-button:focus {
   box-shadow: none;
@@ -4203,6 +4210,10 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
   padding: 0.85rem 1.5rem;
   border-color: rgba(24, 28, 33, 0.03) !important;
 }
+.list-group-item {
+    background-color: #2f354d!important;
+}
+
 .light-style .account-settings-links .list-group-item.active {
   color: #0d6efd !important;
 }
@@ -6417,9 +6428,11 @@ table #social-links ul li a{
 }
 
 .nav-pills .nav-link:hover {
-    background-color: #f4f5fa;
+    background-color: #007bff;
 }
-
+.dark-theme .nav-pills .nav-link:hover {
+    background-color: #007bff;
+}
 .nav-pills .nav-link i {
     margin-right: 2px;
     font-weight: 600;

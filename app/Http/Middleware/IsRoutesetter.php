@@ -23,4 +23,5 @@ class IsRoutesetter
         }
         return redirect(RouteServiceProvider::HOME_ORGANIZATOR);
     }
+
 }

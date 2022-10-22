@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
+use stdClass;
 use willvincent\Rateable\Rateable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -67,6 +68,18 @@ class User extends Authenticatable implements MustVerifyEmail, Viewable
     {
         return $this->hasMany(UserAndCategories::class);
     }
+
+    public function get_categories()
+    {
+        $user_id = Auth()->user()->id;
+        $categories = UserAndCategories::where('user_id','=', $user_id)->get('category_id');
+        $res = [];
+        foreach ($categories as $category){
+            $res[] = $category->category_id;
+        }
+        return $res;
+    }
+
     public function rating(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
       return $this->hasMany(Rating::class);

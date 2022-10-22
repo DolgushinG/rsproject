@@ -36,8 +36,11 @@ class ProfileController extends Controller
         $user = User::find(Auth()->user()->id);
         $reviews = Rating::where('user_id', '=', $user->id);
         $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');
+
         $categories = Category::whereIn('id', $userAndCategories)->get();
+
         $notCategories = Category::whereNotIn('id', $userAndCategories)->get();
+
         $foundReviews = $reviews->count();
         $userView = views($user)->count();
         $grades = Grade::all();
@@ -49,7 +52,6 @@ class ProfileController extends Controller
         $categories = Category::whereIn('id', $userAndCategories)->get();
         $notCategories = Category::whereNotIn('id', $userAndCategories)->get();
         $grades = Grade::all();
-
         return view('profile.general', compact(['user','categories','notCategories','grades']));
     }
     public function getTabContentReviews() {
@@ -110,8 +112,11 @@ class ProfileController extends Controller
         $user->telegram = $request->telegram;
         $user->instagram = $request->instagram;
         $user->contact = $request->contact;
-        $notCategories = Category::whereNotIn('id', $request->categories)->get();
-
+        $not = [];
+        foreach ($request->categories as $id => $x){
+            $not[] = $id;
+        }
+        $notCategories = Category::whereNotIn('id', $not)->get();
         foreach($notCategories as $notCategory){
             $match = UserAndCategories::where('user_id','=',$user->id)->where('category_id','=',$notCategory->id)->get()->count();
             if($match) {
@@ -120,7 +125,7 @@ class ProfileController extends Controller
         }
         foreach($request->categories as $id => $x){
             $userAndCategory = new UserAndCategories;
-            $UserAndCategories = UserAndCategories::where('user_id','=',$user->id)->where('category_id','=',$x)->get()->count();
+            $UserAndCategories = UserAndCategories::where('user_id','=',$user->id)->where('category_id','=',$id)->get()->count();
             if ($UserAndCategories === 0) {
                 $userAndCategory->user_id = $user->id;
                 $userAndCategory->category_id = $id;

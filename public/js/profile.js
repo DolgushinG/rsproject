@@ -178,6 +178,34 @@ $(document).ready(function () {
     $modal.modal('hide');
 })
 });
+
+function checkbox_value($id) {
+    let checked = 0;
+    if (document.querySelector($id+':checked')) {
+        checked = 1;
+    }
+    document.querySelector($id).value = checked;
+}
+$(document).ready(function () {
+    $(document).on('click', '#category1', function (e) {
+        checkbox_value('#category1')
+    })
+    $(document).on('click', '#category2', function (e) {
+        checkbox_value('#category2')
+    })
+    $(document).on('click', '#category3', function (e) {
+        checkbox_value('#category3')
+    })
+    $(document).on('click', '#category4', function (e) {
+        checkbox_value('#category4')
+    })
+    $(document).on('click', '#category5', function (e) {
+        checkbox_value('#category5')
+    })
+    $(document).on('click', '#category6', function (e) {
+        checkbox_value('#category6')
+    })
+});
 $(document).ready(function () {
     $(document).on('click', '#opt1', function (e) {
         let checked = 0;

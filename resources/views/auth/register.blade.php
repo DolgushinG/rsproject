@@ -378,7 +378,7 @@
                                     <p class="small"><label><input class="text-right" name="checkbox" id="checkboxConf" type="checkbox" checked>Я даю согласие на обработку моих <br> персональных данных
                                             в порядке и на условиях, указанных в <a href="{{route('privacyconf')}}">согласии</a></label></p>
                                     <button type="submit" class="action-button next3" name="next" value="Submit">
-                                        регистрация</button>
+                                        Регистрация</button>
                                     <input type="button" name="previous" class="previous action-button-previous" value="Назад">
                                 </fieldset>
                             </form>

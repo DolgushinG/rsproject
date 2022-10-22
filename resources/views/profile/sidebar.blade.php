@@ -30,14 +30,12 @@
 
                     <div class="col p-2">
                         <h4 class="mb-1 line-height-5">
-                            <span data-purecounter-start="0" data-purecounter-end="{{$userView}}"
-                            data-purecounter-duration="1" class="purecounter"></span>
+                            <span>{{$userView}}</span>
                         </h4>
                         <small class="mb-0 font-weight-bold">Просмотры профиля</small>
                     </div>
                     <div class="col p-2"><h4 class="mb-1 line-height-5">
-                            <span data-purecounter-start="0" data-purecounter-end="{{$foundReviews}}"
-                                  data-purecounter-duration="1" class="purecounter"></span></h4>
+                            <span>{{$foundReviews}}</span></h4>
                         <small class="mb-0 font-weight-bold">Комментариев</small></div>
                     <div class="col p-2"><h4 class="mb-1 line-height-5">{{floatval($user->average_rating)}}</h4> <small
                             class="mb-0 font-weight-bold">Рейтинг</small></div>

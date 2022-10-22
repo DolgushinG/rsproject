@@ -110,15 +110,15 @@
             <div class="col-lg-9">
                     @foreach($categories as $category)
                     <div class="form-check form-switch">
-                        <input class="form-check-input" name="categories[{{$category->id}}]" type="checkbox" id="flexSwitchCheckChecked" checked value="1">
+                        <input class="form-check-input" name="categories[{{$category->id}}]" type="checkbox"  id="category{{$category->id}}" checked value="1">
                         <label class="form-check-label" for="flexSwitchCheckChecked">{{$category->category_name}}</label>
                     </div>
                     @endforeach
                     @foreach($notCategories as $category)
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" name="categories[{{$category->id}}]" type="checkbox" id="flexSwitchCheckDefault" value="0">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">{{$category->category_name}}</label>
-                    </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" name="categories[{{$category->id}}]" type="checkbox"  id="category{{$category->id}}" value="0">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">{{$category->category_name}}</label>
+                        </div>
                     @endforeach
             </div>
         </div>
@@ -218,7 +218,7 @@
     </form>
 </div>
 <script type="text/javascript" src="{{ asset('js/ddata.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/xml4jquery.js') }}"></script>
+{{--<script type="text/javascript" src="{{ asset('js/xml4jquery.js') }}"></script>--}}
 <script>
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         $(document).ready(function () {
