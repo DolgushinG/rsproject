@@ -61,7 +61,11 @@
                                         <li class="nav-item">
                                             <a id="reviews" data-toggle="pill" class="nav-link">
                                                 <i class="icon-envelope-open"></i>
-                                                <span class="hidden-xs">Отзывы</span>
+                                                <span class="hidden-xs">Отзывы
+                                                    <span class="badge badge-primary badge-pill" title="Количество лайков"
+                                                                                     data-toggle="tooltip"
+                                                                                     data-placement="bottom">{{$foundReviews}}</span>
+                                                </span>
                                             </a>
                                         </li>
                                         <li class="nav-item">

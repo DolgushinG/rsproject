@@ -44,6 +44,7 @@ class ProfileController extends Controller
         $foundReviews = $reviews->count();
         $userView = views($user)->count();
         $grades = Grade::all();
+
         return view('profile.index', compact(['user', 'userView', 'foundReviews','categories','notCategories','grades']));
     }
     public function getTabContentGeneral() {
