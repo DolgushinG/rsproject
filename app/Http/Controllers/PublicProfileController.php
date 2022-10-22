@@ -22,6 +22,9 @@ class PublicProfileController extends Controller
         if(!$user){
             return view('errors.404');
         }
+        if($user->is_organizator($id)){
+            return view('errors.404');
+        }
         $userAndCategories = UserAndCategories::where('user_id','=',$user->id)->distinct()->get('category_id');
         $categories = Category::whereIn('id', $userAndCategories)->get();
         $reviews = Rating::where('user_id', '=', $id);

@@ -69,16 +69,6 @@ class User extends Authenticatable implements MustVerifyEmail, Viewable
         return $this->hasMany(UserAndCategories::class);
     }
 
-    public function get_categories()
-    {
-        $user_id = Auth()->user()->id;
-        $categories = UserAndCategories::where('user_id','=', $user_id)->get('category_id');
-        $res = [];
-        foreach ($categories as $category){
-            $res[] = $category->category_id;
-        }
-        return $res;
-    }
 
     public function rating(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
@@ -90,9 +80,14 @@ class User extends Authenticatable implements MustVerifyEmail, Viewable
         return $this->hasMany(Organizer::class);
     }
 
-    public function is_organizator()
+    public function is_organizator($id = null)
     {
-        $user_id = Auth()->user()->id;
+        if ($id) {
+            $user_id = $id;
+        } else {
+            $user_id = Auth()->user()->id;
+        }
+
         $organizer = Organizer::where('user_id','=', $user_id)->get('user_id');
         return count($organizer) !== 0;
     }

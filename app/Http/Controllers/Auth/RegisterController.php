@@ -101,6 +101,7 @@ class RegisterController extends Controller
                 'telegram' => $data['telegram'],
                 'contact' => $data['contact'],
                 'apply_instruction' => 'yes',
+                'active_status' => 1,
             ]);
             $organizer = new Organizer;
             $organizer->user_id = $user->id;
