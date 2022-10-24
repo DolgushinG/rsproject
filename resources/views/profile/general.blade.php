@@ -27,7 +27,7 @@
             <div class="card-body" style="padding-left: 0;">
                 <strong>Подготовка местных стартов (фестивалей)</strong>: <br>
                 <div class="progress mb-3" style="height: 15px">
-                    <div class="progress-bar bg-primary" role="progressbar"
+                    <div class="progress-bar bg-primary-progressbar" role="progressbar"
                          style="width: {{100*$user->exp_local/5}}%"
                          aria-valuemin="0"
                          aria-valuemax="5">{{100*$user->exp_local/5}}%
@@ -39,7 +39,7 @@
             <div class="card-body" style="padding-left: 0;">
                 <strong>Подготовка национальных стартов</strong>: <br>
                 <div class="progress mb-3" style="height: 15px">
-                    <div class="progress-bar bg-primary" role="progressbar"
+                    <div class="progress-bar bg-primary-progressbar" role="progressbar"
                          style="width: {{100*$user->exp_national/5}}%"
                          aria-valuemin="0"
                          aria-valuemax="5">{{100*$user->exp_national/5}}%
@@ -50,7 +50,7 @@
             <div class="card-body" style="padding-left: 0;">
                 <strong>Подготовка международных стартов</strong>: <br>
                 <div class="progress mb-3" style="height: 15px">
-                    <div class="progress-bar bg-primary" role="progressbar"
+                    <div class="progress-bar bg-primary-progressbar" role="progressbar"
                          style="width: {{100*$user->exp_international/5}}%"
                          aria-valuenow="0"
                          aria-valuemax="5">{{100*$user->exp_international/5}}%

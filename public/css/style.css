@@ -197,7 +197,10 @@ body {
     color: black!important;
 }
 .dark-theme .bg-primary{
-    background-color: rgba(5, 61, 121, 0.36)!important;
+    background-color: rgba(8, 22, 173, 0.58) !important;
+}
+.dark-theme .bg-primary-progressbar{
+    background-color: rgba(16, 36, 250, 0.81)!important;
 }
 .dark-theme .accordion-header:hover{
     background-color: rgba(40, 40, 40, 0.51) !important;
@@ -396,9 +399,8 @@ h6{
 .dark-theme .contact .info-box p,h3{
     color: #4154f1!important;
 }
-
 .dark-theme .form-control{
-    background-color: black;
+    background-color: black!important;
     color: #d7d6d6!important;
 }
 #theme-toggle:hover {
