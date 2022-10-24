@@ -2,7 +2,7 @@
 @section('content')
     <main id="main">
         <!-- ======= Breadcrumbs ======= -->
-        <section class="breadcrumbs">
+        <section class="breadcrumbs" style="padding-top: 0!important;">
             <div class="container">
                 <ol>
                     <li><a href="{{route('home')}}">Домой</a></li>

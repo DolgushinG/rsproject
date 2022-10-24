@@ -100,15 +100,34 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label for="scheduleDay">Дни работы</label>
-                                            <select name="scheduleDay[]" id="scheduleDay" class="form-select" required
-                                                    aria-label="select example" multiple>
-                                                <option value="Пн">Пн</option>
-                                                <option value="Вт">Вт</option>
-                                                <option value="Ср">Ср</option>
-                                                <option value="Чт">Чт</option>
-                                                <option value="Сб">Сб</option>
-                                                <option value="Вс">Вс</option>
-                                            </select>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" name="scheduleDay[1]" type="checkbox" id="flexSwitchCheckDefault" value="Пн">
+                                                <label class="form-check-label" for="flexSwitchCheckDefault">Пн</label>
+                                            </div>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" name="scheduleDay[2]" type="checkbox" id="flexSwitchCheckDefault" value="Вт">
+                                                <label class="form-check-label" for="flexSwitchCheckDefault">Вт</label>
+                                            </div>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" name="scheduleDay[3]" type="checkbox" id="flexSwitchCheckDefault" value="Ср">
+                                                <label class="form-check-label" for="flexSwitchCheckDefault">Ср</label>
+                                            </div>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" name="scheduleDay[4]" type="checkbox" id="flexSwitchCheckDefault" value="Чт">
+                                                <label class="form-check-label" for="flexSwitchCheckDefault">Чт</label>
+                                            </div>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" name="scheduleDay[5]" type="checkbox" id="flexSwitchCheckDefault" value="Пт">
+                                                <label class="form-check-label" for="flexSwitchCheckDefault">Пт</label>
+                                            </div>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" name="scheduleDay[6]" type="checkbox" id="flexSwitchCheckDefault" value="Сб">
+                                                <label class="form-check-label" for="flexSwitchCheckDefault">Сб</label>
+                                            </div>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" name="scheduleDay[7]" type="checkbox" id="flexSwitchCheckDefault" value="Вс">
+                                                <label class="form-check-label" for="flexSwitchCheckDefault">Вс</label>
+                                            </div>
                                         </div>
                                         <div class="col-md-12 text-center">
                                             <div class="loading">Loading</div>

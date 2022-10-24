@@ -22,9 +22,13 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
+            if (Auth::guard($guard)->check() && Auth()->user()->is_organizator()) {
+                return redirect(RouteServiceProvider::HOME_ORGANIZATOR);
+            }
+            if (Auth::guard($guard)->check() && Auth()->user()->is_routesetter()) {
                 return redirect(RouteServiceProvider::HOME);
             }
+
         }
 
         return $next($request);

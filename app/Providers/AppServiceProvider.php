@@ -26,6 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (env('APP_ENV') === 'local') {
+            \Illuminate\Support\Facades\URL::forceScheme('http');
+        }
         $table = config('admin.extensions.config.table', 'admin_config');
         if (Schema::hasTable($table)) {
             Config::load();

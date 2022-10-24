@@ -93,14 +93,14 @@
                 <div class="col-lg-4 hero-img" data-aos="zoom-out" data-aos-delay="200" style="margin-bottom: 15rem;">
                     <ul class="list-group">
                         <li id="title-popular" class="list-group-item d-flex justify-content-between align-items-center text-white"
-                            style="background-color: #007bff">
+                            style="background-color: #007bff!important;">
                                     <span class="align-items-right">Популярные скалодромы <i
                                             class="bi bi-info-circle-fill"
                                             title="По кол-ву лайков"
                                             data-toggle="tooltip"
                                             data-placement="bottom"></i></span>
                         </li>
-                        <div id="votes">
+                        <div id="votes" style="border-bottom-left-radius: inherit;border-bottom-right-radius: inherit;}">
                             @include('climbingGyms.votesGyms')
                         </div>
                     </ul>

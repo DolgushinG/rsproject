@@ -19,6 +19,7 @@ class ClimbingGymController extends Controller
     }
 
     public function addClimbingGyms(Request $request){
+//        dd($request);
         $messages = array(
             'name.required' => 'Name required',
             'region.required' => 'Region required',
@@ -139,7 +140,9 @@ class ClimbingGymController extends Controller
         foreach ($likesDislikes as $item){
             $likes[] = $item->all_gyms_id;
         }
-        $likesDislikesGyms = AllGyms::whereIn('id', $likes)->simplePaginate(7);
+        $likesDislikesGyms = AllGyms::whereIn('id', $likes)->simplePaginate(7)->sortByDesc('sum_likes');
+//        asort($likesDislikesGyms);
+//        dd($likesDislikesGyms);
        return view('climbingGyms.index', compact(['allGymsPagination','allGymsCity','listCity','allCityListCount','allGymsCount','likesDislikesGyms']));
     }
     public function saveLikeDislike(Request $request)
@@ -207,7 +210,8 @@ class ClimbingGymController extends Controller
         foreach ($likesDislikes as $item){
             $likes[] = $item->all_gyms_id;
         }
-        $likesDislikesGyms = AllGyms::whereIn('id', $likes)->simplePaginate(7);
+        $likesDislikesGyms = AllGyms::whereIn('id', $likes)->orderBy()->simplePaginate(7);
+
         return view('climbingGyms.votesGyms', compact('likesDislikesGyms'));
     }
 }

@@ -10,6 +10,8 @@ use App\Models\User;
 use App\Models\Category;
 
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -21,20 +23,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $userCityList = User::select('city_name')->whereNotNull('email_verified_at')->distinct()->take(6)->get();
+        $userCityList = User::select('city_name')->whereNotNull('email_verified_at')->where('active_status', '=', '0')->distinct()->take(6)->get();
         $eventCityList = Event::select('event_city')->whereBetween('event_start_date', [Carbon::now()->toDate(),Carbon::now()->addYears(2)->toDate()])->where('active_status', '=', '1')->orderBy('event_start_date')->take(8)->get();
         $userCityCount = [];
         foreach ($userCityList as $city) {
-            $userCityCount[$city->city_name] = User::where('city_name', '=', $city->city_name)->count();
+            $userCityCount[$city->city_name] = User::where('city_name', '=', $city->city_name)->where('active_status', '=', '0')->count();
         }
         $eventCityCount = [];
         foreach ($eventCityList as $city) {
             $eventCityCount[$city->event_city] =+ 1;
         }
-        $usersSenior = User::where('exp_level', '=', 3)->count();
-        $usersWithCours = User::where('educational_requirements', '=', 'yes')->count();
+        $usersSenior = User::where('exp_level', '=', 3)->where('active_status', '=', '0')->count();
+        $usersWithCours = User::where('educational_requirements', '=', 'yes')->where('active_status', '=', '0')->count();
         $categories = Category::all();
-        $userCount = User::All()->count();
+        $userCount = User::All()->where('active_status', '=', '0')->count();
         $eventCount = Event::All()->count();
         $latestUsers = User::latest('created_at')->where('active_status', '=', '0')->whereNotNull('email_verified_at')->take(5)->get();
         arsort($userCityCount);
@@ -72,7 +74,6 @@ class HomeController extends Controller
     {
         return view('support');
     }
-
     public function indexVerificationPage()
     {
         return view('verificationPage');

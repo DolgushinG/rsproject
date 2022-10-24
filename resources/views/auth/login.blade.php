@@ -13,6 +13,9 @@
                             <h2>Войти в личный аккаунт</h2>
                         </div>
                         <!-- Login Form -->
+{{--                        @if(Auth()->user()->is_organizator())--}}
+{{--                        @else--}}
+{{--                        @endif--}}
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <input id="email" type="email" class="fadeIn third inputLogin @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="введите логин">
