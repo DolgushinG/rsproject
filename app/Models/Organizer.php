@@ -9,5 +9,5 @@ class Organizer extends Model
 {
     use HasFactory;
 
-    protected $table = 'organizer';
+    protected $table = 'organizers';
 }

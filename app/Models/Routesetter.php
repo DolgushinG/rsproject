@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Routesetter extends Model
 {
     use HasFactory;
+
+    protected $table = 'routesetters';
 }

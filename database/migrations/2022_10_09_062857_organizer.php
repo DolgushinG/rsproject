@@ -13,7 +13,7 @@ class Organizer extends Migration
      */
     public function up()
     {
-        Schema::create('organizers', function (Blueprint $table) {
+        Schema::create('organizer', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->nullable();
             $table->timestamps();
