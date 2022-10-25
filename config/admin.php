@@ -138,6 +138,7 @@ return [
         'excepts' => [
             'auth/login',
             'auth/logout',
+            'locale',
         ],
     ],
 
@@ -275,7 +276,7 @@ return [
     |    "skin-red", "skin-red-light", "skin-black", "skin-black-light".
     |
     */
-    'skin' => 'skin-blue-light',
+    'skin' => 'skin-black',
 
     /*
     |--------------------------------------------------------------------------
@@ -289,7 +290,7 @@ return [
     | "sidebar-mini".
     |
     */
-    'layout' => ['sidebar-mini', 'sidebar-collapse'],
+    'layout' => ['sidebar-mini','sidebar-collapse'],
 
     /*
     |--------------------------------------------------------------------------
@@ -395,6 +396,23 @@ return [
     |
     */
     'extensions' => [
+        'multi-language' => [
+            'enable' => true,
+            // the key should be same as var locale in config/app.php
+            // the value is used to show
+            'languages' => [
+                'en' => 'English',
+                'ru' => 'Русский',
+            ],
+            // default locale
+            'default' => 'ru-RU',
+            // if or not show multi-language login page, optional, default is true
+            'show-login-page' => true,
+            // if or not show multi-language navbar, optional, default is true
+            'show-navbar' => true,
+            // the cookie name for the multi-language var, optional, default is 'locale'
+            'cookie-name' => 'locale'
+        ],
         'media-manager' => [
             // Select a local disk that you configured in `config/filesystem.php`
             'disk' => 'public'
@@ -424,7 +442,7 @@ return [
 
                 // Editor configuration
                 'config' => [
-                    'lang'   => 'en-EN',
+                    'lang'   => 'ru-RU',
                     'height' => 500,
                 ]
             ]

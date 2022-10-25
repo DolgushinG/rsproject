@@ -80,7 +80,9 @@ class CategoryController extends Controller
     protected function grid()
     {
         $grid = new Grid(new Category);
-
+        $grid->quickCreate(function (Grid\Tools\QuickCreate $create) {
+            $create->text('category_name', 'Категория');
+        });
         $grid->id('id');
         $grid->category_name('category_name');
         $grid->created_at(trans('admin.created_at'));

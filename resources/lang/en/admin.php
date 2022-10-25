@@ -100,8 +100,12 @@ return [
     ],
     'grid_items_selected'    => '{n} items selected',
 
-    'menu_titles'            => [],
+    'menu_titles'            => [
+        'events' => 'Events',
+    ],
     'prev'                   => 'Prev',
     'next'                   => 'Next',
     'quick_create'           => 'Quick create',
+    'admin'                  => 'Admin',
+    'events'                 => 'Events',
 ];
