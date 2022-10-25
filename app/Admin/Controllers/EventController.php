@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Admin\Controllers;
-
 use App\Models\Event;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
+use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
@@ -23,8 +23,8 @@ class EventController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header(trans('admin.index'))
-            ->description(trans('admin.description'))
+            ->header(trans('admin.events'))
+            ->description(trans('events.description'))
             ->body($this->grid());
     }
 
@@ -80,19 +80,22 @@ class EventController extends Controller
     protected function grid()
     {
         $grid = new Grid(new Event);
-
-        $grid->id('ID');
-        $grid->event_title('event_title');
-        $grid->event_start_date('event_start_date');
-        $grid->event_end_date('event_end_date');
+        $grid->event_title('event_title')->editable();;
+        $states = [
+            'on' => ['value' => 1, 'text' => 'on', 'color' => 'primary'],
+            'off' => ['value' => 0, 'text' => 'off', 'color' => 'default'],
+        ];
+        if (Admin::user()->can('active_status')) {
+            $grid->column('active_status')->switch($states);
+        }
+        $grid->event_start_date('event_start_date')->sortable();
+        $grid->event_end_date('event_end_date')->sortable();
         $grid->event_start_time('event_start_time');
         $grid->event_end_time('event_end_time');
-        $grid->event_city('event_city');
-        $grid->event_url('event_url');
-        $grid->event_description('event_description');
-        $grid->active_status('active_status');
-        $grid->event_image('event_image');
-        $grid->created_at(trans('admin.created_at'));
+        $grid->event_city('event_city')->editable();;
+        $grid->event_url('event_url')->editable();;
+        $grid->event_description('event_description')->editable();;
+        $grid->created_at(trans('admin.created_at'))->sortable();
         $grid->updated_at(trans('admin.updated_at'));
 
         return $grid;
@@ -110,6 +113,7 @@ class EventController extends Controller
 
         $show->id('ID');
         $show->event_title('event_title');
+        $show->active_status('active_status');
         $show->event_start_date('event_start_date');
         $show->event_end_date('event_end_date');
         $show->event_start_time('event_start_time');
@@ -117,7 +121,6 @@ class EventController extends Controller
         $show->event_city('event_city');
         $show->event_url('event_url');
         $show->event_description('event_description');
-        $show->active_status('active_status');
         $show->event_image('event_image');
         $show->created_at(trans('admin.created_at'));
         $show->updated_at(trans('admin.updated_at'));
@@ -134,20 +137,22 @@ class EventController extends Controller
     {
         $form = new Form(new Event);
 
-        $form->display('ID');
+
+        $states = [
+            'on'  => ['value' => 1, 'text' => 'on', 'color' => 'success'],
+            'off' => ['value' => 0, 'text' => 'off', 'color' => 'danger'],
+        ];
+
+        $form->switch('active_status', 'active_status')->states($states);
         $form->text('event_title', 'event_title');
-        $form->text('event_start_date', 'event_start_date');
-        $form->text('event_end_date', 'event_end_date');
-        $form->text('event_start_time', 'event_start_time');
-        $form->text('event_end_time', 'event_end_time');
+
+        $form->dateRange('event_start_date', 'event_end_date','Установить даты');
+        $form->time('event_start_time', 'Время старта');
+        $form->time('event_end_time', 'Время окончания');
         $form->text('event_city', 'event_city');
         $form->text('event_url', 'event_url');
-        $form->text('event_description', 'event_description');
-        $form->switch('active_status', 'active_status');
-        $form->text('event_image', 'event_image');
-        $form->display(trans('admin.created_at'));
-        $form->display(trans('admin.updated_at'));
-
+        $form->summernote('event_description', 'Положение');
+        $form->image('event_image', 'event_image');
         return $form;
     }
 }
