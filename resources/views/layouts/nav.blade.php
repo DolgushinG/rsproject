@@ -17,14 +17,14 @@
         <nav id="navbar" class="navbar">
             <ul class="nav">
                 <li><a class="nav-link scrollto" href="{{route('home')}}">Главная</a></li>
+                @auth
                 <li class="dropdown" style="text-transform: capitalize;"><a
                         href="#"><span>Соревнования</span> <i class="bi bi-chevron-down"></i></a>
-                    @auth
                     <ul>
                         <li><a class="nav-link scrollto" href="{{route('add-event')}}">Добавить соревнование</a></li>
                     </ul>
-                    @endauth
                 </li>
+                @endauth
                 <li class="dropdown"><a
                         href="#"><span>База знаний</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
