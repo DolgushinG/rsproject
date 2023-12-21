@@ -32,6 +32,7 @@ Route::middleware(['auth','verified', 'is_routesetter'])->group(function () {
     Route::post('/send-hold', [App\Http\Controllers\HoldsController::class, 'sendHolds'])->name('send-hold');
     Route::post('/add-cl-gyms', [App\Http\Controllers\ClimbingGymController::class, 'addClimbingGyms'])->name('add-cl-gyms');
     Route::post('/postfeedback', [App\Http\Controllers\FeedbackController::class, 'postFeedback'])->name('postfeedback');
+    Route::post('add-event', [App\Http\Controllers\EventController::class, 'sendEvent']);
     Route::post('/import-climbing-gyms', [App\Http\Controllers\ClimbingGymController::class, 'import'])->name('import-climbing-gyms');
 });
 Route::middleware(['auth','verified', 'is_organizer'])->group(function () {
@@ -58,19 +59,13 @@ Route::get('/add-climbing-gyms', [App\Http\Controllers\ClimbingGymController::cl
 Route::get('/feedback', [App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback');
 Route::post('/climbing-gyms/likeDisLikeGym', [App\Http\Controllers\ClimbingGymController::class, 'saveLikeDislike']);
 Route::get('/climbing-gyms/votesGyms', [App\Http\Controllers\ClimbingGymController::class, 'votesGyms']);
-
-
 Route::get('/post/{post}', [App\Http\Controllers\PostsController::class, 'show'])->name('post');
 Route::post('/post/likedislike',[App\Http\Controllers\PostsController::class, 'saveLikeDislike'])->name('likeDisLike');
-
 Route::get('add-event', [App\Http\Controllers\EventController::class, 'addEvent'])->name('add-event');
-Route::post('add-event', [App\Http\Controllers\EventController::class, 'sendEvent']);
 Route::get('/privacyconf', [App\Http\Controllers\HomeController::class, 'indexPrivacy'])->name('privacyconf');
 Route::get('/privatedata', [App\Http\Controllers\HomeController::class, 'indexPrivacyData'])->name('privatedata');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'indexAbout'])->name('about');
 Route::get('/blog', [App\Http\Controllers\HomeController::class, 'indexBlog'])->name('blog');
-
-
 Route::get('/getresultsearch', [App\Http\Controllers\SearchController::class, 'getResultSearch'])->name('getresultsearch');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'indexCategory'])->name('register');

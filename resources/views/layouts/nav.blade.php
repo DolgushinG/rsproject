@@ -19,9 +19,11 @@
                 <li><a class="nav-link scrollto" href="{{route('home')}}">Главная</a></li>
                 <li class="dropdown" style="text-transform: capitalize;"><a
                         href="#"><span>Соревнования</span> <i class="bi bi-chevron-down"></i></a>
+                    @auth
                     <ul>
                         <li><a class="nav-link scrollto" href="{{route('add-event')}}">Добавить соревнование</a></li>
                     </ul>
+                    @endauth
                 </li>
                 <li class="dropdown"><a
                         href="#"><span>База знаний</span> <i class="bi bi-chevron-down"></i></a>
@@ -36,14 +38,18 @@
                         href="{{route('climbing-gyms')}}"><span>Скалодромы</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a class="nav-link scrollto" href="{{route('climbing-gyms')}}">Все скалодромы</a></li>
+                        @auth
                         <li><a class="nav-link scrollto" href="{{route('add-climbing-gyms')}}">Добавить скалодром</a></li>
+                        @endauth
                     </ul>
                 </li>
                 <li class="dropdown"><a
                         href="#"><span>Поддержка и связь</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a class="nav-link scrollto" href="{{route('support-project')}}">Поддержка проекта</a></li>
+                        @auth
                         <li><a class="nav-link scrollto" href="{{route('feedback')}}">Связаться с нами</a></li>
+                        @endauth
                     </ul>
                 </li>
                 <!-- Authentication Links -->
