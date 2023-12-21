@@ -18,6 +18,8 @@ Route::middleware(['auth','verified', 'is_routesetter'])->group(function () {
     Route::get('/getProfileSidebar', [App\Http\Controllers\ProfileController::class, 'getTabContentSidebar'])->name('getProfileSidebar');
     Route::get('/getProfileReviews', [App\Http\Controllers\ProfileController::class, 'getTabContentReviews'])->name('getTabContentReviews');
     Route::get('/getProfileEdit', [App\Http\Controllers\ProfileController::class, 'getTabContentEdit'])->name('getTabContentEdit');
+    Route::get('/getProfileMyTrainings', [App\Http\Controllers\MyTrainingController::class, 'getTabContentMyTrainings'])->name('getTabContentMyTrainings');
+    Route::post('/createTraining', [App\Http\Controllers\MyTrainingController::class, 'createTraining'])->name('createTraining');
     Route::post('/editChanges', [App\Http\Controllers\ProfileController::class, 'editChanges'])->name('editChanges');
     Route::get('/getProfileSocialLinks', [App\Http\Controllers\ProfileController::class, 'getTabContentSocialLinks'])->name('getTabContentSocialLinks');
     Route::post('/cropimageupload', [App\Http\Controllers\CropImageController::class,'uploadCropImage'])->name('cropimageupload');
@@ -29,6 +31,7 @@ Route::middleware(['auth','verified', 'is_routesetter'])->group(function () {
     Route::post('/send-move', [App\Http\Controllers\ClimbingMovesController::class, 'sendMove'])->name('send-move');
     Route::post('/send-hold', [App\Http\Controllers\HoldsController::class, 'sendHolds'])->name('send-hold');
     Route::get('/feedback', [App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback');
+    Route::post('/add-cl-gyms', [App\Http\Controllers\ClimbingGymController::class, 'addClimbingGyms'])->name('add-cl-gyms');
 });
 Route::middleware(['auth','verified', 'is_organizer'])->group(function () {
     Route::get('/organizer/profile', [App\Http\Controllers\ProfileOrganizerController::class, 'indexOrganizer'])->name('profile.organizer');
@@ -51,7 +54,7 @@ Route::get('/climbing-moves', [App\Http\Controllers\ClimbingMovesController::cla
 Route::get('/posts', [App\Http\Controllers\PostsController::class, 'index'])->name('posts');
 Route::get('/climbing-gyms', [App\Http\Controllers\ClimbingGymController::class, 'index'])->name('climbing-gyms');
 Route::get('/add-climbing-gyms', [App\Http\Controllers\ClimbingGymController::class, 'indexAddClimbingGyms'])->name('add-climbing-gyms');
-Route::post('/add-cl-gyms', [App\Http\Controllers\ClimbingGymController::class, 'addClimbingGyms'])->name('add-cl-gyms');
+
 Route::post('/climbing-gyms/likeDisLikeGym', [App\Http\Controllers\ClimbingGymController::class, 'saveLikeDislike']);
 Route::get('/climbing-gyms/votesGyms', [App\Http\Controllers\ClimbingGymController::class, 'votesGyms']);
 
