@@ -28,7 +28,7 @@ Route::middleware(['auth','verified', 'is_routesetter'])->group(function () {
     Route::get('toSendEmailSubscribe', [App\Http\Controllers\SubscriptionUserController::class, 'sendEmailToSubscribeUser']);
     Route::post('/send-move', [App\Http\Controllers\ClimbingMovesController::class, 'sendMove'])->name('send-move');
     Route::post('/send-hold', [App\Http\Controllers\HoldsController::class, 'sendHolds'])->name('send-hold');
-
+    Route::get('/feedback', [App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback');
 });
 Route::middleware(['auth','verified', 'is_organizer'])->group(function () {
     Route::get('/organizer/profile', [App\Http\Controllers\ProfileOrganizerController::class, 'indexOrganizer'])->name('profile.organizer');
@@ -65,7 +65,7 @@ Route::get('/privacyconf', [App\Http\Controllers\HomeController::class, 'indexPr
 Route::get('/privatedata', [App\Http\Controllers\HomeController::class, 'indexPrivacyData'])->name('privatedata');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'indexAbout'])->name('about');
 Route::get('/blog', [App\Http\Controllers\HomeController::class, 'indexBlog'])->name('blog');
-Route::get('/feedback', [App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback');
+
 Route::post('/postfeedback', [App\Http\Controllers\FeedbackController::class, 'postFeedback'])->name('postfeedback');
 Route::get('/getresultsearch', [App\Http\Controllers\SearchController::class, 'getResultSearch'])->name('getresultsearch');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
