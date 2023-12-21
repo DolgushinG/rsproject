@@ -1,3 +1,4 @@
+@if($recentlyEvent)
 <!-- ======= Pricing Section ======= -->
 <section id="pricing" class="pricing">
 
@@ -27,3 +28,4 @@
     </div>
 
 </section><!-- End Pricing Section -->
+@endif
