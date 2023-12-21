@@ -1,4 +1,4 @@
-@if($recentlyEvent)
+@if(count($recentlyEvent) > 0)
 <!-- ======= Pricing Section ======= -->
 <section id="pricing" class="pricing">
 
