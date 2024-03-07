@@ -20,10 +20,10 @@
                     <ul>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('home')}}">Главная</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('posts')}}">Блог</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('feedback')}}">Связаться с нами</a></li>
+{{--                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('feedback')}}">Связаться с нами</a></li>--}}
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('support-project')}}">Поддержите проект</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('add-event')}}">Добавить соревнование</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('add-climbing-gyms')}}">Добавить скалодром</a></li>
+{{--                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('add-event')}}">Добавить соревнование</a></li>--}}
+{{--                        <li><i class="bi bi-chevron-right"></i> <a href="{{route('add-climbing-gyms')}}">Добавить скалодром</a></li>--}}
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('privatedata')}}">Согласие на обработку персональных данных</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{route('privacyconf')}}">Политика в отношении обработки персональных данных</a></li>
                     </ul>
