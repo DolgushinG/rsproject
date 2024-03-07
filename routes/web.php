@@ -56,7 +56,7 @@ Route::get('/climbing-moves', [App\Http\Controllers\ClimbingMovesController::cla
 Route::get('/posts', [App\Http\Controllers\PostsController::class, 'index'])->name('posts');
 Route::get('/climbing-gyms', [App\Http\Controllers\ClimbingGymController::class, 'index'])->name('climbing-gyms');
 Route::get('/add-climbing-gyms', [App\Http\Controllers\ClimbingGymController::class, 'indexAddClimbingGyms'])->name('add-climbing-gyms');
-Route::get('/feedback', [App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback');
+//Route::get('/feedback', [App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback');
 Route::post('/climbing-gyms/likeDisLikeGym', [App\Http\Controllers\ClimbingGymController::class, 'saveLikeDislike']);
 Route::get('/climbing-gyms/votesGyms', [App\Http\Controllers\ClimbingGymController::class, 'votesGyms']);
 Route::get('/post/{post}', [App\Http\Controllers\PostsController::class, 'show'])->name('post');

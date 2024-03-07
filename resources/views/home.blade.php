@@ -189,28 +189,28 @@
             </div>
         </section>
 
-        <section class="home-newsletter">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="single">
-                            <form action="{{route('subscriptionUser')}}" id="subscribeUser"
-                                  class="php-email-form-subscribe">
-                                @csrf
-                                <h2>Подписаться на рассылку</h2>
-                                <div class="form-group">
-                                    <p style="color:white">Информации о ближайших на месяц (городских)
-                                        соревнований</p>
-                                    <input id="email" type="email" name="email_user" class="form-control"
-                                           placeholder="Введите ваш email">
-                                </div>
-                                <button class="btn btn-theme" id="subscribeBtn" type="button">Подписаться</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+{{--        <section class="home-newsletter">--}}
+{{--            <div class="container">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-sm-12">--}}
+{{--                        <div class="single">--}}
+{{--                            <form action="{{route('subscriptionUser')}}" id="subscribeUser"--}}
+{{--                                  class="php-email-form-subscribe">--}}
+{{--                                @csrf--}}
+{{--                                <h2>Подписаться на рассылку</h2>--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <p style="color:white">Информации о ближайших на месяц (городских)--}}
+{{--                                        соревнований</p>--}}
+{{--                                    <input id="email" type="email" name="email_user" class="form-control"--}}
+{{--                                           placeholder="Введите ваш email">--}}
+{{--                                </div>--}}
+{{--                                <button class="btn btn-theme" id="subscribeBtn" type="button">Подписаться</button>--}}
+{{--                            </form>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </section>--}}
         @include('holds.homeHolds')
         @include('event.recentlyEvent')
         <!-- ======= Testimonials Section ======= -->

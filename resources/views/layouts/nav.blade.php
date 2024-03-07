@@ -38,20 +38,20 @@
                         href="{{route('climbing-gyms')}}"><span>Скалодромы</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a class="nav-link scrollto" href="{{route('climbing-gyms')}}">Все скалодромы</a></li>
-                        @auth
-                        <li><a class="nav-link scrollto" href="{{route('add-climbing-gyms')}}">Добавить скалодром</a></li>
-                        @endauth
+{{--                        @auth--}}
+{{--                        <li><a class="nav-link scrollto" href="{{route('add-climbing-gyms')}}">Добавить скалодром</a></li>--}}
+{{--                        @endauth--}}
                     </ul>
                 </li>
-                <li class="dropdown"><a
-                        href="#"><span>Поддержка и связь</span> <i class="bi bi-chevron-down"></i></a>
-                    <ul>
-                        <li><a class="nav-link scrollto" href="{{route('support-project')}}">Поддержка проекта</a></li>
-                        @auth
-                        <li><a class="nav-link scrollto" href="{{route('feedback')}}">Связаться с нами</a></li>
-                        @endauth
-                    </ul>
-                </li>
+{{--                <li class="dropdown"><a--}}
+{{--                        href="#"><span>Поддержка и связь</span> <i class="bi bi-chevron-down"></i></a>--}}
+{{--                    <ul>--}}
+{{--                        <li><a class="nav-link scrollto" href="{{route('support-project')}}">Поддержка проекта</a></li>--}}
+{{--                        @auth--}}
+{{--                        <li><a class="nav-link scrollto" href="{{route('feedback')}}">Связаться с нами</a></li>--}}
+{{--                        @endauth--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
                 <!-- Authentication Links -->
                 @guest
                     <li class="dropdown" style="text-transform: capitalize;"><a
@@ -63,11 +63,11 @@
                             @if (Route::has('register'))
                                 <li><a class="nav-link scrollto" href="{{route('register')}}">Регистрация подготовщика</a></li>
                             @endif
-                            @if(false)
-                                @if (Route::has('register.organizer'))
-                                    <li><a class="nav-link scrollto" href="{{route('register.organizer')}}">Регистрация организатора</a></li>
-                                @endif
-                            @endif
+{{--                            @if(false)--}}
+{{--                                @if (Route::has('register.organizer'))--}}
+{{--                                    <li><a class="nav-link scrollto" href="{{route('register.organizer')}}">Регистрация организатора</a></li>--}}
+{{--                                @endif--}}
+{{--                            @endif--}}
                         </ul>
                     </li>
                 @else
